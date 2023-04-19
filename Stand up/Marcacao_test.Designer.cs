@@ -77,6 +77,7 @@ namespace Stand_up
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2Button22 = new Guna.UI2.WinForms.Guna2Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.listView3 = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -772,11 +773,11 @@ namespace Stand_up
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.Location = new System.Drawing.Point(426, 63);
+            this.guna2DataGridView1.Location = new System.Drawing.Point(29, 448);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.ReadOnly = true;
             this.guna2DataGridView1.RowHeadersVisible = false;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(664, 351);
+            this.guna2DataGridView1.Size = new System.Drawing.Size(379, 413);
             this.guna2DataGridView1.TabIndex = 35;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -951,11 +952,24 @@ namespace Stand_up
             this.label2.TabIndex = 91;
             this.label2.Text = "Horas";
             // 
+            // listView3
+            // 
+            this.listView3.BackColor = System.Drawing.Color.White;
+            this.listView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView3.HideSelection = false;
+            this.listView3.Location = new System.Drawing.Point(426, 63);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(664, 351);
+            this.listView3.TabIndex = 92;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            // 
             // Marcacao_test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1683, 925);
+            this.Controls.Add(this.listView3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.guna2CirclePictureBox1);
             this.Controls.Add(this.guna2TextBox9);
@@ -1059,5 +1073,6 @@ namespace Stand_up
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2Button guna2Button22;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListView listView3;
     }
 }

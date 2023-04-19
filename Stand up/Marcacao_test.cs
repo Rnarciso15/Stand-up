@@ -1,8 +1,11 @@
-﻿using System;
+﻿using BusinessLogicLayer;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -18,6 +21,7 @@ namespace Stand_up
         int dia = 1;
         int mes=1;
         int ano = 2023;
+        ImageList images = new ImageList();
         void verificar_mes() {
 
             switch (mes)
@@ -1230,6 +1234,78 @@ namespace Stand_up
             }
         
         }
+        void carregar_car_PARA_LISTVIEW()
+        {
+
+
+
+
+
+            DataTable dr = BLL.veiculos.queryLoad_veiculo();
+
+            listView3.Clear();
+            int i = 0;
+
+
+
+
+
+            foreach (DataRow row in dr.Rows)
+
+            {
+
+
+
+                images.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView3.LargeImageList = images;
+
+                listView3.LargeImageList.ImageSize = new System.Drawing.Size(123, 123);
+
+
+
+                byte[] imagebyte = (byte[])(row[9]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = row["Matricula"].ToString();
+
+                i += 1;
+
+                this.listView3.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+        }
+
         private void Marcacao_test_Load(object sender, EventArgs e)
         {
             mes = DateTime.Now.Month;
@@ -1238,6 +1314,7 @@ namespace Stand_up
             guna2TextBox2.Text = ano.ToString();
             verificar_dia();
             verificar_mes();
+            carregar_car_PARA_LISTVIEW();
         }
 
         private void guna2Button42_Click(object sender, EventArgs e)

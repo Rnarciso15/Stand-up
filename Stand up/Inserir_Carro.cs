@@ -54,6 +54,8 @@ namespace Stand_up
         int ano;
         int id_marca;
         int inicio;
+        bool editar =false;
+
         ArrayList intArray = new ArrayList();
       
         int id_carro;
@@ -222,9 +224,253 @@ namespace Stand_up
         }
         private void guna2Button32_Click(object sender, EventArgs e)
         {
+            string Matricula = listView1.SelectedItems[0].Text;
+            DataTable info = BLL.veiculos.Load_dados(Matricula);
+            for (int l = 0; l< info.Columns.Count - 1; l++)
+            {
+                switch (l)
+                {
+                    case 0:
+                        foreach (DataRow row in info.Rows)
+                        {
+                            if (guna2TextBox3.Text != (string)row["Data"])
+                            {
+                                editar = true;
+                            }
+                            else
+                            {
+                                editar = false;
+                            }
+                        }
+              
+                        break;
+                    case 1:
+                        foreach (DataRow row in info.Rows)
+                        {
+                            if (guna2ComboBox1.SelectedItem != (string)row["Marca"])
+                            {
+                                editar = true;
+                            }
+                            else
+                            {
+                                editar = false;
+                            }
+
+                        
+
+                        }
+                        break;
+                    case 2:
+                        foreach (DataRow row in info.Rows)
+                        {
+                            if (guna2ComboBox2.SelectedItem != (string)row["Modelo"])
+                            {
+                                editar = true;
+                            }
+                            else
+                            {
+                                editar = false;
+                            }
 
 
-            if(guna2TextBox3.Text.Length != 10)
+
+                        }
+
+                        break;
+                    case 3:
+                        foreach (DataRow row in info.Rows)
+                        {
+                            if (guna2TextBox6.Text != (string)row["Matricula"])
+                            {
+                                editar = true;
+                            }
+                            else
+                            {
+                                editar = false;
+                            }
+                        
+
+                        }
+                        break;
+                    case 4:
+                        foreach (DataRow row in info.Rows)
+                        {
+                            if (guna2TextBox5.Text != Convert.ToString((int)row["Quilometros"]))
+                            {
+                                editar = true;
+                            }
+                            else
+                            {
+                                editar = false;
+                            }
+
+                     
+                     
+
+                        }
+                        break;
+                    case 5:
+                        foreach (DataRow row in info.Rows)
+                        {
+                            if (guna2ComboBox3.SelectedItem != (string)row["Combustivel"])
+                            {
+                                editar = true;
+                            }
+                            else
+                            {
+                                editar = false;
+                            }
+
+                         
+                           
+                     
+
+                        }
+                        break;
+                    case 6:
+                        foreach (DataRow row in info.Rows)
+                        {
+                            if (guna2TextBox7.Text != (string)row["Descricao"])
+                            {
+                                editar = true;
+                            }
+                            else
+                            {
+                                editar = false;
+                            }
+
+
+
+                            
+
+                        }
+                        break;
+                    case 7:
+                        foreach (DataRow row in info.Rows)
+                        {
+                            if (guna2TextBox1.Text != Convert.ToString((int)row["Valor"]))
+                            {
+                                editar = true;
+                            }
+                            else
+                            {
+                                editar = false;
+                            }
+
+
+
+                       
+
+                        }
+                        break;
+                    case 8:
+                        foreach (DataRow row in info.Rows)
+                        {
+                            if (guna2CirclePictureBox1.Image != byteArrayToImage((Byte[])row["Imagem"]))
+                            {
+                                editar = true;
+                            }
+                            else
+                            {
+                                editar = false;
+                            }
+
+
+
+                      
+                          
+
+                        }
+                        break;
+                    case 9:
+                        foreach (DataRow row in info.Rows)
+                        {
+                            if (guna2ComboBox4.SelectedItem != (string)row["Cor"])
+                            {
+                                editar = true;
+                            }
+                            else
+                            {
+                                editar = false;
+                            }
+
+
+
+
+                          
+                          
+                        }
+                        break;
+                    case 10:
+                        foreach (DataRow row in info.Rows)
+                        {
+                            if (guna2ComboBox5.SelectedItem != (string)row["Tipo_de_Caixa"])
+                            {
+                                editar = true;
+                            }
+                            else
+                            {
+                                editar = false;
+                            }
+
+
+
+
+
+                           
+                        
+
+                        }
+                        break;
+                    case 11:
+                        foreach (DataRow row in info.Rows)
+                        {
+                            if (guna2ComboBox6.SelectedItem != Convert.ToString((int)row["N_Portas"]))
+                            {
+                                editar = true;
+                            }
+                            else
+                            {
+                                editar = false;
+                            }
+
+
+
+
+
+
+                            
+                      
+
+                        }
+                        break;
+                    case 12:
+                        foreach (DataRow row in info.Rows)
+                        {
+                            if (guna2ComboBox8.SelectedItem != (string)row["Traccao"])
+                            {
+                                editar = true;
+                            }
+                            else
+                            {
+                                editar = false;
+                            }
+
+
+
+
+
+
+
+                          
+
+                        }
+                        break;
+                }
+
+            }
+
+            if (guna2TextBox3.Text.Length != 10)
             {
                 MessageBox.Show("Insira uma data válida !");
                 guna2TextBox3.Clear();
@@ -248,7 +494,7 @@ namespace Stand_up
                         else
                         {
                             DataTable verificar_matricula = BLL.veiculos.Load_dados1(guna2TextBox6.Text);
-                            if(verificar_matricula.Rows.Count > 0)
+                            if(verificar_matricula.Rows.Count > 0 && editar !=true)
                             {
                                 MessageBox.Show("Esta matricula já existe");
                             }
@@ -304,7 +550,7 @@ namespace Stand_up
                                                         }
                                                          else
                                                         {
-                                                            if (Form1.flagEditCAR == true)
+                                                            if (editar == true)
                                                             {
 
                                                                 if (listView1.SelectedIndices.Count > 0)
@@ -313,21 +559,27 @@ namespace Stand_up
                                                                 }
                                                                 DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                                                                 string data2 = data.ToString("dd/MM/yyyy");
-
-                                                                int x = BLL.veiculos.updateVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text,index);
-                                                                limpar_caixas();
-                                                                carregar_car_PARA_LISTVIEW();
-                                                            }
+                                                                    DialogResult dr = MessageBox.Show("Pertende guardar as alterações do veiculo?", "", MessageBoxButtons.YesNo);
+                                                                    if (dr == DialogResult.Yes)
+                                                                    {
+                                                                         int x = BLL.veiculos.updateVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text,index);
+                                                                         limpar_caixas();
+                                                                    }
+                                                                }
                                                             else
                                                             {
                                                                 DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                                                                 string data2 = data.ToString("dd/MM/yyyy");
-                                                                //data = Convert.ToDateTime(data2);
+                                                                    //data = Convert.ToDateTime(data2);
 
 
-                                                                int x = BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text);
-                                                                limpar_caixas();
-                                                                carregar_car_PARA_LISTVIEW();
+                                                                    DialogResult dr = MessageBox.Show("Pertende inserir este veiculo?", "", MessageBoxButtons.YesNo);
+                                                                    if (dr == DialogResult.Yes)
+                                                                    {
+                                                                        int x = BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text);
+                                                                        limpar_caixas();
+                                                                        carregar_car_PARA_LISTVIEW();
+                                                                    }
 
                                                             }
                                                           
@@ -761,7 +1013,9 @@ namespace Stand_up
             {
                 guna2TextBox5.Enabled = false;
             }
-            
+
+
+     
         }
       
 
@@ -879,11 +1133,7 @@ namespace Stand_up
 
                         }
 
-                        //foreach (DataRow row2 in modelos1234.Rows)
-                        //{
-                        //    string nome = (string)row2["Modelo"];
-                        //    guna2ComboBox2.Items.Add(nome);
-                        //}
+                    
                         guna2ComboBox2.DataSource = modelos1234;
                         guna2ComboBox2.DisplayMember = "Modelo";
 

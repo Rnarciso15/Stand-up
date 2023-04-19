@@ -18,6 +18,11 @@ namespace Stand_up
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void guna2CircleButton1_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
     }
