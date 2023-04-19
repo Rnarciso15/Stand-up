@@ -56,6 +56,7 @@ namespace Stand_up
         {
             guna2HtmlLabel1.Location = new Point(302, 311);
             guna2TextBox1.UseSystemPasswordChar = true;
+           
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -79,6 +80,64 @@ namespace Stand_up
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void guna2GroupBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void guna2TextBox12_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2TextBox8_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2TextBox7_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2TextBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2TextBox5_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2TextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2TextBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2ComboBox8_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2PictureBox2_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                guna2PictureBox2.ImageLocation = openFileDialog1.FileName;
+            }
         }
     }
 }
