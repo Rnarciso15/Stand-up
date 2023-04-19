@@ -1207,6 +1207,26 @@ namespace Stand_up
                     guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
 
                     break;
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("08:00 - 08:30");
+                    guna2ComboBox1.Items.Add("08:30 - 09:00");
+                    guna2ComboBox1.Items.Add("09:00 - 09:30");
+                    guna2ComboBox1.Items.Add("09:30 - 10:00");
+                    guna2ComboBox1.Items.Add("10:00 - 10:30");
+                    guna2ComboBox1.Items.Add("10:30 - 11:00");
+                    guna2ComboBox1.Items.Add("11:00 - 11:30");
+                    guna2ComboBox1.Items.Add("11:30 - 12:00");
+                    guna2ComboBox1.Items.Add("12:00 - 12:30");
+                    guna2ComboBox1.Items.Add("12:30 - 13:00");
+                    guna2ComboBox1.Items.Add("13:00 - 13:30");
+                    guna2ComboBox1.Items.Add("13:30 - 14:00");
+                    guna2ComboBox1.Items.Add("14:00 - 14:30");
+                    guna2ComboBox1.Items.Add("14:30 - 15:00");
+                    guna2ComboBox1.Items.Add("15:00 - 15:30");
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+
             }
         
         }
