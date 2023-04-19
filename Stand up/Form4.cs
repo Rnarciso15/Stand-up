@@ -1,9 +1,12 @@
-﻿using System;
+﻿using BusinessLogicLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 
@@ -37,7 +40,7 @@ namespace Stand_up
             else
             {
 
-                guna2HtmlLabel1.Location = new Point(302, 311);
+                guna2HtmlLabel1.Location = new Point(308, 311);
                 guna2HtmlLabel1.Text = "Mudar Senha";
                 guna2TextBox1.Visible = false;
                 guna2Button1.Visible = false;
@@ -54,7 +57,7 @@ namespace Stand_up
 
         private void Form4_Load(object sender, EventArgs e)
         {
-            guna2HtmlLabel1.Location = new Point(302, 311);
+            guna2HtmlLabel1.Location = new Point(308, 311);
             guna2TextBox1.UseSystemPasswordChar = true;
            
         }
@@ -138,6 +141,75 @@ namespace Stand_up
             {
                 guna2PictureBox2.ImageLocation = openFileDialog1.FileName;
             }
+        }
+        static string Hash(string input)
+
+        {
+
+            using (SHA1Managed sha1 = new SHA1Managed())
+
+            {
+
+                var hash = sha1.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+                var sb = new StringBuilder(hash.Length * 2);
+
+
+
+                foreach (byte b in hash)
+
+                {
+
+                    // can be "x2" if you want lowercase
+
+                    sb.Append(b.ToString("X2"));
+
+                }
+
+
+
+                return sb.ToString();
+
+            }
+
+        }
+        public Image byteArrayToImage(byte[] byteArrayIn)
+
+        {
+
+            using (MemoryStream mStream = new MemoryStream(byteArrayIn))
+
+            {
+
+                return Image.FromStream(mStream);
+
+            }
+
+        }
+
+
+        public byte[] imgToByteArray(Image img)
+
+        {
+
+            using (MemoryStream mStream = new MemoryStream())
+
+            {
+
+                img.Save(mStream, img.RawFormat);
+
+                return mStream.ToArray();
+
+            }
+
+        }
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            
+            int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash("123"),true,guna2TextBox4.Text,guna2TextBox2.Text,guna2TextBox5.Text,guna2TextBox6.Text,imgToByteArray(guna2PictureBox2.Image),guna2TextBox8.Text,guna2TextBox7.Text,guna2ComboBox8.SelectedItem.ToString());
+
+            guna2DataGridView1.DataSource = BLL.Func.Load();
+
         }
     }
 }

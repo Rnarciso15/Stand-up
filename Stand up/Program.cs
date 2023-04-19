@@ -15,7 +15,7 @@ namespace Stand_up
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form5());
+            Application.Run(new Form1());
         }
     }
 }

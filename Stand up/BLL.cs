@@ -282,7 +282,61 @@ namespace BusinessLogicLayer
             }
 
         }
+
+        public class Func
+        {
+            static public DataTable Load()
+            {
+                DAL dal = new DAL();
+                return dal.executarReader("select * from funcionario", null);
+            }
+            static public int updateFunc(string Matricula, int Quilometros, string Data, string Marca, string Modelo, string Descricao, string Combustivel, byte[] Imagem, int Valor, string Cor, string tipo_de_caixa, int N_Portas, string Traccao, string Matricula1)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@Matricula", Matricula),
+                new SqlParameter("@Quilometros", Quilometros),
+                new SqlParameter("@Data", Data),
+                new SqlParameter("@Marca", Marca),
+                new SqlParameter("@Modelo", Modelo),
+                new SqlParameter("@Descricao", Descricao),
+                 new SqlParameter("@Imagem", Imagem),
+                  new SqlParameter("@Combustivel", Combustivel),
+                     new SqlParameter("@Valor", Valor),
+                       new SqlParameter("@Cor", Cor),
+                         new SqlParameter("@tipo_de_caixa", tipo_de_caixa),
+                           new SqlParameter("@N_Portas", N_Portas),
+                           new SqlParameter("@Matricula1", Matricula1),
+                             new SqlParameter("@Traccao", Traccao)
+            };
+                return dal.executarNonQuery("update [Veiculo] set [Matricula]=@Matricula, [Quilometros]=@Quilometros, [Data]=@Data , [Marca]=@Marca, [Modelo]=@Modelo, [Descricao]=@Descricao, [Combustivel]=@Combustivel, [Imagem]=@Imagem, [Valor]=@Valor, [Cor]=@Cor, [tipo_de_caixa]=@tipo_de_caixa, [Traccao]=@Traccao where [Matricula]=@Matricula1", sqlParams);
+            }
+            static public int insertFunc(string nome, string senha, bool ativo, string data_nascimento, string email, string telefone, string nib, byte[] imagem, string nif,string morada, string genero)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@nome", nome),
+                new SqlParameter("@senha", senha),
+                new SqlParameter("@ativo", ativo),
+                new SqlParameter("@data_nascimento", data_nascimento),
+                new SqlParameter("@email", email),
+                new SqlParameter("@telefone", telefone),
+                 new SqlParameter("@nib", nib),
+                  new SqlParameter("@imagem", imagem),
+                     new SqlParameter("@nif", nif),
+                       new SqlParameter("@genero", genero),
+                                    new SqlParameter("@morada", morada),
+
+           };
+
+                return dal.executarNonQuery("INSERT into funcionario (nome,senha,ativo,data_nascimento,email,telefone,nib,imagem,nif,genero,morada) VALUES(@nome,@senha,@ativo,@data_nascimento,@email,@telefone,@nib,@imagem,@nif,@genero,@morada)", sqlParams);
+            }
+
+
+
+        }
     }
+   
 
                      
 }
