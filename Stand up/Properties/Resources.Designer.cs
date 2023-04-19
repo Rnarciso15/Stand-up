@@ -133,6 +133,26 @@ namespace Stand_up.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap correct1 {
+            get {
+                object obj = ResourceManager.GetObject("correct1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap correct11 {
+            get {
+                object obj = ResourceManager.GetObject("correct11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cupra {
             get {
                 object obj = ResourceManager.GetObject("cupra", resourceCulture);
@@ -186,6 +206,16 @@ namespace Stand_up.Properties {
         internal static System.Drawing.Bitmap hyuandai {
             get {
                 object obj = ResourceManager.GetObject("hyuandai", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap invisible1 {
+            get {
+                object obj = ResourceManager.GetObject("invisible1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -386,6 +416,16 @@ namespace Stand_up.Properties {
         internal static System.Drawing.Bitmap Sell_And_Buy {
             get {
                 object obj = ResourceManager.GetObject("Sell_And_Buy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap show1 {
+            get {
+                object obj = ResourceManager.GetObject("show1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

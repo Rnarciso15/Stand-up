@@ -110,5 +110,14 @@ namespace Stand_up
             f2.Parent = guna2Panel3;
             f2.Show();
         }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+            Form4 f2 = new Form4();
+            guna2Panel3.Controls.Clear();
+            f2.TopLevel = false;
+            f2.Parent = guna2Panel3;
+            f2.Show();
+        }
     }
 }

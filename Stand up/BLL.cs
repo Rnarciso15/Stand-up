@@ -150,7 +150,7 @@ namespace BusinessLogicLayer
            };
                 return dal.executarReader("select Matricula from Veiculo where Matricula = @Matricula", sqlParams);
             }
-            static public int updateVeiculo(string Matricula, int Quilometros, string Data, string Marca, string Modelo, string Descricao, string Combustivel, byte[] Imagem, int Valor, string Cor, string tipo_de_caixa, int N_Portas, string Traccao, int Id)
+            static public int updateVeiculo(string Matricula, int Quilometros, string Data, string Marca, string Modelo, string Descricao, string Combustivel, byte[] Imagem, int Valor, string Cor, string tipo_de_caixa, int N_Portas, string Traccao, string Matricula1)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
@@ -166,10 +166,10 @@ namespace BusinessLogicLayer
                        new SqlParameter("@Cor", Cor),
                          new SqlParameter("@tipo_de_caixa", tipo_de_caixa),
                            new SqlParameter("@N_Portas", N_Portas),
-                           new SqlParameter("@Id", Id),
+                           new SqlParameter("@Matricula1", Matricula1),
                              new SqlParameter("@Traccao", Traccao)
             };
-                return dal.executarNonQuery("update [Veiculo] set [Matricula]=@Matricula, [Quilometros]=@Quilometros, [Data]=@Data , [Marca]=@Marca, [Modelo]=@Modelo, [Descricao]=@Descricao, [Combustivel]=@Combustivel, [Imagem]=@Imagem, [Valor]=@Valor, [Cor]=@Cor, [tipo_de_caixa]=@tipo_de_caixa, [Traccao]=@Traccao where [Id]=@Id", sqlParams);
+                return dal.executarNonQuery("update [Veiculo] set [Matricula]=@Matricula, [Quilometros]=@Quilometros, [Data]=@Data , [Marca]=@Marca, [Modelo]=@Modelo, [Descricao]=@Descricao, [Combustivel]=@Combustivel, [Imagem]=@Imagem, [Valor]=@Valor, [Cor]=@Cor, [tipo_de_caixa]=@tipo_de_caixa, [Traccao]=@Traccao where [Matricula]=@Matricula1", sqlParams);
             }
             static public int insertVeiculo(string Matricula, int Quilometros, string Data, string Marca, string Modelo, string Descricao, string Combustivel, byte[] Imagem,int Valor,string Cor, string tipo_de_caixa, int N_Portas, string Traccao)
             {
