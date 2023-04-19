@@ -115,14 +115,18 @@ namespace Stand_up
         {
         
         }
-
+        public static string Matricula ;
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (listView1.SelectedItems.Count > 0)
+            {
+              Matricula = listView1.SelectedItems[0].Text;           
+
+            }
 
 
 
-           
-                Ver_carro_venda f2 = new Ver_carro_venda();
+            Ver_carro_venda f2 = new Ver_carro_venda();
                 guna2Panel1.Controls.Clear();
                 f2.TopLevel = false;
                 f2.Parent = guna2Panel1;

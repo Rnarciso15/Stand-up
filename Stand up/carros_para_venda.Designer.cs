@@ -476,9 +476,9 @@ namespace Stand_up
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.White;
             this.guna2Panel1.BorderRadius = 10;
-            this.guna2Panel1.Location = new System.Drawing.Point(482, 214);
+            this.guna2Panel1.Location = new System.Drawing.Point(476, 214);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(800, 450);
+            this.guna2Panel1.Size = new System.Drawing.Size(967, 450);
             this.guna2Panel1.TabIndex = 37;
             // 
             // carros_para_venda
