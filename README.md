@@ -1,0 +1,2 @@
+# Stand-up
+chefe andré
