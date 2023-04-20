@@ -656,7 +656,7 @@ namespace Stand_up
             this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
             this.guna2Button3.Image = global::Stand_up.Properties.Resources.correct11;
-            this.guna2Button3.Location = new System.Drawing.Point(928, 725);
+            this.guna2Button3.Location = new System.Drawing.Point(924, 723);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(89, 78);
             this.guna2Button3.TabIndex = 57;
