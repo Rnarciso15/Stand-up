@@ -176,10 +176,10 @@ namespace Stand_up
             // 
             this.guna2CirclePictureBox2.Image = global::Stand_up.Properties.Resources.mechanic;
             this.guna2CirclePictureBox2.ImageRotate = 0F;
-            this.guna2CirclePictureBox2.Location = new System.Drawing.Point(1516, 39);
+            this.guna2CirclePictureBox2.Location = new System.Drawing.Point(1486, 27);
             this.guna2CirclePictureBox2.Name = "guna2CirclePictureBox2";
             this.guna2CirclePictureBox2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.guna2CirclePictureBox2.Size = new System.Drawing.Size(42, 42);
+            this.guna2CirclePictureBox2.Size = new System.Drawing.Size(72, 71);
             this.guna2CirclePictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2CirclePictureBox2.TabIndex = 0;
             this.guna2CirclePictureBox2.TabStop = false;

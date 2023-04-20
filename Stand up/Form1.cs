@@ -1,8 +1,10 @@
-﻿using System;
+﻿using BusinessLogicLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -19,7 +21,36 @@ namespace Stand_up
         static public bool flagInsertCAR = false;
         static public bool flagEditCAR = false;
         int l = 0;
+        public Image byteArrayToImage(byte[] byteArrayIn)
 
+        {
+
+            using (MemoryStream mStream = new MemoryStream(byteArrayIn))
+
+            {
+
+                return Image.FromStream(mStream);
+
+            }
+
+        }
+
+
+        public byte[] imgToByteArray(Image img)
+
+        {
+
+            using (MemoryStream mStream = new MemoryStream())
+
+            {
+
+                img.Save(mStream, img.RawFormat);
+
+                return mStream.ToArray();
+
+            }
+
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             timer1.Start();
@@ -28,6 +59,15 @@ namespace Stand_up
             f2.TopLevel = false;
             f2.Parent = guna2Panel3;
             f2.Show();
+
+            DataTable dt = BLL.Func.LoadPerfil(Form5.n_func);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                label1.Text = (string)row["nome"];
+                guna2CirclePictureBox2.Image = byteArrayToImage((Byte[])row["Imagem"]);
+
+            }
         }
 
         private void guna2Panel3_Paint(object sender, PaintEventArgs e)

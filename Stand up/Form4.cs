@@ -59,7 +59,16 @@ namespace Stand_up
         {
             guna2HtmlLabel1.Location = new Point(308, 311);
             guna2TextBox1.UseSystemPasswordChar = true;
-           
+            guna2DataGridView1.DataSource = BLL.Func.Load();
+            DataTable dt = BLL.Func.LoadPerfil(Form5.n_func);
+
+            foreach (DataRow row in dt.Rows)
+            {
+                guna2TextBox3.Text = (string)row["nome"];
+                guna2PictureBox1.Image = byteArrayToImage((Byte[])row["Imagem"]);              
+
+            }
+
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -209,6 +218,11 @@ namespace Stand_up
             int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash("123"),true,guna2TextBox4.Text,guna2TextBox2.Text,guna2TextBox5.Text,guna2TextBox6.Text,imgToByteArray(guna2PictureBox2.Image),guna2TextBox8.Text,guna2TextBox7.Text,guna2ComboBox8.SelectedItem.ToString());
 
             guna2DataGridView1.DataSource = BLL.Func.Load();
+
+        }
+
+        private void guna2TextBox9_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

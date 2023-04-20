@@ -288,7 +288,25 @@ namespace BusinessLogicLayer
             static public DataTable Load()
             {
                 DAL dal = new DAL();
-                return dal.executarReader("select * from funcionario", null);
+                return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,nif,morada,ativo,imagem  from funcionario", null);
+            }
+            static public DataTable LoadPerfil(int n_func)
+            {
+                DAL dal = new DAL();            
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@n_func", n_func),
+                };
+                return dal.executarReader("select nome,imagem from funcionario where n_func = @n_func", sqlParams);
+            }
+
+            static public DataTable login(int n_func, string senha)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@n_func", n_func),
+                 new SqlParameter("@senha", senha)
+                };
+                return dal.executarReader("select * from funcionario where n_func=@n_func and senha=@senha", sqlParams);
             }
             static public int updateFunc(string Matricula, int Quilometros, string Data, string Marca, string Modelo, string Descricao, string Combustivel, byte[] Imagem, int Valor, string Cor, string tipo_de_caixa, int N_Portas, string Traccao, string Matricula1)
             {
