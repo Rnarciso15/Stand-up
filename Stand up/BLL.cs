@@ -285,6 +285,16 @@ namespace BusinessLogicLayer
 
         public class Func
         {
+
+            static public string Buscar_admin(int n_func)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+
+                new SqlParameter("@n_func", n_func) };
+
+                return Convert.ToString(dal.executarScalar("select admin from Func where N_Func = @N_Func", sqlParams));
+            }
             static public DataTable Load()
             {
                 DAL dal = new DAL();
