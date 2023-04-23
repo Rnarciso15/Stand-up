@@ -304,5 +304,11 @@
   <ItemGroup>
     <None Include="resources\correct1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\logout %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\profile-user1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

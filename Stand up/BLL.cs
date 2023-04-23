@@ -293,7 +293,7 @@ namespace BusinessLogicLayer
 
                 new SqlParameter("@n_func", n_func) };
 
-                return Convert.ToString(dal.executarScalar("select admin from Func where N_Func = @N_Func", sqlParams));
+                return Convert.ToString(dal.executarScalar("select admin from funcionario where n_func = @n_func", sqlParams));
             }
             static public DataTable Load()
             {
@@ -339,7 +339,7 @@ namespace BusinessLogicLayer
             };
                 return dal.executarNonQuery("update [Veiculo] set [Matricula]=@Matricula, [Quilometros]=@Quilometros, [Data]=@Data , [Marca]=@Marca, [Modelo]=@Modelo, [Descricao]=@Descricao, [Combustivel]=@Combustivel, [Imagem]=@Imagem, [Valor]=@Valor, [Cor]=@Cor, [tipo_de_caixa]=@tipo_de_caixa, [Traccao]=@Traccao where [Matricula]=@Matricula1", sqlParams);
             }
-            static public int insertFunc(string nome, string senha, bool ativo, string data_nascimento, string email, string telefone, string nib, byte[] imagem, string nif,string morada, string genero)
+            static public int insertFunc(string nome, string senha, bool ativo, string data_nascimento, string email, string telefone, string nib, byte[] imagem, string nif,string morada, string genero,bool admin)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
@@ -349,15 +349,28 @@ namespace BusinessLogicLayer
                 new SqlParameter("@data_nascimento", data_nascimento),
                 new SqlParameter("@email", email),
                 new SqlParameter("@telefone", telefone),
-                 new SqlParameter("@nib", nib),
-                  new SqlParameter("@imagem", imagem),
-                     new SqlParameter("@nif", nif),
-                       new SqlParameter("@genero", genero),
-                                    new SqlParameter("@morada", morada),
+                new SqlParameter("@nib", nib),
+                new SqlParameter("@imagem", imagem),
+                new SqlParameter("@nif", nif),
+                new SqlParameter("@genero", genero),
+                new SqlParameter("@morada", morada),
+                new SqlParameter("@admin", admin),
 
            };
 
-                return dal.executarNonQuery("INSERT into funcionario (nome,senha,ativo,data_nascimento,email,telefone,nib,imagem,nif,genero,morada) VALUES(@nome,@senha,@ativo,@data_nascimento,@email,@telefone,@nib,@imagem,@nif,@genero,@morada)", sqlParams);
+                return dal.executarNonQuery("INSERT into funcionario (nome,senha,ativo,data_nascimento,email,telefone,nib,imagem,nif,genero,morada,admin) VALUES(@nome,@senha,@ativo,@data_nascimento,@email,@telefone,@nib,@imagem,@nif,@genero,@morada,@admin)", sqlParams);
+            }
+
+            static public int senhaFunc(string senha, int n_func)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@senha", senha),
+                 new SqlParameter("@n_func", n_func)
+           };
+
+                return dal.executarNonQuery("update [funcionario] set [senha]=@senha where [n_func]=@n_func", sqlParams);
+
             }
 
 

@@ -19,6 +19,7 @@ namespace Stand_up
         }
         int u = 0;
         static public int n_func;
+        static public string admin;
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             if (u == 0)
@@ -84,6 +85,7 @@ namespace Stand_up
                 Form1 f1 = new Form1();
                 f1.Show();
                 this.Hide();
+                admin = BLL.Func.Buscar_admin(n_func);
 
             }
             else

@@ -151,6 +151,12 @@
   <data name="mercedes " type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\mercedes .png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="mitsubishi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Marcas\mitsubishi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="land rover" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Marcas\land rover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="jaguar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\jaguar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -160,9 +166,6 @@
   <data name="fiat" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\fiat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="correct1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\correct1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="kia" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\kia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -171,6 +174,9 @@
   </data>
   <data name="hond" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\hond.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="correct11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\correct1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="opel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\opel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,20 +190,17 @@
   <data name="options" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\options.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Audi" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\Marcas\Audi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="correct1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\correct1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="specification_CAR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\specification_CAR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lata-de-lixo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\lata-de-lixo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="car" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\car.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="lexus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\Marcas\lexus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Audi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Marcas\Audi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="peugeut" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\peugeut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -207,6 +210,9 @@
   </data>
   <data name="show1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\show1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logout (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\logout (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Sell_And_Buy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Sell_And_Buy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,8 +235,8 @@
   <data name="Alfa_Romeo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\Alfa_Romeo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mitsubishi" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\Marcas\mitsubishi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tesla" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Marcas\tesla.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="text_drive_appoiment" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\text_drive_appoiment.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,16 +247,16 @@
   <data name="lata-de-lixo11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\lata-de-lixo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tesla" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\Marcas\tesla.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lata-de-lixo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\lata-de-lixo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="land rover" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\Marcas\land rover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lexus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Marcas\lexus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="skoda" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\skoda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="correct11" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\correct1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="profile-user1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\profile-user1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

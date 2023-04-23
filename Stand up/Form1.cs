@@ -21,6 +21,7 @@ namespace Stand_up
         static public bool flagInsertCAR = false;
         static public bool flagEditCAR = false;
         int l = 0;
+        int K = 0;
         public Image byteArrayToImage(byte[] byteArrayIn)
 
         {
@@ -158,6 +159,86 @@ namespace Stand_up
             f2.TopLevel = false;
             f2.Parent = guna2Panel3;
             f2.Show();
+        }
+
+        private void guna2CirclePictureBox2_Click(object sender, EventArgs e)
+        {
+            if (K == 0)
+            {
+                guna2Panel4.Visible = true;
+                K += 1;
+            }
+            else
+            {
+                guna2Panel4.Visible = false;
+                K = 0;
+            }
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            if (K == 0)
+            {
+                guna2Panel4.Visible = true;
+                K += 1;
+            }
+            else
+            {
+                guna2Panel4.Visible = false;
+                K = 0;
+            }
+
+        }
+
+        private void guna2ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            Form5 f2 = new Form5();
+            f2.Show();
+            this.Hide();
+        }
+
+        private void guna2Panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            Form4 f2 = new Form4();
+            guna2Panel3.Controls.Clear();
+            f2.TopLevel = false;
+            f2.Parent = guna2Panel3;
+            f2.Show();
+        }
+
+        private void guna2PictureBox1_Click(object sender, EventArgs e)
+        {
+            Form5 f2 = new Form5();
+            guna2Panel3.Controls.Clear();
+            f2.TopLevel = false;
+            f2.Parent = guna2Panel3;
+            f2.Show();
+            this.Close();
+        }
+
+        private void guna2PictureBox2_Click(object sender, EventArgs e)
+        {
+            Form4 f2 = new Form4();
+            guna2Panel3.Controls.Clear();
+            f2.TopLevel = false;
+            f2.Parent = guna2Panel3;
+            f2.Show();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+           
         }
     }
 }

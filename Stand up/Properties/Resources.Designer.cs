@@ -303,6 +303,16 @@ namespace Stand_up.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logout__1_ {
+            get {
+                object obj = ResourceManager.GetObject("logout (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap maxda {
             get {
                 object obj = ResourceManager.GetObject("maxda", resourceCulture);
@@ -386,6 +396,16 @@ namespace Stand_up.Properties {
         internal static System.Drawing.Bitmap peugeut {
             get {
                 object obj = ResourceManager.GetObject("peugeut", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap profile_user1 {
+            get {
+                object obj = ResourceManager.GetObject("profile-user1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
