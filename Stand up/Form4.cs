@@ -63,7 +63,18 @@ namespace Stand_up
             guna2TextBox1.UseSystemPasswordChar = true;
             guna2DataGridView1.DataSource = BLL.Func.Load();
             DataTable dt = BLL.Func.LoadPerfil(Form5.n_func);
+            string admin = BLL.Func.Buscar_admin(Form5.n_func);
+            if(admin != "True")
+            {
+                guna2GroupBox2.Visible = false;
 
+            }
+            else
+            {
+
+
+                guna2GroupBox2.Visible = true;
+            }
             foreach (DataRow row in dt.Rows)
             {
                 guna2TextBox3.Text = (string)row["nome"];
@@ -321,7 +332,7 @@ namespace Stand_up
         private void guna2Button3_Click(object sender, EventArgs e)
         {
             
-            int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash("123"),true,guna2TextBox4.Text,guna2TextBox2.Text,guna2TextBox5.Text,guna2TextBox6.Text,imgToByteArray(guna2PictureBox2.Image),guna2TextBox8.Text,guna2TextBox7.Text,guna2ComboBox8.SelectedItem.ToString(),true);
+            int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash("123"),true,guna2TextBox4.Text,guna2TextBox2.Text,guna2TextBox5.Text,guna2TextBox6.Text,imgToByteArray(guna2PictureBox2.Image),guna2TextBox8.Text,guna2TextBox7.Text,guna2ComboBox8.SelectedItem.ToString(),false);
 
             guna2DataGridView1.DataSource = BLL.Func.Load();
 

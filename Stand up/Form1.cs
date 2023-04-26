@@ -8,6 +8,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Stand_up
 {
@@ -36,6 +38,7 @@ namespace Stand_up
 
         }
 
+ 
 
         public byte[] imgToByteArray(Image img)
 
@@ -199,8 +202,10 @@ namespace Stand_up
         private void guna2Button5_Click(object sender, EventArgs e)
         {
             Form5 f2 = new Form5();
-            f2.Show();
             this.Hide();
+            f2.Show();
+
+           
         }
 
         private void guna2Panel2_Paint(object sender, PaintEventArgs e)
@@ -220,11 +225,9 @@ namespace Stand_up
         private void guna2PictureBox1_Click(object sender, EventArgs e)
         {
             Form5 f2 = new Form5();
-            guna2Panel3.Controls.Clear();
-            f2.TopLevel = false;
-            f2.Parent = guna2Panel3;
+            this.Hide();
             f2.Show();
-            this.Close();
+            
         }
 
         private void guna2PictureBox2_Click(object sender, EventArgs e)
