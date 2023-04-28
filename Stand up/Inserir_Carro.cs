@@ -224,6 +224,12 @@ namespace Stand_up
         }
         private void guna2Button32_Click(object sender, EventArgs e)
         {
+
+            if (Form2.flagEditCAR == true)
+            {
+
+
+           
             string Matricula = listView1.SelectedItems[0].Text;
             DataTable info = BLL.veiculos.Load_dados(Matricula);
             for (int l = 0; l< info.Columns.Count - 1; l++)
@@ -550,8 +556,7 @@ namespace Stand_up
                                                         }
                                                          else
                                                         {
-                                                            if (editar == true)
-                                                            {
+                                                            
 
                                                                 if (listView1.SelectedIndices.Count > 0)
                                                                 {
@@ -566,23 +571,8 @@ namespace Stand_up
                                                                         carregar_car_PARA_LISTVIEW();
                                                                         limpar_caixas();
                                                                     }
-                                                                }
-                                                            else
-                                                            {
-                                                                DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                                                                string data2 = data.ToString("dd/MM/yyyy");
-                                                                    //data = Convert.ToDateTime(data2);
-
-
-                                                                    DialogResult dr = MessageBox.Show("Pertende inserir este veiculo?", "", MessageBoxButtons.YesNo);
-                                                                    if (dr == DialogResult.Yes)
-                                                                    {
-                                                                        int x = BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text);
-                                                                        limpar_caixas();
-                                                                        carregar_car_PARA_LISTVIEW();
-                                                                    }
-
-                                                            }
+                                                              
+                                                            
                                                           
                                                         }
                                                     }
@@ -597,6 +587,126 @@ namespace Stand_up
                     }
                 }
            
+            }
+            }
+            else
+            {
+               
+
+                if (guna2TextBox3.Text.Length != 10)
+                {
+                    MessageBox.Show("Insira uma data válida !");
+                    guna2TextBox3.Clear();
+                }
+                else
+                {
+                    if (guna2ComboBox1.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("Selecione uma marca !");
+                    }
+                    else
+                    {
+                        if (guna2ComboBox2.SelectedIndex == -1)
+                        {
+                            MessageBox.Show("Selecione um modelo !");
+                        }
+                        else
+                        {
+                            if (guna2TextBox6.Text.Length != 8)
+                            {
+                                MessageBox.Show("Insira uma matricula válida !");
+                            }
+                            else
+                            {
+                                DataTable verificar_matricula = BLL.veiculos.Load_dados1(guna2TextBox6.Text);
+                                if (verificar_matricula.Rows.Count > 0)
+                                {
+                                    MessageBox.Show("Esta matricula já existe");
+                                }
+                                else
+                                {
+
+
+                                    if (guna2TextBox5.Text == "")
+                                    {
+                                        MessageBox.Show("Insira uma kilometragem válida !");
+                                    }
+                                    else
+                                    {
+                                        if (guna2ComboBox3.SelectedIndex == -1)
+                                        {
+                                            MessageBox.Show("Selecione um tipo de combustivel !");
+                                        }
+                                        else
+                                        {
+                                            if (guna2ComboBox4.SelectedIndex == -1)
+                                            {
+                                                MessageBox.Show("Selecione uma cor !");
+                                            }
+                                            else
+                                            {
+                                                if (guna2ComboBox5.SelectedIndex == -1)
+                                                {
+                                                    MessageBox.Show("Selecione um tipo de caixa !");
+                                                }
+                                                else
+                                                {
+                                                    if (guna2ComboBox6.SelectedIndex == -1)
+                                                    {
+                                                        MessageBox.Show("Selecione o nº de Portas !");
+                                                    }
+                                                    else
+                                                    {
+                                                        if (guna2ComboBox8.SelectedIndex == -1)
+                                                        {
+                                                            MessageBox.Show("Selecione o tipo de tracção !");
+                                                        }
+                                                        else
+                                                        {
+                                                            if (guna2TextBox1.Text == "")
+                                                            {
+                                                                MessageBox.Show("Insira o valor do veiculo !");
+                                                            }
+                                                            else
+                                                            {
+                                                                if (guna2CirclePictureBox1.Image == Properties.Resources.car)
+                                                                {
+                                                                    MessageBox.Show("Insira uma imagem do veiculo !");
+                                                                }
+                                                                else
+                                                                {
+                                                             
+                                                                        DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                                                                        string data2 = data.ToString("dd/MM/yyyy");
+                                                                        //data = Convert.ToDateTime(data2);
+
+
+                                                                        DialogResult dr = MessageBox.Show("Pertende inserir este veiculo?", "", MessageBoxButtons.YesNo);
+                                                                        if (dr == DialogResult.Yes)
+                                                                        {
+                                                                            int x = BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text);
+                                                                            limpar_caixas();
+                                                                            carregar_car_PARA_LISTVIEW();
+                                                                        }
+
+                                                                   
+
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+
+
             }
 
         }
@@ -1279,13 +1389,19 @@ namespace Stand_up
         private void inserirVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+            Form1.flagEditCAR = false;
             Form1.flagInsertCAR = true;
+            Form2.flagEditCAR = false;
+            Form2.flagInsertCAR = true;
         }
 
         private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             Form1.flagEditCAR = true;
+            Form1.flagInsertCAR = false;
+            Form2.flagEditCAR = true;
+            Form2. flagInsertCAR = false;
         }
     }
 }

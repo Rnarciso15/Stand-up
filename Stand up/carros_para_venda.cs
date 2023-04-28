@@ -493,5 +493,161 @@ namespace Stand_up
             Marca = "Citroën";
             carregar_car_PARA_LISTVIEW4();
         }
+
+        private void cupraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Cupra";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void daciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Dacia";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void fiatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Fiat";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void fordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Ford";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void hondaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Honda";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void hyondaiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Hyundai";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void jaguarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Jaguar";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void jeepToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Jeep";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void kiaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Kia";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void landRoverToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Land Rover";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void lexusToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Lexus";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void mazdaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Mazda";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void mercedesBenzToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Mercedes-Benz";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void miniToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Mini";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void mitsubishiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Mitsubishi";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void nissanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Nissan";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void opelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Opel";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void peugeotToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Peuge0t";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void renaultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Renault";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void seatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Seat";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void skodaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Skoda";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void smartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Smart";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void teslaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Tesla";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void toyotaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Toyota";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void volkswagenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Volkswagen";
+            carregar_car_PARA_LISTVIEW4();
+        }
+
+        private void volvoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Volvo";
+            carregar_car_PARA_LISTVIEW4();
+        }
     }
 }

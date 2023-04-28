@@ -18,6 +18,8 @@ namespace Stand_up
             InitializeComponent();
         }
         ImageList images = new ImageList();
+     public static   bool flagInsertCAR = false;
+        public static bool flagEditCAR = false;
         private void inserirCarroToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -119,14 +121,19 @@ namespace Stand_up
 
         private void inserirVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-          
-            Form1.flagInsertCAR = true ;
-           
+            Form1.flagInsertCAR = true;
+            Form1.flagEditCAR = false;
+            flagInsertCAR = true ;
+            flagEditCAR = false;
+
         }
 
         private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1.flagEditCAR = true;
+            Form1.flagInsertCAR = false;
+            flagEditCAR = true;
+            flagInsertCAR = false;
         }
     }
     }
