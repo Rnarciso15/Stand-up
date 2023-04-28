@@ -241,6 +241,39 @@ namespace BusinessLogicLayer
                 };
                 return dal.executarReader("select Modelo from Modelos Where id_marca = @id_marca ", sqlParams);
             }
+            static public DataTable queryGasolina_veiculo(string Combustivel)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                        new SqlParameter("@Combustivel", Combustivel),
+                };
+                return dal.executarReader("select * from Veiculo Where Combustivel = @Combustivel ", sqlParams);
+            }
+
+            static public DataTable queryMarca_veiculo(string Marca)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                        new SqlParameter("@Marca", Marca),
+                };
+                return dal.executarReader("select * from Veiculo Where Marca = @Marca ", sqlParams);
+            }
+            static public DataTable querymaior_quiilometros()
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                
+                };
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC ", null);
+            }
+            static public DataTable queryMenor_quiilometros()
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+
+                };
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC ", null);
+            }
             static public DataTable queryData_Modelos_veiculo(string Marca, string Modelo)
             {
                 DAL dal = new DAL();

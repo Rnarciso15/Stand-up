@@ -56,6 +56,7 @@ namespace Stand_up
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -203,6 +204,7 @@ namespace Stand_up
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.Controls.Add(this.guna2Button2);
             this.guna2Panel1.Controls.Add(this.guna2Panel2);
             this.guna2Panel1.Controls.Add(this.label24);
             this.guna2Panel1.Controls.Add(this.guna2CircleButton1);
@@ -230,7 +232,7 @@ namespace Stand_up
             this.guna2Panel1.Controls.Add(this.label8);
             this.guna2Panel1.Location = new System.Drawing.Point(372, 0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(595, 450);
+            this.guna2Panel1.Size = new System.Drawing.Size(595, 532);
             this.guna2Panel1.TabIndex = 79;
             // 
             // guna2Panel2
@@ -385,6 +387,25 @@ namespace Stand_up
             this.label12.TabIndex = 78;
             this.label12.Text = "Descrição: ";
             // 
+            // guna2Button2
+            // 
+            this.guna2Button2.Animated = true;
+            this.guna2Button2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button2.BorderRadius = 10;
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(174)))), ((int)(((byte)(79)))));
+            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button2.ForeColor = System.Drawing.Color.White;
+            this.guna2Button2.Location = new System.Drawing.Point(478, 447);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.Size = new System.Drawing.Size(105, 72);
+            this.guna2Button2.TabIndex = 81;
+            this.guna2Button2.Text = "Comprar";
+            this.guna2Button2.UseTransparentBackground = true;
+            // 
             // guna2PictureBox1
             // 
             this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
@@ -403,7 +424,7 @@ namespace Stand_up
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.ClientSize = new System.Drawing.Size(967, 450);
+            this.ClientSize = new System.Drawing.Size(967, 531);
             this.Controls.Add(this.guna2PictureBox1);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -450,5 +471,6 @@ namespace Stand_up
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label12;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
     }
 }
