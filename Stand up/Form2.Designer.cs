@@ -98,7 +98,7 @@ namespace Stand_up
             // 
             this.ediitarEspecificaçõesDoVeículoToolStripMenuItem.Name = "ediitarEspecificaçõesDoVeículoToolStripMenuItem";
             this.ediitarEspecificaçõesDoVeículoToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
-            this.ediitarEspecificaçõesDoVeículoToolStripMenuItem.Text = "Ediitar Especificações do Veículo";
+            this.ediitarEspecificaçõesDoVeículoToolStripMenuItem.Text = "Editar Especificações do Veículo";
             // 
             // listView1
             // 

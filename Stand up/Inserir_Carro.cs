@@ -63,15 +63,20 @@ namespace Stand_up
         ImageList images = new ImageList();
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+       if(Form2.flagEditCAR == true && Form2.flagInsertCAR == false)
+            {
+
+              
            
            
          if(listView1.SelectedItems.Count > 0)
             {
                 string Matricula = listView1.SelectedItems[0].Text;
+                
 
-
-                ativar_caixas();
-            DataTable info = BLL.veiculos.Load_dados(Matricula);
+                    ativar_caixas();
+                   
+                    DataTable info = BLL.veiculos.Load_dados(Matricula);
 
             foreach (DataRow row in info.Rows)
             {
@@ -88,6 +93,8 @@ namespace Stand_up
                 guna2ComboBox5.SelectedItem = (string)row["Tipo_de_Caixa"];
                 guna2ComboBox6.SelectedItem = Convert.ToString((int)row["N_Portas"]);
                 guna2ComboBox8.SelectedItem = (string)row["Traccao"];
+                        guna2TextBox6.Enabled = false;
+                    }
 
             }
 
@@ -107,7 +114,7 @@ namespace Stand_up
             DataTable dr = BLL.veiculos.queryLoad_veiculo();
 
             listView1.Clear();
-            int i = 0;
+            int k = 0;
 
 
 
@@ -143,11 +150,11 @@ namespace Stand_up
 
                 ListViewItem item = new ListViewItem();
 
-                item.ImageIndex = i;
+                item.ImageIndex = k;
                 
                 item.Text = row["Matricula"].ToString();
               
-                i += 1;
+                k+= 1;
 
                 this.listView1.Items.Add(item);
 
@@ -219,6 +226,8 @@ namespace Stand_up
             guna2ComboBox5.Enabled = true;
             guna2ComboBox6.Enabled = true;
             guna2ComboBox8.Enabled = true;
+            guna2TextBox6.Enabled = true;
+            guna2Button1.Enabled = true;
 
 
         }
@@ -685,7 +694,9 @@ namespace Stand_up
                                                                         if (dr == DialogResult.Yes)
                                                                         {
                                                                             int x = BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text);
-                                                                            limpar_caixas();
+                                                                        images.Images.Add(guna2CirclePictureBox1.Image);
+                                                                        
+                                                                        limpar_caixas();
                                                                             carregar_car_PARA_LISTVIEW();
                                                                         }
 
@@ -1164,9 +1175,11 @@ namespace Stand_up
                 desativar_caixas();
                 guna2Button32.Text = "Guardar";
                 guna2Button33.Visible = true;
+                guna2TextBox6.Enabled = false;
             }
             else {
                 guna2Button33.Visible = false;
+                guna2TextBox6.Enabled = true;
                 guna2Button32.Text = "Adicionar";
             }
            
@@ -1206,6 +1219,9 @@ namespace Stand_up
 
         private void guna2CirclePictureBox1_Click(object sender, EventArgs e)
         {
+
+            openFileDialog1.Filter = "PNG files (*.png)|*.png";
+
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 guna2CirclePictureBox1.ImageLocation = openFileDialog1.FileName;

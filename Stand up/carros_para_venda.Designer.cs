@@ -29,7 +29,8 @@ namespace Stand_up
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem(new string[] {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem(new string[] {
             ""}, -1, System.Drawing.Color.Empty, System.Drawing.SystemColors.HotTrack, null);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inserirCarroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,6 +81,18 @@ namespace Stand_up
             this.bMWToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.listView1 = new System.Windows.Forms.ListView();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.begeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.brancoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.castanhoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cinzentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.douradoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.laranjaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.prateadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pretoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.roxoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.verdeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vermelhoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -165,7 +178,18 @@ namespace Stand_up
             // 
             this.corToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.escurasToolStripMenuItem,
-            this.claraToolStripMenuItem});
+            this.claraToolStripMenuItem,
+            this.begeToolStripMenuItem,
+            this.brancoToolStripMenuItem,
+            this.castanhoToolStripMenuItem,
+            this.cinzentoToolStripMenuItem,
+            this.douradoToolStripMenuItem,
+            this.laranjaToolStripMenuItem,
+            this.prateadoToolStripMenuItem,
+            this.pretoToolStripMenuItem,
+            this.roxoToolStripMenuItem,
+            this.verdeToolStripMenuItem,
+            this.vermelhoToolStripMenuItem});
             this.corToolStripMenuItem.Name = "corToolStripMenuItem";
             this.corToolStripMenuItem.Size = new System.Drawing.Size(43, 23);
             this.corToolStripMenuItem.Text = "Cor";
@@ -173,14 +197,16 @@ namespace Stand_up
             // escurasToolStripMenuItem
             // 
             this.escurasToolStripMenuItem.Name = "escurasToolStripMenuItem";
-            this.escurasToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
-            this.escurasToolStripMenuItem.Text = "Escura";
+            this.escurasToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.escurasToolStripMenuItem.Text = "Amarelo";
+            this.escurasToolStripMenuItem.Click += new System.EventHandler(this.escurasToolStripMenuItem_Click);
             // 
             // claraToolStripMenuItem
             // 
             this.claraToolStripMenuItem.Name = "claraToolStripMenuItem";
-            this.claraToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
-            this.claraToolStripMenuItem.Text = "Clara";
+            this.claraToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.claraToolStripMenuItem.Text = "Azul";
+            this.claraToolStripMenuItem.Click += new System.EventHandler(this.claraToolStripMenuItem_Click);
             // 
             // marcasToolStripMenuItem
             // 
@@ -236,7 +262,7 @@ namespace Stand_up
             // 
             this.bMWToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Alfa_Romeo;
             this.bMWToolStripMenuItem.Name = "bMWToolStripMenuItem";
-            this.bMWToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.bMWToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.bMWToolStripMenuItem.Text = "Alfa Romeo";
             this.bMWToolStripMenuItem.Click += new System.EventHandler(this.bMWToolStripMenuItem_Click);
             // 
@@ -244,7 +270,7 @@ namespace Stand_up
             // 
             this.audiToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Audi;
             this.audiToolStripMenuItem.Name = "audiToolStripMenuItem";
-            this.audiToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.audiToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.audiToolStripMenuItem.Text = "Audi";
             this.audiToolStripMenuItem.Click += new System.EventHandler(this.audiToolStripMenuItem_Click);
             // 
@@ -252,7 +278,7 @@ namespace Stand_up
             // 
             this.bMWToolStripMenuItem1.Image = global::Stand_up.Properties.Resources.BMW;
             this.bMWToolStripMenuItem1.Name = "bMWToolStripMenuItem1";
-            this.bMWToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
+            this.bMWToolStripMenuItem1.Size = new System.Drawing.Size(170, 24);
             this.bMWToolStripMenuItem1.Text = "BMW";
             this.bMWToolStripMenuItem1.Click += new System.EventHandler(this.bMWToolStripMenuItem1_Click);
             // 
@@ -260,7 +286,7 @@ namespace Stand_up
             // 
             this.chevroletToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Chevrolet;
             this.chevroletToolStripMenuItem.Name = "chevroletToolStripMenuItem";
-            this.chevroletToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.chevroletToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.chevroletToolStripMenuItem.Text = "Chevrolet";
             this.chevroletToolStripMenuItem.Click += new System.EventHandler(this.chevroletToolStripMenuItem_Click);
             // 
@@ -268,7 +294,7 @@ namespace Stand_up
             // 
             this.citroënToolStripMenuItem.Image = global::Stand_up.Properties.Resources.citroen;
             this.citroënToolStripMenuItem.Name = "citroënToolStripMenuItem";
-            this.citroënToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.citroënToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.citroënToolStripMenuItem.Text = "Citroën";
             this.citroënToolStripMenuItem.Click += new System.EventHandler(this.citroënToolStripMenuItem_Click);
             // 
@@ -276,7 +302,7 @@ namespace Stand_up
             // 
             this.cupraToolStripMenuItem.Image = global::Stand_up.Properties.Resources.cupra;
             this.cupraToolStripMenuItem.Name = "cupraToolStripMenuItem";
-            this.cupraToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.cupraToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.cupraToolStripMenuItem.Text = "Cupra";
             this.cupraToolStripMenuItem.Click += new System.EventHandler(this.cupraToolStripMenuItem_Click);
             // 
@@ -284,7 +310,7 @@ namespace Stand_up
             // 
             this.daciaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.dacia;
             this.daciaToolStripMenuItem.Name = "daciaToolStripMenuItem";
-            this.daciaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.daciaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.daciaToolStripMenuItem.Text = "Dacia";
             this.daciaToolStripMenuItem.Click += new System.EventHandler(this.daciaToolStripMenuItem_Click);
             // 
@@ -292,7 +318,7 @@ namespace Stand_up
             // 
             this.fiatToolStripMenuItem.Image = global::Stand_up.Properties.Resources.fiat;
             this.fiatToolStripMenuItem.Name = "fiatToolStripMenuItem";
-            this.fiatToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.fiatToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.fiatToolStripMenuItem.Text = "Fiat";
             this.fiatToolStripMenuItem.Click += new System.EventHandler(this.fiatToolStripMenuItem_Click);
             // 
@@ -300,7 +326,7 @@ namespace Stand_up
             // 
             this.fordToolStripMenuItem.Image = global::Stand_up.Properties.Resources.frod;
             this.fordToolStripMenuItem.Name = "fordToolStripMenuItem";
-            this.fordToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.fordToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.fordToolStripMenuItem.Text = "Ford";
             this.fordToolStripMenuItem.Click += new System.EventHandler(this.fordToolStripMenuItem_Click);
             // 
@@ -308,7 +334,7 @@ namespace Stand_up
             // 
             this.hondaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.hond;
             this.hondaToolStripMenuItem.Name = "hondaToolStripMenuItem";
-            this.hondaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.hondaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.hondaToolStripMenuItem.Text = "Honda";
             this.hondaToolStripMenuItem.Click += new System.EventHandler(this.hondaToolStripMenuItem_Click);
             // 
@@ -316,7 +342,7 @@ namespace Stand_up
             // 
             this.hyondaiToolStripMenuItem.Image = global::Stand_up.Properties.Resources.hyuandai;
             this.hyondaiToolStripMenuItem.Name = "hyondaiToolStripMenuItem";
-            this.hyondaiToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.hyondaiToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.hyondaiToolStripMenuItem.Text = "Hyundai";
             this.hyondaiToolStripMenuItem.Click += new System.EventHandler(this.hyondaiToolStripMenuItem_Click);
             // 
@@ -324,7 +350,7 @@ namespace Stand_up
             // 
             this.jaguarToolStripMenuItem.Image = global::Stand_up.Properties.Resources.jaguar;
             this.jaguarToolStripMenuItem.Name = "jaguarToolStripMenuItem";
-            this.jaguarToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.jaguarToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.jaguarToolStripMenuItem.Text = "Jaguar";
             this.jaguarToolStripMenuItem.Click += new System.EventHandler(this.jaguarToolStripMenuItem_Click);
             // 
@@ -332,7 +358,7 @@ namespace Stand_up
             // 
             this.jeepToolStripMenuItem.Image = global::Stand_up.Properties.Resources.jeep;
             this.jeepToolStripMenuItem.Name = "jeepToolStripMenuItem";
-            this.jeepToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.jeepToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.jeepToolStripMenuItem.Text = "Jeep";
             this.jeepToolStripMenuItem.Click += new System.EventHandler(this.jeepToolStripMenuItem_Click);
             // 
@@ -340,7 +366,7 @@ namespace Stand_up
             // 
             this.kiaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.kia;
             this.kiaToolStripMenuItem.Name = "kiaToolStripMenuItem";
-            this.kiaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.kiaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.kiaToolStripMenuItem.Text = "Kia";
             this.kiaToolStripMenuItem.Click += new System.EventHandler(this.kiaToolStripMenuItem_Click);
             // 
@@ -348,7 +374,7 @@ namespace Stand_up
             // 
             this.landRoverToolStripMenuItem.Image = global::Stand_up.Properties.Resources.land_rover;
             this.landRoverToolStripMenuItem.Name = "landRoverToolStripMenuItem";
-            this.landRoverToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.landRoverToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.landRoverToolStripMenuItem.Text = "Land Rover";
             this.landRoverToolStripMenuItem.Click += new System.EventHandler(this.landRoverToolStripMenuItem_Click);
             // 
@@ -356,7 +382,7 @@ namespace Stand_up
             // 
             this.lexusToolStripMenuItem.Image = global::Stand_up.Properties.Resources.lexus;
             this.lexusToolStripMenuItem.Name = "lexusToolStripMenuItem";
-            this.lexusToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.lexusToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.lexusToolStripMenuItem.Text = "Lexus";
             this.lexusToolStripMenuItem.Click += new System.EventHandler(this.lexusToolStripMenuItem_Click);
             // 
@@ -364,7 +390,7 @@ namespace Stand_up
             // 
             this.mazdaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.maxda;
             this.mazdaToolStripMenuItem.Name = "mazdaToolStripMenuItem";
-            this.mazdaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.mazdaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.mazdaToolStripMenuItem.Text = "Mazda";
             this.mazdaToolStripMenuItem.Click += new System.EventHandler(this.mazdaToolStripMenuItem_Click);
             // 
@@ -372,7 +398,7 @@ namespace Stand_up
             // 
             this.mercedesBenzToolStripMenuItem.Image = global::Stand_up.Properties.Resources.mercedes_;
             this.mercedesBenzToolStripMenuItem.Name = "mercedesBenzToolStripMenuItem";
-            this.mercedesBenzToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.mercedesBenzToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.mercedesBenzToolStripMenuItem.Text = "Mercedes Benz";
             this.mercedesBenzToolStripMenuItem.Click += new System.EventHandler(this.mercedesBenzToolStripMenuItem_Click);
             // 
@@ -380,7 +406,7 @@ namespace Stand_up
             // 
             this.miniToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Mini;
             this.miniToolStripMenuItem.Name = "miniToolStripMenuItem";
-            this.miniToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.miniToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.miniToolStripMenuItem.Text = "Mini";
             this.miniToolStripMenuItem.Click += new System.EventHandler(this.miniToolStripMenuItem_Click);
             // 
@@ -388,7 +414,7 @@ namespace Stand_up
             // 
             this.mitsubishiToolStripMenuItem.Image = global::Stand_up.Properties.Resources.mitsubishi;
             this.mitsubishiToolStripMenuItem.Name = "mitsubishiToolStripMenuItem";
-            this.mitsubishiToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.mitsubishiToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.mitsubishiToolStripMenuItem.Text = "Mitsubishi";
             this.mitsubishiToolStripMenuItem.Click += new System.EventHandler(this.mitsubishiToolStripMenuItem_Click);
             // 
@@ -396,7 +422,7 @@ namespace Stand_up
             // 
             this.nissanToolStripMenuItem.Image = global::Stand_up.Properties.Resources.nissan;
             this.nissanToolStripMenuItem.Name = "nissanToolStripMenuItem";
-            this.nissanToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.nissanToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.nissanToolStripMenuItem.Text = "Nissan";
             this.nissanToolStripMenuItem.Click += new System.EventHandler(this.nissanToolStripMenuItem_Click);
             // 
@@ -404,7 +430,7 @@ namespace Stand_up
             // 
             this.opelToolStripMenuItem.Image = global::Stand_up.Properties.Resources.opel;
             this.opelToolStripMenuItem.Name = "opelToolStripMenuItem";
-            this.opelToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.opelToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.opelToolStripMenuItem.Text = "Opel";
             this.opelToolStripMenuItem.Click += new System.EventHandler(this.opelToolStripMenuItem_Click);
             // 
@@ -412,7 +438,7 @@ namespace Stand_up
             // 
             this.peugeotToolStripMenuItem.Image = global::Stand_up.Properties.Resources.peugeut;
             this.peugeotToolStripMenuItem.Name = "peugeotToolStripMenuItem";
-            this.peugeotToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.peugeotToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.peugeotToolStripMenuItem.Text = "Peugeot";
             this.peugeotToolStripMenuItem.Click += new System.EventHandler(this.peugeotToolStripMenuItem_Click);
             // 
@@ -420,7 +446,7 @@ namespace Stand_up
             // 
             this.renaultToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Renault;
             this.renaultToolStripMenuItem.Name = "renaultToolStripMenuItem";
-            this.renaultToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.renaultToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.renaultToolStripMenuItem.Text = "Renault";
             this.renaultToolStripMenuItem.Click += new System.EventHandler(this.renaultToolStripMenuItem_Click);
             // 
@@ -428,7 +454,7 @@ namespace Stand_up
             // 
             this.seatToolStripMenuItem.Image = global::Stand_up.Properties.Resources.seat;
             this.seatToolStripMenuItem.Name = "seatToolStripMenuItem";
-            this.seatToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.seatToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.seatToolStripMenuItem.Text = "Seat";
             this.seatToolStripMenuItem.Click += new System.EventHandler(this.seatToolStripMenuItem_Click);
             // 
@@ -436,7 +462,7 @@ namespace Stand_up
             // 
             this.skodaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.skoda;
             this.skodaToolStripMenuItem.Name = "skodaToolStripMenuItem";
-            this.skodaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.skodaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.skodaToolStripMenuItem.Text = "Skoda";
             this.skodaToolStripMenuItem.Click += new System.EventHandler(this.skodaToolStripMenuItem_Click);
             // 
@@ -444,7 +470,7 @@ namespace Stand_up
             // 
             this.smartToolStripMenuItem.Image = global::Stand_up.Properties.Resources.smart;
             this.smartToolStripMenuItem.Name = "smartToolStripMenuItem";
-            this.smartToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.smartToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.smartToolStripMenuItem.Text = "Smart";
             this.smartToolStripMenuItem.Click += new System.EventHandler(this.smartToolStripMenuItem_Click);
             // 
@@ -452,7 +478,7 @@ namespace Stand_up
             // 
             this.teslaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.tesla;
             this.teslaToolStripMenuItem.Name = "teslaToolStripMenuItem";
-            this.teslaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.teslaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.teslaToolStripMenuItem.Text = "Tesla";
             this.teslaToolStripMenuItem.Click += new System.EventHandler(this.teslaToolStripMenuItem_Click);
             // 
@@ -460,7 +486,7 @@ namespace Stand_up
             // 
             this.toyotaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.toyota;
             this.toyotaToolStripMenuItem.Name = "toyotaToolStripMenuItem";
-            this.toyotaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.toyotaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.toyotaToolStripMenuItem.Text = "Toyota";
             this.toyotaToolStripMenuItem.Click += new System.EventHandler(this.toyotaToolStripMenuItem_Click);
             // 
@@ -468,7 +494,7 @@ namespace Stand_up
             // 
             this.volkswagenToolStripMenuItem.Image = global::Stand_up.Properties.Resources.volkswagen;
             this.volkswagenToolStripMenuItem.Name = "volkswagenToolStripMenuItem";
-            this.volkswagenToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.volkswagenToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.volkswagenToolStripMenuItem.Text = "Volkswagen";
             this.volkswagenToolStripMenuItem.Click += new System.EventHandler(this.volkswagenToolStripMenuItem_Click);
             // 
@@ -476,7 +502,7 @@ namespace Stand_up
             // 
             this.volvoToolStripMenuItem.Image = global::Stand_up.Properties.Resources.volvo;
             this.volvoToolStripMenuItem.Name = "volvoToolStripMenuItem";
-            this.volvoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.volvoToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
             this.volvoToolStripMenuItem.Text = "Volvo";
             this.volvoToolStripMenuItem.Click += new System.EventHandler(this.volvoToolStripMenuItem_Click);
             // 
@@ -501,7 +527,7 @@ namespace Stand_up
             this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem26});
+            listViewItem14});
             this.listView1.Location = new System.Drawing.Point(12, 30);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(1671, 831);
@@ -517,6 +543,89 @@ namespace Stand_up
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(967, 531);
             this.guna2Panel1.TabIndex = 37;
+            this.guna2Panel1.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // begeToolStripMenuItem
+            // 
+            this.begeToolStripMenuItem.Name = "begeToolStripMenuItem";
+            this.begeToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.begeToolStripMenuItem.Text = "Bege";
+            this.begeToolStripMenuItem.Click += new System.EventHandler(this.begeToolStripMenuItem_Click);
+            // 
+            // brancoToolStripMenuItem
+            // 
+            this.brancoToolStripMenuItem.Name = "brancoToolStripMenuItem";
+            this.brancoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.brancoToolStripMenuItem.Text = "Branco";
+            this.brancoToolStripMenuItem.Click += new System.EventHandler(this.brancoToolStripMenuItem_Click);
+            // 
+            // castanhoToolStripMenuItem
+            // 
+            this.castanhoToolStripMenuItem.Name = "castanhoToolStripMenuItem";
+            this.castanhoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.castanhoToolStripMenuItem.Text = "Castanho";
+            this.castanhoToolStripMenuItem.Click += new System.EventHandler(this.castanhoToolStripMenuItem_Click);
+            // 
+            // cinzentoToolStripMenuItem
+            // 
+            this.cinzentoToolStripMenuItem.Name = "cinzentoToolStripMenuItem";
+            this.cinzentoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.cinzentoToolStripMenuItem.Text = "Cinzento";
+            this.cinzentoToolStripMenuItem.Click += new System.EventHandler(this.cinzentoToolStripMenuItem_Click);
+            // 
+            // douradoToolStripMenuItem
+            // 
+            this.douradoToolStripMenuItem.Name = "douradoToolStripMenuItem";
+            this.douradoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.douradoToolStripMenuItem.Text = "Dourado";
+            this.douradoToolStripMenuItem.Click += new System.EventHandler(this.douradoToolStripMenuItem_Click);
+            // 
+            // laranjaToolStripMenuItem
+            // 
+            this.laranjaToolStripMenuItem.Name = "laranjaToolStripMenuItem";
+            this.laranjaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.laranjaToolStripMenuItem.Text = "Laranja";
+            this.laranjaToolStripMenuItem.Click += new System.EventHandler(this.laranjaToolStripMenuItem_Click);
+            // 
+            // prateadoToolStripMenuItem
+            // 
+            this.prateadoToolStripMenuItem.Name = "prateadoToolStripMenuItem";
+            this.prateadoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.prateadoToolStripMenuItem.Text = "Prateado";
+            this.prateadoToolStripMenuItem.Click += new System.EventHandler(this.prateadoToolStripMenuItem_Click);
+            // 
+            // pretoToolStripMenuItem
+            // 
+            this.pretoToolStripMenuItem.Name = "pretoToolStripMenuItem";
+            this.pretoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.pretoToolStripMenuItem.Text = "Preto";
+            this.pretoToolStripMenuItem.Click += new System.EventHandler(this.pretoToolStripMenuItem_Click);
+            // 
+            // roxoToolStripMenuItem
+            // 
+            this.roxoToolStripMenuItem.Name = "roxoToolStripMenuItem";
+            this.roxoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.roxoToolStripMenuItem.Text = "Roxo";
+            this.roxoToolStripMenuItem.Click += new System.EventHandler(this.roxoToolStripMenuItem_Click);
+            // 
+            // verdeToolStripMenuItem
+            // 
+            this.verdeToolStripMenuItem.Name = "verdeToolStripMenuItem";
+            this.verdeToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.verdeToolStripMenuItem.Text = "Verde";
+            this.verdeToolStripMenuItem.Click += new System.EventHandler(this.verdeToolStripMenuItem_Click);
+            // 
+            // vermelhoToolStripMenuItem
+            // 
+            this.vermelhoToolStripMenuItem.Name = "vermelhoToolStripMenuItem";
+            this.vermelhoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.vermelhoToolStripMenuItem.Text = "Vermelho";
+            this.vermelhoToolStripMenuItem.Click += new System.EventHandler(this.vermelhoToolStripMenuItem_Click);
             // 
             // carros_para_venda
             // 
@@ -588,5 +697,17 @@ namespace Stand_up
         private System.Windows.Forms.ToolStripMenuItem motoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bMWToolStripMenuItem2;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem begeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem brancoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem castanhoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cinzentoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem douradoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem laranjaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem prateadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pretoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem roxoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem verdeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vermelhoToolStripMenuItem;
     }
 }

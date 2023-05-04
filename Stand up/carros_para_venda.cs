@@ -20,9 +20,12 @@ namespace Stand_up
         string Combustivel;
         string Marca;
         ImageList images = new ImageList();
+        public static bool flagPanel = true ;
+        string Cor;
         private void carros_para_venda_Load(object sender, EventArgs e)
         {
             carregar_car_PARA_LISTVIEW();
+            timer1.Start();
         }
         void carregar_car_PARA_LISTVIEW()
         {
@@ -32,8 +35,9 @@ namespace Stand_up
 
 
             DataTable dr = BLL.veiculos.queryLoad_veiculo();
-
+          
             listView1.Clear();
+            images.Images.Clear();
             int i = 0;
 
 
@@ -80,7 +84,7 @@ namespace Stand_up
 
 
 
-
+                listView1.ForeColor = Color.Black;
 
 
 
@@ -106,6 +110,7 @@ namespace Stand_up
             DataTable dr = BLL.veiculos.queryGasolina_veiculo(Combustivel);
 
             listView1.Clear();
+            images.Images.Clear();
             int i = 0;
 
 
@@ -126,13 +131,13 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
+                byte[] imagebyte = (byte[])(row["Imagem"]);
 
                 MemoryStream image_stream = new MemoryStream(imagebyte);
 
                 image_stream.Write(imagebyte, 0, imagebyte.Length);
 
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
+                images.Images.Add(row["Imagem"].ToString(), new Bitmap(image_stream));
 
 
 
@@ -178,6 +183,7 @@ namespace Stand_up
             DataTable dr = BLL.veiculos.querymaior_quiilometros();
 
             listView1.Clear();
+            images.Images.Clear();
             int i = 0;
 
 
@@ -250,6 +256,7 @@ namespace Stand_up
             DataTable dr = BLL.veiculos.queryMenor_quiilometros();
 
             listView1.Clear();
+            images.Images.Clear();
             int i = 0;
 
 
@@ -323,6 +330,7 @@ namespace Stand_up
             DataTable dr = BLL.veiculos.queryMarca_veiculo(Marca);
 
             listView1.Clear();
+            images.Images.Clear();
             int i = 0;
 
 
@@ -384,6 +392,79 @@ namespace Stand_up
 
 
         }
+
+        void carregar_car_PARA_LISTVIEW5()
+        {
+
+
+
+
+
+            DataTable dr = BLL.veiculos.queryCor_veiculo(Cor);
+
+            listView1.Clear();
+            images.Images.Clear();
+            int i = 0;
+
+
+
+
+
+            foreach (DataRow row in dr.Rows)
+
+            {
+
+
+
+                images.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView1.LargeImageList = images;
+
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+
+
+
+                byte[] imagebyte = (byte[])(row["Imagem"]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images.Images.Add(row["Imagem"].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = row["Matricula"].ToString();
+
+                i += 1;
+
+                this.listView1.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+        }
         private void carroToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -408,10 +489,17 @@ namespace Stand_up
         public static string Matricula ;
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             if (listView1.SelectedItems.Count > 0)
             {
-              Matricula = listView1.SelectedItems[0].Text;           
-
+              Matricula = listView1.SelectedItems[0].Text;
+                guna2Panel1.Visible = true;
+                flagPanel = false;
+            }
+            else
+            {
+                guna2Panel1.Visible = false;
+                flagPanel = true;
             }
 
 
@@ -449,7 +537,7 @@ namespace Stand_up
 
         private void hibridoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Combustivel = "Hibrído";
+            Combustivel = "Hibrido";
             carregar_car_PARA_LISTVIEW1();
         }
 
@@ -648,6 +736,101 @@ namespace Stand_up
         {
             Marca = "Volvo";
             carregar_car_PARA_LISTVIEW4();
+        }
+      
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+          if(flagPanel == false)
+            {
+
+                guna2Panel1.Visible = true;
+
+            }
+            else
+            {
+                guna2Panel1.Visible = false;
+
+            }
+
+
+        }
+
+        private void escurasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cor = "Amarelo";
+            carregar_car_PARA_LISTVIEW5();
+        }
+
+        private void claraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cor = "Azul";
+            carregar_car_PARA_LISTVIEW5();
+        }
+
+        private void begeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cor = "Bege";
+            carregar_car_PARA_LISTVIEW5();
+        }
+
+        private void brancoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cor = "Branco";
+            carregar_car_PARA_LISTVIEW5();
+        }
+
+        private void castanhoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cor = "Castanho";
+            carregar_car_PARA_LISTVIEW5();
+        }
+
+        private void cinzentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cor = "Cinzento";
+            carregar_car_PARA_LISTVIEW5();
+        }
+
+        private void douradoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cor = "Dourado";
+            carregar_car_PARA_LISTVIEW5();
+        }
+
+        private void laranjaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cor = "Laranja";
+            carregar_car_PARA_LISTVIEW5();
+        }
+
+        private void prateadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cor = "Prateado";
+            carregar_car_PARA_LISTVIEW5();
+        }
+
+        private void pretoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cor = "Preto";
+            carregar_car_PARA_LISTVIEW5();
+        }
+
+        private void roxoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cor = "Roxo";
+            carregar_car_PARA_LISTVIEW5();
+        }
+
+        private void verdeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cor = "Verde";
+            carregar_car_PARA_LISTVIEW5();
+        }
+
+        private void vermelhoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Cor = "Vermelho";
+            carregar_car_PARA_LISTVIEW5();
         }
     }
 }

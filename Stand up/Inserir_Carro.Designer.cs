@@ -178,6 +178,7 @@ namespace Stand_up
             this.guna2TextBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2TextBox5.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox5.Location = new System.Drawing.Point(370, 272);
+            this.guna2TextBox5.MaxLength = 8;
             this.guna2TextBox5.Name = "guna2TextBox5";
             this.guna2TextBox5.PasswordChar = '\0';
             this.guna2TextBox5.PlaceholderText = "";
@@ -251,7 +252,7 @@ namespace Stand_up
             this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(1022, 62);
+            this.listView1.Location = new System.Drawing.Point(1022, 70);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(648, 707);
             this.listView1.TabIndex = 31;
@@ -528,7 +529,6 @@ namespace Stand_up
             "Cinzento",
             "Dourado",
             "Laranja",
-            "Outra",
             "Prateado",
             "Preto",
             "Roxo",

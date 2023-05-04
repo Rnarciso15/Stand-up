@@ -250,6 +250,15 @@ namespace BusinessLogicLayer
                 return dal.executarReader("select * from Veiculo Where Combustivel = @Combustivel ", sqlParams);
             }
 
+            static public DataTable queryCor_veiculo(string Cor)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                        new SqlParameter("@Cor", Cor),
+                };
+                return dal.executarReader("select * from Veiculo Where Cor = @Cor ", sqlParams);
+            }
+
             static public DataTable queryMarca_veiculo(string Marca)
             {
                 DAL dal = new DAL();
@@ -351,27 +360,7 @@ namespace BusinessLogicLayer
                 };
                 return dal.executarReader("select * from funcionario where n_func=@n_func and senha=@senha", sqlParams);
             }
-            static public int updateFunc(string Matricula, int Quilometros, string Data, string Marca, string Modelo, string Descricao, string Combustivel, byte[] Imagem, int Valor, string Cor, string tipo_de_caixa, int N_Portas, string Traccao, string Matricula1)
-            {
-                DAL dal = new DAL();
-                SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@Matricula", Matricula),
-                new SqlParameter("@Quilometros", Quilometros),
-                new SqlParameter("@Data", Data),
-                new SqlParameter("@Marca", Marca),
-                new SqlParameter("@Modelo", Modelo),
-                new SqlParameter("@Descricao", Descricao),
-                 new SqlParameter("@Imagem", Imagem),
-                  new SqlParameter("@Combustivel", Combustivel),
-                     new SqlParameter("@Valor", Valor),
-                       new SqlParameter("@Cor", Cor),
-                         new SqlParameter("@tipo_de_caixa", tipo_de_caixa),
-                           new SqlParameter("@N_Portas", N_Portas),
-                           new SqlParameter("@Matricula1", Matricula1),
-                             new SqlParameter("@Traccao", Traccao)
-            };
-                return dal.executarNonQuery("update [Veiculo] set [Matricula]=@Matricula, [Quilometros]=@Quilometros, [Data]=@Data , [Marca]=@Marca, [Modelo]=@Modelo, [Descricao]=@Descricao, [Combustivel]=@Combustivel, [Imagem]=@Imagem, [Valor]=@Valor, [Cor]=@Cor, [tipo_de_caixa]=@tipo_de_caixa, [Traccao]=@Traccao where [Matricula]=@Matricula1", sqlParams);
-            }
+           
 
      
 
@@ -395,6 +384,29 @@ namespace BusinessLogicLayer
            };
 
                 return dal.executarNonQuery("INSERT into funcionario (nome,senha,ativo,data_nascimento,email,telefone,nib,imagem,nif,genero,morada,admin) VALUES(@nome,@senha,@ativo,@data_nascimento,@email,@telefone,@nib,@imagem,@nif,@genero,@morada,@admin)", sqlParams);
+            }
+
+
+            static public int updateFunc(int n_func, int Quilometros, string Data, string Marca, string Modelo, string Descricao, string Combustivel, byte[] Imagem, int Valor, string Cor, string tipo_de_caixa, int N_Portas, string Traccao, string Matricula1)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@Matricula", Matricula),
+                new SqlParameter("@Quilometros", Quilometros),
+                new SqlParameter("@Data", Data),
+                new SqlParameter("@Marca", Marca),
+                new SqlParameter("@Modelo", Modelo),
+                new SqlParameter("@Descricao", Descricao),
+                 new SqlParameter("@Imagem", Imagem),
+                  new SqlParameter("@Combustivel", Combustivel),
+                     new SqlParameter("@Valor", Valor),
+                       new SqlParameter("@Cor", Cor),
+                         new SqlParameter("@tipo_de_caixa", tipo_de_caixa),
+                           new SqlParameter("@N_Portas", N_Portas),
+                           new SqlParameter("@Matricula1", Matricula1),
+                             new SqlParameter("@Traccao", Traccao)
+            };
+                return dal.executarNonQuery("update [Veiculo] set [Matricula]=@Matricula, [Quilometros]=@Quilometros, [Data]=@Data , [Marca]=@Marca, [Modelo]=@Modelo, [Descricao]=@Descricao, [Combustivel]=@Combustivel, [Imagem]=@Imagem, [Valor]=@Valor, [Cor]=@Cor, [tipo_de_caixa]=@tipo_de_caixa, [Traccao]=@Traccao where [Matricula]=@Matricula1", sqlParams);
             }
 
             static public int senhaFunc(string senha, int n_func)

@@ -20,6 +20,9 @@ namespace Stand_up
         ImageList images = new ImageList();
      public static   bool flagInsertCAR = false;
         public static bool flagEditCAR = false;
+
+        public static bool flagInsertFunc = false;
+        public static bool flagEditFunc = false;
         private void inserirCarroToolStripMenuItem_Click(object sender, EventArgs e)
         {
 

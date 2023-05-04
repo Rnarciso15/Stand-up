@@ -114,7 +114,7 @@ namespace Stand_up
 
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
         }
 
         private void guna2TextBox12_TextChanged(object sender, EventArgs e)
@@ -331,10 +331,21 @@ namespace Stand_up
         }
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            
-            int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash("123"),true,guna2TextBox4.Text,guna2TextBox2.Text,guna2TextBox5.Text,guna2TextBox6.Text,imgToByteArray(guna2PictureBox2.Image),guna2TextBox8.Text,guna2TextBox7.Text,guna2ComboBox8.SelectedItem.ToString(),false);
+            if(Form2.flagInsertFunc == true)
+            {
 
+        
+            int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash("123"),true,guna2TextBox4.Text,guna2TextBox2.Text,guna2TextBox5.Text,guna2TextBox6.Text,imgToByteArray(guna2PictureBox2.Image),guna2TextBox8.Text,guna2TextBox7.Text,guna2ComboBox8.SelectedItem.ToString(),false);
             guna2DataGridView1.DataSource = BLL.Func.Load();
+            }
+            else
+            {
+
+
+
+
+            }
+            
 
         }
 
@@ -360,6 +371,20 @@ namespace Stand_up
         private void guna2PictureBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void inserirVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2.flagInsertFunc = true;
+            Form2.flagEditFunc = false;
+            guna2Button4.Visible = false;
+        }
+
+        private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2.flagInsertFunc = false;
+            Form2.flagEditFunc = true;
+            guna2Button4.Visible = true;
         }
     }
 }

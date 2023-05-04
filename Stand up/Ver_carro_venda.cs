@@ -53,8 +53,10 @@ namespace Stand_up
 
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
+            carros_para_venda.flagPanel = true;
             this.Close();
-        }
+        
+    }
 
         private void Ver_carro_venda_Load(object sender, EventArgs e)
         {
@@ -77,6 +79,11 @@ namespace Stand_up
                 label5.Text = (string)row["Traccao"];
 
             }
+        }
+
+        private void Ver_carro_venda_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            carros_para_venda.flagPanel = true;
         }
     }
 }
