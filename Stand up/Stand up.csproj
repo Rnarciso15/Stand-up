@@ -313,5 +313,11 @@
   <ItemGroup>
     <None Include="resources\Cancelar1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\flash_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\flash1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -22,6 +22,7 @@ namespace Stand_up
         int u = 0;
         int i = 0;
         int h = 0;
+        int w = 0;
         int ano;
         int n_func;
         private void inserirEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -63,20 +64,21 @@ namespace Stand_up
         {
             guna2HtmlLabel1.Location = new Point(308, 311);
             guna2TextBox1.UseSystemPasswordChar = true;
-
+            guna2TextBox11.UseSystemPasswordChar = true;
             guna2DataGridView1.DataSource = BLL.Func.Load();
             DataTable dt = BLL.Func.LoadPerfil(Form5.n_func);
             string admin = BLL.Func.Buscar_admin(Form5.n_func);
             if(admin != "True")
             {
                 guna2GroupBox2.Visible = false;
-
+                guna2GroupBox3.Visible = false;
             }
             else
             {
 
 
                 guna2GroupBox2.Visible = true;
+                guna2GroupBox3.Visible = true;
             }
             foreach (DataRow row in dt.Rows)
             {
@@ -114,15 +116,18 @@ namespace Stand_up
         {
 
         }
-
+        string Nome;
+        string ativo;
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
             if (e.RowIndex > -1)
             {
-                              
-               n_func = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["n_func"].Value);
+                ativo = guna2DataGridView1.Rows[e.RowIndex].Cells["ativo"].Value.ToString();
+                guna2TextBox10.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["n_func"].Value.ToString();
+                n_func = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["n_func"].Value);
                 guna2PictureBox2.Image = byteArrayToImage((Byte[])guna2DataGridView1.Rows[e.RowIndex].Cells["imagem"].Value);
+               Nome= guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
                 guna2TextBox9.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
                 guna2TextBox4.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["data_nascimento"].Value.ToString();
                 guna2TextBox2.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["email"].Value.ToString();
@@ -132,6 +137,20 @@ namespace Stand_up
                 guna2TextBox8.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["email"].Value.ToString();
                 guna2TextBox5.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nif"].Value.ToString();
                 guna2ComboBox8.SelectedItem = guna2DataGridView1.Rows[e.RowIndex].Cells["genero"].Value.ToString();
+
+                if(ativo == "True")
+                {
+                    guna2ImageButton1.Image = Properties.Resources.flash1;
+                    t = 0;
+                    Ativo = true;
+
+                }
+                else
+                {
+                    guna2ImageButton1.Image = Properties.Resources.flash_black;
+                    t = 1;
+                    Ativo = false;
+                }
             }
         }
 
@@ -358,24 +377,30 @@ namespace Stand_up
             }
 
         }
+        bool Ativo;
         private void guna2Button3_Click(object sender, EventArgs e)
         {
             if(Form2.flagInsertFunc == true)
             {
 
-        
-            int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash("123"),true,guna2TextBox4.Text,guna2TextBox2.Text,guna2TextBox5.Text,guna2TextBox6.Text,imgToByteArray(guna2PictureBox2.Image),guna2TextBox8.Text,guna2TextBox7.Text,guna2ComboBox8.SelectedItem.ToString(),false);
-            guna2DataGridView1.DataSource = BLL.Func.Load();
+                DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo funcionário ?", "", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash("123"), true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.SelectedItem.ToString(), false);
+                    guna2DataGridView1.DataSource = BLL.Func.Load();
+                }
             }
             else
             {
-
-                //int x = BLL.Func.updateFunc();
-
-
+                DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar as informções do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    int x = BLL.Func.updateFunc(n_func, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
+                    guna2DataGridView1.DataSource = BLL.Func.Load();
+                }
 
             }
-            
+
 
         }
 
@@ -415,6 +440,56 @@ namespace Stand_up
             Form2.flagInsertFunc = false;
             Form2.flagEditFunc = true;
             guna2Button4.Visible = true;
+        }
+
+        private void guna2Button6_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar a senha do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                BLL.Func.senhaFunc(Hash(guna2TextBox11.Text), n_func);
+                guna2TextBox11.Clear();
+                guna2TextBox10.Clear();
+                    
+            }
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            if (w == 0)
+            {
+                guna2TextBox11.UseSystemPasswordChar = false;
+                guna2Button5.Image = Properties.Resources.show1;
+                w += 1;
+            }
+            else
+            {
+                guna2TextBox11.UseSystemPasswordChar = true;
+                guna2Button5.Image = Properties.Resources.invisible1;
+                w = 0;
+            }
+        }
+
+        private void guna2TextBox10_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        int t = 0;
+        private void guna2ImageButton1_Click(object sender, EventArgs e)
+        {
+            if (t == 0)
+            {               
+                guna2ImageButton1.Image = Properties.Resources.flash_black;
+                t += 1;
+                Ativo = false;
+            }
+            else
+            {
+              
+                guna2ImageButton1.Image = Properties.Resources.flash1;
+                t = 0;
+                Ativo = true;
+            }
         }
     }
 }

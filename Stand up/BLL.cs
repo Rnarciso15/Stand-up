@@ -403,7 +403,7 @@ namespace BusinessLogicLayer
                        new SqlParameter("@morada", morada),
                          new SqlParameter("@genero", genero),
             };
-                return dal.executarNonQuery("update [Veiculo] set [n_func]=@n_func, [nome]=@nome, [ativo]=@ativo , [data_nascimento]=@data_nascimento, [email]=@email, [telefone]=@telefone, [nib]=@nib, [imagem]=@imagem, [nif]=@nif, [morada]=@morada, [genero]=@genero where n_func  = @n_func", sqlParams);
+                return dal.executarNonQuery("update [funcionario] set  [nome]=@nome, [ativo]=@ativo , [data_nascimento]=@data_nascimento, [email]=@email, [telefone]=@telefone, [nib]=@nib, [imagem]=@imagem, [nif]=@nif, [morada]=@morada, [genero]=@genero where n_func  = @n_func", sqlParams);
             }
 
             static public int senhaFunc(string senha, int n_func)
