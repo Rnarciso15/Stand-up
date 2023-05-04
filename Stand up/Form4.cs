@@ -340,7 +340,7 @@ namespace Stand_up
             }
             else
             {
-
+                int x = BLL.Func.updateFunc();
 
 
 

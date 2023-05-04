@@ -387,26 +387,23 @@ namespace BusinessLogicLayer
             }
 
 
-            static public int updateFunc(int n_func, int Quilometros, string Data, string Marca, string Modelo, string Descricao, string Combustivel, byte[] Imagem, int Valor, string Cor, string tipo_de_caixa, int N_Portas, string Traccao, string Matricula1)
+            static public int updateFunc(int n_func, string nome, bool ativo, string data_nascimento, string email, string telefone, string nib, byte[] imagem, string nif, string morada, string genero)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@Matricula", Matricula),
-                new SqlParameter("@Quilometros", Quilometros),
-                new SqlParameter("@Data", Data),
-                new SqlParameter("@Marca", Marca),
-                new SqlParameter("@Modelo", Modelo),
-                new SqlParameter("@Descricao", Descricao),
-                 new SqlParameter("@Imagem", Imagem),
-                  new SqlParameter("@Combustivel", Combustivel),
-                     new SqlParameter("@Valor", Valor),
-                       new SqlParameter("@Cor", Cor),
-                         new SqlParameter("@tipo_de_caixa", tipo_de_caixa),
-                           new SqlParameter("@N_Portas", N_Portas),
-                           new SqlParameter("@Matricula1", Matricula1),
-                             new SqlParameter("@Traccao", Traccao)
+                new SqlParameter("@n_func", n_func),
+                new SqlParameter("@nome", nome),
+                new SqlParameter("@ativo", ativo),
+                new SqlParameter("@data_nascimento", data_nascimento),
+                new SqlParameter("@email", email),
+                new SqlParameter("@telefone", telefone),
+                 new SqlParameter("@nib", nib),
+                  new SqlParameter("@imagem", imagem),
+                     new SqlParameter("@nif", nif),
+                       new SqlParameter("@morada", morada),
+                         new SqlParameter("@genero", genero),
             };
-                return dal.executarNonQuery("update [Veiculo] set [Matricula]=@Matricula, [Quilometros]=@Quilometros, [Data]=@Data , [Marca]=@Marca, [Modelo]=@Modelo, [Descricao]=@Descricao, [Combustivel]=@Combustivel, [Imagem]=@Imagem, [Valor]=@Valor, [Cor]=@Cor, [tipo_de_caixa]=@tipo_de_caixa, [Traccao]=@Traccao where [Matricula]=@Matricula1", sqlParams);
+                return dal.executarNonQuery("update [Veiculo] set [n_func]=@n_func, [nome]=@nome, [ativo]=@ativo , [data_nascimento]=@data_nascimento, [email]=@email, [telefone]=@telefone, [nib]=@nib, [imagem]=@imagem, [nif]=@nif, [morada]=@morada, [genero]=@genero where n_func  = @n_func", sqlParams);
             }
 
             static public int senhaFunc(string senha, int n_func)
