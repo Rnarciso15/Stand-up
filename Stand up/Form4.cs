@@ -21,7 +21,9 @@ namespace Stand_up
         int q = 0;
         int u = 0;
         int i = 0;
+        int h = 0;
         int ano;
+        int n_func;
         private void inserirEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -61,6 +63,7 @@ namespace Stand_up
         {
             guna2HtmlLabel1.Location = new Point(308, 311);
             guna2TextBox1.UseSystemPasswordChar = true;
+
             guna2DataGridView1.DataSource = BLL.Func.Load();
             DataTable dt = BLL.Func.LoadPerfil(Form5.n_func);
             string admin = BLL.Func.Buscar_admin(Form5.n_func);
@@ -114,7 +117,22 @@ namespace Stand_up
 
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
+            if (e.RowIndex > -1)
+            {
+                              
+               n_func = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["n_func"].Value);
+                guna2PictureBox2.Image = byteArrayToImage((Byte[])guna2DataGridView1.Rows[e.RowIndex].Cells["imagem"].Value);
+                guna2TextBox9.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
+                guna2TextBox4.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["data_nascimento"].Value.ToString();
+                guna2TextBox2.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["email"].Value.ToString();
+                guna2TextBox5.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["telefone"].Value.ToString();
+                guna2TextBox6.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nib"].Value.ToString();
+                guna2TextBox7.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["morada"].Value.ToString();
+                guna2TextBox8.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["email"].Value.ToString();
+                guna2TextBox5.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nif"].Value.ToString();
+                guna2ComboBox8.SelectedItem = guna2DataGridView1.Rows[e.RowIndex].Cells["genero"].Value.ToString();
+            }
         }
 
         private void guna2TextBox12_TextChanged(object sender, EventArgs e)
@@ -139,7 +157,18 @@ namespace Stand_up
 
         private void guna2TextBox5_TextChanged(object sender, EventArgs e)
         {
-
+            if (guna2TextBox5.Text.Length < 3)
+            {
+                h = 0;
+            }
+            if (guna2TextBox5.Text.Length == 3 || guna2TextBox5.Text.Length == 7)
+            {
+                if (h != 1)
+                {
+                    guna2TextBox5.Text += " ";
+                    guna2TextBox5.Select(guna2TextBox5.Text.Length, 0);
+                }
+            }
         }
 
         private void guna2TextBox2_TextChanged(object sender, EventArgs e)
@@ -340,7 +369,8 @@ namespace Stand_up
             }
             else
             {
-                int x = BLL.Func.updateFunc();
+
+                //int x = BLL.Func.updateFunc();
 
 
 
