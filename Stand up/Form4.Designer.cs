@@ -70,8 +70,8 @@ namespace Stand_up
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.guna2GroupBox3 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.guna2TextBox10 = new Guna.UI2.WinForms.Guna2TextBox();
             this.label10 = new System.Windows.Forms.Label();
+            this.guna2TextBox10 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox11 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
@@ -131,6 +131,7 @@ namespace Stand_up
             this.listaDeFuncionáriosToolStripMenuItem.Name = "listaDeFuncionáriosToolStripMenuItem";
             this.listaDeFuncionáriosToolStripMenuItem.Size = new System.Drawing.Size(206, 24);
             this.listaDeFuncionáriosToolStripMenuItem.Text = "Lista de Funcionários";
+            this.listaDeFuncionáriosToolStripMenuItem.Click += new System.EventHandler(this.listaDeFuncionáriosToolStripMenuItem_Click);
             // 
             // especificaçõesDoVeículoToolStripMenuItem
             // 
@@ -702,6 +703,17 @@ namespace Stand_up
             this.label9.TabIndex = 78;
             this.label9.Text = "id Funcionário:";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
+            this.label10.Location = new System.Drawing.Point(85, 192);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(60, 20);
+            this.label10.TabIndex = 58;
+            this.label10.Text = "Senha:";
+            // 
             // guna2TextBox10
             // 
             this.guna2TextBox10.Animated = true;
@@ -726,17 +738,6 @@ namespace Stand_up
             this.guna2TextBox10.Size = new System.Drawing.Size(249, 41);
             this.guna2TextBox10.TabIndex = 77;
             this.guna2TextBox10.TextChanged += new System.EventHandler(this.guna2TextBox10_TextChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
-            this.label10.Location = new System.Drawing.Point(85, 192);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(60, 20);
-            this.label10.TabIndex = 58;
-            this.label10.Text = "Senha:";
             // 
             // guna2TextBox11
             // 

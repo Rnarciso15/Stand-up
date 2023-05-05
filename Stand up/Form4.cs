@@ -491,5 +491,12 @@ namespace Stand_up
                 Ativo = true;
             }
         }
+
+        private void listaDeFuncionáriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            Form1.flag_lista_func = true;
+           
+        }
     }
 }
