@@ -1317,6 +1317,35 @@ namespace Stand_up
             carregar_car_PARA_LISTVIEW();
         }
 
+        void Ativar_marcacao()
+        {
+            DateTime DataSelecionada = DateTime.Parse(dia+"/"+mes+"/"+ano);
+            DateTime DataHoje = DateTime.Parse(DateTime.Now.ToShortDateString());
+
+            if (DataSelecionada>DataHoje)
+            {
+                listView1.Enabled = true;
+                listView2.Enabled = true;
+                listView3.Enabled = true;
+                guna2ComboBox1.Enabled = true;
+                guna2TextBox9.Enabled = true;
+                guna2Button32.Enabled = true;
+                guna2Button33.Enabled = true;
+
+            }
+            else
+            {
+                listView1.Enabled = false;
+                listView2.Enabled = false;
+                listView3.Enabled = false;
+                guna2ComboBox1.Enabled = false;
+                guna2TextBox9.Enabled = false;
+                guna2Button32.Enabled = false;
+                guna2Button33.Enabled = false;
+            }
+        }
+
+
         private void guna2Button42_Click(object sender, EventArgs e)
         {
 
@@ -1394,187 +1423,189 @@ namespace Stand_up
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             dia = 1;
-            verificar_dia();
+verificar_dia();
+            Ativar_marcacao();            Ativar_marcacao();
+
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             dia = 2;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
             dia = 3;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
             dia = 4;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
             dia = 5;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button23_Click(object sender, EventArgs e)
         {
             dia = 23;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
             dia = 6;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button7_Click(object sender, EventArgs e)
         {
             dia = 7;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button8_Click(object sender, EventArgs e)
         {
             dia = 8;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button9_Click(object sender, EventArgs e)
         {
             dia = 9;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button10_Click(object sender, EventArgs e)
         {
             dia = 10;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button24_Click(object sender, EventArgs e)
         {
             dia = 24;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button11_Click(object sender, EventArgs e)
         {
             dia = 11;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button12_Click(object sender, EventArgs e)
         {
             dia = 12;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button13_Click(object sender, EventArgs e)
         {
             dia = 13;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button14_Click(object sender, EventArgs e)
         {
             dia = 14;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button15_Click(object sender, EventArgs e)
         {
             dia = 15;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button25_Click(object sender, EventArgs e)
         {
             dia = 25;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button16_Click(object sender, EventArgs e)
         {
             dia = 16;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button17_Click(object sender, EventArgs e)
         {
             dia = 17;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button18_Click(object sender, EventArgs e)
         {
             dia = 18;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button19_Click(object sender, EventArgs e)
         {
             dia = 19;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button20_Click(object sender, EventArgs e)
         {
             dia = 20;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button26_Click(object sender, EventArgs e)
         {
             dia = 26;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button21_Click(object sender, EventArgs e)
         {
             dia = 21;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button22_Click(object sender, EventArgs e)
         {
             dia = 22;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button27_Click(object sender, EventArgs e)
         {
             dia = 27;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button28_Click(object sender, EventArgs e)
         {
             dia = 28;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button29_Click(object sender, EventArgs e)
         {
             dia = 29;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button30_Click(object sender, EventArgs e)
         {
             dia = 30;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
 
         private void guna2Button31_Click(object sender, EventArgs e)
         {
             dia = 31;
-            verificar_dia();
-        }
+verificar_dia();
+            Ativar_marcacao();        }
     }
 }
