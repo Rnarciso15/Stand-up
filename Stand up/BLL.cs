@@ -360,10 +360,98 @@ namespace BusinessLogicLayer
                 };
                 return dal.executarReader("select * from funcionario where n_func=@n_func and senha=@senha", sqlParams);
             }
-           
 
-     
+            static public DataTable queryFunc_Like_nome(string nome)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@nome", nome + "%")
+                };
+                return dal.executarReader("select * from funcionario where Nome like @nome", sqlParams);
+            }
 
+            static public DataTable queryFunc_Like_nome_ativo(string nome, bool ativo)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@nome", nome + "%"),
+                 new SqlParameter("@ativo", ativo ),
+                };
+                return dal.executarReader("select * from funcionario where nome like @nome and ativo = @ativo", sqlParams);
+            }
+            static public DataTable queryFunc_Like_id(string n_func)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@n_func", n_func + "%")
+                };
+                return dal.executarReader("select * from funcionario where n_func like @n_func", sqlParams);
+            }
+
+            static public DataTable queryFunc_Like_id_ativo(string n_func, bool ativo)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@n_func", n_func + "%"),
+                 new SqlParameter("@ativo", ativo ),
+                };
+                return dal.executarReader("select * from funcionario where n_func like @n_func and ativo = @ativo", sqlParams);
+            }
+
+            static public DataTable queryFunc_Like_nif(string nif)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@nif", nif + "%")
+                };
+                return dal.executarReader("select * from funcionario where nif like @nif", sqlParams);
+            }
+
+            static public DataTable queryFunc_Like_nif_ativo(string nif, bool ativo)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@nif", nif + "%"),
+                 new SqlParameter("@ativo", ativo ),
+                };
+                return dal.executarReader("select * from funcionario where nif like @nif and ativo = @ativo", sqlParams);
+            }
+
+            static public DataTable queryFunc_Like_genero(string genero)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@genero", genero + "%")
+                };
+                return dal.executarReader("select * from funcionario where genero like @genero", sqlParams);
+            }
+            static public DataTable queryFunc_Like_genero_ativo(string genero, bool ativo)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@genero", genero + "%"),
+                 new SqlParameter("@ativo", ativo ),
+                };
+                return dal.executarReader("select * from funcionario where genero like @genero and ativo = @ativo", sqlParams);
+            }
+            static public DataTable queryFunc_Like_idade(string data_nascimento)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@data_nascimento", data_nascimento + "%")
+                };
+                return dal.executarReader("select * from funcionario where data_nascimento like @data_nascimento", sqlParams);
+            }
+            static public DataTable queryFunc_Like_idade_ativo(string data_nascimento, bool ativo)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@data_nascimento", data_nascimento + "%"),
+                 new SqlParameter("@ativo", ativo ),
+                };
+                return dal.executarReader("select * from funcionario where data_nascimento like @data_nascimento and ativo = @ativo", sqlParams);
+
+            }
             static public int insertFunc(string nome, string senha, bool ativo, string data_nascimento, string email, string telefone, string nib, byte[] imagem, string nif,string morada, string genero,bool admin)
             {
                 DAL dal = new DAL();

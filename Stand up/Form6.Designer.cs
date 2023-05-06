@@ -29,9 +29,10 @@ namespace Stand_up
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inserirCarroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inserirVeiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,13 +44,14 @@ namespace Stand_up
             this.listaDeClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button32 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -125,27 +127,27 @@ namespace Stand_up
             // 
             // guna2DataGridView1
             // 
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
             this.guna2DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.guna2DataGridView1.ColumnHeadersHeight = 40;
             this.guna2DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle12;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.Location = new System.Drawing.Point(27, 129);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
@@ -192,35 +194,16 @@ namespace Stand_up
             this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(490, 69);
+            this.guna2TextBox1.Location = new System.Drawing.Point(491, 69);
+            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2TextBox1.MaxLength = 10;
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PasswordChar = '\0';
             this.guna2TextBox1.PlaceholderText = "";
             this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(692, 36);
+            this.guna2TextBox1.Size = new System.Drawing.Size(690, 36);
             this.guna2TextBox1.TabIndex = 70;
-            this.guna2TextBox1.Visible = false;
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.Animated = true;
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.BorderRadius = 17;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Image = global::Stand_up.Properties.Resources.search;
-            this.guna2Button1.Location = new System.Drawing.Point(1146, 69);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(36, 36);
-            this.guna2Button1.TabIndex = 71;
-            this.guna2Button1.UseTransparentBackground = true;
-            this.guna2Button1.Visible = false;
+            this.guna2TextBox1.TextChanged += new System.EventHandler(this.guna2TextBox1_TextChanged);
             // 
             // guna2Button32
             // 
@@ -342,6 +325,29 @@ namespace Stand_up
             this.guna2Button6.Text = "Género";
             this.guna2Button6.Click += new System.EventHandler(this.guna2Button6_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.BorderRadius = 17;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Image = global::Stand_up.Properties.Resources.search;
+            this.guna2Button1.Location = new System.Drawing.Point(1146, 69);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(36, 36);
+            this.guna2Button1.TabIndex = 71;
+            this.guna2Button1.UseTransparentBackground = true;
+            // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -381,7 +387,6 @@ namespace Stand_up
         private System.Windows.Forms.ToolStripMenuItem editarEspecificaçõesDoVeículoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listaDeClientesToolStripMenuItem;
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Guna.UI2.WinForms.Guna2Button guna2Button32;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
@@ -389,5 +394,7 @@ namespace Stand_up
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private Guna.UI2.WinForms.Guna2Button guna2Button5;
         private Guna.UI2.WinForms.Guna2Button guna2Button6;
+        private System.Windows.Forms.Timer timer1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }
