@@ -23,6 +23,10 @@ namespace Stand_up
 
         public static bool flagInsertFunc = false;
         public static bool flagEditFunc = false;
+        public static bool flagFunc = false;
+        public static bool flagCliente= false;
+        public static bool flagInsertCliente = false;
+        public static bool flagEditCliente = false;
         private void inserirCarroToolStripMenuItem_Click(object sender, EventArgs e)
         {
 

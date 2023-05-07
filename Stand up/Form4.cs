@@ -25,9 +25,15 @@ namespace Stand_up
         int w = 0;
         int ano;
         int n_func;
+        int n_cliente;
         private void inserirEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form2.flagFunc = false;
+            Form2.flagCliente = true;
+            Form2.flagInsertCliente = true;
+            Form2.flagEditCliente = false;
+            Form2.flagInsertFunc = false;
+            Form2.flagEditFunc = false;
         }
 
         private void guna2HtmlLabel1_Click(object sender, EventArgs e)
@@ -65,7 +71,14 @@ namespace Stand_up
             guna2HtmlLabel1.Location = new Point(308, 311);
             guna2TextBox1.UseSystemPasswordChar = true;
             guna2TextBox11.UseSystemPasswordChar = true;
+            if(Form2.flagFunc == true)
+            {          
             guna2DataGridView1.DataSource = BLL.Func.Load();
+            }
+            else
+            {
+                guna2DataGridView1.DataSource = BLL.Clientes.Load();
+            }
             DataTable dt = BLL.Func.LoadPerfil(Form5.n_func);
             string admin = BLL.Func.Buscar_admin(Form5.n_func);
             if(admin != "True")
@@ -123,9 +136,11 @@ namespace Stand_up
 
             if (e.RowIndex > -1)
             {
+                if(Form2.flagFunc == true)
+                {            
                 ativo = guna2DataGridView1.Rows[e.RowIndex].Cells["ativo"].Value.ToString();
                 guna2TextBox10.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["n_func"].Value.ToString();
-                n_func = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["n_func"].Value);
+                    n_cliente = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["n_func"].Value);
                 guna2PictureBox2.Image = byteArrayToImage((Byte[])guna2DataGridView1.Rows[e.RowIndex].Cells["imagem"].Value);
                Nome= guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
                 guna2TextBox9.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
@@ -137,8 +152,28 @@ namespace Stand_up
                 guna2TextBox8.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["email"].Value.ToString();
                 guna2TextBox5.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nif"].Value.ToString();
                 guna2ComboBox8.SelectedItem = guna2DataGridView1.Rows[e.RowIndex].Cells["genero"].Value.ToString();
+                }
+                else
+                {
 
-                if(ativo == "True")
+                    ativo = guna2DataGridView1.Rows[e.RowIndex].Cells["ativo"].Value.ToString();
+                    guna2TextBox10.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["n_cliente"].Value.ToString();
+                    n_func = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["n_cliente"].Value);
+                    guna2PictureBox2.Image = byteArrayToImage((Byte[])guna2DataGridView1.Rows[e.RowIndex].Cells["imagem"].Value);
+                    Nome = guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
+                    guna2TextBox9.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
+                    guna2TextBox4.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["data_nascimento"].Value.ToString();
+                    guna2TextBox2.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["email"].Value.ToString();
+                    guna2TextBox5.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["telefone"].Value.ToString();
+                    guna2TextBox6.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nib"].Value.ToString();
+                    guna2TextBox7.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["morada"].Value.ToString();
+                    guna2TextBox8.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["email"].Value.ToString();
+                    guna2TextBox5.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nif"].Value.ToString();
+                    guna2ComboBox8.SelectedItem = guna2DataGridView1.Rows[e.RowIndex].Cells["genero"].Value.ToString();
+
+
+                }
+                if (ativo == "True")
                 {
                     guna2ImageButton1.Image = Properties.Resources.flash1;
                     t = 0;
@@ -380,6 +415,8 @@ namespace Stand_up
         bool Ativo;
         private void guna2Button3_Click(object sender, EventArgs e)
         {
+            if(Form2.flagFunc == true)
+            {         
             if(Form2.flagInsertFunc == true)
             {
 
@@ -400,7 +437,32 @@ namespace Stand_up
                 }
 
             }
+            }
+            else
+            {
 
+                if (Form2.flagInsertCliente == true)
+                {
+
+                    DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo Cliente ?", "", MessageBoxButtons.YesNo);
+                    if (dr == DialogResult.Yes)
+                    {
+                        int x = BLL.Clientes.insertCliente(guna2TextBox5.Text, guna2TextBox9.Text,true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text,Hash("1234"));
+                        guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                    }
+                }
+                else
+                {
+                    DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar as informções do Cliente " + Nome + "?", "", MessageBoxButtons.YesNo);
+                    if (dr == DialogResult.Yes)
+                    {
+                        int x = BLL.Clientes.updateCliente(n_cliente, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
+                        guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                    }
+
+                }
+
+            }
 
         }
 
@@ -430,28 +492,53 @@ namespace Stand_up
 
         private void inserirVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Form2.flagFunc = true;
+            Form2.flagCliente = false;
             Form2.flagInsertFunc = true;
             Form2.flagEditFunc = false;
+            Form2.flagInsertCliente = false;
+            Form2.flagEditCliente = false;
             guna2Button4.Visible = false;
         }
 
         private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Form2.flagFunc = true;
+            Form2.flagCliente = false;
             Form2.flagInsertFunc = false;
             Form2.flagEditFunc = true;
+            Form2.flagInsertCliente = false;
+            Form2.flagEditCliente = false;
             guna2Button4.Visible = true;
         }
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
-            DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar a senha do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
-            if (dr == DialogResult.Yes)
+            if (Form2.flagFunc == true)
             {
-                BLL.Func.senhaFunc(Hash(guna2TextBox11.Text), n_func);
-                guna2TextBox11.Clear();
-                guna2TextBox10.Clear();
-                    
+                DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar a senha do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    BLL.Func.senhaFunc(Hash(guna2TextBox11.Text), n_func);
+                    guna2TextBox11.Clear();
+                    guna2TextBox10.Clear();
+
+                }
             }
+            else
+            {
+                DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar a senha do cliente " + Nome + "?", "", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    BLL.Func.senhaFunc(Hash(guna2TextBox11.Text), n_cliente);
+                    guna2TextBox11.Clear();
+                    guna2TextBox10.Clear();
+
+                }
+
+
+            }
+           
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)
@@ -497,6 +584,21 @@ namespace Stand_up
 
             Form1.flag_lista_func = true;
            
+        }
+
+        private void editarEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2.flagFunc = false;
+            Form2.flagCliente = true;
+            Form2.flagInsertCliente = false;
+            Form2.flagEditCliente = true;
+            Form2.flagInsertFunc = false;
+            Form2.flagEditFunc = false;
+        }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
