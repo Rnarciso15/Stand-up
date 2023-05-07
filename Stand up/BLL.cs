@@ -44,7 +44,7 @@ namespace BusinessLogicLayer
             static public DataTable Load()
             {
                 DAL dal = new DAL();
-                return dal.executarReader("select * from cliente", null);
+                return dal.executarReader("select  n_cliente,nome,data_nascimento,genero,email,telefone,nib,nif,morada,Ativo,imagem from cliente", null);
             }
         
             static public DataTable queryCliente_Like(String nome)
@@ -97,27 +97,27 @@ namespace BusinessLogicLayer
 
            };
 
-                return dal.executarNonQuery("INSERT into cliente (nome,senha,Ativo,data_nascimento,email,telefone,nib,imagem,nif,genero,morada) VALUES(@nome,@senha,@ativo,@data_nascimento,@email,@telefone,@nib,@imagem,@nif,@genero,@morada)", sqlParams);
+                return dal.executarNonQuery("INSERT into cliente (nome,senha,Ativo,data_nascimento,email,telefone,nib,imagem,nif,genero,morada) VALUES(@nome,@senha,@Ativo,@data_nascimento,@email,@telefone,@nib,@imagem,@nif,@genero,@morada)", sqlParams);
             }
 
 
-            static public int updateCliente(int n_clinte, string nome, bool Ativo, string data_nascimento, string email, string telefone, string nib, byte[] imagem, string nif, string morada, string genero)
+            static public int updateCliente(int n_cliente, string nome, bool Ativo, string data_nascimento, string email, string telefone, string nib, byte[] imagem, string nif, string morada, string genero)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@n_clinte", n_clinte),
+                new SqlParameter("@n_cliente", n_cliente),
                 new SqlParameter("@nome", nome),
                 new SqlParameter("@Ativo", Ativo),
                 new SqlParameter("@data_nascimento", data_nascimento),
                 new SqlParameter("@email", email),
                 new SqlParameter("@telefone", telefone),
-                 new SqlParameter("@nib", nib),
-                  new SqlParameter("@imagem", imagem),
-                     new SqlParameter("@nif", nif),
-                       new SqlParameter("@morada", morada),
-                         new SqlParameter("@genero", genero),
+                new SqlParameter("@nib", nib),
+                new SqlParameter("@imagem", imagem),
+                new SqlParameter("@nif", nif),
+                new SqlParameter("@morada", morada),
+                new SqlParameter("@genero", genero),
             };
-                return dal.executarNonQuery("update [cliente] set  [nome]=@nome, [Ativo]=@Ativo , [data_nascimento]=@data_nascimento, [email]=@email, [telefone]=@telefone, [nib]=@nib, [imagem]=@imagem, [nif]=@nif, [morada]=@morada, [genero]=@genero where n_clinte  = @n_clinte", sqlParams);
+                return dal.executarNonQuery("update [cliente] set  [nome]=@nome, [Ativo]=@Ativo , [data_nascimento]=@data_nascimento, [email]=@email, [telefone]=@telefone, [nib]=@nib, [imagem]=@imagem, [nif]=@nif, [morada]=@morada, [genero]=@genero where n_cliente  = @n_cliente", sqlParams);
             }
 
 
@@ -143,15 +143,15 @@ namespace BusinessLogicLayer
             }
 
 
-            static public int senhaCliente(string senha, int n_clinte)
+            static public int senhaCliente(string senha, int n_cliente)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                 new SqlParameter("@senha", senha),
-                 new SqlParameter("@n_clinte", n_clinte)
+                 new SqlParameter("@n_cliente", n_cliente)
            };
 
-                return dal.executarNonQuery("update [cliente] set [senha]=@senha where [n_clinte]=@n_clinte", sqlParams);
+                return dal.executarNonQuery("update [cliente] set [senha]=@senha where [n_cliente]=@n_cliente", sqlParams);
 
             }
         }

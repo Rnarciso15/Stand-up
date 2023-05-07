@@ -34,6 +34,9 @@ namespace Stand_up
             Form2.flagEditCliente = false;
             Form2.flagInsertFunc = false;
             Form2.flagEditFunc = false;
+            guna2GroupBox2.Text = "Inserir Cliente";
+            guna2Button4.Visible = false;
+            guna2DataGridView1.DataSource = BLL.Clientes.Load();
         }
 
         private void guna2HtmlLabel1_Click(object sender, EventArgs e)
@@ -68,30 +71,31 @@ namespace Stand_up
 
         private void Form4_Load(object sender, EventArgs e)
         {
+          
             guna2HtmlLabel1.Location = new Point(308, 311);
             guna2TextBox1.UseSystemPasswordChar = true;
             guna2TextBox11.UseSystemPasswordChar = true;
-            if(Form2.flagFunc == true)
-            {          
-            guna2DataGridView1.DataSource = BLL.Func.Load();
-            }
-            else
-            {
-                guna2DataGridView1.DataSource = BLL.Clientes.Load();
-            }
+            
             DataTable dt = BLL.Func.LoadPerfil(Form5.n_func);
             string admin = BLL.Func.Buscar_admin(Form5.n_func);
             if(admin != "True")
             {
-                guna2GroupBox2.Visible = false;
-                guna2GroupBox3.Visible = false;
+                guna2GroupBox2.Visible = true;
+                guna2GroupBox3.Visible = true;
+                guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                Form2.flagFunc = false;
+                Form2.flagCliente = true;
             }
             else
             {
-
-
-                guna2GroupBox2.Visible = true;
+               guna2GroupBox2.Visible = true;
                 guna2GroupBox3.Visible = true;
+                Form2.flagFunc = true;               
+                Form2.flagInsertFunc = true;
+                guna2GroupBox2.Text = "Inserir Funcionário";
+                    guna2DataGridView1.DataSource = BLL.Func.Load();
+             
+               
             }
             foreach (DataRow row in dt.Rows)
             {
@@ -149,8 +153,7 @@ namespace Stand_up
                 guna2TextBox5.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["telefone"].Value.ToString();
                 guna2TextBox6.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nib"].Value.ToString();
                 guna2TextBox7.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["morada"].Value.ToString();
-                guna2TextBox8.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["email"].Value.ToString();
-                guna2TextBox5.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nif"].Value.ToString();
+                guna2TextBox8.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nif"].Value.ToString();
                 guna2ComboBox8.SelectedItem = guna2DataGridView1.Rows[e.RowIndex].Cells["genero"].Value.ToString();
                 }
                 else
@@ -167,8 +170,7 @@ namespace Stand_up
                     guna2TextBox5.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["telefone"].Value.ToString();
                     guna2TextBox6.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nib"].Value.ToString();
                     guna2TextBox7.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["morada"].Value.ToString();
-                    guna2TextBox8.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["email"].Value.ToString();
-                    guna2TextBox5.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nif"].Value.ToString();
+                    guna2TextBox8.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nif"].Value.ToString();
                     guna2ComboBox8.SelectedItem = guna2DataGridView1.Rows[e.RowIndex].Cells["genero"].Value.ToString();
 
 
@@ -196,7 +198,29 @@ namespace Stand_up
 
         private void guna2TextBox8_TextChanged(object sender, EventArgs e)
         {
+            if (guna2TextBox8.Text != "")
+            {
 
+
+
+                for (int j = 0; j < guna2TextBox8.Text.Length; j++)
+                {
+
+                    if (guna2TextBox8.Text[j] == '0' || guna2TextBox8.Text[j] == '1' || guna2TextBox8.Text[j] == '2' || guna2TextBox8.Text[j] == '3' || guna2TextBox8.Text[j] == '4' || guna2TextBox8.Text[j] == '5' || guna2TextBox8.Text[j] == '6' || guna2TextBox8.Text[j] == '7' || guna2TextBox8.Text[j] == '8' || guna2TextBox8.Text[j] == '9')
+                    {
+
+                    }
+                    else
+                    {
+
+                        guna2TextBox8.Clear();
+                        MessageBox.Show("Insira um nif válido ");
+                    }
+
+                }
+
+
+            }
         }
 
         private void guna2TextBox7_TextChanged(object sender, EventArgs e)
@@ -206,7 +230,29 @@ namespace Stand_up
 
         private void guna2TextBox6_TextChanged(object sender, EventArgs e)
         {
+            if (guna2TextBox6.Text != "")
+            {
 
+
+
+                for (int j = 0; j < guna2TextBox6.Text.Length; j++)
+                {
+
+                    if (guna2TextBox6.Text[j] == '0' || guna2TextBox6.Text[j] == '1' || guna2TextBox6.Text[j] == '2' || guna2TextBox6.Text[j] == '3' || guna2TextBox6.Text[j] == '4' || guna2TextBox6.Text[j] == '5' || guna2TextBox6.Text[j] == '6' || guna2TextBox6.Text[j] == '7' || guna2TextBox6.Text[j] == '8' || guna2TextBox6.Text[j] == '9')
+                    {
+
+                    }
+                    else
+                    {
+
+                        guna2TextBox6.Clear();
+                        MessageBox.Show("Insira um nib válido ");
+                    }
+
+                }
+
+
+            }
         }
 
         private void guna2TextBox5_TextChanged(object sender, EventArgs e)
@@ -429,7 +475,7 @@ namespace Stand_up
             }
             else
             {
-                DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar as informções do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
+                DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informções do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.Yes)
                 {
                     int x = BLL.Func.updateFunc(n_func, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
@@ -453,7 +499,7 @@ namespace Stand_up
                 }
                 else
                 {
-                    DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar as informções do Cliente " + Nome + "?", "", MessageBoxButtons.YesNo);
+                    DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informações do Cliente " + Nome + "?", "", MessageBoxButtons.YesNo);
                     if (dr == DialogResult.Yes)
                     {
                         int x = BLL.Clientes.updateCliente(n_cliente, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
@@ -498,7 +544,9 @@ namespace Stand_up
             Form2.flagEditFunc = false;
             Form2.flagInsertCliente = false;
             Form2.flagEditCliente = false;
+            guna2GroupBox2.Text = "Inserir Funcionário";
             guna2Button4.Visible = false;
+            guna2DataGridView1.DataSource = BLL.Func.Load();
         }
 
         private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -509,7 +557,9 @@ namespace Stand_up
             Form2.flagEditFunc = true;
             Form2.flagInsertCliente = false;
             Form2.flagEditCliente = false;
+            guna2GroupBox2.Text = "Editar Funcionário";
             guna2Button4.Visible = true;
+            guna2DataGridView1.DataSource = BLL.Func.Load();
         }
 
         private void guna2Button6_Click(object sender, EventArgs e)
@@ -594,11 +644,18 @@ namespace Stand_up
             Form2.flagEditCliente = true;
             Form2.flagInsertFunc = false;
             Form2.flagEditFunc = false;
+            guna2GroupBox2.Text = "editar Cliente";
+            guna2Button4.Visible = true;
+            guna2DataGridView1.DataSource = BLL.Clientes.Load();
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
         }
     }
 }
