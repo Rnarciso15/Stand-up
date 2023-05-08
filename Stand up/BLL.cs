@@ -39,7 +39,7 @@ namespace BusinessLogicLayer
             }
         }
         public class Clientes
-        {
+        {  
             static public DataTable queryCliente_Like_nome(string nome)
             {
                 DAL dal = new DAL();
