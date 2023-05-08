@@ -303,7 +303,7 @@ namespace Stand_up
                     break;
                 case 6:
 
-                    guna2Button6.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button23.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
@@ -325,7 +325,7 @@ namespace Stand_up
                     guna2Button20.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button21.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button22.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button23.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button6.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button24.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button25.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button26.FillColor = Color.FromArgb(197, 109, 109);
@@ -337,12 +337,12 @@ namespace Stand_up
                     break;
                 case 7:
 
-                    guna2Button7.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button6.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button5.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button6.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button7.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
@@ -371,13 +371,13 @@ namespace Stand_up
                     break;
                 case 8:
 
-                    guna2Button8.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button7.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button5.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button6.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button7.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
@@ -405,14 +405,14 @@ namespace Stand_up
                     break;
                 case 9:
 
-                    guna2Button9.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button8.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button5.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button6.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button7.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
@@ -440,7 +440,7 @@ namespace Stand_up
                     break;
                 case 10:
 
-                    guna2Button10.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button9.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
@@ -448,7 +448,7 @@ namespace Stand_up
                     guna2Button6.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button7.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
@@ -475,7 +475,7 @@ namespace Stand_up
                     break;
                 case 11:
 
-                    guna2Button11.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button10.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
@@ -484,7 +484,7 @@ namespace Stand_up
                     guna2Button7.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
@@ -510,7 +510,7 @@ namespace Stand_up
                     break;
                 case 12:
 
-                    guna2Button12.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button24.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
@@ -533,7 +533,7 @@ namespace Stand_up
                     guna2Button21.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button22.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button23.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button24.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button25.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button26.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button27.FillColor = Color.FromArgb(197, 109, 109);
@@ -545,7 +545,7 @@ namespace Stand_up
                     break;
                 case 13:
 
-                    guna2Button13.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button11.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
@@ -555,7 +555,7 @@ namespace Stand_up
                     guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button14.FillColor = Color.FromArgb(197, 109, 109);
@@ -580,7 +580,7 @@ namespace Stand_up
                     break;
                 case 14:
 
-                    guna2Button14.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button12.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
@@ -591,7 +591,7 @@ namespace Stand_up
                     guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button14.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button15.FillColor = Color.FromArgb(197, 109, 109);
@@ -615,7 +615,7 @@ namespace Stand_up
                     break;
                 case 15:
 
-                    guna2Button15.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button13.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
@@ -627,7 +627,7 @@ namespace Stand_up
                     guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button15.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button14.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button16.FillColor = Color.FromArgb(197, 109, 109);
@@ -650,7 +650,7 @@ namespace Stand_up
                     break;
                 case 16:
 
-                    guna2Button16.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button14.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
@@ -663,7 +663,7 @@ namespace Stand_up
                     guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button14.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button16.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button15.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button17.FillColor = Color.FromArgb(197, 109, 109);
@@ -685,7 +685,7 @@ namespace Stand_up
                     break;
                 case 17:
 
-                    guna2Button17.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button15.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
@@ -699,7 +699,7 @@ namespace Stand_up
                     guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button14.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button15.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button17.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button16.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button18.FillColor = Color.FromArgb(197, 109, 109);
@@ -722,7 +722,7 @@ namespace Stand_up
 
                 case 18:
 
-                    guna2Button18.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button25.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
@@ -746,7 +746,7 @@ namespace Stand_up
                     guna2Button22.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button23.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button24.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button25.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button18.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button26.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button27.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button28.FillColor = Color.FromArgb(197, 109, 109);
@@ -756,6 +756,111 @@ namespace Stand_up
 
                     break;
                 case 19:
+
+                    guna2Button16.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button5.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button6.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button7.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button14.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button15.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button19.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button17.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button18.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button20.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button21.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button22.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button23.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button24.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button25.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button26.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button27.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button28.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button29.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button30.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button31.FillColor = Color.FromArgb(197, 109, 109);
+
+                    break;
+                case 20:
+
+                    guna2Button17.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button5.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button6.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button7.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button14.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button15.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button16.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button20.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button18.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button19.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button21.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button22.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button23.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button24.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button25.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button26.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button27.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button28.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button29.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button30.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button31.FillColor = Color.FromArgb(197, 109, 109);
+
+                    break;
+                case 21:
+
+                    guna2Button18.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button5.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button6.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button7.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button14.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button15.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button16.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button17.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button21.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button19.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button20.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button22.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button23.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button24.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button25.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button26.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button27.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button28.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button29.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button30.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button31.FillColor = Color.FromArgb(197, 109, 109);
+
+                    break;
+                case 22:
 
                     guna2Button19.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
@@ -775,10 +880,10 @@ namespace Stand_up
                     guna2Button16.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button17.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button18.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button22.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button20.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button21.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button22.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button23.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button24.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button25.FillColor = Color.FromArgb(197, 109, 109);
@@ -790,7 +895,7 @@ namespace Stand_up
                     guna2Button31.FillColor = Color.FromArgb(197, 109, 109);
 
                     break;
-                case 20:
+                case 23:
 
                     guna2Button20.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
@@ -811,112 +916,7 @@ namespace Stand_up
                     guna2Button17.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button18.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button19.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button21.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button22.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button23.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button24.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button25.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button26.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button27.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button28.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button29.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button30.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button31.FillColor = Color.FromArgb(197, 109, 109);
-
-                    break;
-                case 21:
-
-                    guna2Button21.FillColor = Color.FromArgb(128, 64, 64);
-                    guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button5.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button6.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button7.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button14.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button15.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button16.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button17.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button18.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button19.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button20.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button22.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button23.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button24.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button25.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button26.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button27.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button28.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button29.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button30.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button31.FillColor = Color.FromArgb(197, 109, 109);
-
-                    break;
-                case 22:
-
-                    guna2Button22.FillColor = Color.FromArgb(128, 64, 64);
-                    guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button5.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button6.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button7.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button14.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button15.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button16.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button17.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button18.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button19.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button20.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button21.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button23.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button24.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button25.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button26.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button27.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button28.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button29.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button30.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button31.FillColor = Color.FromArgb(197, 109, 109);
-
-                    break;
-                case 23:
-
-                    guna2Button23.FillColor = Color.FromArgb(128, 64, 64);
-                    guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button5.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button6.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button7.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button14.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button15.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button16.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button17.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button18.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button19.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button20.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button21.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button22.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
@@ -931,77 +931,6 @@ namespace Stand_up
 
                     break;
                 case 24:
-
-                    guna2Button24.FillColor = Color.FromArgb(128, 64, 64);
-                    guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button5.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button6.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button7.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button14.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button15.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button16.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button17.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button18.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button19.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button20.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button21.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button22.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button23.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button25.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button26.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button27.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button28.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button29.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button30.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button31.FillColor = Color.FromArgb(197, 109, 109);
-
-                    break;
-                case 25:
-
-                    guna2Button25.FillColor = Color.FromArgb(128, 64, 64);
-                    guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button5.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button6.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button7.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button14.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button15.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button16.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button17.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button18.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button19.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button20.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button21.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button22.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button23.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button24.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button26.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button27.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button28.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button29.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button30.FillColor = Color.FromArgb(197, 109, 109);
-                    guna2Button31.FillColor = Color.FromArgb(197, 109, 109);
-
-                    break;
-
-                case 26:
 
                     guna2Button26.FillColor = Color.FromArgb(128, 64, 64);
                     guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
@@ -1025,6 +954,77 @@ namespace Stand_up
                     guna2Button20.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button21.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button22.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button23.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button25.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button24.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button27.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button28.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button29.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button30.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button31.FillColor = Color.FromArgb(197, 109, 109);
+
+                    break;
+                case 25:
+
+                    guna2Button21.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button5.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button6.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button7.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button14.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button15.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button16.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button17.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button18.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button19.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button20.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button25.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button22.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button23.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button24.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button26.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button27.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button28.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button29.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button30.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button31.FillColor = Color.FromArgb(197, 109, 109);
+
+                    break;
+
+                case 26:
+
+                    guna2Button22.FillColor = Color.FromArgb(128, 64, 64);
+                    guna2Button2.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button3.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button4.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button5.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button6.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button7.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button8.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button9.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button10.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button11.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button12.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button13.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button14.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button15.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button16.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button17.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button18.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button19.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button20.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button21.FillColor = Color.FromArgb(197, 109, 109);
+                    guna2Button26.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button23.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button24.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button25.FillColor = Color.FromArgb(197, 109, 109);
@@ -1322,7 +1322,7 @@ namespace Stand_up
             DateTime DataSelecionada = DateTime.Parse(dia+"/"+mes+"/"+ano);
             DateTime DataHoje = DateTime.Parse(DateTime.Now.ToShortDateString());
 
-            if (DataSelecionada>DataHoje)
+            if (DataSelecionada>=DataHoje)
             {
                 listView1.Enabled = true;
                 listView2.Enabled = true;
@@ -1454,127 +1454,127 @@ verificar_dia();
 
         private void guna2Button23_Click(object sender, EventArgs e)
         {
-            dia = 23;
+            dia = 6;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
-            dia = 6;
+            dia = 7;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button7_Click(object sender, EventArgs e)
         {
-            dia = 7;
+            dia = 8;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button8_Click(object sender, EventArgs e)
         {
-            dia = 8;
+            dia = 9;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button9_Click(object sender, EventArgs e)
         {
-            dia = 9;
+            dia = 10;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button10_Click(object sender, EventArgs e)
         {
-            dia = 10;
+            dia = 11;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button24_Click(object sender, EventArgs e)
         {
-            dia = 24;
+            dia = 12;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button11_Click(object sender, EventArgs e)
         {
-            dia = 11;
+            dia = 13;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button12_Click(object sender, EventArgs e)
         {
-            dia = 12;
+            dia = 14;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button13_Click(object sender, EventArgs e)
         {
-            dia = 13;
+            dia = 15;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button14_Click(object sender, EventArgs e)
         {
-            dia = 14;
+            dia = 16;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button15_Click(object sender, EventArgs e)
         {
-            dia = 15;
+            dia = 17;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button25_Click(object sender, EventArgs e)
         {
-            dia = 25;
+            dia = 18;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button16_Click(object sender, EventArgs e)
         {
-            dia = 16;
+            dia = 19;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button17_Click(object sender, EventArgs e)
         {
-            dia = 17;
+            dia = 20;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button18_Click(object sender, EventArgs e)
         {
-            dia = 18;
+            dia = 21;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button19_Click(object sender, EventArgs e)
         {
-            dia = 19;
+            dia = 22;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button20_Click(object sender, EventArgs e)
         {
-            dia = 20;
+            dia = 23;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button26_Click(object sender, EventArgs e)
         {
-            dia = 26;
+            dia = 24;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button21_Click(object sender, EventArgs e)
         {
-            dia = 21;
+            dia = 25;
 verificar_dia();
             Ativar_marcacao();        }
 
         private void guna2Button22_Click(object sender, EventArgs e)
         {
-            dia = 22;
+            dia = 26;
 verificar_dia();
             Ativar_marcacao();        }
 
