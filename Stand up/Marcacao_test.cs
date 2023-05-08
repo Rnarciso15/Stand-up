@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -1320,7 +1321,7 @@ namespace Stand_up
         void Ativar_marcacao()
         {
             DateTime DataSelecionada = DateTime.Parse(dia+"/"+mes+"/"+ano);
-            DateTime DataHoje = DateTime.Parse(DateTime.Now.ToShortDateString());
+            DateTime DataHoje = DateTime.ParseExact(DateTime.Now.ToShortDateString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
             if (DataSelecionada>=DataHoje)
             {
