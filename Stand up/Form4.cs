@@ -26,8 +26,25 @@ namespace Stand_up
         int ano;
         int n_func;
         int n_cliente;
+        void clear_caoxas()
+        {
+            guna2PictureBox2.Image = null;
+            guna2TextBox9.Clear();
+            guna2TextBox4.Clear();
+            guna2TextBox2.Clear();
+            guna2TextBox5.Clear();
+            guna2TextBox6.Clear();
+            guna2TextBox7.Clear();
+            guna2TextBox8.Clear();
+            guna2TextBox10.Clear();
+            guna2TextBox11.Clear();
+            guna2ComboBox8.SelectedIndex = -1;
+            guna2ImageButton1.Image = Properties.Resources.flash_black;
+
+        }
         private void inserirEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Form1.flag_config = true;
             Form2.flagFunc = false;
             Form2.flagCliente = true;
             Form2.flagInsertCliente = true;
@@ -37,6 +54,7 @@ namespace Stand_up
             guna2GroupBox2.Text = "Inserir Cliente";
             guna2Button4.Visible = false;
             guna2DataGridView1.DataSource = BLL.Clientes.Load();
+            clear_caoxas();
         }
 
         private void guna2HtmlLabel1_Click(object sender, EventArgs e)
@@ -93,7 +111,7 @@ namespace Stand_up
                 Form2.flagFunc = true;               
                 Form2.flagInsertFunc = true;
                 guna2GroupBox2.Text = "Inserir Funcionário";
-                    guna2DataGridView1.DataSource = BLL.Func.Load();
+                    guna2DataGridView1.DataSource = BLL.Func.Load(false);
              
                
             }
@@ -470,7 +488,7 @@ namespace Stand_up
                 if (dr == DialogResult.Yes)
                 {
                     int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash("123"), true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.SelectedItem.ToString(), false);
-                    guna2DataGridView1.DataSource = BLL.Func.Load();
+                    guna2DataGridView1.DataSource = BLL.Func.Load(false);
                 }
             }
             else
@@ -479,7 +497,7 @@ namespace Stand_up
                 if (dr == DialogResult.Yes)
                 {
                     int x = BLL.Func.updateFunc(n_func, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
-                    guna2DataGridView1.DataSource = BLL.Func.Load();
+                    guna2DataGridView1.DataSource = BLL.Func.Load(false);
                 }
 
             }
@@ -538,6 +556,7 @@ namespace Stand_up
 
         private void inserirVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Form1.flag_config = true;
             Form2.flagFunc = true;
             Form2.flagCliente = false;
             Form2.flagInsertFunc = true;
@@ -546,11 +565,14 @@ namespace Stand_up
             Form2.flagEditCliente = false;
             guna2GroupBox2.Text = "Inserir Funcionário";
             guna2Button4.Visible = false;
-            guna2DataGridView1.DataSource = BLL.Func.Load();
+            guna2DataGridView1.DataSource = BLL.Func.Load(false);
+            clear_caoxas();
         }
 
         private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+            Form1.flag_config = true; 
             Form2.flagFunc = true;
             Form2.flagCliente = false;
             Form2.flagInsertFunc = false;
@@ -559,7 +581,8 @@ namespace Stand_up
             Form2.flagEditCliente = false;
             guna2GroupBox2.Text = "Editar Funcionário";
             guna2Button4.Visible = true;
-            guna2DataGridView1.DataSource = BLL.Func.Load();
+            guna2DataGridView1.DataSource = BLL.Func.Load(false);
+            clear_caoxas();
         }
 
         private void guna2Button6_Click(object sender, EventArgs e)
@@ -631,13 +654,16 @@ namespace Stand_up
 
         private void listaDeFuncionáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Form2.flagFunc = true;
+            Form2.flagCliente = false;
             Form1.flag_lista_func = true;
-           
+            Form1.flag_config = false;
+
         }
 
         private void editarEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Form1.flag_config = true;
             Form2.flagFunc = false;
             Form2.flagCliente = true;
             Form2.flagInsertCliente = false;
@@ -647,6 +673,7 @@ namespace Stand_up
             guna2GroupBox2.Text = "editar Cliente";
             guna2Button4.Visible = true;
             guna2DataGridView1.DataSource = BLL.Clientes.Load();
+            clear_caoxas();
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
@@ -656,6 +683,19 @@ namespace Stand_up
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+        }
+
+        private void listaDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2.flagFunc = false;
+            Form2.flagCliente = true;
+            Form1.flag_lista_func = true;
+            Form1.flag_config = false;
+        }
+
+        private void especificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

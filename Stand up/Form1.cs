@@ -22,9 +22,13 @@ namespace Stand_up
         }
         static public bool flagInsertCAR = false;
         static public bool flagEditCAR = false;
+        public static bool flag_lista_func = false;
+        public static bool flag_config = false;
+
         int l = 0;
         int K = 0;
         int j = 0;
+        int y = 0;
         public Image byteArrayToImage(byte[] byteArrayIn)
 
         {
@@ -56,7 +60,7 @@ namespace Stand_up
             }
 
         }
-        public static bool flag_lista_func = false;
+       
         private void Form1_Load(object sender, EventArgs e)
         {
             timer1.Start();
@@ -117,7 +121,21 @@ namespace Stand_up
                 flag_lista_func = false;
                 j = 0;
             }
+            if (flag_config == true)
+            {
+                Form4 f2 = new Form4();
+                guna2Panel3.Controls.Clear();
+                f2.TopLevel = false;
+                f2.Parent = guna2Panel3;
+                f2.Show();
+                y = 1;
 
+            }
+            if (y == 1)
+            {
+                flag_config = false;
+                y = 0;
+            }
 
 
             if (flagInsertCAR == true)

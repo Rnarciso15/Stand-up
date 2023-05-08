@@ -143,6 +143,7 @@ namespace Stand_up
             this.especificaçõesDoVeículoToolStripMenuItem.Name = "especificaçõesDoVeículoToolStripMenuItem";
             this.especificaçõesDoVeículoToolStripMenuItem.Size = new System.Drawing.Size(69, 23);
             this.especificaçõesDoVeículoToolStripMenuItem.Text = "Clientes";
+            this.especificaçõesDoVeículoToolStripMenuItem.Click += new System.EventHandler(this.especificaçõesDoVeículoToolStripMenuItem_Click);
             // 
             // inserirEspecificaçõesDoVeículoToolStripMenuItem
             // 
@@ -163,6 +164,7 @@ namespace Stand_up
             this.listaDeClientesToolStripMenuItem.Name = "listaDeClientesToolStripMenuItem";
             this.listaDeClientesToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.listaDeClientesToolStripMenuItem.Text = "Lista de Clientes";
+            this.listaDeClientesToolStripMenuItem.Click += new System.EventHandler(this.listaDeClientesToolStripMenuItem_Click);
             // 
             // guna2TextBox3
             // 

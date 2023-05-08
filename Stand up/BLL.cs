@@ -40,7 +40,97 @@ namespace BusinessLogicLayer
         }
         public class Clientes
         {
+            static public DataTable queryCliente_Like_nome(string nome)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@nome", nome + "%")
+                };
+                return dal.executarReader("select * from cliente where nome like @nome", sqlParams);
+            }
 
+            static public DataTable queryCliente_Like_nome_ativo(string nome, bool Ativo)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@nome", nome + "%"),
+                 new SqlParameter("@Ativo", Ativo ),
+                };
+                return dal.executarReader("select * from cliente where nome like @nome and Ativo = @Ativo", sqlParams);
+            }
+            static public DataTable queryCliente_Like_id(string n_cliente)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@n_cliente", n_cliente + "%")
+                };
+                return dal.executarReader("select * from cliente where n_cliente like @n_cliente", sqlParams);
+            }
+
+            static public DataTable queryCliente_Like_id_ativo(string n_cliente, bool Ativo)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@n_cliente", n_cliente + "%"),
+                 new SqlParameter("@Ativo", Ativo ),
+                };
+                return dal.executarReader("select * from cliente where n_cliente like @n_cliente and Ativo = @Ativo", sqlParams);
+            }
+
+            static public DataTable queryCliente_Like_nif(string nif)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@nif", nif + "%")
+                };
+                return dal.executarReader("select * from cliente where nif like @nif", sqlParams);
+            }
+
+            static public DataTable queryCliente_Like_nif_ativo(string nif, bool Ativo)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@nif", nif + "%"),
+                 new SqlParameter("@Ativo", Ativo ),
+                };
+                return dal.executarReader("select * from cliente where nif like @nif and Ativo = @Ativo", sqlParams);
+            }
+
+            static public DataTable queryCliente_Like_genero(string genero)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@genero", genero + "%")
+                };
+                return dal.executarReader("select * from cliente where genero like @genero", sqlParams);
+            }
+            static public DataTable queryCliente_Like_genero_ativo(string genero, bool Ativo)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@genero", genero + "%"),
+                 new SqlParameter("@Ativo", Ativo ),
+                };
+                return dal.executarReader("select * from cliente where genero like @genero and Ativo = @Ativo", sqlParams);
+            }
+            static public DataTable queryCliente_Like_idade(string data_nascimento)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@data_nascimento", data_nascimento + "%")
+                };
+                return dal.executarReader("select * from cliente where data_nascimento like @data_nascimento", sqlParams);
+            }
+            static public DataTable queryCliente_Like_idade_ativo(string data_nascimento, bool Ativo)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@data_nascimento", data_nascimento + "%"),
+                 new SqlParameter("@Ativo", Ativo ),
+                };
+                return dal.executarReader("select * from Cliente where data_nascimento like @data_nascimento and Ativo = @Ativo", sqlParams);
+
+            }
             static public DataTable Load()
             {
                 DAL dal = new DAL();
@@ -369,10 +459,14 @@ namespace BusinessLogicLayer
 
                 return Convert.ToString(dal.executarScalar("select admin from funcionario where n_func = @n_func", sqlParams));
             }
-            static public DataTable Load()
+            static public DataTable Load(bool admin)
             {
                 DAL dal = new DAL();
-                return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,nif,morada,ativo,imagem  from funcionario", null);
+                SqlParameter[] sqlParams = new SqlParameter[]{
+              
+                new SqlParameter("@admin", admin) };
+
+                return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,nif,morada,ativo,imagem  from funcionario where admin = @admin", sqlParams);
             }
             static public DataTable LoadPerfil(int n_func)
             {
