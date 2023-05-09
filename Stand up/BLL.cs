@@ -256,6 +256,7 @@ namespace BusinessLogicLayer
             }
             static public DataTable Load_dados(string Matricula)
             {
+
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                 new SqlParameter("@Matricula", Matricula),
@@ -468,6 +469,18 @@ namespace BusinessLogicLayer
 
                 return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,nif,morada,ativo,imagem  from funcionario where admin = @admin", sqlParams);
             }
+
+            static public DataTable queryLoad_Func()
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+
+                };
+                return dal.executarReader("select * from funcionario", sqlParams);
+            }
+
+            
+
             static public DataTable LoadPerfil(int n_func)
             {
                 DAL dal = new DAL();            

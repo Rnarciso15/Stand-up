@@ -19,6 +19,7 @@ namespace Stand_up
         {
             InitializeComponent();
         }
+        int i = 0;
         int dia = 1;
         int mes=1;
         int ano = 2023;
@@ -1245,7 +1246,7 @@ namespace Stand_up
             DataTable dr = BLL.veiculos.queryLoad_veiculo();
 
             listView3.Clear();
-            int i = 0;
+                i = 0;
 
 
 
@@ -1301,7 +1302,74 @@ namespace Stand_up
 
             }
 
+           
+        }
 
+        void carregar_func_PARA_LISTVIEW()
+        {
+
+
+
+
+
+            DataTable dt = BLL.Func.queryLoad_Func();
+
+            listView1.Clear();
+            i = 0;
+
+
+
+
+
+            foreach (DataRow row in dt.Rows)
+
+            {
+
+
+
+                images.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView3.LargeImageList = images;
+
+                listView3.LargeImageList.ImageSize = new System.Drawing.Size(123, 123);
+
+
+
+                byte[] imagebyte = (byte[])(row[9]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = row["nome"].ToString();
+
+                i += 1;
+
+                this.listView1.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
 
 
 
@@ -1608,5 +1676,20 @@ verificar_dia();
             dia = 31;
 verificar_dia();
             Ativar_marcacao();        }
+
+        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Ativar_marcacao();
+
+             carregar_func_PARA_LISTVIEW();
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+
+            
+        }
     }
 }
