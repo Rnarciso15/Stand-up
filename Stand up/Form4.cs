@@ -275,6 +275,29 @@ namespace Stand_up
 
         private void guna2TextBox5_TextChanged(object sender, EventArgs e)
         {
+            if (guna2TextBox5.Text != "")
+            {
+
+
+
+                for (int j = 0; j < guna2TextBox5.Text.Length; j++)
+                {
+
+                    if (guna2TextBox5.Text[j] == '0' || guna2TextBox5.Text[j] == '1' || guna2TextBox5.Text[j] == '2' || guna2TextBox5.Text[j] == '3' || guna2TextBox5.Text[j] == '4' || guna2TextBox5.Text[j] == '5' || guna2TextBox5.Text[j] == '6' || guna2TextBox5.Text[j] == '7' || guna2TextBox5.Text[j] == '8' || guna2TextBox5.Text[j] == '9')
+                    {
+
+                    }
+                    else
+                    {
+
+                        guna2TextBox5.Clear();
+                        MessageBox.Show("Insira um Nº de telefone válido ");
+                    }
+
+                }
+
+
+        
             if (guna2TextBox5.Text.Length < 3)
             {
                 h = 0;
@@ -286,6 +309,7 @@ namespace Stand_up
                     guna2TextBox5.Text += " ";
                     guna2TextBox5.Select(guna2TextBox5.Text.Length, 0);
                 }
+            }
             }
         }
 
@@ -483,14 +507,90 @@ namespace Stand_up
             {         
             if(Form2.flagInsertFunc == true)
             {
+                    if (guna2PictureBox2.Image == null)
+                    {
+                        MessageBox.Show("Insira uma foto");
+                    }
+                    else
+                    {
 
-                DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo funcionário ?", "", MessageBoxButtons.YesNo);
-                if (dr == DialogResult.Yes)
-                {
-                    int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash("123"), true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.SelectedItem.ToString(), false);
-                    guna2DataGridView1.DataSource = BLL.Func.Load(false);
+                        if (guna2TextBox9.Text != "")
+                        {
+                            if (guna2TextBox4.Text.Length == 10)
+                            {
+
+                                if (guna2TextBox2.Text != "")
+                                {
+
+                                    if (guna2TextBox5.Text.Length == 11)
+                                    {
+
+                                        if (guna2TextBox6.Text.Length == 21)
+                                        {
+
+                                            if (guna2TextBox7.Text != "")
+                                            {
+
+                                                if (guna2TextBox8.Text.Length == 9)
+                                                {
+
+                                                    if (guna2ComboBox8.SelectedIndex != -1)
+                                                    {
+
+
+                                                        DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo funcionário ?", "", MessageBoxButtons.YesNo);
+                                                        if (dr == DialogResult.Yes)
+                                                        {
+                                                            int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash("123"), true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.SelectedItem.ToString(), false);
+                                                            guna2DataGridView1.DataSource = BLL.Func.Load(false);
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Insira um género válido");
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Insira um nif válido");
+
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Insira uma morada válida");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Insira um nib válido");
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                        MessageBox.Show("Insira um email válido");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Insira um nº de telefone válido");
+
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Insira uma data válida");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Insira um nome");
+
+                        }
+
+                    }
                 }
-            }
             else
             {
                 DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informções do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
@@ -508,12 +608,90 @@ namespace Stand_up
                 if (Form2.flagInsertCliente == true)
                 {
 
-                    DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo Cliente ?", "", MessageBoxButtons.YesNo);
-                    if (dr == DialogResult.Yes)
+                    if (guna2PictureBox2.Image == null)
                     {
-                        int x = BLL.Clientes.insertCliente(guna2TextBox5.Text, guna2TextBox9.Text,true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text,Hash("1234"));
-                        guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                        MessageBox.Show("Insira uma foto");
                     }
+                    else
+                    {
+
+                        if (guna2TextBox9.Text != "")
+                        {
+                            if (guna2TextBox4.Text.Length == 10)
+                            {
+
+                                if (guna2TextBox2.Text != "")
+                                {
+
+                                    if (guna2TextBox5.Text.Length == 11)
+                                    {
+
+                                        if (guna2TextBox6.Text.Length == 21)
+                                        {
+
+                                            if (guna2TextBox7.Text != "")
+                                            {
+
+                                                if (guna2TextBox8.Text.Length == 9)
+                                                {
+
+                                                    if (guna2ComboBox8.SelectedIndex != -1)
+                                                    {
+
+
+                                                        DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo Cliente ?", "", MessageBoxButtons.YesNo);
+                                                        if (dr == DialogResult.Yes)
+                                                        {
+                                                            int x = BLL.Clientes.insertCliente(guna2TextBox5.Text, guna2TextBox9.Text, true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text, Hash("1234"));
+                                                            guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                                                        }
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Insira um género válido");
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Insira um nif válido");
+
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Insira uma morada válida");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Insira um nib válido");
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                        MessageBox.Show("Insira um email válido");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Insira um nº de telefone válido");
+
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Insira uma data válida");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Insira um nome");
+
+                        }
+
+                    }
+                   
                 }
                 else
                 {
