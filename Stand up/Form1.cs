@@ -25,10 +25,17 @@ namespace Stand_up
         public static bool flag_lista_func = false;
         public static bool flag_config = false;
 
+        public static bool flagInsertFunc = false;
+        public static bool flagEditFunc = false;
+        public static bool flagFunc = false;
+        public static bool flagCliente = false;
+        public static bool flagInsertCliente = false;
+        public static bool flagEditCliente = false;
         int l = 0;
         int K = 0;
         int j = 0;
         int y = 0;
+        int w = 0;
         public Image byteArrayToImage(byte[] byteArrayIn)
 
         {
@@ -69,7 +76,21 @@ namespace Stand_up
             f2.TopLevel = false;
             f2.Parent = guna2Panel3;
             f2.Show();
+            string admin = BLL.Func.Buscar_admin(Form5.n_func);
 
+            if (admin != "True")
+            {
+                Form1.flagFunc = false;
+                Form1.flagCliente = true;
+            }
+            else
+            {
+              
+                Form1.flagFunc = true;
+                Form1.flagInsertFunc = true;
+
+
+            }
             DataTable dt = BLL.Func.LoadPerfil(Form5.n_func);
 
             foreach (DataRow row in dt.Rows)
@@ -161,13 +182,13 @@ namespace Stand_up
                 f2.TopLevel = false;
                 f2.Parent = guna2Panel3;
                 f2.Show();
-                l = 1;
+                w = 1;
 
             }
-            if (l == 1)
+            if (w == 1)
             {
                 flagEditCAR = false;
-                l = 0;
+                w = 0;
             }
         }
 

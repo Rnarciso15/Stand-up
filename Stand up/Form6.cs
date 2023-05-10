@@ -24,11 +24,11 @@ namespace Stand_up
             {
             
             }
-            if(admin == "True" && Form2.flagCliente==true)
+            if(admin == "True" && Form1.flagCliente==true)
             {
                 guna2DataGridView1.DataSource = BLL.Clientes.Load();
             }
-            if (admin == "True" && Form2.flagFunc == true)
+            if (admin == "True" && Form1.flagFunc == true)
             {
                 guna2DataGridView1.DataSource = BLL.Func.Load(false);
             }
@@ -204,7 +204,7 @@ namespace Stand_up
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (Form2.flagCliente != true)
+            if (Form1.flagCliente != true)
             {
 
 

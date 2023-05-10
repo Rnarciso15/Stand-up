@@ -26,6 +26,7 @@ namespace Stand_up
         int ano;
         int n_func;
         int n_cliente;
+        
         void clear_caoxas()
         {
             guna2PictureBox2.Image = null;
@@ -45,12 +46,12 @@ namespace Stand_up
         private void inserirEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1.flag_config = true;
-            Form2.flagFunc = false;
-            Form2.flagCliente = true;
-            Form2.flagInsertCliente = true;
-            Form2.flagEditCliente = false;
-            Form2.flagInsertFunc = false;
-            Form2.flagEditFunc = false;
+            Form1.flagFunc = false;
+            Form1.flagCliente = true;
+            Form1.flagInsertCliente = true;
+            Form1.flagEditCliente = false;
+            Form1.flagInsertFunc = false;
+            Form1.flagEditFunc = false;
             guna2GroupBox2.Text = "Inserir Cliente";
             guna2Button4.Visible = false;
             guna2DataGridView1.DataSource = BLL.Clientes.Load();
@@ -101,19 +102,33 @@ namespace Stand_up
                 guna2GroupBox2.Visible = true;
                 guna2GroupBox3.Visible = true;
                 guna2DataGridView1.DataSource = BLL.Clientes.Load();
-                Form2.flagFunc = false;
-                Form2.flagCliente = true;
+             
             }
             else
             {
                guna2GroupBox2.Visible = true;
-                guna2GroupBox3.Visible = true;
-                Form2.flagFunc = true;               
-                Form2.flagInsertFunc = true;
-                guna2GroupBox2.Text = "Inserir Funcionário";
+                guna2GroupBox3.Visible = true;            
+            
                     guna2DataGridView1.DataSource = BLL.Func.Load(false);
              
                
+            }
+            if (Form1.flagInsertFunc == true)
+            {
+                guna2GroupBox2.Text = "Inserir Funcionário";
+            }
+          if(Form1.flagEditFunc == true)
+            {
+                guna2GroupBox2.Text = "Editar Funcionário";
+            }
+
+            if (Form1.flagInsertCliente == true)
+            {
+                guna2GroupBox2.Text = "Inserir Cliente";
+            }
+            if (Form1.flagEditCliente == true)
+            {
+                guna2GroupBox2.Text = "Editar Cliente";
             }
             foreach (DataRow row in dt.Rows)
             {
@@ -158,7 +173,7 @@ namespace Stand_up
 
             if (e.RowIndex > -1)
             {
-                if(Form2.flagFunc == true)
+                if(Form1.flagFunc == true)
                 {            
                 ativo = guna2DataGridView1.Rows[e.RowIndex].Cells["ativo"].Value.ToString();
                 guna2TextBox10.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["n_func"].Value.ToString();
@@ -283,7 +298,7 @@ namespace Stand_up
                 for (int j = 0; j < guna2TextBox5.Text.Length; j++)
                 {
 
-                    if (guna2TextBox5.Text[j] == '0' || guna2TextBox5.Text[j] == '1' || guna2TextBox5.Text[j] == '2' || guna2TextBox5.Text[j] == '3' || guna2TextBox5.Text[j] == '4' || guna2TextBox5.Text[j] == '5' || guna2TextBox5.Text[j] == '6' || guna2TextBox5.Text[j] == '7' || guna2TextBox5.Text[j] == '8' || guna2TextBox5.Text[j] == '9')
+                    if (guna2TextBox5.Text[j] == '0' || guna2TextBox5.Text[j] == '1' || guna2TextBox5.Text[j] == '2' || guna2TextBox5.Text[j] == '3' || guna2TextBox5.Text[j] == '4' || guna2TextBox5.Text[j] == '5' || guna2TextBox5.Text[j] == '6' || guna2TextBox5.Text[j] == '7' || guna2TextBox5.Text[j] == '8' || guna2TextBox5.Text[j] == '9'|| guna2TextBox5.Text[3] == ' ' || guna2TextBox5.Text[6] == ' ')
                     {
 
                     }
@@ -503,9 +518,9 @@ namespace Stand_up
         bool Ativo;
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            if(Form2.flagFunc == true)
+            if(Form1.flagFunc == true)
             {         
-            if(Form2.flagInsertFunc == true)
+            if(Form1.flagInsertFunc == true)
             {
                     if (guna2PictureBox2.Image == null)
                     {
@@ -593,19 +608,98 @@ namespace Stand_up
                 }
             else
             {
-                DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informções do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
-                if (dr == DialogResult.Yes)
-                {
-                    int x = BLL.Func.updateFunc(n_func, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
-                    guna2DataGridView1.DataSource = BLL.Func.Load(false);
-                }
 
+                    if (guna2PictureBox2.Image == null)
+                    {
+                        MessageBox.Show("Insira uma foto");
+                    }
+                    else
+                    {
+
+                        if (guna2TextBox9.Text != "")
+                        {
+                            if (guna2TextBox4.Text.Length == 10)
+                            {
+
+                                if (guna2TextBox2.Text != "")
+                                {
+
+                                    if (guna2TextBox5.Text.Length == 11)
+                                    {
+
+                                        if (guna2TextBox6.Text.Length == 21)
+                                        {
+
+                                            if (guna2TextBox7.Text != "")
+                                            {
+
+                                                if (guna2TextBox8.Text.Length == 9)
+                                                {
+
+                                                    if (guna2ComboBox8.SelectedIndex != -1)
+                                                    {
+
+
+                                                        DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informções do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
+                                                        if (dr == DialogResult.Yes)
+                                                        {
+                                                            int x = BLL.Func.updateFunc(n_func, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
+                                                            guna2DataGridView1.DataSource = BLL.Func.Load(false);
+                                                        }
+
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Insira um género válido");
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Insira um nif válido");
+
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Insira uma morada válida");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Insira um nib válido");
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                        MessageBox.Show("Insira um email válido");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Insira um nº de telefone válido");
+
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Insira uma data válida");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Insira um nome");
+
+                        }
+
+                    }
+                
             }
             }
             else
             {
 
-                if (Form2.flagInsertCliente == true)
+                if (Form1.flagInsertCliente == true)
                 {
 
                     if (guna2PictureBox2.Image == null)
@@ -735,12 +829,12 @@ namespace Stand_up
         private void inserirVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1.flag_config = true;
-            Form2.flagFunc = true;
-            Form2.flagCliente = false;
-            Form2.flagInsertFunc = true;
-            Form2.flagEditFunc = false;
-            Form2.flagInsertCliente = false;
-            Form2.flagEditCliente = false;
+            Form1.flagFunc = true;
+            Form1.flagCliente = false;
+            Form1.flagInsertFunc = true;
+            Form1.flagEditFunc = false;
+            Form1.flagInsertCliente = false;
+            Form1.flagEditCliente = false;
             guna2GroupBox2.Text = "Inserir Funcionário";
             guna2Button4.Visible = false;
             guna2DataGridView1.DataSource = BLL.Func.Load(false);
@@ -751,12 +845,12 @@ namespace Stand_up
         {
 
             Form1.flag_config = true; 
-            Form2.flagFunc = true;
-            Form2.flagCliente = false;
-            Form2.flagInsertFunc = false;
-            Form2.flagEditFunc = true;
-            Form2.flagInsertCliente = false;
-            Form2.flagEditCliente = false;
+            Form1.flagFunc = true;
+            Form1.flagCliente = false;
+            Form1.flagInsertFunc = false;
+            Form1.flagEditFunc = true;
+            Form1.flagInsertCliente = false;
+            Form1.flagEditCliente = false;
             guna2GroupBox2.Text = "Editar Funcionário";
             guna2Button4.Visible = true;
             guna2DataGridView1.DataSource = BLL.Func.Load(false);
@@ -765,7 +859,7 @@ namespace Stand_up
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
-            if (Form2.flagFunc == true)
+            if (Form1.flagFunc == true)
             {
                 DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar a senha do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.Yes)
@@ -832,8 +926,8 @@ namespace Stand_up
 
         private void listaDeFuncionáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form2.flagFunc = true;
-            Form2.flagCliente = false;
+            Form1.flagFunc = true;
+            Form1.flagCliente = false;
             Form1.flag_lista_func = true;
             Form1.flag_config = false;
 
@@ -842,12 +936,12 @@ namespace Stand_up
         private void editarEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1.flag_config = true;
-            Form2.flagFunc = false;
-            Form2.flagCliente = true;
-            Form2.flagInsertCliente = false;
-            Form2.flagEditCliente = true;
-            Form2.flagInsertFunc = false;
-            Form2.flagEditFunc = false;
+            Form1.flagFunc = false;
+            Form1.flagCliente = true;
+            Form1.flagInsertCliente = false;
+            Form1.flagEditCliente = true;
+            Form1.flagInsertFunc = false;
+            Form1.flagEditFunc = false;
             guna2GroupBox2.Text = "editar Cliente";
             guna2Button4.Visible = true;
             guna2DataGridView1.DataSource = BLL.Clientes.Load();
@@ -865,8 +959,8 @@ namespace Stand_up
 
         private void listaDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form2.flagFunc = false;
-            Form2.flagCliente = true;
+            Form1.flagFunc = false;
+            Form1.flagCliente = true;
             Form1.flag_lista_func = true;
             Form1.flag_config = false;
         }
