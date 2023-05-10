@@ -39,7 +39,17 @@ namespace BusinessLogicLayer
             }
         }
         public class Clientes
-        {  
+        {
+
+            static public DataTable queryLoad_cliente()
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+
+                };
+                return dal.executarReader("select * from cliente  ", sqlParams);
+            }
+
             static public DataTable queryCliente_Like_nome(string nome)
             {
                 DAL dal = new DAL();

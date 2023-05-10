@@ -24,6 +24,8 @@ namespace Stand_up
         int mes=1;
         int ano = 2023;
         ImageList images = new ImageList();
+        ImageList images1 = new ImageList();
+        ImageList images2 = new ImageList();
         void verificar_mes() {
 
             switch (mes)
@@ -1246,9 +1248,10 @@ namespace Stand_up
             DataTable dr = BLL.veiculos.queryLoad_veiculo();
 
             listView3.Clear();
-                i = 0;
+            images.Images.Clear();
+            i = 0;
 
-
+            
 
 
 
@@ -1266,7 +1269,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
+                byte[] imagebyte = (byte[])(row["Imagem"]);
 
                 MemoryStream image_stream = new MemoryStream(imagebyte);
 
@@ -1311,10 +1314,12 @@ namespace Stand_up
 
 
 
-
+           
             DataTable dt = BLL.Func.queryLoad_Func();
 
             listView1.Clear();
+            images1.Images.Clear();
+
             i = 0;
 
 
@@ -1327,21 +1332,21 @@ namespace Stand_up
 
 
 
-                images.ColorDepth = ColorDepth.Depth32Bit;
+                images1.ColorDepth = ColorDepth.Depth32Bit;
 
-                listView3.LargeImageList = images;
+                listView1.LargeImageList = images1;
 
-                listView3.LargeImageList.ImageSize = new System.Drawing.Size(123, 123);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(123, 123);
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
+                byte[] imagebyte = (byte[])(row["imagem"]);
 
                 MemoryStream image_stream = new MemoryStream(imagebyte);
 
                 image_stream.Write(imagebyte, 0, imagebyte.Length);
 
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
+                images1.Images.Add(row["imagem"].ToString(), new Bitmap(image_stream));
 
 
 
@@ -1358,6 +1363,78 @@ namespace Stand_up
                 i += 1;
 
                 this.listView1.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+        }
+
+        void carregar_cliente_PARA_LISTVIEW()
+        {
+
+
+
+
+
+            DataTable dt = BLL.Clientes.queryLoad_cliente();
+
+            listView2.Clear();
+            images2.Images.Clear();
+
+            i = 0;
+
+
+
+
+
+            foreach (DataRow row in dt.Rows)
+
+            {
+
+
+
+                images2.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView2.LargeImageList = images2;
+
+                listView2.LargeImageList.ImageSize = new System.Drawing.Size(123, 123);
+
+
+
+                byte[] imagebyte = (byte[])(row["imagem"]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images2.Images.Add(row["imagem"].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = row["nome"].ToString();
+
+                i += 1;
+
+                this.listView2.Items.Add(item);
 
 
 
@@ -1393,22 +1470,15 @@ namespace Stand_up
 
             if (DataSelecionada>=DataHoje)
             {
-                listView1.Enabled = true;
-                listView2.Enabled = true;
-                listView3.Enabled = true;
+
                 guna2ComboBox1.Enabled = true;
-                guna2TextBox9.Enabled = true;
-                guna2Button32.Enabled = true;
-                guna2Button33.Enabled = true;
 
             }
             else
             {
-                listView1.Enabled = false;
-                listView2.Enabled = false;
-                listView3.Enabled = false;
+                listView2.Clear();
+                listView1.Clear();
                 guna2ComboBox1.Enabled = false;
-                guna2TextBox9.Enabled = false;
                 guna2Button32.Enabled = false;
                 guna2Button33.Enabled = false;
             }
@@ -1687,9 +1757,22 @@ verificar_dia();
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
 
-            
+            Ativar_marcacao();
+
+            carregar_cliente_PARA_LISTVIEW();
+
+        }
+
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            guna2Button32.Enabled = true;
+        }
+
+        private void guna2Button32_Click(object sender, EventArgs e)
+        {
+
+
         }
     }
 }
