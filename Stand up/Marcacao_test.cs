@@ -21,7 +21,7 @@ namespace Stand_up
         }
         int i = 0;
         int dia = 1;
-        int mes=1;
+        int mes = 1;
         int ano = 2023;
         ImageList images = new ImageList();
         ImageList images1 = new ImageList();
@@ -72,7 +72,7 @@ namespace Stand_up
 
                 case 5:
 
-                  
+
                     guna2Button30.Visible = true;
                     guna2Button31.Visible = true;
                     guna2TextBox1.Text = "Maio";
@@ -85,7 +85,7 @@ namespace Stand_up
                     break;
                 case 7:
 
-                   
+
                     guna2Button30.Visible = true;
                     guna2Button31.Visible = true;
                     guna2TextBox1.Text = "Julho";
@@ -125,8 +125,8 @@ namespace Stand_up
                     guna2TextBox1.Text = "Dezembro";
                     break;
             }
-        
-        
+
+
         }
         void verificar_dia() {
 
@@ -166,7 +166,7 @@ namespace Stand_up
                     guna2Button29.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button30.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button31.FillColor = Color.FromArgb(197, 109, 109);
-              
+
                     break;
                 case 2:
                     guna2Button2.FillColor = Color.FromArgb(128, 64, 64);
@@ -201,7 +201,7 @@ namespace Stand_up
                     guna2Button30.FillColor = Color.FromArgb(197, 109, 109);
                     guna2Button31.FillColor = Color.FromArgb(197, 109, 109);
 
-                 
+
                     break;
                 case 3:
 
@@ -1215,28 +1215,30 @@ namespace Stand_up
                     guna2Button1.FillColor = Color.FromArgb(197, 109, 109);
 
                     break;
-                    guna2ComboBox1.Items.Clear();
-                    guna2ComboBox1.Items.Add("08:00 - 08:30");
-                    guna2ComboBox1.Items.Add("08:30 - 09:00");
-                    guna2ComboBox1.Items.Add("09:00 - 09:30");
-                    guna2ComboBox1.Items.Add("09:30 - 10:00");
-                    guna2ComboBox1.Items.Add("10:00 - 10:30");
-                    guna2ComboBox1.Items.Add("10:30 - 11:00");
-                    guna2ComboBox1.Items.Add("11:00 - 11:30");
-                    guna2ComboBox1.Items.Add("11:30 - 12:00");
-                    guna2ComboBox1.Items.Add("12:00 - 12:30");
-                    guna2ComboBox1.Items.Add("12:30 - 13:00");
-                    guna2ComboBox1.Items.Add("13:00 - 13:30");
-                    guna2ComboBox1.Items.Add("13:30 - 14:00");
-                    guna2ComboBox1.Items.Add("14:00 - 14:30");
-                    guna2ComboBox1.Items.Add("14:30 - 15:00");
-                    guna2ComboBox1.Items.Add("15:00 - 15:30");
-                    guna2ComboBox1.Items.Add("15:30 - 16:00");
-                    guna2ComboBox1.Items.Add("16:00 - 16:30");
-                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+                 
 
             }
-        
+
+            guna2ComboBox1.Items.Clear();
+            guna2ComboBox1.Items.Add("08:00 - 08:30");
+            guna2ComboBox1.Items.Add("08:30 - 09:00");
+            guna2ComboBox1.Items.Add("09:00 - 09:30");
+            guna2ComboBox1.Items.Add("09:30 - 10:00");
+            guna2ComboBox1.Items.Add("10:00 - 10:30");
+            guna2ComboBox1.Items.Add("10:30 - 11:00");
+            guna2ComboBox1.Items.Add("11:00 - 11:30");
+            guna2ComboBox1.Items.Add("11:30 - 12:00");
+            guna2ComboBox1.Items.Add("12:00 - 12:30");
+            guna2ComboBox1.Items.Add("12:30 - 13:00");
+            guna2ComboBox1.Items.Add("13:00 - 13:30");
+            guna2ComboBox1.Items.Add("13:30 - 14:00");
+            guna2ComboBox1.Items.Add("14:00 - 14:30");
+            guna2ComboBox1.Items.Add("14:30 - 15:00");
+            guna2ComboBox1.Items.Add("15:00 - 15:30");
+            guna2ComboBox1.Items.Add("15:30 - 16:00");
+            guna2ComboBox1.Items.Add("16:00 - 16:30");
+            guna2ComboBox1.Items.Add("16:30 - 17:00");
+
         }
         void carregar_car_PARA_LISTVIEW()
         {
@@ -1251,7 +1253,7 @@ namespace Stand_up
             images.Images.Clear();
             i = 0;
 
-            
+
 
 
 
@@ -1305,7 +1307,7 @@ namespace Stand_up
 
             }
 
-           
+
         }
 
         void carregar_func_PARA_LISTVIEW()
@@ -1314,7 +1316,7 @@ namespace Stand_up
 
 
 
-           
+
             DataTable dt = BLL.Func.queryLoad_Func();
 
             listView1.Clear();
@@ -1465,24 +1467,72 @@ namespace Stand_up
 
         void Ativar_marcacao()
         {
-            DateTime DataSelecionada = DateTime.Parse(dia+"/"+mes+"/"+ano);
-            DateTime DataHoje = DateTime.ParseExact(DateTime.Now.ToShortDateString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            //DateTime DataSelecionada = DateTime.Parse(dia + "/" + mes + "/" + ano);
+            //string dataformatada = DateTime.Now.ToString("dd/MM/yyyy");
+            //DateTime DataHoje = DateTime.ParseExact(dataformatada, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-            if (DataSelecionada>=DataHoje)
+            //if (DataSelecionada >= DataHoje)
+            //{
+
+            //    guna2ComboBox1.Enabled = true;
+
+            //}
+            //else
+            //{
+            //    listView2.Clear();
+            //    listView1.Clear();
+            //    guna2ComboBox1.Enabled = false;
+            //    guna2Button32.Enabled = false;
+            //    guna2Button33.Enabled = false;
+            //}
+           
+            string dataString = (dia + "/" + mes + "/" + ano);
+
+            DateTime data;
+           if(dia <= 9 && mes <= 9)
             {
+                dataString = ("0"+dia + "/" + "0" + mes + "/" + ano);
+            }
+           else if (dia <= 9)
+            {
+                dataString = ("0" + dia + "/" + mes + "/" + ano);
+            }
+           else if (mes<=9)
+            {
+                dataString = ( dia + "/" + "0" + mes + "/" + ano);
+            }
+            if (DateTime.TryParseExact(dataString, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out data))
+            {
+                DateTime hoje = DateTime.Now;
 
-                guna2ComboBox1.Enabled = true;
-
+                if (data >= hoje.Date)
+                {
+                    guna2ComboBox1.Enabled = true;
+                    guna2ComboBox1.Enabled = true;
+                    guna2Button32.Enabled = true;
+                    guna2Button33.Enabled = true;
+                }
+               
+                else
+                {
+                    listView2.Clear();
+                    listView1.Clear();
+                    guna2ComboBox1.Enabled = false;
+                    guna2Button32.Enabled = false;
+                    guna2Button33.Enabled = false;
+                }
             }
             else
             {
-                listView2.Clear();
-                listView1.Clear();
-                guna2ComboBox1.Enabled = false;
-                guna2Button32.Enabled = false;
-                guna2Button33.Enabled = false;
+                MessageBox.Show("Data inválida." + dataString);
             }
+
+
+
+
         }
+
+
 
 
         private void guna2Button42_Click(object sender, EventArgs e)
