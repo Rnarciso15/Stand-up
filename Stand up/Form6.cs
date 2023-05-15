@@ -575,32 +575,68 @@ namespace Stand_up
 
         private void listaDeFuncionáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Form1.flagFunc = true;
+            Form1.flagCliente = false;
+            Form1.flag_lista_func = true;
             Form1.flag_config = false;
         }
 
         private void inserirVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             Form1.flag_config = true;
+            Form1.flagFunc = true;
+            Form1.flagCliente = false;
+            Form1.flagInsertFunc = true;
+            Form1.flagEditFunc = false;
+            Form1.flagInsertCliente = false;
+            Form1.flagEditCliente = false;
         }
 
         private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1.flag_config = true;
+            Form1.flagFunc = true;
+            Form1.flagCliente = false;
+            Form1.flagInsertFunc = false;
+            Form1.flagEditFunc = true;
+            Form1.flagInsertCliente = false;
+            Form1.flagEditCliente = false;
         }
 
         private void inserirEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1.flag_config = true;
+            Form1.flagFunc = false;
+            Form1.flagCliente = true;
+            Form1.flagInsertCliente = true;
+            Form1.flagEditCliente = false;
+            Form1.flagInsertFunc = false;
+            Form1.flagEditFunc = false;
         }
 
         private void editarEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1.flag_config = true;
+            Form1.flagFunc = false;
+            Form1.flagCliente = true;
+            Form1.flagInsertCliente = false;
+            Form1.flagEditCliente = true;
+            Form1.flagInsertFunc = false;
+            Form1.flagEditFunc = false;
         }
 
         private void listaDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Form1.flagFunc = false;
+            Form1.flagCliente = true;
+            Form1.flag_lista_func = true;
             Form1.flag_config = false;
+        }
+
+        private void especificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
