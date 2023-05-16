@@ -1893,9 +1893,9 @@ verificar_dia();
                 imageM = byteArrayToImage((Byte[])row["Imagem"]);
               
             }
-            Insertdata = DateTime.ParseExact(data123, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+            Insertdata = DateTime.ParseExact(data123, "dd/MM/yyyy HH:mm:ss", CultureInfo.CurrentCulture);
             int x = BLL.testDrive.insertTest(Insertdata,Convert.ToInt32(id_func),nomeFunc,Convert.ToInt32(id_cliente),nomeCliente,marca,modelo,matricula, imgToByteArray(imageM));
-
+            guna2DataGridView1.DataSource = BLL.testDrive.queryLoad_Test(Insertdata);
         }
 
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)

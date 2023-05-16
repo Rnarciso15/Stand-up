@@ -58,13 +58,13 @@ namespace BusinessLogicLayer
                 return dal.executarNonQuery("INSERT into marcacao (data,id_func,nomefunc,id_cliente,nomecliente,marca,modelo,matricula,imagemcarro) VALUES(@data,@id_func,@nomefunc,@id_cliente,@nomecliente,@marca,@modelo,@matricula,@imagemcarro)", sqlParams);
             }
 
-            static public DataTable queryLoad_Test()
+            static public DataTable queryLoad_Test(DateTime data)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-
+                    new SqlParameter("@data", data),
                 };
-                return dal.executarReader("select * from marcacao  ", sqlParams);
+                return dal.executarReader("select * from marcacao  where data = @data", sqlParams);
             }
         }
         public class Clientes
