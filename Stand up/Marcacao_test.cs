@@ -26,6 +26,17 @@ namespace Stand_up
         ImageList images = new ImageList();
         ImageList images1 = new ImageList();
         ImageList images2 = new ImageList();
+        DateTime Insertdata;
+        string data123 = "";
+        string hora = "";
+        string id_func;
+        string id_cliente;
+        string nomeFunc;
+        string nomeCliente;
+        string matricula;
+        string marca;
+        string modelo;
+     Image imageM;
         void verificar_mes() {
 
             switch (mes)
@@ -1360,7 +1371,7 @@ namespace Stand_up
 
                 item.ImageIndex = i;
 
-                item.Text = row["nome"].ToString();
+                item.Text = row["n_func"].ToString() + " " +row["nome"].ToString();
 
                 i += 1;
 
@@ -1511,6 +1522,8 @@ namespace Stand_up
                     guna2ComboBox1.Enabled = true;
                     guna2Button32.Enabled = true;
                     guna2Button33.Enabled = true;
+                    //data123 = dataString + hora;
+                    //Insertdata = Convert.ToDateTime(data123);
                 }
                
                 else
@@ -1799,30 +1812,173 @@ verificar_dia();
 
         private void listView3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Ativar_marcacao();
+            if (listView3.SelectedItems.Count > 0)
+            {
+               matricula = listView1.SelectedItems[0].Text; ;
+              
+                Ativar_marcacao();
 
-             carregar_func_PARA_LISTVIEW();
-
+                carregar_func_PARA_LISTVIEW();
+            }
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                string phrase = listView1.SelectedItems[0].Text; ;
+                string[] words = phrase.Split(' ');
 
-            Ativar_marcacao();
+                id_func = words[0];
+                nomeFunc = words[1];
+                Ativar_marcacao();
 
-            carregar_cliente_PARA_LISTVIEW();
-
+                carregar_cliente_PARA_LISTVIEW();
+            }
         }
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            guna2Button32.Enabled = true;
-        }
+            if (listView2.SelectedItems.Count > 0)
+            {
+                string phrase = listView2.SelectedItems[0].Text; ;
+                string[] words = phrase.Split(' ');
 
-        private void guna2Button32_Click(object sender, EventArgs e)
+                id_cliente = words[0];
+                nomeCliente = words[1];
+                guna2Button32.Enabled = true;
+            }
+        }
+        public Image byteArrayToImage(byte[] byteArrayIn)
+
         {
 
+            using (MemoryStream mStream = new MemoryStream(byteArrayIn))
 
+            {
+
+                return Image.FromStream(mStream);
+
+            }
+
+        }
+
+
+        public byte[] imgToByteArray(Image img)
+
+        {
+
+            using (MemoryStream mStream = new MemoryStream())
+
+            {
+
+                img.Save(mStream, img.RawFormat);
+
+                return mStream.ToArray();
+
+            }
+
+        }
+        private void guna2Button32_Click(object sender, EventArgs e)
+        {
+            DataTable info = BLL.veiculos.Load_dados(matricula);
+
+            foreach (DataRow row in info.Rows)
+            {
+
+               
+           marca = (string)row["Marca"];
+                modelo = (string)row["Modelo"];
+                imageM = byteArrayToImage((Byte[])row["Imagem"]);
+              
+            }
+            int x = BLL.testDrive.insertTest(Insertdata,Convert.ToInt32(id_func),nomeFunc,Convert.ToInt32(id_cliente),nomeCliente,marca,modelo,matricula, imgToByteArray(imageM));
+
+        }
+
+        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
+      
+        
+            guna2ComboBox1.Items.Add("16:30 - 17:00");
+            switch (guna2ComboBox1.Text)
+            {
+
+                case "08:00 - 08:30":
+                    hora = "08:30:00";
+
+                    break;
+                case "08:30 - 09:00":
+                    hora = "09:00:00";
+
+                    break;
+                case "09:00 - 09:30":
+                    hora = "09:30:00";
+
+                    break;
+                case "09:30 - 10:00":
+                    hora = "10:00:00";
+
+                    break;
+                case "10:00 - 10:30":
+                    hora = "10:30:00";
+
+                    break;
+                case "10:30 - 11:00":
+                    hora = "11:00:00";
+
+                    break;
+                case "11:00 - 11:30":
+                    hora = "11:30:00";
+
+                    break;
+                case "11:30 - 12:00":
+                    hora = "12:00:00";
+
+                    break;
+                case "12:00 - 12:30":
+                    hora = "12:30:00";
+
+                    break;
+                case "12:30 - 13:00":
+                    hora = "13:00:00";
+
+                    break;
+
+               case "13:00 - 13:30":
+                    hora = "13:30:00";
+
+                    break;
+                case "13:30 - 14:00":
+                    hora = "14:00:00";
+
+                    break;
+                case "14:00 - 14:30":
+                    hora = "14:30:00";
+
+                    break;
+                case "14:30 - 15:00":
+                    hora = "15:00:00";
+
+                    break;
+                case "15:00 - 15:30":
+                    hora = "15:30:00";
+
+                    break;
+                case "15:30 - 16:00":
+                    hora = "16:00:00";
+
+                    break;
+                case "16:00 - 16:30":
+                    hora = "16:30:00";
+
+                    break;
+                case "16:30 - 17:00":
+                    hora = "17:00:00";
+                    break;
+           
+            }
         }
     }
 }

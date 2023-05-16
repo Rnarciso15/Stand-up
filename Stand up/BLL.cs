@@ -38,6 +38,35 @@ namespace BusinessLogicLayer
                 return dal.executarNonQuery("INSERT into Imagem (Img) VALUES(@img)", sqlParams);
             }
         }
+        public class testDrive
+        {
+            static public int insertTest(DateTime data, int id_func, string nomefunc,int id_cliente,string nomecliente,string marca,string modelo,string matricula,byte[] imagemcarro)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@data", data),
+                new SqlParameter("@id_func", id_func),
+                  new SqlParameter("@nomefunc", nomefunc),
+                    new SqlParameter("@id_cliente", id_cliente),
+                    new SqlParameter("@nomecliente", nomecliente),
+                new SqlParameter("@marca", marca),
+                 new SqlParameter("@modelo", modelo),
+                  new SqlParameter("@matricula", matricula),
+                    new SqlParameter("@imagemcarro", imagemcarro)
+            };
+
+                return dal.executarNonQuery("INSERT into marcacao (data,id_func,nomefunc,id_cliente,nomecliente,marca,modelo,matricula,imagemcarro) VALUES(@data,@id_func,@nomefunc,@id_cliente,@nomecliente,@marca,@modelo,@matricula,@imagemcarro)", sqlParams);
+            }
+
+            static public DataTable queryLoad_Test()
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+
+                };
+                return dal.executarReader("select * from marcacao  ", sqlParams);
+            }
+        }
         public class Clientes
         {
 
