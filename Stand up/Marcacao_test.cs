@@ -1371,7 +1371,7 @@ namespace Stand_up
 
                 item.ImageIndex = i;
 
-                item.Text = row["n_func"].ToString() + " " +row["nome"].ToString();
+                item.Text = " " + row["n_func"].ToString() + " " +row["nome"].ToString();
 
                 i += 1;
 
@@ -1443,7 +1443,7 @@ namespace Stand_up
 
                 item.ImageIndex = i;
 
-                item.Text = row["nome"].ToString();
+                item.Text = " " + row["n_cliente"].ToString()+" " + row["nome"].ToString();
 
                 i += 1;
 
@@ -1522,8 +1522,8 @@ namespace Stand_up
                     guna2ComboBox1.Enabled = true;
                     guna2Button32.Enabled = true;
                     guna2Button33.Enabled = true;
-                    //data123 = dataString + hora;
-                    //Insertdata = Convert.ToDateTime(data123);
+                    data123 = dataString +" " + hora;
+                   
                 }
                
                 else
@@ -1814,7 +1814,7 @@ verificar_dia();
         {
             if (listView3.SelectedItems.Count > 0)
             {
-               matricula = listView1.SelectedItems[0].Text; ;
+               matricula = listView3.SelectedItems[0].Text; ;
               
                 Ativar_marcacao();
 
@@ -1829,8 +1829,8 @@ verificar_dia();
                 string phrase = listView1.SelectedItems[0].Text; ;
                 string[] words = phrase.Split(' ');
 
-                id_func = words[0];
-                nomeFunc = words[1];
+                id_func = words[1];
+                nomeFunc = words[2];
                 Ativar_marcacao();
 
                 carregar_cliente_PARA_LISTVIEW();
@@ -1844,8 +1844,8 @@ verificar_dia();
                 string phrase = listView2.SelectedItems[0].Text; ;
                 string[] words = phrase.Split(' ');
 
-                id_cliente = words[0];
-                nomeCliente = words[1];
+                id_cliente = words[1];
+                nomeCliente = words[2];
                 guna2Button32.Enabled = true;
             }
         }
@@ -1881,6 +1881,7 @@ verificar_dia();
         }
         private void guna2Button32_Click(object sender, EventArgs e)
         {
+          
             DataTable info = BLL.veiculos.Load_dados(matricula);
 
             foreach (DataRow row in info.Rows)
@@ -1892,6 +1893,7 @@ verificar_dia();
                 imageM = byteArrayToImage((Byte[])row["Imagem"]);
               
             }
+            Insertdata = DateTime.ParseExact(data123, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
             int x = BLL.testDrive.insertTest(Insertdata,Convert.ToInt32(id_func),nomeFunc,Convert.ToInt32(id_cliente),nomeCliente,marca,modelo,matricula, imgToByteArray(imageM));
 
         }
