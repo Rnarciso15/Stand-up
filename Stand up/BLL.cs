@@ -312,6 +312,45 @@ namespace BusinessLogicLayer
            };
                 return dal.executarReader("select Matricula from Veiculo where Matricula = @Matricula", sqlParams);
             }
+
+            static public DataTable queryCarro(string Cor, string Marca)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@Cor", Cor),
+                 new SqlParameter("@Marca", Marca ),
+                };
+                return dal.executarReader("select * from Veiculo where Cor = @Cor and Marca = @Marca", sqlParams);
+            }
+
+            static public DataTable queryCarro2(string Combustivel, string Marca)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@Combustivel", Combustivel),
+                 new SqlParameter("@Marca", Marca ),
+                };
+                return dal.executarReader("select * from Veiculo where Combustivel = @Combustivel and Marca = @Marca", sqlParams);
+            }
+            static public DataTable queryCarro3(string Combustivel, string Marca,string Cor)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@Combustivel", Combustivel),
+                 new SqlParameter("@Marca", Marca ),
+                 new SqlParameter("@Cor", Cor ),
+                };
+                return dal.executarReader("select * from Veiculo where Combustivel = @Combustivel and Marca = @Marca and Cor = @Cor", sqlParams);
+            }
+            static public DataTable queryCarro4(string Combustivel, string Cor )
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@Combustivel", Combustivel),
+                 new SqlParameter("@Cor", Cor ),
+                };
+                return dal.executarReader("select * from Veiculo where Combustivel = @Combustivel and Cor = @Cor", sqlParams);
+            }
             static public int updateVeiculo(string Matricula, int Quilometros, string Data, string Marca, string Modelo, string Descricao, string Combustivel, byte[] Imagem, int Valor, string Cor, string tipo_de_caixa, int N_Portas, string Traccao, string Matricula1)
             {
                 DAL dal = new DAL();
@@ -612,6 +651,8 @@ namespace BusinessLogicLayer
                 };
                 return dal.executarReader("select * from funcionario where genero like @genero and ativo = @ativo", sqlParams);
             }
+
+            
             static public DataTable queryFunc_Like_idade(string data_nascimento)
             {
                 DAL dal = new DAL();

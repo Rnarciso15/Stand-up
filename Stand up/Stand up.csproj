@@ -346,5 +346,44 @@
   <ItemGroup>
     <None Include="resources\pdf-file1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\amarelo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\azul.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\bege.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\castanho.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\cinzento.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\branco.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\todascores.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\laranja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\preto.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\rosa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\roxo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\verde.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\vermelho.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
