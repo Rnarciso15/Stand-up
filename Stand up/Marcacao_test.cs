@@ -1520,8 +1520,6 @@ namespace Stand_up
                 {
                     guna2ComboBox1.Enabled = true;
                     guna2ComboBox1.Enabled = true;
-                    guna2Button32.Enabled = true;
-                    guna2Button33.Enabled = true;
                     data123 = dataString +" " + hora;
                    
                 }
@@ -1881,21 +1879,56 @@ verificar_dia();
         }
         private void guna2Button32_Click(object sender, EventArgs e)
         {
-          
+          if( listView3.SelectedItems.Count < 1)
+            {
+                MessageBox.Show("Selecione um veiculo");
+            }
+            else
+            {
+                if (listView1.SelectedItems.Count < 1)
+                {
+                    MessageBox.Show("Selecione um funcionário");
+                }
+                else
+                {
+                    if(listView2.SelectedItems.Count < 1)
+                    {
+                        MessageBox.Show("Selecione um cliente");
+                    }
+                    else
+                    {
+                        if (guna2ComboBox1.SelectedIndex == -1){
+
+
+                            MessageBox.Show("Selecione uma hora para efetuar o Test-drive");
+                        }
+                        else
+                        {
+
+                      
+           
+         
             DataTable info = BLL.veiculos.Load_dados(matricula);
 
             foreach (DataRow row in info.Rows)
             {
 
                
-           marca = (string)row["Marca"];
+                marca = (string)row["Marca"];
                 modelo = (string)row["Modelo"];
                 imageM = byteArrayToImage((Byte[])row["Imagem"]);
               
             }
-            Insertdata = DateTime.ParseExact(data123, "dd/MM/yyyy HH:mm:ss", CultureInfo.CurrentCulture);
+                        
+                            data123 = data123 + hora;
+            Insertdata = DateTime.ParseExact(data123, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
             int x = BLL.testDrive.insertTest(Insertdata,Convert.ToInt32(id_func),nomeFunc,Convert.ToInt32(id_cliente),nomeCliente,marca,modelo,matricula, imgToByteArray(imageM));
             guna2DataGridView1.DataSource = BLL.testDrive.queryLoad_Test(Insertdata);
+            }
+                    }
+                }
+
+            }
         }
 
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
