@@ -36,6 +36,7 @@ namespace Stand_up
         string matricula;
         string marca;
         string modelo;
+        bool flag_dataValida=true;
      Image imageM;
         void verificar_mes() {
 
@@ -1521,7 +1522,7 @@ namespace Stand_up
                     guna2ComboBox1.Enabled = true;
                     guna2ComboBox1.Enabled = true;
                     data123 = dataString +" " + hora;
-                   
+                    flag_dataValida = true;
                 }
                
                 else
@@ -1531,6 +1532,7 @@ namespace Stand_up
                     guna2ComboBox1.Enabled = false;
                     guna2Button32.Enabled = false;
                     guna2Button33.Enabled = false;
+                    flag_dataValida = false;
                 }
             }
             else
@@ -1810,11 +1812,14 @@ verificar_dia();
 
         private void listView3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listView3.SelectedItems.Count > 0)
+
+            Ativar_marcacao();
+
+            if (listView3.SelectedItems.Count > 0 && flag_dataValida==true)
             {
                matricula = listView3.SelectedItems[0].Text; ;
               
-                Ativar_marcacao();
+                
 
                 carregar_func_PARA_LISTVIEW();
             }
@@ -1822,14 +1827,17 @@ verificar_dia();
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listView1.SelectedItems.Count > 0)
+
+            Ativar_marcacao();
+
+            if (listView1.SelectedItems.Count > 0 && flag_dataValida == true)
             {
                 string phrase = listView1.SelectedItems[0].Text; ;
                 string[] words = phrase.Split(' ');
 
                 id_func = words[1];
                 nomeFunc = words[2];
-                Ativar_marcacao();
+                
 
                 carregar_cliente_PARA_LISTVIEW();
             }
@@ -1837,7 +1845,7 @@ verificar_dia();
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (listView2.SelectedItems.Count > 0)
+            if (listView2.SelectedItems.Count > 0 && flag_dataValida == true)
             {
                 string phrase = listView2.SelectedItems[0].Text; ;
                 string[] words = phrase.Split(' ');
