@@ -40,11 +40,12 @@ namespace BusinessLogicLayer
         }
         public class testDrive
         {
-            static public int insertTest(DateTime data, int id_func, string nomefunc,int id_cliente,string nomecliente,string marca,string modelo,string matricula,byte[] imagemcarro)
+            static public int insertTest(DateTime data_sem_hora,DateTime data, int id_func, string nomefunc,int id_cliente,string nomecliente,string marca,string modelo,string matricula,byte[] imagemcarro)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                 new SqlParameter("@data", data),
+                   new SqlParameter("@data_sem_hora", data_sem_hora),
                 new SqlParameter("@id_func", id_func),
                   new SqlParameter("@nomefunc", nomefunc),
                     new SqlParameter("@id_cliente", id_cliente),
@@ -55,16 +56,16 @@ namespace BusinessLogicLayer
                     new SqlParameter("@imagemcarro", imagemcarro)
             };
 
-                return dal.executarNonQuery("INSERT into marcacao (data,id_func,nomefunc,id_cliente,nomecliente,marca,modelo,matricula,imagemcarro) VALUES(@data,@id_func,@nomefunc,@id_cliente,@nomecliente,@marca,@modelo,@matricula,@imagemcarro)", sqlParams);
+                return dal.executarNonQuery("INSERT into marcacao (data_sem_hora,data,id_func,nomefunc,id_cliente,nomecliente,marca,modelo,matricula,imagemcarro) VALUES(@data_sem_hora,@data,@id_func,@nomefunc,@id_cliente,@nomecliente,@marca,@modelo,@matricula,@imagemcarro)", sqlParams);
             }
 
-            static public DataTable queryLoad_Test(DateTime data)
+            static public DataTable queryLoad_Test(DateTime data_sem_hora)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                    new SqlParameter("@data", data),
+                    new SqlParameter("@data_sem_hora", data_sem_hora),
                 };
-                return dal.executarReader("select * from marcacao  where data = @data", sqlParams);
+                return dal.executarReader("select * from marcacao  where data_sem_hora = @data_sem_hora", sqlParams);
             }
         }
         public class Clientes

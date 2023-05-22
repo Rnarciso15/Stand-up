@@ -813,28 +813,33 @@ namespace Stand_up
         {
             Combustivel = "Gasolina";
             k = 1;
+            funcoesCarregadas = false;
         }
 
         private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Combustivel = "Gasóleo";
             k = 1;
         }
 
         private void elétricoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Combustivel = "Elétrico";
             k = 1;
         }
 
         private void hibridoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Combustivel = "Hibrido";
             k = 1;
         }
 
         private void inserirEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             carregar_car_PARA_LISTVIEW2();
         }
 
@@ -848,188 +853,220 @@ namespace Stand_up
         {
             Marca = "Alfa Romeo";
             l = 1;
+            funcoesCarregadas = false;
         }
 
         private void audiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Marca = "Audi";
             l = 1;
+            funcoesCarregadas = false;
         }
 
         private void bMWToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "BMW";
             l = 1;
         }
 
         private void chevroletToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Chevrolet";
             l = 1;
         }
 
         private void citroënToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Citroën";
             l = 1;
         }
 
         private void cupraToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Cupra";
             l = 1;
         }
 
         private void daciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Dacia";
             l = 1;
         }
 
         private void fiatToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Fiat";
             l = 1;
         }
 
         private void fordToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Ford";
             l = 1;
         }
 
         private void hondaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Honda";
             l = 1;
         }
 
         private void hyondaiToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Hyundai";
             l = 1;
         }
 
         private void jaguarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Jaguar";
             l = 1;
         }
 
         private void jeepToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Jeep";
             l = 1;
         }
 
         private void kiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Kia";
             l = 1;
         }
 
         private void landRoverToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Land Rover";
             l = 1;
         }
 
         private void lexusToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Lexus";
             l = 1;
         }
 
         private void mazdaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Mazda";
             l = 1;
         }
 
         private void mercedesBenzToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Mercedes-Benz";
             l = 1;
         }
 
         private void miniToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Mini";
             l = 1;
         }
 
         private void mitsubishiToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Mitsubishi";
             l = 1;
         }
 
         private void nissanToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Nissan";
             l = 1;
         }
 
         private void opelToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Opel";
             l = 1;
         }
 
         private void peugeotToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Marca = "Peuge0t";
+
+            funcoesCarregadas = false;
+            Marca = "Peugeot";
             l = 1;
         }
 
         private void renaultToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Renault";
             l = 1;
         }
 
         private void seatToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Seat";
             l = 1;
         }
 
         private void skodaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Skoda";
             l = 1;
         }
 
         private void smartToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Smart";
             l = 1;
         }
 
         private void teslaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Tesla";
             l = 1;
         }
 
         private void toyotaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Toyota";
             l = 1;
         }
 
         private void volkswagenToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Volkswagen";
             l = 1;
         }
 
         private void volvoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Marca = "Volvo";
             l = 1;
         }
-      
+        bool funcoesCarregadas = false;
         private void timer1_Tick(object sender, EventArgs e)
         {
           if(flagPanel == false)
@@ -1043,38 +1080,84 @@ namespace Stand_up
                 guna2Panel1.Visible = false;
 
             }
+            //  if (k == 1)
+            //  {
+            //      carregar_car_PARA_LISTVIEW1();
+            //  }
+            //  if (l == 1)
+            //  {
+            //      carregar_car_PARA_LISTVIEW4();
+            //  }
+            // if (j == 1)
+            //  {
+            //      carregar_car_PARA_LISTVIEW5();
+            //  }
+            //  if (k == 1 && j == 1)
+            //  {
+            //      carregar_car_PARA_LISTVIEW10();
+            //  }
+            //  if (l == 1 &&  j == 1)
+            //  {
+            //      carregar_car_PARA_LISTVIEW6();
+            //  }
+            //if (l == 1 && k == 1)
+            //  {
+            //      carregar_car_PARA_LISTVIEW7();
+            //  }
+            //  if (l == 1 && k == 1 && j==1)
+            //  {
+            //      carregar_car_PARA_LISTVIEW8();
+            //  }
+          
 
-
-           if (j == 1)
+            if (k == 1 && funcoesCarregadas == false)
+            {
+                carregar_car_PARA_LISTVIEW1();
+                funcoesCarregadas = true;
+            }
+            if (l == 1 && funcoesCarregadas == false)
+            {
+                carregar_car_PARA_LISTVIEW4();
+                funcoesCarregadas = true;
+            }
+            if (j == 1 && funcoesCarregadas == false)
             {
                 carregar_car_PARA_LISTVIEW5();
+                funcoesCarregadas = true;
             }
-            if (k == 1 && j == 1)
+            if (k == 1 && j == 1 && funcoesCarregadas == false)
             {
                 carregar_car_PARA_LISTVIEW10();
+                funcoesCarregadas = true;
             }
-            if (l == 1 &&  j == 1)
+            if (l == 1 && j == 1 && funcoesCarregadas == false)
             {
                 carregar_car_PARA_LISTVIEW6();
+                funcoesCarregadas = true;
             }
-          if (l == 1 && k == 1)
+            if (l == 1 && k == 1 && funcoesCarregadas == false)
             {
                 carregar_car_PARA_LISTVIEW7();
+                funcoesCarregadas = true;
             }
-            if (l == 1 && k == 1 && j==1)
+            if (l == 1 && k == 1 && j == 1 && funcoesCarregadas == false)
             {
                 carregar_car_PARA_LISTVIEW8();
+                funcoesCarregadas = true;
             }
+
         }
 
         private void escurasToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Cor = "Amarelo";
             j = 1;
         }
 
         private void claraToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Cor = "Azul";
             j = 1;
 
@@ -1082,6 +1165,7 @@ namespace Stand_up
 
         private void begeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Cor = "Bege";
             j = 1;
 
@@ -1089,6 +1173,7 @@ namespace Stand_up
 
         private void brancoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Cor = "Branco";
             j = 1;
 
@@ -1096,13 +1181,16 @@ namespace Stand_up
 
         private void castanhoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Cor = "Castanho";
             j = 1;
 
         }
 
+
         private void cinzentoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Cor = "Cinzento";
             j = 1;
 
@@ -1110,6 +1198,7 @@ namespace Stand_up
 
         private void douradoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Cor = "Dourado";
             j = 1;
 
@@ -1117,6 +1206,7 @@ namespace Stand_up
 
         private void laranjaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Cor = "Laranja";
             j = 1;
 
@@ -1124,6 +1214,7 @@ namespace Stand_up
 
         private void prateadoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Cor = "Prateado";
             j = 1;
 
@@ -1131,6 +1222,7 @@ namespace Stand_up
 
         private void pretoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Cor = "Preto";
             j = 1;
 
@@ -1138,6 +1230,7 @@ namespace Stand_up
 
         private void roxoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Cor = "Roxo";
             j = 1;
 
@@ -1145,6 +1238,7 @@ namespace Stand_up
 
         private void verdeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Cor = "Verde";
             j = 1;
 
@@ -1152,6 +1246,7 @@ namespace Stand_up
 
         private void vermelhoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            funcoesCarregadas = false;
             Cor = "Vermelho";
             j = 1;
 
@@ -1170,6 +1265,7 @@ namespace Stand_up
         private void todosToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             k = 3;
+            funcoesCarregadas = true;
         }
 
         private void limparFiltrosToolStripMenuItem_Click(object sender, EventArgs e)

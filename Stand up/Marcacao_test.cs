@@ -28,6 +28,8 @@ namespace Stand_up
         ImageList images2 = new ImageList();
         DateTime Insertdata;
         string data123 = "";
+        string datastring2 = "";
+        string dataString = "" ;
         string hora = "";
         string id_func;
         string id_cliente;
@@ -1251,6 +1253,7 @@ namespace Stand_up
             guna2ComboBox1.Items.Add("16:00 - 16:30");
             guna2ComboBox1.Items.Add("16:30 - 17:00");
 
+
         }
         void carregar_car_PARA_LISTVIEW()
         {
@@ -1479,6 +1482,9 @@ namespace Stand_up
 
         void Ativar_marcacao()
         {
+            data123 = "";
+            dataString = "";
+            datastring2 = "";
             //DateTime DataSelecionada = DateTime.Parse(dia + "/" + mes + "/" + ano);
             //string dataformatada = DateTime.Now.ToString("dd/MM/yyyy");
             //DateTime DataHoje = DateTime.ParseExact(dataformatada, "dd/MM/yyyy", CultureInfo.InvariantCulture);
@@ -1497,9 +1503,9 @@ namespace Stand_up
             //    guna2Button32.Enabled = false;
             //    guna2Button33.Enabled = false;
             //}
-           
-            string dataString = (dia + "/" + mes + "/" + ano);
 
+
+            dataString = (dia + "/" + mes + "/" + ano);
             DateTime data;
            if(dia <= 9 && mes <= 9)
             {
@@ -1513,8 +1519,13 @@ namespace Stand_up
             {
                 dataString = ( dia + "/" + "0" + mes + "/" + ano);
             }
+
             if (DateTime.TryParseExact(dataString, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out data))
             {
+                DateTime data_sem_hora = DateTime.ParseExact(dataString + " 12:00:00", "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                datastring2 = dataString + " 12:00:00";
+
+                guna2DataGridView1.DataSource = BLL.testDrive.queryLoad_Test(data_sem_hora);
                 DateTime hoje = DateTime.Now;
 
                 if (data >= hoje.Date)
@@ -1534,13 +1545,16 @@ namespace Stand_up
                     guna2Button33.Enabled = false;
                     flag_dataValida = false;
                 }
+
+              
+
+
             }
             else
             {
                 MessageBox.Show("Data inválida." + dataString);
             }
-
-
+          
 
 
         }
@@ -1802,7 +1816,10 @@ verificar_dia();
         {
             dia = 30;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            
+        
+        }
 
         private void guna2Button31_Click(object sender, EventArgs e)
         {
@@ -1927,12 +1944,13 @@ verificar_dia();
                 imageM = byteArrayToImage((Byte[])row["Imagem"]);
               
             }
-                        
-                            data123 = data123 + hora;
+                   DateTime data_sem_hora = DateTime.ParseExact(datastring2, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                            
             Insertdata = DateTime.ParseExact(data123, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-            int x = BLL.testDrive.insertTest(Insertdata,Convert.ToInt32(id_func),nomeFunc,Convert.ToInt32(id_cliente),nomeCliente,marca,modelo,matricula, imgToByteArray(imageM));
-            guna2DataGridView1.DataSource = BLL.testDrive.queryLoad_Test(Insertdata);
-            }
+            int x = BLL.testDrive.insertTest(data_sem_hora,Insertdata,Convert.ToInt32(id_func),nomeFunc,Convert.ToInt32(id_cliente),nomeCliente,marca,modelo,matricula, imgToByteArray(imageM));
+                            guna2DataGridView1.DataSource = BLL.testDrive.queryLoad_Test(data_sem_hora);
+                          
+                        }
                     }
                 }
 
@@ -2022,6 +2040,7 @@ verificar_dia();
                     break;
            
             }
+            Ativar_marcacao();
         }
     }
 }
