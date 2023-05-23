@@ -1110,32 +1110,32 @@ namespace Stand_up
             //  }
           
 
-            if (k == 1 && funcoesCarregadas == false)
+            if (k == 1 && funcoesCarregadas == false && l==0 && j==0 || k==1 && j==3 && l==0 && funcoesCarregadas==false)
             {
                 carregar_car_PARA_LISTVIEW1();
                 funcoesCarregadas = true;
             }
-            if (l == 1 && funcoesCarregadas == false)
+            if (l == 1 && funcoesCarregadas == false && k == 0 && j == 0 || k == 0 && j == 3 && l == 1 && funcoesCarregadas == false)
             {
                 carregar_car_PARA_LISTVIEW4();
                 funcoesCarregadas = true;
             }
-            if (j == 1 && funcoesCarregadas == false)
+            if (j == 1 && funcoesCarregadas == false && l == 0 && k == 0 || k == 0 && j == 1 && l == 3 && funcoesCarregadas == false)
             {
                 carregar_car_PARA_LISTVIEW5();
                 funcoesCarregadas = true;
             }
-            if (k == 1 && j == 1 && funcoesCarregadas == false)
+            if (k == 1 && j == 1 && funcoesCarregadas == false && l==0 || l == 3 && k == 1 && j == 1 && funcoesCarregadas == false)
             {
                 carregar_car_PARA_LISTVIEW10();
                 funcoesCarregadas = true;
             }
-            if (l == 1 && j == 1 && funcoesCarregadas == false)
+            if (l == 1 && j == 1 && funcoesCarregadas == false && k == 0 || l == 1 && k == 3 && j == 1 && funcoesCarregadas == false)
             {
                 carregar_car_PARA_LISTVIEW6();
                 funcoesCarregadas = true;
             }
-            if (l == 1 && k == 1 && funcoesCarregadas == false)
+            if (l == 1 && k == 1 && funcoesCarregadas == false && j == 0 || l == 1 && k == 1 && j == 3 && funcoesCarregadas == false)
             {
                 carregar_car_PARA_LISTVIEW7();
                 funcoesCarregadas = true;
@@ -1143,6 +1143,11 @@ namespace Stand_up
             if (l == 1 && k == 1 && j == 1 && funcoesCarregadas == false)
             {
                 carregar_car_PARA_LISTVIEW8();
+                funcoesCarregadas = true;
+            }
+            if (l == 3 && k == 3 && j == 3 && funcoesCarregadas == false)
+            {
+                carregar_car_PARA_LISTVIEW();
                 funcoesCarregadas = true;
             }
 
@@ -1254,12 +1259,14 @@ namespace Stand_up
 
         private void todosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            l = 1;
+            funcoesCarregadas = false;
+            l = 3;
         }
 
         private void todosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            j = 1;
+            funcoesCarregadas = false;
+            j = 3;
         }
 
         private void todosToolStripMenuItem2_Click(object sender, EventArgs e)

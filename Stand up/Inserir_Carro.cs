@@ -112,7 +112,7 @@ namespace Stand_up
 
 
             DataTable dr = BLL.veiculos.queryLoad_veiculo();
-
+            images.Images.Clear();
             listView1.Clear();
             int k = 0;
 
@@ -1339,7 +1339,7 @@ namespace Stand_up
                     else
                     {
 
-                        guna2TextBox5.Clear();
+                        guna2TextBox1.Clear();
                         MessageBox.Show("Insira um valor válido ");
                     }
 
