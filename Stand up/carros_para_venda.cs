@@ -22,7 +22,8 @@ namespace Stand_up
         string Cor;
         ImageList images = new ImageList();
         public static bool flagPanel = true ;
-    
+        public static bool flagMaior = true;
+        public static bool flagMenor = true;
         int k=0;
         int l = 0;
         int j = 0;
@@ -464,6 +465,438 @@ namespace Stand_up
 
 
         }
+        void carregar_car_PARA_LISTVIEW21()
+        {
+
+
+
+
+
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca(Marca);
+
+            listView1.Clear();
+            images.Images.Clear();
+            int i = 0;
+
+
+
+
+
+            foreach (DataRow row in dr.Rows)
+
+            {
+
+
+
+                images.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView1.LargeImageList = images;
+
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+
+
+
+                byte[] imagebyte = (byte[])(row[9]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = row["Matricula"].ToString();
+
+                i += 1;
+
+                this.listView1.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+        }
+        void carregar_car_PARA_LISTVIEW22()
+        {
+
+
+
+
+
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_Cor(Cor);
+
+            listView1.Clear();
+            images.Images.Clear();
+            int i = 0;
+
+
+
+
+
+            foreach (DataRow row in dr.Rows)
+
+            {
+
+
+
+                images.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView1.LargeImageList = images;
+
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+
+
+
+                byte[] imagebyte = (byte[])(row[9]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = row["Matricula"].ToString();
+
+                i += 1;
+
+                this.listView1.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+        }
+        void carregar_car_PARA_LISTVIEW23()
+        {
+
+
+
+
+
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_Combustivel(Combustivel);
+
+            listView1.Clear();
+            images.Images.Clear();
+            int i = 0;
+
+
+
+
+
+            foreach (DataRow row in dr.Rows)
+
+            {
+
+
+
+                images.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView1.LargeImageList = images;
+
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+
+
+
+                byte[] imagebyte = (byte[])(row[9]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = row["Matricula"].ToString();
+
+                i += 1;
+
+                this.listView1.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+        }
+        void carregar_car_PARA_LISTVIEW24()
+        {
+
+
+
+
+
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca_cor(Marca,Cor);
+
+            listView1.Clear();
+            images.Images.Clear();
+            int i = 0;
+
+
+
+
+
+            foreach (DataRow row in dr.Rows)
+
+            {
+
+
+
+                images.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView1.LargeImageList = images;
+
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+
+
+
+                byte[] imagebyte = (byte[])(row[9]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = row["Matricula"].ToString();
+
+                i += 1;
+
+                this.listView1.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+        }
+        void carregar_car_PARA_LISTVIEW25()
+        {
+
+
+
+
+
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca_combustivel(Marca, Combustivel);
+
+            listView1.Clear();
+            images.Images.Clear();
+            int i = 0;
+
+
+
+
+
+            foreach (DataRow row in dr.Rows)
+
+            {
+
+
+
+                images.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView1.LargeImageList = images;
+
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+
+
+
+                byte[] imagebyte = (byte[])(row[9]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = row["Matricula"].ToString();
+
+                i += 1;
+
+                this.listView1.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+        }
+        void carregar_car_PARA_LISTVIEW26()
+        {
+
+
+
+
+
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_Combustivel_cor(Combustivel, Cor);
+
+            listView1.Clear();
+            images.Images.Clear();
+            int i = 0;
+
+
+
+
+
+            foreach (DataRow row in dr.Rows)
+
+            {
+
+
+
+                images.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView1.LargeImageList = images;
+
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+
+
+
+                byte[] imagebyte = (byte[])(row[9]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = row["Matricula"].ToString();
+
+                i += 1;
+
+                this.listView1.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+        }
 
         void carregar_car_PARA_LISTVIEW2()
         {
@@ -839,12 +1272,12 @@ namespace Stand_up
 
         private void inserirEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            carregar_car_PARA_LISTVIEW2();
+            flagMaior = false;
         }
 
         private void ediitarEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            flagMenor = false;
             carregar_car_PARA_LISTVIEW3();
 
         }
@@ -1108,19 +1541,19 @@ namespace Stand_up
             //  {
             //      carregar_car_PARA_LISTVIEW8();
             //  }
-          
+            
 
-            if (k == 1 && funcoesCarregadas == false && l==0 && j==0 || k==1 && j==3 && l==0 && funcoesCarregadas==false)
+            if (k == 1 && funcoesCarregadas == false && l==0 && j==0 || k==1 && j==3 && l==0 && funcoesCarregadas==false || k == 1 && j == 3 && l == 3 && funcoesCarregadas == false || k == 1 && j == 3 && l == 0 && funcoesCarregadas == false)
             {
                 carregar_car_PARA_LISTVIEW1();
                 funcoesCarregadas = true;
             }
-            if (l == 1 && funcoesCarregadas == false && k == 0 && j == 0 || k == 0 && j == 3 && l == 1 && funcoesCarregadas == false)
+            if (l == 1 && funcoesCarregadas == false && k == 0 && j == 0 || k == 0 && j == 3 && l == 1 && funcoesCarregadas == false || k == 3 && j == 3 && l == 1 && funcoesCarregadas == false || k == 3 && j == 0 && l == 1 && funcoesCarregadas == false )
             {
                 carregar_car_PARA_LISTVIEW4();
                 funcoesCarregadas = true;
             }
-            if (j == 1 && funcoesCarregadas == false && l == 0 && k == 0 || k == 0 && j == 1 && l == 3 && funcoesCarregadas == false)
+            if (j == 1 && funcoesCarregadas == false && l == 0 && k == 0 || k == 0 && j == 1 && l == 3 && funcoesCarregadas == false || k == 3 && j == 1 && l == 0 && funcoesCarregadas == false || k == 1 && j == 3 && l == 3 && funcoesCarregadas == false)
             {
                 carregar_car_PARA_LISTVIEW5();
                 funcoesCarregadas = true;
@@ -1145,10 +1578,48 @@ namespace Stand_up
                 carregar_car_PARA_LISTVIEW8();
                 funcoesCarregadas = true;
             }
-            if (l == 3 && k == 3 && j == 3 && funcoesCarregadas == false)
+            if (l == 3 && k == 3 && j == 3 && funcoesCarregadas == false || l == 0 && k == 3 && j == 3 && funcoesCarregadas == false || l == 3 && k == 0 && j == 3 && funcoesCarregadas == false || l == 3 && k == 3 && j == 0 && funcoesCarregadas == false || l == 0 && k == 3 && j == 0 && funcoesCarregadas == false || l == 0 && k == 0 && j == 3 && funcoesCarregadas == false || l == 3 && k == 0 && j == 0 && funcoesCarregadas == false)
             {
                 carregar_car_PARA_LISTVIEW();
                 funcoesCarregadas = true;
+            }
+            if(flagMaior == false && j==0 && k==0 && l == 1)
+            {
+                flagMaior = true;
+                carregar_car_PARA_LISTVIEW21();
+            }
+
+
+            if (flagMaior == false && j == 1 && k == 0 && l == 1)
+            {
+                flagMaior = true;
+                carregar_car_PARA_LISTVIEW24();
+            }
+            if (flagMaior == false && j == 0 && k == 1 && l == 1)
+            {
+                flagMaior = true;
+                carregar_car_PARA_LISTVIEW25();
+            }
+            if (flagMaior == false && j == 1 && k == 1 && l == 0)
+            {
+                flagMaior = true;
+                carregar_car_PARA_LISTVIEW26();
+            }
+          
+            if (flagMaior == false && j == 1 && k == 0 && l == 0)
+            {
+                flagMaior = true;
+                carregar_car_PARA_LISTVIEW22();
+            }
+            if (flagMaior == false && j == 0 && k == 1 && l == 0)
+            {
+                flagMaior = true;
+                carregar_car_PARA_LISTVIEW23();
+            }
+            if (flagMaior == false && j == 0 && k == 0 && l == 0|| flagMaior == false && j == 3 && k == 3 && l == 3)
+            {
+                flagMaior = true;
+                carregar_car_PARA_LISTVIEW2();
             }
 
         }
@@ -1198,6 +1669,7 @@ namespace Stand_up
             funcoesCarregadas = false;
             Cor = "Cinzento";
             j = 1;
+            timer1.Start();
 
         }
 
@@ -1272,7 +1744,7 @@ namespace Stand_up
         private void todosToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             k = 3;
-            funcoesCarregadas = true;
+            funcoesCarregadas = false;
         }
 
         private void limparFiltrosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1280,9 +1752,6 @@ namespace Stand_up
             k = 0;
             j = 0;
             l = 0;
-            Combustivel = "";
-             Marca = "";
-             Cor = "";
             carregar_car_PARA_LISTVIEW();
         }
     }
