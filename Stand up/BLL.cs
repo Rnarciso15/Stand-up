@@ -630,25 +630,15 @@ namespace BusinessLogicLayer
                 };
                 return dal.executarReader("select inicio_producao,fim_producao from Modelos where Modelo = @Modelo", sqlParams);
             }
-            static public DataTable queryModelos1(int id_marca, int ano)
-            {
-                DAL dal = new DAL();
-                SqlParameter[] sqlParams = new SqlParameter[]{
-                        new SqlParameter("@id_marca", id_marca),                         
-                          new SqlParameter("@ano", ano),
-                };
-                return dal.executarReader("select Modelo from Modelos Where id_marca = @id_marca and   fim_producao>=@ano ", sqlParams);
-            }
-            static public DataTable queryModelos_veiculo1234(int id_marca,int inicio_producao,int fim_producao, int ano)
+           
+            static public DataTable queryModelos_veiculo1234(int id_marca, int ano)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                         new SqlParameter("@id_marca", id_marca),
-                         new SqlParameter("@inicio_producao", inicio_producao),
-                          new SqlParameter("@fim_producao", fim_producao),
                           new SqlParameter("@ano", ano),
                 };
-                return dal.executarReader("select Modelo from Modelos Where id_marca = @id_marca and  inicio_producao >= @ano   and  fim_producao <= @ano", sqlParams);
+                return dal.executarReader("select Modelo from Modelos Where id_marca = @id_marca and inicio_producao<=@ano and(fim_producao>=@ano or fim_producao is NULL)", sqlParams);
             }
 
         }

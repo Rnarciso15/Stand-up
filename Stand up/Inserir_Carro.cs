@@ -806,7 +806,7 @@ namespace Stand_up
                 DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                 
                 ano = data.Year;
-                if (data.Year >= DateTime.Now.Year || data.Year <= 1931)
+                if (data.Year > DateTime.Now.Year || data.Year <= 1931)
                 {
                     MessageBox.Show("insira um ano válido");
                     guna2TextBox3.Clear();
@@ -1232,42 +1232,15 @@ namespace Stand_up
         {
             if (guna2TextBox3.Text.Length == 10)
             {
-                guna2ComboBox2.DataSource = null;
+                guna2ComboBox2.Items.Clear();
                 int id_marca = (int)BLL.veiculos.queryBuscar_id_marca(guna2ComboBox1.Text);
-                DataTable modelos1234 = BLL.veiculos.queryModelos1(id_marca,ano);
+                DataTable modelos = BLL.veiculos.queryModelos_veiculo(id_marca);
+                DataTable table = BLL.veiculos.queryModelos_veiculo1234(id_marca,ano);
 
-
-              //  DataTable modelos1234 = BLL.veiculos.queryModelos_veiculo1234(id_marca, inicio, fim1, ano); ;
-
-
-                //foreach (DataRow row1 in modelos.Rows)
-                //{
-                //    //string modelo = (string)row1["Modelo"];
-                //    //DataTable data = BLL.veiculos.queryBuscar_Inicio_fim_producao(modelo);
-
-                //      if (row1["fim_producao"] == null || row1["fim_producao"].ToString() == "")
-                //        {
-                //            int inicio = (int)row1["inicio_producao"];
-                //            int fim1 = DateTime.Now.Year;
-                //            modelos1234 = BLL.veiculos.queryModelos_veiculo1234(id_marca, inicio, fim1, ano);
-
-                //        }
-                //        else
-                //        {
-                //            int inicio = (int)row1["inicio_producao"];
-                //            int fim = (int)row1["fim_producao"];
-                //            modelos1234 = BLL.veiculos.queryModelos_veiculo1234(id_marca, inicio, fim, ano);
-
-                //        }
-
-
-                    
-
-                //}
-
-
-                guna2ComboBox2.DataSource = modelos1234;
-                guna2ComboBox2.DisplayMember = "Modelo";
+                foreach (DataRow row in table.Rows)
+                {
+                    guna2ComboBox2.Items.Add(row["Modelo"]);
+                }
                 guna2ComboBox2.Enabled = true;
             }
             else

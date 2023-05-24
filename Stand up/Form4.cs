@@ -417,7 +417,7 @@ namespace Stand_up
                 DateTime data = DateTime.ParseExact(guna2TextBox4.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
                 ano = data.Year;
-                if (data.Year >= DateTime.Now.Year || data.Year <= 1931)
+                if (data.Year >= DateTime.Now.Year -18 || data.Year <= 1931)
                 {
                     MessageBox.Show("insira um ano válido");
                     guna2TextBox4.Clear();

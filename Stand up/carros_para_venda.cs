@@ -59,7 +59,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -131,7 +131,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -203,7 +203,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -275,7 +275,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -347,7 +347,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -420,7 +420,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -492,7 +492,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -564,7 +564,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -636,7 +636,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -708,7 +708,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -780,7 +780,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -852,7 +852,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -925,7 +925,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -997,7 +997,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -1070,7 +1070,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -1142,7 +1142,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -1215,7 +1215,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -1287,7 +1287,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -1359,7 +1359,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -1431,7 +1431,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -1505,7 +1505,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
@@ -1578,7 +1578,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255,255);
 
 
 
