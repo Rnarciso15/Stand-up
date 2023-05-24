@@ -441,7 +441,7 @@ namespace BusinessLogicLayer
                 SqlParameter[] sqlParams = new SqlParameter[]{
                         new SqlParameter("@id_marca", id_marca),
                 };
-                return dal.executarReader("select Modelo from Modelos Where id_marca = @id_marca ", sqlParams);
+                return dal.executarReader("select * from Modelos Where id_marca = @id_marca ", sqlParams);
             }
             static public DataTable queryGasolina_veiculo(string Combustivel)
             {
@@ -488,6 +488,25 @@ namespace BusinessLogicLayer
                 return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC where Cor = @Cor", sqlParams);
             }
             static public DataTable querymaior_quiilometros_Marca(string Marca)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+               new SqlParameter("@Marca", Marca),
+                };
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Marca=@Marca", sqlParams);
+            }
+
+            static public DataTable querymenor_quiilometros_Cor(string Cor)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+
+                        new SqlParameter("@Cor", Cor),
+
+            };
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Cor = @Cor", sqlParams);
+            }
+            static public DataTable querymenor_quiilometros_Marca(string Marca)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
@@ -543,6 +562,47 @@ namespace BusinessLogicLayer
                 };
                 return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC ", null);
             }
+
+
+            static public DataTable querymenor_quiilometros_Marca_cor(string Marca, string Cor)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+               new SqlParameter("@Marca", Marca),
+
+               new SqlParameter("@Cor", Cor),
+                };
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Marca=@Marca and Cor = @Cor", sqlParams);
+            }
+            static public DataTable querymenor_quiilometros_Marca_combustivel(string Marca, string Combustivel)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+               new SqlParameter("@Marca", Marca),
+
+               new SqlParameter("@Combustivel", Combustivel),
+                };
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Marca=@Marca and Combustivel = @Combustivel", sqlParams);
+            }
+            static public DataTable querymenor_quiilometros_Combustivel(string Combustivel)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+
+                        new SqlParameter("@Combustivel", Combustivel),
+                };
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Combustivel = @Combustivel", sqlParams);
+            }
+            static public DataTable querymenor_quiilometros_Combustivel_cor(string Combustivel, string Cor)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+
+                        new SqlParameter("@Combustivel", Combustivel),
+                        new SqlParameter("@Cor", Cor),
+                };
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Combustivel = @Combustivel and Cor=@Cor", sqlParams);
+            }
             static public DataTable queryData_Modelos_veiculo(string Marca, string Modelo)
             {
                 DAL dal = new DAL();
@@ -570,7 +630,15 @@ namespace BusinessLogicLayer
                 };
                 return dal.executarReader("select inicio_producao,fim_producao from Modelos where Modelo = @Modelo", sqlParams);
             }
-
+            static public DataTable queryModelos1(int id_marca, int ano)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                        new SqlParameter("@id_marca", id_marca),                         
+                          new SqlParameter("@ano", ano),
+                };
+                return dal.executarReader("select Modelo from Modelos Where id_marca = @id_marca and   fim_producao>=@ano ", sqlParams);
+            }
             static public DataTable queryModelos_veiculo1234(int id_marca,int inicio_producao,int fim_producao, int ano)
             {
                 DAL dal = new DAL();
@@ -580,7 +648,7 @@ namespace BusinessLogicLayer
                           new SqlParameter("@fim_producao", fim_producao),
                           new SqlParameter("@ano", ano),
                 };
-                return dal.executarReader("select Modelo from Modelos Where id_marca = @id_marca and  inicio_producao <= @ano   and  fim_producao >= @ano", sqlParams);
+                return dal.executarReader("select Modelo from Modelos Where id_marca = @id_marca and  inicio_producao >= @ano   and  fim_producao <= @ano", sqlParams);
             }
 
         }

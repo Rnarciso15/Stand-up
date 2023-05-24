@@ -1234,48 +1234,52 @@ namespace Stand_up
             {
                 guna2ComboBox2.DataSource = null;
                 int id_marca = (int)BLL.veiculos.queryBuscar_id_marca(guna2ComboBox1.Text);
-                DataTable modelos = BLL.veiculos.queryModelos_veiculo(id_marca);
+                DataTable modelos1234 = BLL.veiculos.queryModelos1(id_marca,ano);
 
 
+              //  DataTable modelos1234 = BLL.veiculos.queryModelos_veiculo1234(id_marca, inicio, fim1, ano); ;
 
-                foreach (DataRow row in modelos.Rows)
-                {
-                    string modelo = (string)row["Modelo"];
-                    DataTable data = BLL.veiculos.queryBuscar_Inicio_fim_producao(modelo);
-                    DataTable modelos1234;
-                    foreach (DataRow row1 in data.Rows)
-                    {
-                        if (row1["fim_producao"] == null || row1["fim_producao"].ToString() == "")
-                        {
-                            int inicio = (int)row1["inicio_producao"];
-                            int fim1 = DateTime.Now.Year;
-                            modelos1234 = BLL.veiculos.queryModelos_veiculo1234(id_marca, inicio, fim1, ano);
 
-                        }
-                        else
-                        {
-                            int inicio = (int)row1["inicio_producao"];
-                            int fim = (int)row1["fim_producao"];
-                            modelos1234 = BLL.veiculos.queryModelos_veiculo1234(id_marca, inicio, fim, ano);
+                //foreach (DataRow row1 in modelos.Rows)
+                //{
+                //    //string modelo = (string)row1["Modelo"];
+                //    //DataTable data = BLL.veiculos.queryBuscar_Inicio_fim_producao(modelo);
 
-                        }
+                //      if (row1["fim_producao"] == null || row1["fim_producao"].ToString() == "")
+                //        {
+                //            int inicio = (int)row1["inicio_producao"];
+                //            int fim1 = DateTime.Now.Year;
+                //            modelos1234 = BLL.veiculos.queryModelos_veiculo1234(id_marca, inicio, fim1, ano);
+
+                //        }
+                //        else
+                //        {
+                //            int inicio = (int)row1["inicio_producao"];
+                //            int fim = (int)row1["fim_producao"];
+                //            modelos1234 = BLL.veiculos.queryModelos_veiculo1234(id_marca, inicio, fim, ano);
+
+                //        }
+
 
                     
-                        guna2ComboBox2.DataSource = modelos1234;
-                        guna2ComboBox2.DisplayMember = "Modelo";
 
-                    }
-                }
+                //}
+
+
+                guna2ComboBox2.DataSource = modelos1234;
+                guna2ComboBox2.DisplayMember = "Modelo";
                 guna2ComboBox2.Enabled = true;
             }
-            else {
+            else
+            {
 
-       
+
                 if (guna2ComboBox1.SelectedIndex == -1)
                 {
-                    
+
                 }
-                else {
+                else
+                {
                     MessageBox.Show("preencha a data antes de selecionar a Marca");
                     guna2ComboBox1.SelectedIndex = -1;
                 }
