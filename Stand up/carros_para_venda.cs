@@ -39,7 +39,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryCarro4(Combustivel, Cor);
+            DataTable dr = BLL.veiculos.queryCarro4(Combustivel, Cor,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -111,7 +111,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryCarro(Cor, Marca);
+            DataTable dr = BLL.veiculos.queryCarro(Cor, Marca,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -183,7 +183,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryCarro3(Combustivel,Marca ,Cor);
+            DataTable dr = BLL.veiculos.queryCarro3(Combustivel,Marca ,Cor,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -255,7 +255,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryCarro2(Combustivel, Marca);
+            DataTable dr = BLL.veiculos.queryCarro2(Combustivel, Marca,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -327,7 +327,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryLoad_veiculo();
+            DataTable dr = BLL.veiculos.queryLoad_veiculo(false);
           
             listView1.Clear();
             images.Images.Clear();
@@ -400,7 +400,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryGasolina_veiculo(Combustivel);
+            DataTable dr = BLL.veiculos.queryGasolina_veiculo(Combustivel,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -472,7 +472,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca(Marca);
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca(Marca, false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -544,7 +544,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_Cor(Cor);
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_Cor(Cor,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -616,7 +616,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_Combustivel(Combustivel);
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_Combustivel(Combustivel,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -688,7 +688,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca_cor(Marca,Cor);
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca_cor(Marca,Cor,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -760,7 +760,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca_combustivel(Marca, Combustivel);
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca_combustivel(Marca, Combustivel,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -832,7 +832,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_Combustivel_cor(Combustivel, Cor);
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_Combustivel_cor(Combustivel, Cor,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -905,7 +905,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymenor_quiilometros_Marca(Marca);
+            DataTable dr = BLL.veiculos.querymenor_quiilometros_Marca(Marca, false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -977,7 +977,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymenor_quiilometros_Cor(Cor);
+            DataTable dr = BLL.veiculos.querymenor_quiilometros_Cor(Cor,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -1050,7 +1050,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymenor_quiilometros_Combustivel(Combustivel);
+            DataTable dr = BLL.veiculos.querymenor_quiilometros_Combustivel(Combustivel,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -1122,7 +1122,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymenor_quiilometros_Marca_cor(Marca, Cor);
+            DataTable dr = BLL.veiculos.querymenor_quiilometros_Marca_cor(Marca, Cor,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -1195,7 +1195,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymenor_quiilometros_Marca_combustivel(Marca, Combustivel);
+            DataTable dr = BLL.veiculos.querymenor_quiilometros_Marca_combustivel(Marca, Combustivel,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -1267,7 +1267,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymenor_quiilometros_Combustivel_cor(Combustivel, Cor);
+            DataTable dr = BLL.veiculos.querymenor_quiilometros_Combustivel_cor(Combustivel, Cor,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -1339,7 +1339,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros();
+            DataTable dr = BLL.veiculos.querymaior_quiilometros(false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -1411,7 +1411,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryMenor_quiilometros();
+            DataTable dr = BLL.veiculos.queryMenor_quiilometros(false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -1485,7 +1485,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryMarca_veiculo(Marca);
+            DataTable dr = BLL.veiculos.queryMarca_veiculo(Marca, false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -1558,7 +1558,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryCor_veiculo(Cor);
+            DataTable dr = BLL.veiculos.queryCor_veiculo(Cor,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -1711,7 +1711,6 @@ namespace Stand_up
         private void ediitarEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             flagMenor = false;
-            carregar_car_PARA_LISTVIEW3();
 
         }
 
@@ -1933,6 +1932,7 @@ namespace Stand_up
             l = 1;
         }
         bool funcoesCarregadas = false;
+        public static bool flagVendido = false;
         private void timer1_Tick(object sender, EventArgs e)
         {
           if(flagPanel == false)
@@ -1975,6 +1975,12 @@ namespace Stand_up
             //      carregar_car_PARA_LISTVIEW8();
             //  }
             
+          if(flagVendido == true)
+            {
+                carregar_car_PARA_LISTVIEW();
+                flagVendido = false;
+            }
+
 
             if (k == 1 && funcoesCarregadas == false && l==0 && j==0 || k==1 && j==3 && l==0 && funcoesCarregadas==false || k == 1 && j == 3 && l == 3 && funcoesCarregadas == false || k == 1 && j == 3 && l == 0 && funcoesCarregadas == false)
             {

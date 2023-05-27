@@ -304,6 +304,16 @@ namespace BusinessLogicLayer
            };
                 return dal.executarReader("select * from Veiculo where Matricula = @Matricula", sqlParams);
             }
+            static public DataTable Load_dados_imagem(string Matricula)
+            {
+
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@Matricula", Matricula),
+
+           };
+                return dal.executarReader("select * from Veiculo where Matricula = @Matricula", sqlParams);
+            }
             static public DataTable Load_dados1(string Matricula)
             {
                 DAL dal = new DAL();
@@ -314,43 +324,45 @@ namespace BusinessLogicLayer
                 return dal.executarReader("select Matricula from Veiculo where Matricula = @Matricula", sqlParams);
             }
 
-            static public DataTable queryCarro(string Cor, string Marca)
+            static public DataTable queryCarro(string Cor, string Marca,bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                 new SqlParameter("@Cor", Cor),
+                          new SqlParameter("@vendido", vendido),
                  new SqlParameter("@Marca", Marca ),
                 };
-                return dal.executarReader("select * from Veiculo where Cor = @Cor and Marca = @Marca", sqlParams);
+                return dal.executarReader("select * from Veiculo where Cor = @Cor and Marca = @Marca and vendido= @vendido", sqlParams);
             }
 
-            static public DataTable queryCarro2(string Combustivel, string Marca)
+            static public DataTable queryCarro2(string Combustivel, string Marca,bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                 new SqlParameter("@Combustivel", Combustivel),
+                          new SqlParameter("@vendido", vendido),
                  new SqlParameter("@Marca", Marca ),
                 };
-                return dal.executarReader("select * from Veiculo where Combustivel = @Combustivel and Marca = @Marca", sqlParams);
+                return dal.executarReader("select * from Veiculo where Combustivel = @Combustivel and Marca = @Marca and vendido =@vendido", sqlParams);
             }
-            static public DataTable queryCarro3(string Combustivel, string Marca,string Cor)
+            static public DataTable queryCarro3(string Combustivel, string Marca,string Cor,bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                 new SqlParameter("@Combustivel", Combustivel),
+                          new SqlParameter("@vendido", vendido),
                  new SqlParameter("@Marca", Marca ),
                  new SqlParameter("@Cor", Cor ),
                 };
-                return dal.executarReader("select * from Veiculo where Combustivel = @Combustivel and Marca = @Marca and Cor = @Cor", sqlParams);
+                return dal.executarReader("select * from Veiculo where Combustivel = @Combustivel and Marca = @Marca and Cor = @Cor and vendido = @vendido", sqlParams);
             }
-            static public DataTable queryCarro4(string Combustivel, string Cor )
+            static public DataTable queryCarro4(string Combustivel, string Cor, bool vendido)
             {
                 DAL dal = new DAL();
-                SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@Combustivel", Combustivel),
-                 new SqlParameter("@Cor", Cor ),
-                };
-                return dal.executarReader("select * from Veiculo where Combustivel = @Combustivel and Cor = @Cor", sqlParams);
+                SqlParameter[] sqlParams = new SqlParameter[] {
+
+                          new SqlParameter("@vendido", vendido),new SqlParameter("@vendido", vendido), new SqlParameter("@Combustivel", Combustivel), new SqlParameter("@Cor", Cor) };
+                return dal.executarReader("select * from Veiculo where Combustivel = @Combustivel and Cor = @Cor and vendido = @vendido", sqlParams);
             }
             static public int updateVeiculo(string Matricula, int Quilometros, string Data, string Marca, string Modelo, string Descricao, string Combustivel, byte[] Imagem, int Valor, string Cor, string tipo_de_caixa, int N_Portas, string Traccao, string Matricula1)
             {
@@ -428,13 +440,14 @@ namespace BusinessLogicLayer
                 };
                 return dal.executarReader("select Nome from Marcas", sqlParams);
             }
-            static public DataTable queryLoad_veiculo()
+            static public DataTable queryLoad_veiculo(bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-           
+
+                        new SqlParameter("@vendido", vendido),
                 };
-                return dal.executarReader("select * from Veiculo  ", sqlParams);
+                return dal.executarReader("select * from Veiculo where vendido = @vendido", sqlParams);
             }
             static public DataTable queryModelos_veiculo(int id_marca) {  
                 DAL dal = new DAL();
@@ -443,165 +456,182 @@ namespace BusinessLogicLayer
                 };
                 return dal.executarReader("select * from Modelos Where id_marca = @id_marca ", sqlParams);
             }
-            static public DataTable queryGasolina_veiculo(string Combustivel)
+            static public DataTable queryGasolina_veiculo(string Combustivel, bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                         new SqlParameter("@Combustivel", Combustivel),
+                          new SqlParameter("@vendido", vendido),
                 };
-                return dal.executarReader("select * from Veiculo Where Combustivel = @Combustivel ", sqlParams);
+                return dal.executarReader("select * from Veiculo Where Combustivel = @Combustivel  and vendido = @vendido", sqlParams);
             }
 
-            static public DataTable queryCor_veiculo(string Cor)
+            static public DataTable queryCor_veiculo(string Cor,bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                         new SqlParameter("@Cor", Cor),
+                          new SqlParameter("@vendido", vendido),
                 };
-                return dal.executarReader("select * from Veiculo Where Cor = @Cor ", sqlParams);
+                return dal.executarReader("select * from Veiculo Where Cor = @Cor  and vendido = @vendido", sqlParams);
             }
 
-            static public DataTable queryMarca_veiculo(string Marca)
+            static public DataTable queryMarca_veiculo(string Marca,bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                         new SqlParameter("@Marca", Marca),
+                          new SqlParameter("@vendido", vendido),
                 };
-                return dal.executarReader("select * from Veiculo Where Marca = @Marca ", sqlParams);
+                return dal.executarReader("select * from Veiculo Where Marca = @Marca  and vendido = @vendido", sqlParams);
             }
-            static public DataTable querymaior_quiilometros()
+            static public DataTable querymaior_quiilometros(bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                
+                          new SqlParameter("@vendido", vendido),
+
                 };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC ", null);
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC  and vendido = @vendido", null);
             }
-            static public DataTable querymaior_quiilometros_Cor(string Cor)
+            static public DataTable querymaior_quiilometros_Cor(string Cor,bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                     
                         new SqlParameter("@Cor", Cor),
-               
+                          new SqlParameter("@vendido", vendido),
+
             };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC where Cor = @Cor", sqlParams);
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC where Cor = @Cor and vendido = @vendido", sqlParams);
             }
-            static public DataTable querymaior_quiilometros_Marca(string Marca)
+            static public DataTable querymaior_quiilometros_Marca(string Marca,bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                new SqlParameter("@Marca", Marca),
+                          new SqlParameter("@vendido", vendido),
                 };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Marca=@Marca", sqlParams);
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Marca=@Marca and vendido = @vendido", sqlParams);
             }
 
-            static public DataTable querymenor_quiilometros_Cor(string Cor)
+            static public DataTable querymenor_quiilometros_Cor(string Cor,bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
 
                         new SqlParameter("@Cor", Cor),
+                          new SqlParameter("@vendido", vendido),
 
             };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Cor = @Cor", sqlParams);
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Cor = @Cor and vendido = @vendido", sqlParams);
             }
-            static public DataTable querymenor_quiilometros_Marca(string Marca)
+            static public DataTable querymenor_quiilometros_Marca(string Marca,bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                new SqlParameter("@Marca", Marca),
+                          new SqlParameter("@vendido", vendido),
                 };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC where Marca=@Marca", sqlParams);
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC where Marca=@Marca and vendido = @vendido", sqlParams);
             }
 
-            static public DataTable querymaior_quiilometros_Marca_cor(string Marca,string Cor)
+            static public DataTable querymaior_quiilometros_Marca_cor(string Marca,string Cor,bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                new SqlParameter("@Marca", Marca),
 
+                          new SqlParameter("@vendido", vendido),
                new SqlParameter("@Cor", Cor),
                 };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC where Marca=@Marca and Cor = @Cor", sqlParams);
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC where Marca=@Marca and Cor = @Cor and vendido = @vendido", sqlParams);
             }
-            static public DataTable querymaior_quiilometros_Marca_combustivel(string Marca, string Combustivel)
+            static public DataTable querymaior_quiilometros_Marca_combustivel(string Marca, string Combustivel,bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                new SqlParameter("@Marca", Marca),
+
+                          new SqlParameter("@vendido", vendido),
+               new SqlParameter("@Combustivel", Combustivel),
+                };
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC where Marca=@Marca and Combustivel = @Combustivel and vendido = @vendido", sqlParams);
+            }
+            static public DataTable querymaior_quiilometros_Combustivel(string Combustivel,bool vendido)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+
+                        new SqlParameter("@Combustivel", Combustivel),
+                          new SqlParameter("@vendido", vendido),
+                };
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC where Combustivel = @Combustivel and vendido = @vendido", sqlParams);
+            }
+            static public DataTable querymaior_quiilometros_Combustivel_cor(string Combustivel,string Cor,bool vendido)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+
+                        new SqlParameter("@Combustivel", Combustivel),
+                        new SqlParameter("@Cor", Cor),
+                          new SqlParameter("@vendido", vendido),
+                };
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC where Combustivel = @Combustivel and Cor=@Cor and vendido = @vendido", sqlParams);
+            }
+            static public DataTable queryMenor_quiilometros(bool vendido)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+
+                          new SqlParameter("@vendido", vendido),
+                };
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC and vendido = @vendido", null);
+            }
+
+
+            static public DataTable querymenor_quiilometros_Marca_cor(string Marca, string Cor,bool vendido)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+               new SqlParameter("@Marca", Marca),
+
+                          new SqlParameter("@vendido", vendido),
+               new SqlParameter("@Cor", Cor),
+                };
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Marca=@Marca and Cor = @Cor and vendido = @vendido", sqlParams);
+            }
+            static public DataTable querymenor_quiilometros_Marca_combustivel(string Marca, string Combustivel,bool vendido)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+               new SqlParameter("@Marca", Marca),
+                          new SqlParameter("@vendido", vendido),
 
                new SqlParameter("@Combustivel", Combustivel),
                 };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC where Marca=@Marca and Combustivel = @Combustivel", sqlParams);
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Marca=@Marca and Combustivel = @Combustivel and vendido = @vendido", sqlParams);
             }
-            static public DataTable querymaior_quiilometros_Combustivel(string Combustivel)
+            static public DataTable querymenor_quiilometros_Combustivel(string Combustivel,bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
+                          new SqlParameter("@vendido", vendido),
 
                         new SqlParameter("@Combustivel", Combustivel),
                 };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC where Combustivel = @Combustivel", sqlParams);
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Combustivel = @Combustivel and vendido = @vendido", sqlParams);
             }
-            static public DataTable querymaior_quiilometros_Combustivel_cor(string Combustivel,string Cor)
+            static public DataTable querymenor_quiilometros_Combustivel_cor(string Combustivel, string Cor,bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
 
-                        new SqlParameter("@Combustivel", Combustivel),
-                        new SqlParameter("@Cor", Cor),
-                };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC where Combustivel = @Combustivel and Cor=@Cor", sqlParams);
-            }
-            static public DataTable queryMenor_quiilometros()
-            {
-                DAL dal = new DAL();
-                SqlParameter[] sqlParams = new SqlParameter[]{
-
-                };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC ", null);
-            }
-
-
-            static public DataTable querymenor_quiilometros_Marca_cor(string Marca, string Cor)
-            {
-                DAL dal = new DAL();
-                SqlParameter[] sqlParams = new SqlParameter[]{
-               new SqlParameter("@Marca", Marca),
-
-               new SqlParameter("@Cor", Cor),
-                };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Marca=@Marca and Cor = @Cor", sqlParams);
-            }
-            static public DataTable querymenor_quiilometros_Marca_combustivel(string Marca, string Combustivel)
-            {
-                DAL dal = new DAL();
-                SqlParameter[] sqlParams = new SqlParameter[]{
-               new SqlParameter("@Marca", Marca),
-
-               new SqlParameter("@Combustivel", Combustivel),
-                };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Marca=@Marca and Combustivel = @Combustivel", sqlParams);
-            }
-            static public DataTable querymenor_quiilometros_Combustivel(string Combustivel)
-            {
-                DAL dal = new DAL();
-                SqlParameter[] sqlParams = new SqlParameter[]{
-
-                        new SqlParameter("@Combustivel", Combustivel),
-                };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Combustivel = @Combustivel", sqlParams);
-            }
-            static public DataTable querymenor_quiilometros_Combustivel_cor(string Combustivel, string Cor)
-            {
-                DAL dal = new DAL();
-                SqlParameter[] sqlParams = new SqlParameter[]{
-
+                          new SqlParameter("@vendido", vendido),
                         new SqlParameter("@Combustivel", Combustivel),
                         new SqlParameter("@Cor", Cor),
                 };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Combustivel = @Combustivel and Cor=@Cor", sqlParams);
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where Combustivel = @Combustivel and Cor=@Cor and vendido = @vendido", sqlParams);
             }
             static public DataTable queryData_Modelos_veiculo(string Marca, string Modelo)
             {
@@ -610,7 +640,7 @@ namespace BusinessLogicLayer
                       new SqlParameter("@Marca", Marca),
                         new SqlParameter("@Modelo", Modelo),
                 };
-                return dal.executarReader("select * from marcas Where Marca = @Marca And Modelo = @Modelo", sqlParams);
+                return dal.executarReader("select * from marcas Where Marca = @Marca And Modelo = @Modelo ", sqlParams);
             }
 
 
@@ -640,6 +670,20 @@ namespace BusinessLogicLayer
                 };
                 return dal.executarReader("select Modelo from Modelos Where id_marca = @id_marca and inicio_producao<=@ano and(fim_producao>=@ano or fim_producao is NULL)", sqlParams);
             }
+
+
+            static public int updateVendido(string Matricula, bool vendido)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@Matricula", Matricula),
+                new SqlParameter("@vendido", vendido),
+            };
+                return dal.executarNonQuery("update [Veiculo] set [Matricula]=@Matricula, [vendido]=@vendido where [Matricula]=@Matricula", sqlParams);
+            }
+
+
+
 
         }
 

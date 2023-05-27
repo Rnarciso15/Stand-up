@@ -254,6 +254,7 @@ namespace Stand_up
             this.guna2Button2.TabIndex = 81;
             this.guna2Button2.Text = "Comprar";
             this.guna2Button2.UseTransparentBackground = true;
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2Panel2
             // 
@@ -423,6 +424,7 @@ namespace Stand_up
             this.guna2ImageButton1.Size = new System.Drawing.Size(48, 65);
             this.guna2ImageButton1.TabIndex = 81;
             this.guna2ImageButton1.UseTransparentBackground = true;
+            this.guna2ImageButton1.Click += new System.EventHandler(this.guna2ImageButton1_Click);
             // 
             // guna2PictureBox1
             // 

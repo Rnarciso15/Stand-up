@@ -1262,7 +1262,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryLoad_veiculo();
+            DataTable dr = BLL.veiculos.queryLoad_veiculo(false);
 
             listView3.Clear();
             images.Images.Clear();

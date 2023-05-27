@@ -111,7 +111,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryLoad_veiculo();
+            DataTable dr = BLL.veiculos.queryLoad_veiculo(false);
             images.Images.Clear();
             listView1.Clear();
             int k = 0;
