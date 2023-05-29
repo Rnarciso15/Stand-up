@@ -31,11 +31,13 @@ namespace Stand_up
         public static bool flagCliente = false;
         public static bool flagInsertCliente = false;
         public static bool flagEditCliente = false;
+        public static bool flagEmail = false;
         int l = 0;
         int K = 0;
         int j = 0;
         int y = 0;
         int w = 0;
+        int ww = 0;
         public Image byteArrayToImage(byte[] byteArrayIn)
 
         {
@@ -142,6 +144,21 @@ namespace Stand_up
             {
                 flag_lista_func = false;
                 j = 0;
+            }
+            if (flagEmail == true)
+            {
+                Form7 f2 = new Form7();
+                guna2Panel3.Controls.Clear();
+                f2.TopLevel = false;
+                f2.Parent = guna2Panel3;
+                f2.Show();
+                ww = 1;
+
+            }
+            if (ww == 1)
+            {
+                flagEmail = false;
+                ww = 0;
             }
             if (flag_config == true)
             {

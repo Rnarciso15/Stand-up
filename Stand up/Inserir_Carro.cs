@@ -693,7 +693,7 @@ namespace Stand_up
                                                                         DialogResult dr = MessageBox.Show("Pertende inserir este veiculo?", "", MessageBoxButtons.YesNo);
                                                                         if (dr == DialogResult.Yes)
                                                                         {
-                                                                            int x = BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text);
+                                                                            int x = BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text,false);
                                                                         images.Images.Add(guna2CirclePictureBox1.Image);
                                                                         
                                                                         limpar_caixas();
@@ -1291,8 +1291,10 @@ namespace Stand_up
                     guna2TextBox5.Clear();
                     MessageBox.Show("Insira uma kilometragem válida");
                 }
-            
+                    
             }
+
+            
             
 
             }
@@ -1337,15 +1339,7 @@ namespace Stand_up
 
         private void guna2TextBox7_TextChanged(object sender, EventArgs e)
         {
-            if (guna2TextBox7.Text != "")
-            {
-
-                guna2TextBox1.Enabled = true;
-
-            }
-            else {
-                guna2TextBox1.Enabled = false;
-            }
+           
           
         }
 

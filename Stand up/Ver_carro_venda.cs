@@ -205,8 +205,17 @@ namespace Stand_up
             // Salva o documento em um arquivo
 
             // Fecha o documento
-            document.Save("C:\\Users\\rodri\\Videos\\fotos_car\\output.pdf");
-            document.Close();
+
+            saveFileDialog1.Title = "Salvar arquivo PDF";
+            saveFileDialog1.Filter = "Arquivos PDF (*.pdf)|*.pdf|Todos os Arquivos (*.*)|*.*";
+            saveFileDialog1.FileName = Marca + "_" + Modelo;
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string caminhoArquivo = saveFileDialog1.FileName;
+                document.Save(caminhoArquivo);
+                document.Close();
+            }
+           
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
@@ -218,6 +227,11 @@ namespace Stand_up
                 int x = BLL.veiculos.updateVendido(carros_para_venda.Matricula, true);
                 carros_para_venda.flagVendido = true;
             }
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

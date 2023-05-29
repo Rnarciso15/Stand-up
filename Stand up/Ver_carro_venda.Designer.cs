@@ -59,6 +59,7 @@ namespace Stand_up
             this.label12 = new System.Windows.Forms.Label();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.guna2Panel1.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
@@ -439,6 +440,10 @@ namespace Stand_up
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
             // 
+            // saveFileDialog1
+            // 
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
+            // 
             // Ver_carro_venda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -495,5 +500,6 @@ namespace Stand_up
         private System.Windows.Forms.Label label12;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

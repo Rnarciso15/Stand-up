@@ -46,11 +46,11 @@ namespace Stand_up
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
-            this.label1.Location = new System.Drawing.Point(710, 433);
+            this.label1.Location = new System.Drawing.Point(756, 433);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(408, 73);
+            this.label1.Size = new System.Drawing.Size(292, 73);
             this.label1.TabIndex = 13;
-            this.label1.Text = "00:00:00 PM";
+            this.label1.Text = "00:00:00";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 

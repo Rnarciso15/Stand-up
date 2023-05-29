@@ -185,12 +185,12 @@ namespace BusinessLogicLayer
                 };
                 return dal.executarReader("select * from Clientes where Nome like @nome", sqlParams);
             }
-            static public DataTable queryCliente(int id) {
+            static public DataTable queryCliente_mostrar_dados(int n_cliente) {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@id", id)
+                new SqlParameter("@n_cliente", n_cliente)
                 };
-                return dal.executarReader("select * from Clientes where ID=@id", sqlParams);
+                return dal.executarReader("select * from cliente where n_cliente=@n_cliente", sqlParams);
             }
             static public DataTable queryCliente_2(int id, string nome)
             {
@@ -385,7 +385,7 @@ namespace BusinessLogicLayer
             };
                 return dal.executarNonQuery("update [Veiculo] set [Matricula]=@Matricula, [Quilometros]=@Quilometros, [Data]=@Data , [Marca]=@Marca, [Modelo]=@Modelo, [Descricao]=@Descricao, [Combustivel]=@Combustivel, [Imagem]=@Imagem, [Valor]=@Valor, [Cor]=@Cor, [tipo_de_caixa]=@tipo_de_caixa, [Traccao]=@Traccao where [Matricula]=@Matricula1", sqlParams);
             }
-            static public int insertVeiculo(string Matricula, int Quilometros, string Data, string Marca, string Modelo, string Descricao, string Combustivel, byte[] Imagem,int Valor,string Cor, string tipo_de_caixa, int N_Portas, string Traccao)
+            static public int insertVeiculo(string Matricula, int Quilometros, string Data, string Marca, string Modelo, string Descricao, string Combustivel, byte[] Imagem,int Valor,string Cor, string tipo_de_caixa, int N_Portas, string Traccao,bool vendido)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
@@ -401,11 +401,12 @@ namespace BusinessLogicLayer
                        new SqlParameter("@Cor", Cor),
                          new SqlParameter("@tipo_de_caixa", tipo_de_caixa),
                            new SqlParameter("@N_Portas", N_Portas),
+                            new SqlParameter("@vendido", vendido),
                              new SqlParameter("@Traccao", Traccao)
                               
            };
 
-                return dal.executarNonQuery("INSERT into Veiculo (Matricula,Quilometros,Data,Marca,Modelo,Descricao,Combustivel,Imagem,Valor,Cor,tipo_de_caixa,N_Portas,Traccao) VALUES(@Matricula,@Quilometros,@Data,@Marca,@Modelo,@Descricao,@Combustivel,@Imagem,@Valor,@Cor,@tipo_de_caixa,@N_Portas,@Traccao)", sqlParams);
+                return dal.executarNonQuery("INSERT into Veiculo (Matricula,Quilometros,Data,Marca,Modelo,Descricao,Combustivel,Imagem,Valor,Cor,tipo_de_caixa,N_Portas,Traccao,vendido) VALUES(@Matricula,@Quilometros,@Data,@Marca,@Modelo,@Descricao,@Combustivel,@Imagem,@Valor,@Cor,@tipo_de_caixa,@N_Portas,@Traccao,@vendido)", sqlParams);
             }
             static public int insert_modelo(string marca , string modelo, int inicio_producao,  int fim_producao)
             {

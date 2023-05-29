@@ -974,5 +974,13 @@ namespace Stand_up
         {
             
         }
+
+        private void enviadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1.flagEmail = true;
+            Form1.flag_config = false;
+            Form1.flagFunc = false;
+            Form1.flagCliente = false;
+        }
     }
 }
