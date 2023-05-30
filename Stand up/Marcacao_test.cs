@@ -1478,6 +1478,7 @@ namespace Stand_up
             verificar_dia();
             verificar_mes();
             carregar_car_PARA_LISTVIEW();
+            Ativar_marcacao();
         }
 
         void Ativar_marcacao()
@@ -1485,26 +1486,7 @@ namespace Stand_up
             data123 = "";
             dataString = "";
             datastring2 = "";
-            //DateTime DataSelecionada = DateTime.Parse(dia + "/" + mes + "/" + ano);
-            //string dataformatada = DateTime.Now.ToString("dd/MM/yyyy");
-            //DateTime DataHoje = DateTime.ParseExact(dataformatada, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-
-            //if (DataSelecionada >= DataHoje)
-            //{
-
-            //    guna2ComboBox1.Enabled = true;
-
-            //}
-            //else
-            //{
-            //    listView2.Clear();
-            //    listView1.Clear();
-            //    guna2ComboBox1.Enabled = false;
-            //    guna2Button32.Enabled = false;
-            //    guna2Button33.Enabled = false;
-            //}
-
-
+          
             dataString = (dia + "/" + mes + "/" + ano);
             DateTime data;
            if(dia <= 9 && mes <= 9)
@@ -1544,6 +1526,7 @@ namespace Stand_up
                     guna2Button32.Enabled = false;
                     guna2Button33.Enabled = false;
                     flag_dataValida = false;
+                    MessageBox.Show("Para fazer uma marcação necessita de selecionar a data de hoje ou uma posterior");
                 }
 
               
@@ -2041,6 +2024,11 @@ verificar_dia();
            
             }
             Ativar_marcacao();
+        }
+
+        private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

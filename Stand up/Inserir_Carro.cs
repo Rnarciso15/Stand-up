@@ -56,6 +56,7 @@ namespace Stand_up
         int inicio;
         bool editar =false;
         bool matricula_clear = false;
+        bool matricula_editada = false;
 
         ArrayList intArray = new ArrayList();
       
@@ -188,6 +189,7 @@ namespace Stand_up
             guna2CirclePictureBox1.Image = Properties.Resources.car;
             guna2ComboBox2.Enabled = false;
             guna2TextBox6.Enabled = false;
+            guna2ComboBox2.SelectedIndex = -1;
             guna2ComboBox4.SelectedIndex = -1;
             guna2ComboBox5.SelectedIndex = -1;
             guna2ComboBox6.SelectedIndex = -1;  
@@ -298,10 +300,12 @@ namespace Stand_up
                             if (guna2TextBox6.Text != (string)row["Matricula"])
                             {
                                 editar = true;
+                                matricula_editada= true;
                             }
                             else
                             {
                                 editar = false;
+                                    matricula_editada= false;
                             }
                         
 
@@ -505,14 +509,16 @@ namespace Stand_up
                         if (guna2TextBox6.Text.Length != 8)
                         {
                             MessageBox.Show("Insira uma matricula válida !");
-                        }
+                                guna2TextBox6.Clear();
+                            }
                         else
                         {
                             DataTable verificar_matricula = BLL.veiculos.Load_dados1(guna2TextBox6.Text);
-                            if(verificar_matricula.Rows.Count > 0 && editar !=true)
+                            if(verificar_matricula.Rows.Count > 1 && matricula_editada !=true || verificar_matricula.Rows.Count > 0 && matricula_editada == true)
                             {
                                 MessageBox.Show("Esta matricula já existe");
-                            }
+                                    guna2TextBox6.Clear();
+                                }
                             else
                             {
 
