@@ -55,6 +55,7 @@ namespace Stand_up
         int id_marca;
         int inicio;
         bool editar =false;
+        bool matricula_clear = false;
 
         ArrayList intArray = new ArrayList();
       
@@ -93,7 +94,6 @@ namespace Stand_up
                 guna2ComboBox5.SelectedItem = (string)row["Tipo_de_Caixa"];
                 guna2ComboBox6.SelectedItem = Convert.ToString((int)row["N_Portas"]);
                 guna2ComboBox8.SelectedItem = (string)row["Traccao"];
-                        guna2TextBox6.Enabled = false;
                     }
 
             }
@@ -845,297 +845,301 @@ namespace Stand_up
 
         private void guna2TextBox6_TextChanged(object sender, EventArgs e)
         {
-           if (guna2TextBox3.Text.Length == 10)
+
+            if (matricula_clear == false)
             {
-                
-         
-            if (guna2TextBox6.Text.Length == 8)
-            {
-                j = 1;
-                DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-
-                if (data.Year >= 1932 && data.Year <= 1992)
+                if (guna2TextBox3.Text.Length == 10)
                 {
-                    if(guna2TextBox6.Text != "")
+
+
+                    if (guna2TextBox6.Text.Length == 8)
                     {
-                        for (int l = 0; l < 2; l++)
+                        j = 1;
+                        DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
+                        if (data.Year >= 1932 && data.Year <= 1992)
                         {
-                            if (guna2TextBox6.Text[l] == '0' || guna2TextBox6.Text[l] == '1' || guna2TextBox6.Text[l] == '2' || guna2TextBox6.Text[l] == '3' || guna2TextBox6.Text[l] == '4' || guna2TextBox6.Text[l] == '5' || guna2TextBox6.Text[l] == '6' || guna2TextBox6.Text[l] == '7' || guna2TextBox6.Text[l] == '8' || guna2TextBox6.Text[l] == '9')
+                            if (guna2TextBox6.Text != "")
                             {
-                                    MessageBox.Show("Tem de usar o formato AA-00-00, devido à idade do seu carro ");
-                                    guna2TextBox6.Clear();
-                                    break;
+                                for (int l = 0; l < 2; l++)
+                                {
+                                    if (guna2TextBox6.Text[l] == '0' || guna2TextBox6.Text[l] == '1' || guna2TextBox6.Text[l] == '2' || guna2TextBox6.Text[l] == '3' || guna2TextBox6.Text[l] == '4' || guna2TextBox6.Text[l] == '5' || guna2TextBox6.Text[l] == '6' || guna2TextBox6.Text[l] == '7' || guna2TextBox6.Text[l] == '8' || guna2TextBox6.Text[l] == '9')
+                                    {
+                                        MessageBox.Show("Tem de usar o formato AA-00-00, devido à idade do seu carro ");
+                                        guna2TextBox6.Clear();
+                                        break;
+
+                                    }
+                                    else
+                                    {
+
+                                    }
 
                                 }
-                            else
+                            }
+                            if (guna2TextBox6.Text != "")
                             {
-                               
+
+                                for (int o = 3; o < 5; o++)
+                                {
+                                    if (guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
+                                    {
+
+                                    }
+                                    else
+                                    {
+
+                                        MessageBox.Show("Tem de usar o formato AA-00-00, devido á idade do seu carro ");
+                                        guna2TextBox6.Clear();
+                                        break;
+                                    }
+
+                                }
+                            }
+                            if (guna2TextBox6.Text != "")
+                            {
+                                for (int o = 7; o < 8; o++)
+                                {
+                                    if (guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
+                                    {
+
+                                    }
+                                    else
+                                    {
+
+                                        MessageBox.Show("Tem de usar o formato AA-00-00, devido á idade do seu carro ");
+                                        guna2TextBox6.Clear();
+                                        break;
+                                    }
+
+                                }
+                            }
+                        }
+                        if (data.Year >= 1993 && data.Year <= 2005)
+                        {
+                            if (guna2TextBox6.Text != "")
+                            {
+                                for (int l = 0; l < 2; l++)
+                                {
+                                    if (guna2TextBox6.Text[l] == '0' || guna2TextBox6.Text[l] == '1' || guna2TextBox6.Text[l] == '2' || guna2TextBox6.Text[l] == '3' || guna2TextBox6.Text[l] == '4' || guna2TextBox6.Text[l] == '5' || guna2TextBox6.Text[l] == '6' || guna2TextBox6.Text[l] == '7' || guna2TextBox6.Text[l] == '8' || guna2TextBox6.Text[l] == '9')
+                                    {
+
+
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Tem de usar o formato 00-00-AA, devido á idade do seu carro ");
+                                        guna2TextBox6.Clear();
+                                        break;
+                                    }
+
+                                }
+                            }
+                            if (guna2TextBox6.Text != "")
+                            {
+
+                                for (int o = 3; o < 5; o++)
+                                {
+                                    if (guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
+                                    {
+
+                                    }
+                                    else
+                                    {
+
+                                        MessageBox.Show("Tem de usar o formato 00-00-AA, devido á idade do seu carro ");
+                                        guna2TextBox6.Clear();
+                                        break;
+                                    }
+
+                                }
+                            }
+                            if (guna2TextBox6.Text != "")
+                            {
+                                for (int o = 7; o < 8; o++)
+                                {
+                                    if (guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
+                                    {
+                                        MessageBox.Show("Tem de usar o formato 00-00-AA, devido á idade do seu carro ");
+                                        guna2TextBox6.Clear();
+                                        break;
+                                    }
+                                    else
+                                    {
+
+
+                                    }
+
+                                }
                             }
 
                         }
+
+                        if (data.Year >= 2006 && data.Year <= 2020)
+                        {
+                            if (guna2TextBox6.Text != "")
+                            {
+                                for (int l = 0; l < 2; l++)
+                                {
+                                    if (guna2TextBox6.Text[l] == '0' || guna2TextBox6.Text[l] == '1' || guna2TextBox6.Text[l] == '2' || guna2TextBox6.Text[l] == '3' || guna2TextBox6.Text[l] == '4' || guna2TextBox6.Text[l] == '5' || guna2TextBox6.Text[l] == '6' || guna2TextBox6.Text[l] == '7' || guna2TextBox6.Text[l] == '8' || guna2TextBox6.Text[l] == '9')
+                                    {
+
+
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Tem de usar o formato 00-AA-00, devido á idade do seu carro ");
+                                        guna2TextBox6.Clear();
+                                        break;
+                                    }
+
+                                }
+                            }
+                            if (guna2TextBox6.Text != "")
+                            {
+
+                                for (int o = 3; o < 5; o++)
+                                {
+                                    if (guna2TextBox6.Text[
+                                        o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
+                                    {
+                                        MessageBox.Show("Tem de usar o formato 00-AA-00, devido á idade do seu carro ");
+                                        guna2TextBox6.Clear();
+                                        break;
+                                    }
+                                    else
+                                    {
+
+
+                                    }
+
+                                }
+                            }
+                            if (guna2TextBox6.Text != "")
+                            {
+                                for (int o = 6; o < 8; o++)
+                                {
+                                    if (guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Tem de usar o formato 00-AA-00, devido á idade do seu carro ");
+                                        guna2TextBox6.Clear();
+                                        break;
+
+                                    }
+
+                                }
+                            }
+
+                        }
+                        if (data.Year >= 2021)
+                        {
+                            if (guna2TextBox6.Text != "")
+                            {
+                                for (int l = 0; l < 2; l++)
+                                {
+                                    if (guna2TextBox6.Text[l] == '0' || guna2TextBox6.Text[l] == '1' || guna2TextBox6.Text[l] == '2' || guna2TextBox6.Text[l] == '3' || guna2TextBox6.Text[l] == '4' || guna2TextBox6.Text[l] == '5' || guna2TextBox6.Text[l] == '6' || guna2TextBox6.Text[l] == '7' || guna2TextBox6.Text[l] == '8' || guna2TextBox6.Text[l] == '9')
+                                    {
+                                        MessageBox.Show("Tem de usar o formato AA-00-AA, devido á idade do seu carro ");
+                                        guna2TextBox6.Clear();
+                                        break;
+
+                                    }
+                                    else
+                                    {
+
+                                    }
+
+                                }
+                            }
+                            if (guna2TextBox6.Text != "")
+                            {
+
+                                for (int o = 3; o < 5; o++)
+                                {
+                                    if (guna2TextBox6.Text[
+                                        o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
+                                    {
+
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Tem de usar o formato AA-00-AA, devido á idade do seu carro ");
+                                        guna2TextBox6.Clear();
+                                        break;
+
+                                    }
+
+                                }
+                            }
+                            if (guna2TextBox6.Text != "")
+                            {
+                                for (int o = 7; o < 8; o++)
+                                {
+                                    if (guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
+                                    {
+                                        MessageBox.Show("Tem de usar o formato AA-00-AA, devido á idade do seu carro ");
+                                        guna2TextBox6.Clear();
+                                        break;
+                                    }
+                                    else
+                                    {
+
+
+                                    }
+
+                                }
+                            }
+
+                        }
+
+
+
+
+
+
+
                     }
-                    if (guna2TextBox6.Text != "")
+
+                    if (guna2TextBox6.Text.Length < 2 || guna2TextBox6.Text.Length > 3 && guna2TextBox6.Text.Length < 5 || guna2TextBox6.Text.Length > 6 && guna2TextBox6.Text.Length < 8)
                     {
-
-                        for (int o = 3; o < 5; o++)
-                        {
-                            if (guna2TextBox6.Text[o] == '0' ||   guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
-                            {
-                           
-                            }
-                            else
-                            {
-
-                                MessageBox.Show("Tem de usar o formato AA-00-00, devido á idade do seu carro ");
-                                guna2TextBox6.Clear();
-                                break;
-                            }
-
-                        }
+                        j = 0;
                     }
-                    if (guna2TextBox6.Text != "") {
-                        for (int o = 7; o < 8; o++)
+                    if (guna2TextBox6.Text.Length == 2 || guna2TextBox6.Text.Length == 5)
+                    {
+                        if (j != 1)
                         {
-                            if (guna2TextBox6.Text[o] == '0'||  guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
-                            {
-                              
-                            }
-                            else
-                            {
-
-                                MessageBox.Show("Tem de usar o formato AA-00-00, devido á idade do seu carro ");
-                                guna2TextBox6.Clear();
-                                break;
-                            }
-
+                            guna2TextBox6.Text += "-";
+                            guna2TextBox6.Select(guna2TextBox6.Text.Length, 0);
                         }
+
                     }
+                    if (guna2TextBox6.Text.Length == 0)
+                    {
+                        j = 0;
+                    }
+
                 }
-                if (data.Year >= 1993 && data.Year <= 2005)
-                    {
-                        if (guna2TextBox6.Text != "")
-                        {
-                            for (int l = 0; l < 2; l++)
-                            {
-                                if (  guna2TextBox6.Text[l] == '0' || guna2TextBox6.Text[l] == '1' || guna2TextBox6.Text[l] == '2' || guna2TextBox6.Text[l] == '3' || guna2TextBox6.Text[l] == '4' || guna2TextBox6.Text[l] == '5' || guna2TextBox6.Text[l] == '6' || guna2TextBox6.Text[l] == '7' || guna2TextBox6.Text[l] == '8' || guna2TextBox6.Text[l] == '9')
-                                {
-
-
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Tem de usar o formato 00-00-AA, devido á idade do seu carro ");
-                                    guna2TextBox6.Clear();
-                                    break;
-                                }
-
-                            }
-                        }
-                        if (guna2TextBox6.Text != "")
-                        {
-
-                            for (int o = 3; o < 5; o++)
-                            {
-                                if (guna2TextBox6.Text[o] == '0'||  guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
-                                {
-
-                                }
-                                else
-                                {
-
-                                    MessageBox.Show("Tem de usar o formato 00-00-AA, devido á idade do seu carro ");
-                                    guna2TextBox6.Clear();
-                                    break;
-                                }
-
-                            }
-                        }
-                        if (guna2TextBox6.Text != "")
-                        {
-                            for (int o = 7; o < 8; o++)
-                            {
-                                if (guna2TextBox6.Text[o] == '0'||  guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
-                                {
-                                    MessageBox.Show("Tem de usar o formato 00-00-AA, devido á idade do seu carro ");
-                                    guna2TextBox6.Clear();
-                                    break;
-                                }
-                                else
-                                {
-
-
-                                }
-
-                            }
-                        }
-
-                    }
-
-                if (data.Year >= 2006 && data.Year <= 2020)
+                else
                 {
-                    if (guna2TextBox6.Text != "")
-                    {
-                        for (int l = 0; l < 2; l++)
-                        {
-                            if (     guna2TextBox6.Text[l] == '0' || guna2TextBox6.Text[l] == '1' || guna2TextBox6.Text[l] == '2' || guna2TextBox6.Text[l] == '3' || guna2TextBox6.Text[l] == '4' || guna2TextBox6.Text[l] == '5' || guna2TextBox6.Text[l] == '6' || guna2TextBox6.Text[l] == '7' || guna2TextBox6.Text[l] == '8' || guna2TextBox6.Text[l] == '9')
-                            {
 
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("Tem de usar o formato 00-AA-00, devido á idade do seu carro ");
-                                guna2TextBox6.Clear();
-                                break;
-                            }
-
-                        }
-                    }
-                    if (guna2TextBox6.Text != "")
-                    {
-
-                        for (int o = 3; o < 5; o++)
-                        {
-                            if (guna2TextBox6.Text[
-                                o] == '0'||  guna2TextBox6.Text[o] == '0' ||   guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
-                            {
-                                MessageBox.Show("Tem de usar o formato 00-AA-00, devido á idade do seu carro ");
-                                guna2TextBox6.Clear();
-                                break;
-                            }
-                            else
-                            {
-
-                              
-                            }
-
-                        }
-                    }
-                    if (guna2TextBox6.Text != "")
-                    {
-                        for (int o = 6; o < 8; o++)
-                        {
-                            if (guna2TextBox6.Text[o] == '0'||  guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
-                            {
-                              
-                            }
-                            else
-                            {
-                                MessageBox.Show("Tem de usar o formato 00-AA-00, devido á idade do seu carro ");
-                                guna2TextBox6.Clear();
-                                break;
-
-                            }
-
-                        }
-                    }
-
+                    guna2TextBox6.Clear();
+                    guna2TextBox3.Clear();
+                    MessageBox.Show("Data mal preenchida");
                 }
-                if (data.Year >= 2021)
+                if (guna2TextBox6.Text.Length == 8)
                 {
-                    if (guna2TextBox6.Text != "")
-                    {
-                        for (int l = 0; l < 2; l++)
-                        {
-                            if (guna2TextBox6.Text[l] == '0' || guna2TextBox6.Text[l] == '1' || guna2TextBox6.Text[l] == '2' || guna2TextBox6.Text[l] == '3' || guna2TextBox6.Text[l] == '4' || guna2TextBox6.Text[l] == '5' || guna2TextBox6.Text[l] == '6' || guna2TextBox6.Text[l] == '7' || guna2TextBox6.Text[l] == '8' || guna2TextBox6.Text[l] == '9')
-                            {
-                                MessageBox.Show("Tem de usar o formato AA-00-AA, devido á idade do seu carro ");
-                                guna2TextBox6.Clear();
-                                break;
-
-                            }
-                            else
-                            {
-                               
-                            }
-
-                        }
-                    }
-                    if (guna2TextBox6.Text != "")
-                    {
-
-                        for (int o = 3; o < 5; o++)
-                        {
-                            if (guna2TextBox6.Text[
-                                o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
-                            {
-                               
-                            }
-                            else
-                            {
-                                MessageBox.Show("Tem de usar o formato AA-00-AA, devido á idade do seu carro ");
-                                guna2TextBox6.Clear();
-                                break;
-
-                            }
-
-                        }
-                    }
-                    if (guna2TextBox6.Text != "")
-                    {
-                        for (int o = 7; o < 8; o++)
-                        {
-                            if (guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
-                            {
-                                MessageBox.Show("Tem de usar o formato AA-00-AA, devido á idade do seu carro ");
-                                guna2TextBox6.Clear();
-                                break;
-                            }
-                            else
-                            {
-                               
-
-                            }
-
-                        }
-                    }
-
+                    guna2TextBox5.Enabled = true;
+                    guna2TextBox6.Text = guna2TextBox6.Text.ToUpper();
                 }
-
-
-
-
-
-
-
+                else
+                {
+                    guna2TextBox5.Enabled = false;
+                }
             }
-            
-            if (guna2TextBox6.Text.Length < 2 || guna2TextBox6.Text.Length > 3 && guna2TextBox6.Text.Length < 5 || guna2TextBox6.Text.Length > 6 && guna2TextBox6.Text.Length < 8)
-                {
-                    j = 0;
-                }
-                if (guna2TextBox6.Text.Length == 2 || guna2TextBox6.Text.Length == 5)
-                {
-                    if (j != 1)
-                    {
-                        guna2TextBox6.Text += "-";
-                        guna2TextBox6.Select(guna2TextBox6.Text.Length, 0);
-                    }
-
-                }
-                if (guna2TextBox6.Text.Length == 0)
-                {
-                    j = 0;
-                }
-
-            }
-            else
-            {
-                
-                guna2TextBox6.Clear();
-                guna2TextBox3.Clear();
-                MessageBox.Show("Data mal preenchida");
-            }
-            if (guna2TextBox6.Text.Length == 8)
-            {
-                guna2TextBox5.Enabled = true;
-                guna2TextBox6.Text = guna2TextBox6.Text.ToUpper();
-            }
-            else
-            {
-                guna2TextBox5.Enabled = false;
-            }
-
 
      
         }
@@ -1153,8 +1157,10 @@ namespace Stand_up
 
         private void guna2Button1_Click_1(object sender, EventArgs e)
         {
-            guna2TextBox6.Clear();
+             matricula_clear = true;
             j = 0;
+            guna2TextBox6.Text = "";
+            matricula_clear = false;
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
@@ -1175,11 +1181,9 @@ namespace Stand_up
                 desativar_caixas();
                 guna2Button32.Text = "Guardar";
                 guna2Button33.Visible = true;
-                guna2TextBox6.Enabled = false;
             }
             else {
                 guna2Button33.Visible = false;
-                guna2TextBox6.Enabled = true;
                 guna2Button32.Text = "Adicionar";
             }
            
@@ -1389,6 +1393,11 @@ namespace Stand_up
             Form1.flagInsertCAR = false;
             Form2.flagEditCAR = true;
             Form2. flagInsertCAR = false;
+        }
+
+        private void guna2Button33_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
