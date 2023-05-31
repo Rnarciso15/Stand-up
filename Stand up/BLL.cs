@@ -381,7 +381,9 @@ namespace BusinessLogicLayer
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[] {
 
-                          new SqlParameter("@vendido", vendido),new SqlParameter("@vendido", vendido), new SqlParameter("@Combustivel", Combustivel), new SqlParameter("@Cor", Cor) };
+                    new SqlParameter("@vendido", vendido),
+                    new SqlParameter("@Combustivel", Combustivel),
+                    new SqlParameter("@Cor", Cor) };
                 return dal.executarReader("select * from Veiculo where Combustivel = @Combustivel and Cor = @Cor and vendido = @vendido", sqlParams);
             }
             static public int updateVeiculo(string Matricula, int Quilometros, string Data, string Marca, string Modelo, string Descricao, string Combustivel, byte[] Imagem, int Valor, string Cor, string tipo_de_caixa, int N_Portas, string Traccao, string Matricula1)
@@ -513,7 +515,7 @@ namespace BusinessLogicLayer
                           new SqlParameter("@vendido", vendido),
 
                 };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC  and vendido = @vendido", null);
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros DESC  where vendido = @vendido", null);
             }
             static public DataTable querymaior_quiilometros_Cor(string Cor,bool vendido)
             {
@@ -607,7 +609,7 @@ namespace BusinessLogicLayer
 
                           new SqlParameter("@vendido", vendido),
                 };
-                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC and vendido = @vendido", null);
+                return dal.executarReader("select * from Veiculo  ORDER BY Quilometros ASC where vendido = @vendido", null);
             }
 
 
@@ -720,14 +722,13 @@ namespace BusinessLogicLayer
 
                 return Convert.ToString(dal.executarScalar("select admin from funcionario where n_func = @n_func", sqlParams));
             }
-            static public DataTable Load(bool admin)
+            static public DataTable Load()
             {
                 DAL dal = new DAL();
-                SqlParameter[] sqlParams = new SqlParameter[]{
+                SqlParameter[] sqlParams = new SqlParameter[] { };
               
-                new SqlParameter("@admin", admin) };
 
-                return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,nif,morada,ativo,imagem  from funcionario where admin = @admin", sqlParams);
+                return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,nif,morada,ativo,imagem  from funcionario ", sqlParams);
             }
 
             static public DataTable queryLoad_Func()
