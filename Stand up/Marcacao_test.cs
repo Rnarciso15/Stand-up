@@ -1526,7 +1526,7 @@ namespace Stand_up
                     guna2Button32.Enabled = false;
                     guna2Button33.Enabled = false;
                     flag_dataValida = false;
-                    MessageBox.Show("Para fazer uma marcação necessita de selecionar a data de hoje ou uma posterior");
+                    
                 }
 
               
@@ -1823,6 +1823,7 @@ verificar_dia();
 
                 carregar_func_PARA_LISTVIEW();
             }
+        
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -2029,6 +2030,15 @@ verificar_dia();
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void listView3_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (listView3.SelectedItems.Count > 0 && flag_dataValida == false)
+            {
+                MessageBox.Show("Para fazer uma marcação necessita de selecionar a data de hoje ou uma posterior");
+                listView3.SelectedItems.Clear();
+            }
         }
     }
 }

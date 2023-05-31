@@ -883,6 +883,7 @@ namespace Stand_up
             this.listView3.TabIndex = 92;
             this.listView3.UseCompatibleStateImageBehavior = false;
             this.listView3.SelectedIndexChanged += new System.EventHandler(this.listView3_SelectedIndexChanged);
+            this.listView3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView3_MouseClick);
             // 
             // guna2DataGridView1
             // 
