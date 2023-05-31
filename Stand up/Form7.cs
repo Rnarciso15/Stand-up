@@ -47,7 +47,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images2;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(123, 123);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
 
 
 
@@ -92,10 +92,18 @@ namespace Stand_up
         }
         string caminhoArquivo = "";
         int i = 0;
+        int ww = 0;
         ImageList images2 = new ImageList();
         string id_cliente;
         string nomeCliente;
         DataTable dt = null;
+        void limpar_caixas()
+        {
+            guna2TextBox7.Clear();
+            guna2TextBox5.Clear();
+            guna2TextBox1.Clear();
+            guna2TextBox2.Clear();
+        }
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
@@ -194,10 +202,21 @@ namespace Stand_up
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            guna2GroupBox3.Visible = true;
-            string texto = "Bom dia Sr "+nomeCliente +","+"\r\n" +
+          
+
+            if(ww == 0)
+            {
+                guna2GroupBox3.Visible = true;
+                ww = 1;
+            }
+            else
+            {
+                guna2GroupBox3.Visible = false;
+                ww = 0;
+            }
+            string texto = "Bom dia Sr " + nomeCliente + "," + "\r\n" +
                 "\r\n" +
-                              guna2TextBox7.Text+
+                              guna2TextBox7.Text +
                                  "\r\n" +
                 "\r\n" +
                        "\r\n" +
@@ -283,6 +302,63 @@ namespace Stand_up
             Form1.flag_config = false;
             Form1.flagFunc = false;
             Form1.flagCliente = false;
+        }
+
+        private void emailToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void caixaDeEntradaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+            if (guna2TextBox1.Text != "" && guna2TextBox7.Text != "")
+            {
+                DataTable dt1 = BLL.Clientes.queryLoad_cliente();
+            foreach (DataRow row in dt1.Rows)
+            {   
+            
+
+                string fromemail = "standuprla@gmail.com";
+                string frompasssword = "qisznqsrmsszpvif";
+
+                MailMessage message = new MailMessage();
+                // Criando a mensagem de e-mail
+                message.From = new MailAddress(fromemail);
+                message.To.Add(new MailAddress((string)row["email"]));
+                message.Subject = guna2TextBox1.Text;
+                string texto = "Bom dia Sr " + (string)row["nome"] + "," + "\r\n" + "\r\n" + guna2TextBox7.Text + "\r\n" + "\r\n" + "\r\n" + "Obrigado, \r\n" + "Stand Up";
+                message.Body = "<html><body>" + texto + "</body></html>";
+                message.IsBodyHtml = true;
+
+                var smtpClient = new SmtpClient("smtp.gmail.com")
+                {
+                    Port = 587,
+                    Credentials = new NetworkCredential(fromemail, frompasssword),
+                    EnableSsl = true,
+                };
+
+
+
+                if (caminhoArquivo != "")
+                {
+                    Attachment anexo = new Attachment(caminhoArquivo);
+                    message.Attachments.Add(anexo);
+                }
+                smtpClient.Send(message);
+            }
+
+                MessageBox.Show("Email enviados com sucesso!");
+            }
+            else
+            {
+
+                MessageBox.Show("Preencha todos os campos");
+            }
         }
     }
 }

@@ -57,6 +57,7 @@ namespace Stand_up
             this.guna2TextBox7 = new Guna.UI2.WinForms.Guna2TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.menuStrip1.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
@@ -146,6 +147,7 @@ namespace Stand_up
             this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
             this.emailToolStripMenuItem.Size = new System.Drawing.Size(48, 23);
             this.emailToolStripMenuItem.Text = "Email";
+            this.emailToolStripMenuItem.Click += new System.EventHandler(this.emailToolStripMenuItem_Click);
             // 
             // enviadosToolStripMenuItem
             // 
@@ -187,6 +189,7 @@ namespace Stand_up
             // 
             this.guna2GroupBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.guna2GroupBox2.BorderRadius = 10;
+            this.guna2GroupBox2.Controls.Add(this.guna2Button4);
             this.guna2GroupBox2.Controls.Add(this.guna2GroupBox3);
             this.guna2GroupBox2.Controls.Add(this.guna2Button2);
             this.guna2GroupBox2.Controls.Add(this.guna2Button1);
@@ -205,7 +208,7 @@ namespace Stand_up
             this.guna2GroupBox2.Name = "guna2GroupBox2";
             this.guna2GroupBox2.Size = new System.Drawing.Size(1371, 870);
             this.guna2GroupBox2.TabIndex = 55;
-            this.guna2GroupBox2.Text = "Clientes";
+            this.guna2GroupBox2.Text = "Envio de Emails";
             this.guna2GroupBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.guna2GroupBox2.Click += new System.EventHandler(this.guna2GroupBox2_Click);
             // 
@@ -220,11 +223,11 @@ namespace Stand_up
             this.guna2GroupBox3.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox3.Location = new System.Drawing.Point(753, 175);
+            this.guna2GroupBox3.Location = new System.Drawing.Point(753, 133);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
-            this.guna2GroupBox3.Size = new System.Drawing.Size(603, 576);
+            this.guna2GroupBox3.Size = new System.Drawing.Size(603, 618);
             this.guna2GroupBox3.TabIndex = 56;
-            this.guna2GroupBox3.Text = "Perfil";
+            this.guna2GroupBox3.Text = "Pré Visualização";
             this.guna2GroupBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.guna2GroupBox3.Visible = false;
             // 
@@ -279,6 +282,7 @@ namespace Stand_up
             this.guna2TextBox2.Name = "guna2TextBox2";
             this.guna2TextBox2.PasswordChar = '\0';
             this.guna2TextBox2.PlaceholderText = "";
+            this.guna2TextBox2.ReadOnly = true;
             this.guna2TextBox2.SelectedText = "";
             this.guna2TextBox2.Size = new System.Drawing.Size(414, 314);
             this.guna2TextBox2.TabIndex = 57;
@@ -391,10 +395,11 @@ namespace Stand_up
             this.guna2TextBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2TextBox5.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox5.Location = new System.Drawing.Point(143, 133);
-            this.guna2TextBox5.MaxLength = 8;
+            this.guna2TextBox5.MaxLength = 300;
             this.guna2TextBox5.Name = "guna2TextBox5";
             this.guna2TextBox5.PasswordChar = '\0';
             this.guna2TextBox5.PlaceholderText = "";
+            this.guna2TextBox5.ReadOnly = true;
             this.guna2TextBox5.SelectedText = "";
             this.guna2TextBox5.Size = new System.Drawing.Size(604, 36);
             this.guna2TextBox5.TabIndex = 36;
@@ -450,6 +455,25 @@ namespace Stand_up
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // guna2Button4
+            // 
+            this.guna2Button4.Animated = true;
+            this.guna2Button4.BorderRadius = 10;
+            this.guna2Button4.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button4.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.guna2Button4.ForeColor = System.Drawing.Color.White;
+            this.guna2Button4.Location = new System.Drawing.Point(255, 757);
+            this.guna2Button4.Name = "guna2Button4";
+            this.guna2Button4.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
+            this.guna2Button4.Size = new System.Drawing.Size(121, 89);
+            this.guna2Button4.TabIndex = 57;
+            this.guna2Button4.Text = "Enviar a Todos os Clientes";
+            this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
+            // 
             // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -504,5 +528,6 @@ namespace Stand_up
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
+        private Guna.UI2.WinForms.Guna2Button guna2Button4;
     }
 }

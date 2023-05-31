@@ -12,6 +12,26 @@ namespace BusinessLogicLayer
     {
         public class Imagem
         {
+            static public int insertlogo(int Id ,byte[] logo)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@logo", logo),
+
+                new SqlParameter("@Id", Id),
+
+           };
+
+                return dal.executarNonQuery("INSERT into logo (Id,logo) VALUES(@Id,@logo)", sqlParams);
+            }
+            static public DataTable loadlogo()
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+             };
+                return dal.executarReader("select * from logo", sqlParams);
+
+            }
             static public object loadpic()
             {
                 DAL dal = new DAL();
@@ -77,7 +97,7 @@ namespace BusinessLogicLayer
                 SqlParameter[] sqlParams = new SqlParameter[]{
 
                 };
-                return dal.executarReader("select * from cliente  ", sqlParams);
+                return dal.executarReader("select * from cliente  ", null);
             }
 
             static public DataTable queryCliente_Like_nome(string nome)

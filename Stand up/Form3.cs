@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -45,14 +46,37 @@ namespace Stand_up
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            if (WindowState == FormWindowState.Normal)
+
+            int x = BusinessLogicLayer.BLL.Imagem.insertlogo(1, imgToByteArray(pictureBox1.Image));
+        }
+        public Image byteArrayToImage(byte[] byteArrayIn)
+
+        {
+
+            using (MemoryStream mStream = new MemoryStream(byteArrayIn))
+
             {
 
-                WindowState = FormWindowState.Maximized;
+                return Image.FromStream(mStream);
 
             }
-        }
 
+        }
+        public byte[] imgToByteArray(Image img)
+
+        {
+
+            using (MemoryStream mStream = new MemoryStream())
+
+            {
+
+                img.Save(mStream, img.RawFormat);
+
+                return mStream.ToArray();
+
+            }
+
+        }
         private void Form3_Load(object sender, EventArgs e)
         {
 
@@ -91,6 +115,15 @@ namespace Stand_up
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                pictureBox1.ImageLocation = openFileDialog1.FileName;
+            }
         }
     }
 }

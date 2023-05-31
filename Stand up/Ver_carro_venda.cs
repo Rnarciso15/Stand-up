@@ -134,9 +134,22 @@ namespace Stand_up
 
             // Obtém um objeto XGraphics para desenhar na página
             XGraphics gfx = XGraphics.FromPdfPage(page);
+            DataTable logo = BLL.Imagem.loadlogo();
+            XImage image9 = null;
+            foreach (DataRow row in logo.Rows)
+            {
 
+               Image img5 = byteArrayToImage((Byte[])row["logo"]);
+                byte[] img7= imgToByteArray(img5);
+                using (MemoryStream stream = new MemoryStream(img7))
+                {
+                     image9= XImage.FromStream(stream);
+
+                    // Usar o objeto XImage como necessário (por exemplo, desenhar ou adicionar ao PDF)
+                }
+
+            }
             // Carrega as imagens
-            XImage logoImage = XImage.FromFile("C:\\Users\\rodri\\Desktop\\PT\\Stand up\\Stand up\\resources\\logo.png");
 
             XImage image;
 
@@ -150,14 +163,14 @@ namespace Stand_up
 
             // Redimensiona o logo para um tamanho menor
             double logoWidth = 75;  // Largura desejada para o logo
-            double logoHeight = logoWidth * logoImage.PixelHeight / logoImage.PixelWidth;
+            double logoHeight = logoWidth * image9.PixelHeight / image9.PixelWidth;
 
             // Obtém as coordenadas para posicionar o logo no canto superior direito
             double logoX = page.Width - logoWidth -15;
             double logoY = 2;
 
             // Adiciona o logo no canto superior direito com ajuste de tamanho
-            gfx.DrawImage(logoImage, logoX, logoY, logoWidth, logoHeight);
+            gfx.DrawImage(image9, logoX, logoY, logoWidth, logoHeight);
 
             // Adiciona o título
 
