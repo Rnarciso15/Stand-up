@@ -9,6 +9,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace Stand_up
 {
@@ -109,7 +110,7 @@ namespace Stand_up
                guna2GroupBox2.Visible = true;
                 guna2GroupBox3.Visible = true;            
             
-                    guna2DataGridView1.DataSource = BLL.Func.Load(false);
+                    guna2DataGridView1.DataSource = BLL.Func.Load();
              
                
             }
@@ -327,10 +328,20 @@ namespace Stand_up
             }
             }
         }
+        public static bool IsValidEmail(string email)
+        {
+            // Define uma expressão regular para validar o email
+            string pattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
 
+            // Cria um objeto Regex com a expressão regular
+            Regex regex = new Regex(pattern);
+
+            // Verifica se o email corresponde à expressão regular
+            return regex.IsMatch(email);
+        }
         private void guna2TextBox2_TextChanged(object sender, EventArgs e)
         {
-
+       
         }
 
         private void guna2TextBox4_TextChanged(object sender, EventArgs e)
@@ -552,12 +563,21 @@ namespace Stand_up
                                                     if (guna2ComboBox8.SelectedIndex != -1)
                                                     {
 
+                                                        string email = guna2TextBox2.Text;
 
+                                                        if (IsValidEmail(email))
+                                                        {
+                                                       
                                                         DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo funcionário ?", "", MessageBoxButtons.YesNo);
                                                         if (dr == DialogResult.Yes)
                                                         {
                                                             int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash("123"), true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.SelectedItem.ToString(), false);
-                                                            guna2DataGridView1.DataSource = BLL.Func.Load(false);
+                                                            guna2DataGridView1.DataSource = BLL.Func.Load();
+                                                        }
+                                                        }
+                                                        else
+                                                        {
+                                                            MessageBox.Show("Email é inválido.");
                                                         }
                                                     }
                                                     else
@@ -639,14 +659,22 @@ namespace Stand_up
                                                     if (guna2ComboBox8.SelectedIndex != -1)
                                                     {
 
+                                                        string email = guna2TextBox2.Text;
 
-                                                        DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informções do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
+                                                        if (IsValidEmail(email))
+                                                        {
+
+                                                            DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informções do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
                                                         if (dr == DialogResult.Yes)
                                                         {
                                                             int x = BLL.Func.updateFunc(n_func, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
-                                                            guna2DataGridView1.DataSource = BLL.Func.Load(false);
+                                                            guna2DataGridView1.DataSource = BLL.Func.Load();
                                                         }
-
+                                                        }
+                                                        else
+                                                        {
+                                                            MessageBox.Show("Email é inválido.");
+                                                        }
                                                     }
                                                     else
                                                     {
@@ -732,12 +760,21 @@ namespace Stand_up
                                                     if (guna2ComboBox8.SelectedIndex != -1)
                                                     {
 
+                                                        string email = guna2TextBox2.Text;
 
-                                                        DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo Cliente ?", "", MessageBoxButtons.YesNo);
-                                                        if (dr == DialogResult.Yes)
+                                                        if (IsValidEmail(email))
                                                         {
-                                                            int x = BLL.Clientes.insertCliente(guna2TextBox5.Text, guna2TextBox9.Text, true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text, Hash("1234"));
-                                                            guna2DataGridView1.DataSource = BLL.Clientes.Load();
+
+                                                            DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo Cliente ?", "", MessageBoxButtons.YesNo);
+                                                            if (dr == DialogResult.Yes)
+                                                            {
+                                                                int x = BLL.Clientes.insertCliente(guna2TextBox5.Text, guna2TextBox9.Text, true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text, Hash("1234"));
+                                                                guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            MessageBox.Show("Email é inválido.");
                                                         }
                                                     }
                                                     else
@@ -785,17 +822,28 @@ namespace Stand_up
                         }
 
                     }
-                   
+
                 }
                 else
                 {
-                    DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informações do Cliente " + Nome + "?", "", MessageBoxButtons.YesNo);
-                    if (dr == DialogResult.Yes)
-                    {
-                        int x = BLL.Clientes.updateCliente(n_cliente, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
-                        guna2DataGridView1.DataSource = BLL.Clientes.Load();
-                    }
+                    string email = guna2TextBox2.Text;
 
+                    if (IsValidEmail(email))
+                    {
+
+                        DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informações do Cliente " + Nome + "?", "", MessageBoxButtons.YesNo);
+                        if (dr == DialogResult.Yes)
+                        {
+                            int x = BLL.Clientes.updateCliente(n_cliente, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
+                            guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                        }
+                    }
+                    else
+                        {
+                            MessageBox.Show("Email é inválido.");
+                        }
+
+                    
                 }
 
             }
@@ -837,7 +885,7 @@ namespace Stand_up
             Form1.flagEditCliente = false;
             guna2GroupBox2.Text = "Inserir Funcionário";
             guna2Button4.Visible = false;
-            guna2DataGridView1.DataSource = BLL.Func.Load(false);
+            guna2DataGridView1.DataSource = BLL.Func.Load();
             clear_caoxas();
         }
 
@@ -853,7 +901,7 @@ namespace Stand_up
             Form1.flagEditCliente = false;
             guna2GroupBox2.Text = "Editar Funcionário";
             guna2Button4.Visible = true;
-            guna2DataGridView1.DataSource = BLL.Func.Load(false);
+            guna2DataGridView1.DataSource = BLL.Func.Load();
             clear_caoxas();
         }
 
@@ -950,7 +998,12 @@ namespace Stand_up
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
-
+            DialogResult dr = MessageBox.Show("Tem a certeza que quer cancelar as alterações do funcionário "+Nome, "", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                clear_caoxas();
+                guna2DataGridView1.DataSource = BLL.Func.Load();
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)

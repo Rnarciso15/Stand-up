@@ -30,7 +30,7 @@ namespace Stand_up
             }
             if (admin == "True" && Form1.flagFunc == true)
             {
-                guna2DataGridView1.DataSource = BLL.Func.Load(false);
+                guna2DataGridView1.DataSource = BLL.Func.Load();
             }
             timer1.Start();
         }
