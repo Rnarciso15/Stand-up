@@ -1471,6 +1471,7 @@ namespace Stand_up
 
         private void Marcacao_test_Load(object sender, EventArgs e)
         {
+            DoubleBuffered = true;
             mes = DateTime.Now.Month;
             ano = DateTime.Now.Year;
             dia = DateTime.Now.Day;
@@ -1913,27 +1914,32 @@ verificar_dia();
                         }
                         else
                         {
+                            DataTable info = BLL.veiculos.Load_dados(matricula);
 
-                      
-           
-         
-            DataTable info = BLL.veiculos.Load_dados(matricula);
+                            foreach (DataRow row in info.Rows)
+                            {
+                                marca = (string)row["Marca"];
+                                modelo = (string)row["Modelo"];
+                                imageM = byteArrayToImage((Byte[])row["Imagem"]);
 
-            foreach (DataRow row in info.Rows)
-            {
+                            }
 
-               
-                marca = (string)row["Marca"];
-                modelo = (string)row["Modelo"];
-                imageM = byteArrayToImage((Byte[])row["Imagem"]);
-              
-            }
-                   DateTime data_sem_hora = DateTime.ParseExact(datastring2, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-                            
-            Insertdata = DateTime.ParseExact(data123, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
-            int x = BLL.testDrive.insertTest(data_sem_hora,Insertdata,Convert.ToInt32(id_func),nomeFunc,Convert.ToInt32(id_cliente),nomeCliente,marca,modelo,matricula, imgToByteArray(imageM));
-                            guna2DataGridView1.DataSource = BLL.testDrive.queryLoad_Test(data_sem_hora);
-                          
+                            DateTime data_sem_hora = DateTime.ParseExact(datastring2, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                            Insertdata = DateTime.ParseExact(data123, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+
+                            DataTable DH = BLL.testDrive.procurarFuncOcupado(Insertdata,Convert.ToInt32(id_func),Convert.ToInt32(id_cliente),matricula);
+                            if (DH.Rows.Count <= 0)
+                            {
+                                int x = BLL.testDrive.insertTest(data_sem_hora, Insertdata, Convert.ToInt32(id_func), nomeFunc, Convert.ToInt32(id_cliente), nomeCliente, marca, modelo, matricula, imgToByteArray(imageM));
+                                guna2DataGridView1.DataSource = BLL.testDrive.queryLoad_Test(data_sem_hora);
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Não pode inserir pois o funcionário/cliente/carro estão com marcações feitas nesse horário");
+                            }
+
+
                         }
                     }
                 }

@@ -25,6 +25,11 @@ namespace Stand_up
         {
 
         }
+
+        private void Editar_carro_Load(object sender, EventArgs e)
+        {
+            DoubleBuffered = true;
+        }
     }
 
 }

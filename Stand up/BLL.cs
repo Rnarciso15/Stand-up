@@ -60,6 +60,18 @@ namespace BusinessLogicLayer
         }
         public class testDrive
         {
+            static public DataTable procurarFuncOcupado(DateTime data, int id_func, int id_cliente ,string matricula)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@data", data),
+                       new SqlParameter("@id_func", id_func),
+                new SqlParameter("@id_cliente", id_cliente),
+                       new SqlParameter("@matricula", matricula),
+            };
+
+                return dal.executarReader("select * from marcacao where data = @data and id_func = @id_func and matricula = @matricula and id_cliente = @id_cliente", sqlParams);
+            }
             static public int insertTest(DateTime data_sem_hora,DateTime data, int id_func, string nomefunc,int id_cliente,string nomecliente,string marca,string modelo,string matricula,byte[] imagemcarro)
             {
                 DAL dal = new DAL();
@@ -720,14 +732,13 @@ namespace BusinessLogicLayer
 
                 return Convert.ToString(dal.executarScalar("select admin from funcionario where n_func = @n_func", sqlParams));
             }
-            static public DataTable Load(bool admin)
+            static public DataTable Load()
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-              
-                new SqlParameter("@admin", admin) };
 
-                return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,nif,morada,ativo,imagem  from funcionario where admin = @admin", sqlParams);
+                    };
+                return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,nif,morada,ativo,imagem  from funcionario ", sqlParams);
             }
 
             static public DataTable queryLoad_Func()

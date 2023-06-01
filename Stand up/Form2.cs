@@ -114,7 +114,7 @@ namespace Stand_up
         private void Form2_Load(object sender, EventArgs e)
         {
             carregar_car_PARA_LISTVIEW();
-
+            DoubleBuffered = true;
 
 
         }

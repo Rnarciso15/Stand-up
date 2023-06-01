@@ -100,7 +100,7 @@ namespace Stand_up
         private void Form5_Load(object sender, EventArgs e)
         {
             guna2TextBox1.UseSystemPasswordChar = true;
-            this.DoubleBuffered = true;
+            DoubleBuffered = true;
         }
     }
 }

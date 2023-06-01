@@ -79,7 +79,7 @@ namespace Stand_up
         }
         private void Form3_Load(object sender, EventArgs e)
         {
-
+            DoubleBuffered = true;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

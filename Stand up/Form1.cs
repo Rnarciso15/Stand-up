@@ -72,7 +72,7 @@ namespace Stand_up
        
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.DoubleBuffered = true;
+            DoubleBuffered = true;
             timer1.Start();
             watch f2 = new watch();
             guna2Panel3.Controls.Clear();

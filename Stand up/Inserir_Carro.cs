@@ -1182,6 +1182,7 @@ namespace Stand_up
 
         private void Inserir_Carro_Load(object sender, EventArgs e)
         {
+            DoubleBuffered = true;
             if (Form1.flagEditCAR == true)
             {
                 desativar_caixas();

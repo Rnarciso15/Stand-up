@@ -18,7 +18,7 @@ namespace Stand_up
 
         private void Form6_Load(object sender, EventArgs e)
         {
-                  
+            DoubleBuffered = true;
             string admin = BLL.Func.Buscar_admin(Form5.n_func);
             if (admin != "True")
             {

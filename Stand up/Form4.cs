@@ -118,7 +118,7 @@ namespace Stand_up
 
         private void Form4_Load(object sender, EventArgs e)
         {
-          
+            DoubleBuffered = true;
             guna2HtmlLabel1.Location = new Point(308, 311);
             guna2TextBox1.UseSystemPasswordChar = true;
             guna2TextBox11.UseSystemPasswordChar = true;

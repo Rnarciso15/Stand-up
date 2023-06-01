@@ -67,6 +67,7 @@ namespace Stand_up
 
         private void Ver_carro_venda_Load(object sender, EventArgs e)
         {
+            DoubleBuffered = true;
             DataTable info = BLL.veiculos.Load_dados(carros_para_venda.Matricula);
 
             foreach (DataRow row in info.Rows)

@@ -392,6 +392,7 @@ namespace Stand_up
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Editar_carro";
             this.Text = "Editar_carro";
+            this.Load += new System.EventHandler(this.Editar_carro_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();

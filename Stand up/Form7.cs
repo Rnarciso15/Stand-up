@@ -167,6 +167,7 @@ namespace Stand_up
         private void Form7_Load(object sender, EventArgs e)
         {
             carregar_cliente_PARA_LISTVIEW();
+            DoubleBuffered = true;
         }
 
      

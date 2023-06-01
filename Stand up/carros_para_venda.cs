@@ -31,6 +31,7 @@ namespace Stand_up
         {
             carregar_car_PARA_LISTVIEW();
             timer1.Start();
+            DoubleBuffered = true;
         }
         void carregar_car_PARA_LISTVIEW10()
         {
