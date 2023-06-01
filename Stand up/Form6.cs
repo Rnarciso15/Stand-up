@@ -646,6 +646,11 @@ namespace Stand_up
             Form1.flagFunc = false;
             Form1.flagCliente = false;
         }
+
+        private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 
 }

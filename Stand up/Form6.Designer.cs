@@ -30,9 +30,9 @@ namespace Stand_up
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.inserirCarroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inserirVeiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +42,8 @@ namespace Stand_up
             this.inserirEspecificaçõesDoVeículoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarEspecificaçõesDoVeículoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDeClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.emailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.enviarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Button32 = new Guna.UI2.WinForms.Guna2Button();
@@ -52,8 +54,6 @@ namespace Stand_up
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.emailToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.enviarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -117,47 +117,62 @@ namespace Stand_up
             // inserirEspecificaçõesDoVeículoToolStripMenuItem
             // 
             this.inserirEspecificaçõesDoVeículoToolStripMenuItem.Name = "inserirEspecificaçõesDoVeículoToolStripMenuItem";
-            this.inserirEspecificaçõesDoVeículoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.inserirEspecificaçõesDoVeículoToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
             this.inserirEspecificaçõesDoVeículoToolStripMenuItem.Text = "Inserir Clientes";
             this.inserirEspecificaçõesDoVeículoToolStripMenuItem.Click += new System.EventHandler(this.inserirEspecificaçõesDoVeículoToolStripMenuItem_Click);
             // 
             // editarEspecificaçõesDoVeículoToolStripMenuItem
             // 
             this.editarEspecificaçõesDoVeículoToolStripMenuItem.Name = "editarEspecificaçõesDoVeículoToolStripMenuItem";
-            this.editarEspecificaçõesDoVeículoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.editarEspecificaçõesDoVeículoToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
             this.editarEspecificaçõesDoVeículoToolStripMenuItem.Text = "Editar Clientes";
             this.editarEspecificaçõesDoVeículoToolStripMenuItem.Click += new System.EventHandler(this.editarEspecificaçõesDoVeículoToolStripMenuItem_Click);
             // 
             // listaDeClientesToolStripMenuItem
             // 
             this.listaDeClientesToolStripMenuItem.Name = "listaDeClientesToolStripMenuItem";
-            this.listaDeClientesToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.listaDeClientesToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
             this.listaDeClientesToolStripMenuItem.Text = "Lista de Clientes";
             this.listaDeClientesToolStripMenuItem.Click += new System.EventHandler(this.listaDeClientesToolStripMenuItem_Click);
             // 
+            // emailToolStripMenuItem
+            // 
+            this.emailToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.enviarToolStripMenuItem});
+            this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
+            this.emailToolStripMenuItem.Size = new System.Drawing.Size(48, 23);
+            this.emailToolStripMenuItem.Text = "Email";
+            // 
+            // enviarToolStripMenuItem
+            // 
+            this.enviarToolStripMenuItem.Name = "enviarToolStripMenuItem";
+            this.enviarToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
+            this.enviarToolStripMenuItem.Text = "Enviar";
+            this.enviarToolStripMenuItem.Click += new System.EventHandler(this.enviarToolStripMenuItem_Click);
+            // 
             // guna2DataGridView1
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.guna2DataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.guna2DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.guna2DataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.guna2DataGridView1.ColumnHeadersHeight = 40;
             this.guna2DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.Location = new System.Drawing.Point(27, 129);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
@@ -188,6 +203,7 @@ namespace Stand_up
             this.guna2DataGridView1.ThemeStyle.RowsStyle.Height = 22;
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.guna2DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick);
             // 
             // guna2TextBox1
             // 
@@ -357,21 +373,6 @@ namespace Stand_up
             this.guna2Button1.Size = new System.Drawing.Size(36, 36);
             this.guna2Button1.TabIndex = 71;
             this.guna2Button1.UseTransparentBackground = true;
-            // 
-            // emailToolStripMenuItem
-            // 
-            this.emailToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.enviarToolStripMenuItem});
-            this.emailToolStripMenuItem.Name = "emailToolStripMenuItem";
-            this.emailToolStripMenuItem.Size = new System.Drawing.Size(48, 23);
-            this.emailToolStripMenuItem.Text = "Email";
-            // 
-            // enviarToolStripMenuItem
-            // 
-            this.enviarToolStripMenuItem.Name = "enviarToolStripMenuItem";
-            this.enviarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.enviarToolStripMenuItem.Text = "Enviar";
-            this.enviarToolStripMenuItem.Click += new System.EventHandler(this.enviarToolStripMenuItem_Click);
             // 
             // Form6
             // 

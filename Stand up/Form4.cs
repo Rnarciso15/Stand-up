@@ -26,8 +26,35 @@ namespace Stand_up
         int w = 0;
         int ano;
         int n_func;
-        int n_cliente;
-        
+        int n_cliente; 
+        void nao_readonly_caixas()
+        {
+
+            guna2TextBox9.ReadOnly = false;
+            guna2TextBox4.ReadOnly = false;
+            guna2TextBox2.ReadOnly = false;
+            guna2TextBox5.ReadOnly = false;
+            guna2TextBox6.ReadOnly = false;
+            guna2TextBox7.ReadOnly = false;
+            guna2TextBox8.ReadOnly = false;
+            guna2TextBox10.ReadOnly = false;
+            guna2TextBox11.ReadOnly = false;
+            guna2ComboBox8.Enabled = true;
+        }
+        void readonly_caixas()
+        {
+          
+            guna2TextBox9.ReadOnly = true;
+            guna2TextBox4.ReadOnly = true;
+            guna2TextBox2.ReadOnly = true;
+            guna2TextBox5.ReadOnly = true;
+            guna2TextBox6.ReadOnly = true;
+            guna2TextBox7.ReadOnly = true;
+            guna2TextBox8.ReadOnly = true;
+            guna2TextBox10.ReadOnly = true;
+            guna2TextBox11.ReadOnly = true;
+            guna2ComboBox8.Enabled = false;
+        }
         void clear_caoxas()
         {
             guna2PictureBox2.Image = null;
@@ -101,15 +128,14 @@ namespace Stand_up
             if(admin != "True")
             {
                 guna2GroupBox2.Visible = true;
-                guna2GroupBox3.Visible = true;
+                guna2GroupBox3.Visible = false;
                 guna2DataGridView1.DataSource = BLL.Clientes.Load();
              
             }
             else
             {
                guna2GroupBox2.Visible = true;
-                guna2GroupBox3.Visible = true;            
-            
+                guna2GroupBox3.Visible = true;    
                     guna2DataGridView1.DataSource = BLL.Func.Load();
              
                
@@ -117,19 +143,23 @@ namespace Stand_up
             if (Form1.flagInsertFunc == true)
             {
                 guna2GroupBox2.Text = "Inserir Funcionário";
+                readonly_caixas();
             }
           if(Form1.flagEditFunc == true)
             {
                 guna2GroupBox2.Text = "Editar Funcionário";
+                nao_readonly_caixas();
             }
 
             if (Form1.flagInsertCliente == true)
             {
                 guna2GroupBox2.Text = "Inserir Cliente";
+                readonly_caixas();
             }
             if (Form1.flagEditCliente == true)
             {
                 guna2GroupBox2.Text = "Editar Cliente";
+                nao_readonly_caixas();
             }
             foreach (DataRow row in dt.Rows)
             {
@@ -460,10 +490,14 @@ namespace Stand_up
 
         private void guna2PictureBox2_Click(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (Form1.flagInsertFunc != true && Form1.flagInsertCliente != true)
             {
-                guna2PictureBox2.ImageLocation = openFileDialog1.FileName;
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    guna2PictureBox2.ImageLocation = openFileDialog1.FileName;
+                }
             }
+            
         }
         static string Hash(string input)
 

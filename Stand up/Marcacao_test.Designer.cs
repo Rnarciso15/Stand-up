@@ -770,7 +770,7 @@ namespace Stand_up
             this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(1112, 52);
+            this.listView1.Location = new System.Drawing.Point(1112, 65);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(545, 351);
             this.listView1.TabIndex = 37;

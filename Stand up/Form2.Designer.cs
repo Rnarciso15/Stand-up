@@ -33,9 +33,6 @@ namespace Stand_up
             this.inserirCarroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.inserirVeiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editarVeiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.especificaçõesDoVeículoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.inserirEspecificaçõesDoVeículoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ediitarEspecificaçõesDoVeículoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listView1 = new System.Windows.Forms.ListView();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -43,8 +40,7 @@ namespace Stand_up
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inserirCarroToolStripMenuItem,
-            this.especificaçõesDoVeículoToolStripMenuItem});
+            this.inserirCarroToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1683, 27);
@@ -66,39 +62,16 @@ namespace Stand_up
             // inserirVeiculoToolStripMenuItem
             // 
             this.inserirVeiculoToolStripMenuItem.Name = "inserirVeiculoToolStripMenuItem";
-            this.inserirVeiculoToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
+            this.inserirVeiculoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.inserirVeiculoToolStripMenuItem.Text = "Inserir Veiculo";
             this.inserirVeiculoToolStripMenuItem.Click += new System.EventHandler(this.inserirVeiculoToolStripMenuItem_Click);
             // 
             // editarVeiculoToolStripMenuItem
             // 
             this.editarVeiculoToolStripMenuItem.Name = "editarVeiculoToolStripMenuItem";
-            this.editarVeiculoToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
+            this.editarVeiculoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.editarVeiculoToolStripMenuItem.Text = "Editar Veiculo";
             this.editarVeiculoToolStripMenuItem.Click += new System.EventHandler(this.editarVeiculoToolStripMenuItem_Click);
-            // 
-            // especificaçõesDoVeículoToolStripMenuItem
-            // 
-            this.especificaçõesDoVeículoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inserirEspecificaçõesDoVeículoToolStripMenuItem,
-            this.ediitarEspecificaçõesDoVeículoToolStripMenuItem});
-            this.especificaçõesDoVeículoToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.especificaçõesDoVeículoToolStripMenuItem.Name = "especificaçõesDoVeículoToolStripMenuItem";
-            this.especificaçõesDoVeículoToolStripMenuItem.Size = new System.Drawing.Size(172, 23);
-            this.especificaçõesDoVeículoToolStripMenuItem.Text = "Especificações do Veículo";
-            this.especificaçõesDoVeículoToolStripMenuItem.Click += new System.EventHandler(this.especificaçõesDoVeículoToolStripMenuItem_Click);
-            // 
-            // inserirEspecificaçõesDoVeículoToolStripMenuItem
-            // 
-            this.inserirEspecificaçõesDoVeículoToolStripMenuItem.Name = "inserirEspecificaçõesDoVeículoToolStripMenuItem";
-            this.inserirEspecificaçõesDoVeículoToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
-            this.inserirEspecificaçõesDoVeículoToolStripMenuItem.Text = "Inserir Especificações do Veículo";
-            // 
-            // ediitarEspecificaçõesDoVeículoToolStripMenuItem
-            // 
-            this.ediitarEspecificaçõesDoVeículoToolStripMenuItem.Name = "ediitarEspecificaçõesDoVeículoToolStripMenuItem";
-            this.ediitarEspecificaçõesDoVeículoToolStripMenuItem.Size = new System.Drawing.Size(271, 24);
-            this.ediitarEspecificaçõesDoVeículoToolStripMenuItem.Text = "Editar Especificações do Veículo";
             // 
             // listView1
             // 
@@ -137,9 +110,6 @@ namespace Stand_up
         private System.Windows.Forms.ToolStripMenuItem inserirCarroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem inserirVeiculoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editarVeiculoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem especificaçõesDoVeículoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem inserirEspecificaçõesDoVeículoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ediitarEspecificaçõesDoVeículoToolStripMenuItem;
         private System.Windows.Forms.ListView listView1;
     }
 }
