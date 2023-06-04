@@ -60,17 +60,35 @@ namespace BusinessLogicLayer
         }
         public class testDrive
         {
-            static public DataTable procurarFuncOcupado(DateTime data, int id_func, int id_cliente ,string matricula)
+            static public DataTable procurarFuncOcupado(DateTime data, int id_func)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
                 new SqlParameter("@data", data),
                        new SqlParameter("@id_func", id_func),
-                new SqlParameter("@id_cliente", id_cliente),
+            };
+
+                return dal.executarReader("select * from marcacao where data = @data and id_func = @id_func", sqlParams);
+            }
+            static public DataTable procurarClienteOcupado(DateTime data, int id_cliente)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@data", data),
+                       new SqlParameter("@id_cliente", id_cliente),
+            };
+
+                return dal.executarReader("select * from marcacao where data = @data and id_cliente = @id_cliente", sqlParams);
+            }
+            static public DataTable procurarCarroOcupado(DateTime data, string matricula)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@data", data),
                        new SqlParameter("@matricula", matricula),
             };
 
-                return dal.executarReader("select * from marcacao where data = @data and id_func = @id_func and matricula = @matricula and id_cliente = @id_cliente", sqlParams);
+                return dal.executarReader("select * from marcacao where data = @data and matricula = @matricula", sqlParams);
             }
             static public int insertTest(DateTime data_sem_hora,DateTime data, int id_func, string nomefunc,int id_cliente,string nomecliente,string marca,string modelo,string matricula,byte[] imagemcarro)
             {

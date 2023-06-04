@@ -10,6 +10,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Stand_up
 {
@@ -1232,26 +1233,7 @@ namespace Stand_up
                  
 
             }
-
-            guna2ComboBox1.Items.Clear();
-            guna2ComboBox1.Items.Add("08:00 - 08:30");
-            guna2ComboBox1.Items.Add("08:30 - 09:00");
-            guna2ComboBox1.Items.Add("09:00 - 09:30");
-            guna2ComboBox1.Items.Add("09:30 - 10:00");
-            guna2ComboBox1.Items.Add("10:00 - 10:30");
-            guna2ComboBox1.Items.Add("10:30 - 11:00");
-            guna2ComboBox1.Items.Add("11:00 - 11:30");
-            guna2ComboBox1.Items.Add("11:30 - 12:00");
-            guna2ComboBox1.Items.Add("12:00 - 12:30");
-            guna2ComboBox1.Items.Add("12:30 - 13:00");
-            guna2ComboBox1.Items.Add("13:00 - 13:30");
-            guna2ComboBox1.Items.Add("13:30 - 14:00");
-            guna2ComboBox1.Items.Add("14:00 - 14:30");
-            guna2ComboBox1.Items.Add("14:30 - 15:00");
-            guna2ComboBox1.Items.Add("15:00 - 15:30");
-            guna2ComboBox1.Items.Add("15:30 - 16:00");
-            guna2ComboBox1.Items.Add("16:00 - 16:30");
-            guna2ComboBox1.Items.Add("16:30 - 17:00");
+         
 
 
         }
@@ -1538,9 +1520,295 @@ namespace Stand_up
             {
                 MessageBox.Show("Data inválida." + dataString);
             }
-          
+
+            string hora1 = DateTime.Now.ToString("HH:mm:ss");
+            string data_atual = DateTime.Now.ToShortDateString();
+            DateTime data_sem_hora2 = DateTime.ParseExact(datastring2, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+            string data_sem_hora1 = data_sem_hora2.ToShortDateString();
+            if(data_atual == data_sem_hora1)
+            {
+                guna2ComboBox1.Items.Clear();
+                if (hora1[0] == '0' && hora1[1] == '8')
+                {
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("08:30 - 09:00");
+                    guna2ComboBox1.Items.Add("09:00 - 09:30");
+                    guna2ComboBox1.Items.Add("09:30 - 10:00");
+                    guna2ComboBox1.Items.Add("10:00 - 10:30");
+                    guna2ComboBox1.Items.Add("10:30 - 11:00");
+                    guna2ComboBox1.Items.Add("11:00 - 11:30");
+                    guna2ComboBox1.Items.Add("11:30 - 12:00");
+                    guna2ComboBox1.Items.Add("12:00 - 12:30");
+                    guna2ComboBox1.Items.Add("12:30 - 13:00");
+                    guna2ComboBox1.Items.Add("13:00 - 13:30");
+                    guna2ComboBox1.Items.Add("13:30 - 14:00");
+                    guna2ComboBox1.Items.Add("14:00 - 14:30");
+                    guna2ComboBox1.Items.Add("14:30 - 15:00");
+                    guna2ComboBox1.Items.Add("15:00 - 15:30");
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+
+                }
+                if (hora1[0] == '0' && hora1[1] == '8' && hora1[3] == '3' )
+                {
+
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("08:30 - 09:00");
+                    guna2ComboBox1.Items.Add("09:00 - 09:30");
+                    guna2ComboBox1.Items.Add("09:30 - 10:00");
+                    guna2ComboBox1.Items.Add("10:00 - 10:30");
+                    guna2ComboBox1.Items.Add("10:30 - 11:00");
+                    guna2ComboBox1.Items.Add("11:00 - 11:30");
+                    guna2ComboBox1.Items.Add("11:30 - 12:00");
+                    guna2ComboBox1.Items.Add("12:00 - 12:30");
+                    guna2ComboBox1.Items.Add("12:30 - 13:00");
+                    guna2ComboBox1.Items.Add("13:00 - 13:30");
+                    guna2ComboBox1.Items.Add("13:30 - 14:00");
+                    guna2ComboBox1.Items.Add("14:00 - 14:30");
+                    guna2ComboBox1.Items.Add("14:30 - 15:00");
+                    guna2ComboBox1.Items.Add("15:00 - 15:30");
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+
+                }
+                    if (hora1[0] == '0' && hora1[1] == '9')
+                {
+
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("09:30 - 10:00");
+                    guna2ComboBox1.Items.Add("10:00 - 10:30");
+                    guna2ComboBox1.Items.Add("10:30 - 11:00");
+                    guna2ComboBox1.Items.Add("11:00 - 11:30");
+                    guna2ComboBox1.Items.Add("11:30 - 12:00");
+                    guna2ComboBox1.Items.Add("12:00 - 12:30");
+                    guna2ComboBox1.Items.Add("12:30 - 13:00");
+                    guna2ComboBox1.Items.Add("13:00 - 13:30");
+                    guna2ComboBox1.Items.Add("13:30 - 14:00");
+                    guna2ComboBox1.Items.Add("14:00 - 14:30");
+                    guna2ComboBox1.Items.Add("14:30 - 15:00");
+                    guna2ComboBox1.Items.Add("15:00 - 15:30");
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+
+                }
+                if (hora1[0] == '0' && hora1[1] == '9' && hora1[3] == '3')
+                {
+
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("10:00 - 10:30");
+                    guna2ComboBox1.Items.Add("10:30 - 11:00");
+                    guna2ComboBox1.Items.Add("11:00 - 11:30");
+                    guna2ComboBox1.Items.Add("11:30 - 12:00");
+                    guna2ComboBox1.Items.Add("12:00 - 12:30");
+                    guna2ComboBox1.Items.Add("12:30 - 13:00");
+                    guna2ComboBox1.Items.Add("13:00 - 13:30");
+                    guna2ComboBox1.Items.Add("13:30 - 14:00");
+                    guna2ComboBox1.Items.Add("14:00 - 14:30");
+                    guna2ComboBox1.Items.Add("14:30 - 15:00");
+                    guna2ComboBox1.Items.Add("15:00 - 15:30");
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+
+                }
 
 
+
+                if (hora1[0] == '1' && hora1[1] == '0')
+                {
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("10:30 - 11:00");
+                    guna2ComboBox1.Items.Add("11:00 - 11:30");
+                    guna2ComboBox1.Items.Add("11:30 - 12:00");
+                    guna2ComboBox1.Items.Add("12:00 - 12:30");
+                    guna2ComboBox1.Items.Add("12:30 - 13:00");
+                    guna2ComboBox1.Items.Add("13:00 - 13:30");
+                    guna2ComboBox1.Items.Add("13:30 - 14:00");
+                    guna2ComboBox1.Items.Add("14:00 - 14:30");
+                    guna2ComboBox1.Items.Add("14:30 - 15:00");
+                    guna2ComboBox1.Items.Add("15:00 - 15:30");
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+                }
+                if (hora1[0] == '1' && hora1[1] == '0' && hora1[3] == '3')
+                {
+
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("11:00 - 11:30");
+                    guna2ComboBox1.Items.Add("11:30 - 12:00");
+                    guna2ComboBox1.Items.Add("12:00 - 12:30");
+                    guna2ComboBox1.Items.Add("12:30 - 13:00");
+                    guna2ComboBox1.Items.Add("13:00 - 13:30");
+                    guna2ComboBox1.Items.Add("13:30 - 14:00");
+                    guna2ComboBox1.Items.Add("14:00 - 14:30");
+                    guna2ComboBox1.Items.Add("14:30 - 15:00");
+                    guna2ComboBox1.Items.Add("15:00 - 15:30");
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+
+                }
+
+                if (hora1[0] == '1' && hora1[1] == '1')
+                {
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("11:30 - 12:00");
+                    guna2ComboBox1.Items.Add("12:00 - 12:30");
+                    guna2ComboBox1.Items.Add("12:30 - 13:00");
+                    guna2ComboBox1.Items.Add("13:00 - 13:30");
+                    guna2ComboBox1.Items.Add("13:30 - 14:00");
+                    guna2ComboBox1.Items.Add("14:00 - 14:30");
+                    guna2ComboBox1.Items.Add("14:30 - 15:00");
+                    guna2ComboBox1.Items.Add("15:00 - 15:30");
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+                }
+                if (hora1[0] == '1' && hora1[1] == '1' && hora1[3] == '3')
+                {
+
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("12:00 - 12:30");
+                    guna2ComboBox1.Items.Add("12:30 - 13:00");
+                    guna2ComboBox1.Items.Add("13:00 - 13:30");
+                    guna2ComboBox1.Items.Add("13:30 - 14:00");
+                    guna2ComboBox1.Items.Add("14:00 - 14:30");
+                    guna2ComboBox1.Items.Add("14:30 - 15:00");
+                    guna2ComboBox1.Items.Add("15:00 - 15:30");
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+
+                }
+
+
+                if (hora1[0] == '1' && hora1[1] == '2')
+                {
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("12:30 - 13:00");
+                    guna2ComboBox1.Items.Add("13:00 - 13:30");
+                    guna2ComboBox1.Items.Add("13:30 - 14:00");
+                    guna2ComboBox1.Items.Add("14:00 - 14:30");
+                    guna2ComboBox1.Items.Add("14:30 - 15:00");
+                    guna2ComboBox1.Items.Add("15:00 - 15:30");
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+                }
+                if (hora1[0] == '1' && hora1[1] == '2' && hora1[3] == '3')
+                {
+
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("12:30 - 13:00");
+                    guna2ComboBox1.Items.Add("13:00 - 13:30");
+                    guna2ComboBox1.Items.Add("13:30 - 14:00");
+                    guna2ComboBox1.Items.Add("14:00 - 14:30");
+                    guna2ComboBox1.Items.Add("14:30 - 15:00");
+                    guna2ComboBox1.Items.Add("15:00 - 15:30");
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+
+                }
+                if (hora1[0] == '1' && hora1[1] == '3')
+                {
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("13:30 - 14:00");
+                    guna2ComboBox1.Items.Add("14:00 - 14:30");
+                    guna2ComboBox1.Items.Add("14:30 - 15:00");
+                    guna2ComboBox1.Items.Add("15:00 - 15:30");
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+                }
+                if (hora1[0] == '1' && hora1[1] == '3' && hora1[3] == '3')
+                {
+
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("14:00 - 14:30");
+                    guna2ComboBox1.Items.Add("14:30 - 15:00");
+                    guna2ComboBox1.Items.Add("15:00 - 15:30");
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+
+                }
+                if (hora1[0] == '1' && hora1[1] == '4')
+                {
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("14:30 - 15:00");
+                    guna2ComboBox1.Items.Add("15:00 - 15:30");
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+                  
+                }
+                if (hora1[0] == '1' && hora1[1] == '4' && hora1[3] == '3')
+                {
+
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("15:00 - 15:30");
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+
+                }
+                if (hora1[0] == '1' && hora1[1] == '5')
+                {
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("15:30 - 16:00");
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+                }
+                if (hora1[0] == '1' && hora1[1] == '5' && hora1[3] == '3')
+                {
+
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("16:00 - 16:30");
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+
+                }
+                if (hora1[0] == '1' && hora1[1] == '6')
+                {
+                    guna2ComboBox1.Items.Clear();
+                    guna2ComboBox1.Items.Add("16:30 - 17:00");
+                }
+                if (hora1[0] == '1' && hora1[1] == '6' && hora1[3] == '3')
+                {
+
+                    guna2ComboBox1.Items.Clear();
+
+                }
+         
+            }
+            else
+            {
+
+
+                guna2ComboBox1.Items.Clear();
+                guna2ComboBox1.Items.Add("08:00 - 08:30");
+                guna2ComboBox1.Items.Add("08:30 - 09:00");
+                guna2ComboBox1.Items.Add("09:00 - 09:30");
+                guna2ComboBox1.Items.Add("09:30 - 10:00");
+                guna2ComboBox1.Items.Add("10:00 - 10:30");
+                guna2ComboBox1.Items.Add("10:30 - 11:00");
+                guna2ComboBox1.Items.Add("11:00 - 11:30");
+                guna2ComboBox1.Items.Add("11:30 - 12:00");
+                guna2ComboBox1.Items.Add("12:00 - 12:30");
+                guna2ComboBox1.Items.Add("12:30 - 13:00");
+                guna2ComboBox1.Items.Add("13:00 - 13:30");
+                guna2ComboBox1.Items.Add("13:30 - 14:00");
+                guna2ComboBox1.Items.Add("14:00 - 14:30");
+                guna2ComboBox1.Items.Add("14:30 - 15:00");
+                guna2ComboBox1.Items.Add("15:00 - 15:30");
+                guna2ComboBox1.Items.Add("15:30 - 16:00");
+                guna2ComboBox1.Items.Add("16:00 - 16:30");
+                guna2ComboBox1.Items.Add("16:30 - 17:00");
+            }
         }
 
 
@@ -1927,16 +2195,32 @@ verificar_dia();
                             DateTime data_sem_hora = DateTime.ParseExact(datastring2, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                             Insertdata = DateTime.ParseExact(data123, "dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
 
-                            DataTable DH = BLL.testDrive.procurarFuncOcupado(Insertdata,Convert.ToInt32(id_func),Convert.ToInt32(id_cliente),matricula);
+                            DataTable DH = BLL.testDrive.procurarFuncOcupado(Insertdata,Convert.ToInt32(id_func));
                             if (DH.Rows.Count <= 0)
                             {
-                                int x = BLL.testDrive.insertTest(data_sem_hora, Insertdata, Convert.ToInt32(id_func), nomeFunc, Convert.ToInt32(id_cliente), nomeCliente, marca, modelo, matricula, imgToByteArray(imageM));
-                                guna2DataGridView1.DataSource = BLL.testDrive.queryLoad_Test(data_sem_hora);
+                               DataTable DH1 = BLL.testDrive.procurarClienteOcupado(Insertdata, Convert.ToInt32(id_cliente));
+                                if (DH1.Rows.Count <= 0)
+                                {
+                                   DataTable DH2 = BLL.testDrive.procurarCarroOcupado(Insertdata, matricula);
+                                    if (DH2.Rows.Count <= 0)
+                                    {
+                                        int x = BLL.testDrive.insertTest(data_sem_hora, Insertdata, Convert.ToInt32(id_func), nomeFunc, Convert.ToInt32(id_cliente), nomeCliente, marca, modelo, matricula, imgToByteArray(imageM));
+                                        guna2DataGridView1.DataSource = BLL.testDrive.queryLoad_Test(data_sem_hora);
 
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Não pode inserir pois o veiculo está a ser utilizado nesse horário");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Não pode inserir pois o Cliente está ocupado nesse horário");
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Não pode inserir pois o funcionário/cliente/carro estão com marcações feitas nesse horário");
+                                MessageBox.Show("Não pode inserir pois o funcionário está ocupado nesse horário");
                             }
 
 

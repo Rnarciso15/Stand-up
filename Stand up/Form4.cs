@@ -26,7 +26,8 @@ namespace Stand_up
         int w = 0;
         int ano;
         int n_func;
-        int n_cliente; 
+        int n_cliente;
+        public static bool admin_load = false;
         void nao_readonly_caixas()
         {
 
@@ -128,25 +129,31 @@ namespace Stand_up
             if(admin != "True")
             {
                 guna2GroupBox2.Visible = true;
+                admin_load = false;
+                Form1.flagInsertFunc = false;
+                Form1.flagInsertCliente = true;
                 guna2GroupBox3.Visible = false;
-                guna2DataGridView1.DataSource = BLL.Clientes.Load();
              
             }
             else
             {
-               guna2GroupBox2.Visible = true;
-                guna2GroupBox3.Visible = true;    
-                    guna2DataGridView1.DataSource = BLL.Func.Load();
-             
+                admin_load = true;
+                Form1.flagInsertCliente = false;
+                guna2GroupBox2.Visible = true;
+                Form1.flagInsertFunc = true;
+                guna2GroupBox3.Visible = true; 
                
             }
             if (Form1.flagInsertFunc == true)
             {
                 guna2GroupBox2.Text = "Inserir Funcionário";
+                guna2DataGridView1.DataSource = BLL.Func.Load();
                 readonly_caixas();
             }
           if(Form1.flagEditFunc == true)
             {
+
+                guna2DataGridView1.DataSource = BLL.Func.Load();
                 guna2GroupBox2.Text = "Editar Funcionário";
                 nao_readonly_caixas();
             }
@@ -155,10 +162,14 @@ namespace Stand_up
             {
                 guna2GroupBox2.Text = "Inserir Cliente";
                 readonly_caixas();
+
+                guna2DataGridView1.DataSource = BLL.Clientes.Load();
             }
             if (Form1.flagEditCliente == true)
             {
                 guna2GroupBox2.Text = "Editar Cliente";
+
+                guna2DataGridView1.DataSource = BLL.Clientes.Load();
                 nao_readonly_caixas();
             }
             foreach (DataRow row in dt.Rows)
@@ -910,6 +921,8 @@ namespace Stand_up
 
         private void inserirVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if(admin_load == true)
+            {       
             Form1.flag_config = true;
             Form1.flagFunc = true;
             Form1.flagCliente = false;
@@ -921,22 +934,34 @@ namespace Stand_up
             guna2Button4.Visible = false;
             guna2DataGridView1.DataSource = BLL.Func.Load();
             clear_caoxas();
+            }
+            else
+            {
+                MessageBox.Show("Não tem acesso");
+            }
         }
 
         private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (admin_load == true)
+            {
 
-            Form1.flag_config = true; 
-            Form1.flagFunc = true;
-            Form1.flagCliente = false;
-            Form1.flagInsertFunc = false;
-            Form1.flagEditFunc = true;
-            Form1.flagInsertCliente = false;
-            Form1.flagEditCliente = false;
-            guna2GroupBox2.Text = "Editar Funcionário";
-            guna2Button4.Visible = true;
-            guna2DataGridView1.DataSource = BLL.Func.Load();
-            clear_caoxas();
+                Form1.flag_config = true;
+                Form1.flagFunc = true;
+                Form1.flagCliente = false;
+                Form1.flagInsertFunc = false;
+                Form1.flagEditFunc = true;
+                Form1.flagInsertCliente = false;
+                Form1.flagEditCliente = false;
+                guna2GroupBox2.Text = "Editar Funcionário";
+                guna2Button4.Visible = true;
+                guna2DataGridView1.DataSource = BLL.Func.Load();
+                clear_caoxas();
+            }
+            else
+            {
+                MessageBox.Show("Não tem acesso");
+            }
         }
 
         private void guna2Button6_Click(object sender, EventArgs e)
@@ -1008,10 +1033,17 @@ namespace Stand_up
 
         private void listaDeFuncionáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form1.flagFunc = true;
-            Form1.flagCliente = false;
-            Form1.flag_lista_func = true;
-            Form1.flag_config = false;
+            if (admin_load == true)
+            {
+                Form1.flagFunc = true;
+                Form1.flagCliente = false;
+                Form1.flag_lista_func = true;
+                Form1.flag_config = false;
+            }
+            else
+            {
+                MessageBox.Show("Não tem acesso");
+            }
 
         }
 
