@@ -1,8 +1,5 @@
 - Não temos historico de transacoes
 - Email não tem a funcionalidade de enviar email para varios clientes especificos
-- Hora das marcaçoes no dia atual permite guardar uma hora depois da hora atual
-- Lista de clientes/funcionarios mostra senha apos clicar num dos filtros
-- Apos clicar num dos filtros da lista dos funcionario a ordem dos dados muda
 - Aplicaçao está lenta
 - Mudar senha permite inserir uma vazia(nao tem verificacoes)
 - Nome do perfil da para mudar na textbox, mas nao para mudar na base dados(funcionalidade nao implementada)
@@ -13,7 +10,22 @@
 - No inserir funcionario na listview quando clica-se numa linha abaixo do ultimo funcionario existente aparece um nºfuncionario que quando clicado arrebenta o codigo
 - Existe outro erro no inserir funcionario na listview, que é referente ao numero de funcionario nao existir, mas nao consegui replicar o erro
 - Ao clicar no inserir cliente ele depois de uma fração de segundo muda novamente para inserir funcionario
--No inserir cliente não da para escrever a senha, no mudar senha do funcionario e nao ha verificacoes se esta vazio
-- Ao clicar no editar funcionario/cliente, o editar senha do funcionario permite escrever o id em vez de buscar exclusivamente da listview o id
+- No inserir cliente não da para escrever a senha, no mudar senha do funcionario e nao ha verificacoes se esta vazio
+- Login arrebenta porque nao tem verificacoes
+- Na zona de carros para venda e clica-se para expandir o menu de detalhas, ele nao fecha quando se muda de sitio, por exemplo as marcacoes, quando se volta a venda de carros esta aquilo branco
+- Guardar do editar carros arrebenta porque nao ha verificacoes
+- Remover do editar carros nao funciona
+- Motas nao foram implementadas
+- Nao ha descricao/detalhas nas marcacoes
+- Nao da para selecionar as horas nas marcacoes, desaparecem logo da combobox
+
+
+Resolvido:
+
+- Criar PDF no ver carros, arrebenta no logo
+- Hora das marcaçoes no dia atual permite guardar uma hora depois da hora atual
+- Lista de clientes/funcionarios mostra senha apos clicar num dos filtros
+- Apos clicar num dos filtros da lista dos funcionario a ordem dos dados muda
 - Ao clicar no editar funcionario, a text box "Mudar senha do funcionario" nao muda para "Mudar senha do cliente"
+- Ao clicar no editar funcionario/cliente, o editar senha do funcionario permite escrever o id em vez de buscar exclusivamente da listview o id
 - Ao clicar no editar funcionario/cliente, o editar senha do nao funciona e nao tem verificacoes
