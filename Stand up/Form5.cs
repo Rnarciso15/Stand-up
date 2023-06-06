@@ -78,6 +78,9 @@ namespace Stand_up
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            if(guna2TextBox1.Text!="" && guna2TextBox3.Text != "")
+            {
+
             DataTable x = BLL.Func.login(Convert.ToInt32(guna2TextBox3.Text), Hash(guna2TextBox1.Text));
             if(x.Rows.Count > 0)
             {
@@ -93,6 +96,9 @@ namespace Stand_up
                 guna2TextBox1.Clear();
                 guna2TextBox3.Clear();
                 MessageBox.Show("Dados incorretos");
+
+            }
+
 
             }
         }
