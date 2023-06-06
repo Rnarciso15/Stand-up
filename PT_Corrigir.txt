@@ -18,7 +18,7 @@
 - Motas nao foram implementadas
 - Nao ha descricao/detalhas nas marcacoes
 - Nao da para selecionar as horas nas marcacoes, desaparecem logo da combobox
-
+- 
 
 Resolvido:
 
