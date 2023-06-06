@@ -941,7 +941,7 @@ namespace BusinessLogicLayer
                  new SqlParameter("@n_func", n_func)
            };
 
-                return dal.executarNonQuery("update [funcionario] set [senha]=@senha where [n_func]=@n_func", sqlParams);
+                return dal.executarNonQuery("update [funcionario] set [senha]=@senha where n_func = @n_func", sqlParams);
 
             }
 

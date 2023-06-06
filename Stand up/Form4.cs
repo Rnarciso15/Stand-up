@@ -106,6 +106,7 @@ namespace Stand_up
                 guna2Button1.Visible = false;
                 label3.Visible = false;
                 guna2Button2.Visible = false;
+                guna2TextBox1.Clear();
                 q = 0;
                 guna2TextBox1.UseSystemPasswordChar = true;
                 guna2Button1.Image = Properties.Resources.invisible1;
@@ -129,13 +130,7 @@ namespace Stand_up
             DataTable dt = BLL.Func.LoadPerfil(Form5.n_func);
             string admin = BLL.Func.Buscar_admin(Form5.n_func);
            
-            if (Form1.flagInsertFunc == true)
-            {
-                guna2GroupBox2.Text = "Inserir Funcionário";
-                guna2GroupBox3.Text = "Mudar Senha de Funcionários";
-                guna2DataGridView1.DataSource = BLL.Func.Load();
-                readonly_caixas();
-            }
+            
           if(Form1.flagEditFunc == true)
             {
 
@@ -145,14 +140,7 @@ namespace Stand_up
                 nao_readonly_caixas();
             }
 
-            if (Form1.flagInsertCliente == true)
-            {
-                guna2GroupBox2.Text = "Inserir Cliente";
-                guna2GroupBox3.Text = "Mudar Senha de Clientes";
-                readonly_caixas();
-
-                guna2DataGridView1.DataSource = BLL.Clientes.Load();
-            }
+          
             if (Form1.flagEditCliente == true)
             {
                 guna2GroupBox2.Text = "Editar Cliente";
@@ -174,7 +162,14 @@ namespace Stand_up
                 Form1.flagInsertFunc = false;
                 Form1.flagInsertCliente = true;
                 guna2GroupBox3.Visible = false;
+                if (Form1.flagInsertCliente == true)
+                {
+                    guna2GroupBox2.Text = "Inserir Cliente";
+                    guna2GroupBox3.Text = "Mudar Senha de Clientes";
+                    readonly_caixas();
 
+                    guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                }
             }
             else
             {
@@ -183,7 +178,13 @@ namespace Stand_up
                 guna2GroupBox2.Visible = true;
                 Form1.flagInsertFunc = true;
                 guna2GroupBox3.Visible = true;
-
+                if (Form1.flagInsertFunc == true)
+                {
+                    guna2GroupBox2.Text = "Inserir Funcionário";
+                    guna2GroupBox3.Text = "Mudar Senha de Funcionários";
+                    guna2DataGridView1.DataSource = BLL.Func.Load();
+                    readonly_caixas();
+                }
             }
 
         }
@@ -220,12 +221,15 @@ namespace Stand_up
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-            if (e.RowIndex > -1)
+            if (e.RowIndex > -1 && guna2DataGridView1.Rows.Count-1 > e.RowIndex)
             {
                 if(Form1.flagFunc == true)
                 {            
                 ativo = guna2DataGridView1.Rows[e.RowIndex].Cells["ativo"].Value.ToString();
-                guna2TextBox10.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["n_func"].Value.ToString();
+                    if (guna2TextBox11.Visible == true)
+                    {
+                        guna2TextBox10.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["n_func"].Value.ToString();
+                    }
                     n_cliente = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["n_func"].Value);
                 guna2PictureBox2.Image = byteArrayToImage((Byte[])guna2DataGridView1.Rows[e.RowIndex].Cells["imagem"].Value);
                Nome= guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
@@ -242,7 +246,11 @@ namespace Stand_up
                 {
 
                     ativo = guna2DataGridView1.Rows[e.RowIndex].Cells["ativo"].Value.ToString();
-                    guna2TextBox10.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["n_cliente"].Value.ToString();
+                    if(guna2TextBox11.Visible == true)
+                    {
+                        guna2TextBox10.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["n_cliente"].Value.ToString();
+
+                    }
                     n_func = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["n_cliente"].Value);
                     guna2PictureBox2.Image = byteArrayToImage((Byte[])guna2DataGridView1.Rows[e.RowIndex].Cells["imagem"].Value);
                     Nome = guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
@@ -909,6 +917,9 @@ namespace Stand_up
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            if(guna2TextBox1.Text != "")
+            {
+
             DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar a senha?", "", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
@@ -917,7 +928,9 @@ namespace Stand_up
 
             }
 
-           
+            }
+
+
 
         }
 
@@ -975,26 +988,39 @@ namespace Stand_up
         {
             if (Form1.flagFunc == true)
             {
+                if(guna2TextBox11.Text  != "")
+                {               
                 DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar a senha do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.Yes)
                 {
-                    BLL.Func.senhaFunc(Hash(guna2TextBox11.Text), n_func);
+                    BLL.Func.senhaFunc(Hash(guna2TextBox11.Text), Convert.ToInt32(guna2TextBox10.Text));
                     guna2TextBox11.Clear();
                     guna2TextBox10.Clear();
 
+                }              
+                }
+                else
+                {
+                    MessageBox.Show("preencha o parametro da senha");
                 }
             }
             else
             {
-                DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar a senha do cliente " + Nome + "?", "", MessageBoxButtons.YesNo);
+                if (guna2TextBox11.Text != "")
+                {
+                    DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar a senha do cliente " + Nome + "?", "", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.Yes)
                 {
-                    BLL.Func.senhaFunc(Hash(guna2TextBox11.Text), n_cliente);
+                    BLL.Func.senhaFunc(Hash(guna2TextBox11.Text), Convert.ToInt32(guna2TextBox10.Text));
                     guna2TextBox11.Clear();
                     guna2TextBox10.Clear();
 
                 }
-
+                }
+                else
+                {
+                    MessageBox.Show("preencha o parametro da senha");
+                }
 
             }
            
