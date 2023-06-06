@@ -107,6 +107,10 @@ namespace Stand_up
                 label3.Visible = false;
                 guna2Button2.Visible = false;
                 q = 0;
+                guna2TextBox1.UseSystemPasswordChar = true;
+                guna2Button1.Image = Properties.Resources.invisible1;
+                u = 0;
+                guna2TextBox1.Clear();
             }
         }
 

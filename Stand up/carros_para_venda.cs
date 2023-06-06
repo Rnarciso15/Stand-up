@@ -30,6 +30,8 @@ namespace Stand_up
         private void carros_para_venda_Load(object sender, EventArgs e)
         {
             carregar_car_PARA_LISTVIEW();
+            guna2Panel1.Visible = false;
+            flagPanel = true;
             timer1.Start();
             DoubleBuffered = true;
         }

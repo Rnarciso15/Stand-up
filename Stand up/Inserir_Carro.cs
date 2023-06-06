@@ -1,4 +1,5 @@
-﻿using BusinessLogicLayer;
+﻿
+using BusinessLogicLayer;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -7,6 +8,7 @@ using BusinessLogicLayer;
 using System.IO;
 using System.Drawing;
 using System.Collections;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace Stand_up
@@ -236,461 +238,466 @@ namespace Stand_up
         private void guna2Button32_Click(object sender, EventArgs e)
         {
 
-            if (Form2.flagEditCAR == true)
+            if (listView1.SelectedItems.Count > 0)
             {
 
-
-           
-            string Matricula = listView1.SelectedItems[0].Text;
-            DataTable info = BLL.veiculos.Load_dados(Matricula);
-            for (int l = 0; l< info.Columns.Count - 1; l++)
-            {
-                switch (l)
+                if (Form2.flagEditCAR == true)
                 {
-                    case 0:
-                        foreach (DataRow row in info.Rows)
-                        {
-                            if (guna2TextBox3.Text != (string)row["Data"])
-                            {
-                                editar = true;
-                            }
-                            else
-                            {
-                                editar = false;
-                            }
-                        }
-              
-                        break;
-                    case 1:
-                        foreach (DataRow row in info.Rows)
-                        {
-                            if (guna2ComboBox1.SelectedItem != (string)row["Marca"])
-                            {
-                                editar = true;
-                            }
-                            else
-                            {
-                                editar = false;
-                            }
-
-                        
-
-                        }
-                        break;
-                    case 2:
-                        foreach (DataRow row in info.Rows)
-                        {
-                            if (guna2ComboBox2.SelectedItem != (string)row["Modelo"])
-                            {
-                                editar = true;
-                            }
-                            else
-                            {
-                                editar = false;
-                            }
 
 
 
-                        }
-
-                        break;
-                    case 3:
-                        foreach (DataRow row in info.Rows)
-                        {
-                            if (guna2TextBox6.Text != (string)row["Matricula"])
-                            {
-                                editar = true;
-                                matricula_editada= true;
-                            }
-                            else
-                            {
-                                editar = false;
-                                    matricula_editada= false;
-                            }
-                        
-
-                        }
-                        break;
-                    case 4:
-                        foreach (DataRow row in info.Rows)
-                        {
-                            if (guna2TextBox5.Text != Convert.ToString((int)row["Quilometros"]))
-                            {
-                                editar = true;
-                            }
-                            else
-                            {
-                                editar = false;
-                            }
-
-                     
-                     
-
-                        }
-                        break;
-                    case 5:
-                        foreach (DataRow row in info.Rows)
-                        {
-                            if (guna2ComboBox3.SelectedItem != (string)row["Combustivel"])
-                            {
-                                editar = true;
-                            }
-                            else
-                            {
-                                editar = false;
-                            }
-
-                         
-                           
-                     
-
-                        }
-                        break;
-                    case 6:
-                        foreach (DataRow row in info.Rows)
-                        {
-                            if (guna2TextBox7.Text != (string)row["Descricao"])
-                            {
-                                editar = true;
-                            }
-                            else
-                            {
-                                editar = false;
-                            }
-
-
-
-                            
-
-                        }
-                        break;
-                    case 7:
-                        foreach (DataRow row in info.Rows)
-                        {
-                            if (guna2TextBox1.Text != Convert.ToString((int)row["Valor"]))
-                            {
-                                editar = true;
-                            }
-                            else
-                            {
-                                editar = false;
-                            }
-
-
-
-                       
-
-                        }
-                        break;
-                    case 8:
-                        foreach (DataRow row in info.Rows)
-                        {
-                            if (guna2CirclePictureBox1.Image != byteArrayToImage((Byte[])row["Imagem"]))
-                            {
-                                editar = true;
-                            }
-                            else
-                            {
-                                editar = false;
-                            }
-
-
-
-                      
-                          
-
-                        }
-                        break;
-                    case 9:
-                        foreach (DataRow row in info.Rows)
-                        {
-                            if (guna2ComboBox4.SelectedItem != (string)row["Cor"])
-                            {
-                                editar = true;
-                            }
-                            else
-                            {
-                                editar = false;
-                            }
-
-
-
-
-                          
-                          
-                        }
-                        break;
-                    case 10:
-                        foreach (DataRow row in info.Rows)
-                        {
-                            if (guna2ComboBox5.SelectedItem != (string)row["Tipo_de_Caixa"])
-                            {
-                                editar = true;
-                            }
-                            else
-                            {
-                                editar = false;
-                            }
-
-
-
-
-
-                           
-                        
-
-                        }
-                        break;
-                    case 11:
-                        foreach (DataRow row in info.Rows)
-                        {
-                            if (guna2ComboBox6.SelectedItem != Convert.ToString((int)row["N_Portas"]))
-                            {
-                                editar = true;
-                            }
-                            else
-                            {
-                                editar = false;
-                            }
-
-
-
-
-
-
-                            
-                      
-
-                        }
-                        break;
-                    case 12:
-                        foreach (DataRow row in info.Rows)
-                        {
-                            if (guna2ComboBox8.SelectedItem != (string)row["Traccao"])
-                            {
-                                editar = true;
-                            }
-                            else
-                            {
-                                editar = false;
-                            }
-
-
-
-
-
-
-
-                          
-
-                        }
-                        break;
-                }
-
-            }
-
-            if (guna2TextBox3.Text.Length != 10)
-            {
-                MessageBox.Show("Insira uma data válida !");
-                guna2TextBox3.Clear();
-            }
-            else {
-                if (guna2ComboBox1.SelectedIndex == -1)
-                {
-                    MessageBox.Show("Selecione uma marca !");
-                }
-                else {
-                    if (guna2ComboBox2.SelectedIndex == -1)
+                    string Matricula = listView1.SelectedItems[0].Text;
+                    DataTable info = BLL.veiculos.Load_dados(Matricula);
+                    for (int l = 0; l < info.Columns.Count - 1; l++)
                     {
-                        MessageBox.Show("Selecione um modelo !");
+                        switch (l)
+                        {
+                            case 0:
+                                foreach (DataRow row in info.Rows)
+                                {
+                                    if (guna2TextBox3.Text != (string)row["Data"])
+                                    {
+                                        editar = true;
+                                    }
+                                    else
+                                    {
+                                        editar = false;
+                                    }
+                                }
+
+                                break;
+                            case 1:
+                                foreach (DataRow row in info.Rows)
+                                {
+                                    if (guna2ComboBox1.SelectedItem != (string)row["Marca"])
+                                    {
+                                        editar = true;
+                                    }
+                                    else
+                                    {
+                                        editar = false;
+                                    }
+
+
+
+                                }
+                                break;
+                            case 2:
+                                foreach (DataRow row in info.Rows)
+                                {
+                                    if (guna2ComboBox2.SelectedItem != (string)row["Modelo"])
+                                    {
+                                        editar = true;
+                                    }
+                                    else
+                                    {
+                                        editar = false;
+                                    }
+
+
+
+                                }
+
+                                break;
+                            case 3:
+                                foreach (DataRow row in info.Rows)
+                                {
+                                    if (guna2TextBox6.Text != (string)row["Matricula"])
+                                    {
+                                        editar = true;
+                                        matricula_editada = true;
+                                    }
+                                    else
+                                    {
+                                        editar = false;
+                                        matricula_editada = false;
+                                    }
+
+
+                                }
+                                break;
+                            case 4:
+                                foreach (DataRow row in info.Rows)
+                                {
+                                    if (guna2TextBox5.Text != Convert.ToString((int)row["Quilometros"]))
+                                    {
+                                        editar = true;
+                                    }
+                                    else
+                                    {
+                                        editar = false;
+                                    }
+
+
+
+
+                                }
+                                break;
+                            case 5:
+                                foreach (DataRow row in info.Rows)
+                                {
+                                    if (guna2ComboBox3.SelectedItem != (string)row["Combustivel"])
+                                    {
+                                        editar = true;
+                                    }
+                                    else
+                                    {
+                                        editar = false;
+                                    }
+
+
+
+
+
+                                }
+                                break;
+                            case 6:
+                                foreach (DataRow row in info.Rows)
+                                {
+                                    if (guna2TextBox7.Text != (string)row["Descricao"])
+                                    {
+                                        editar = true;
+                                    }
+                                    else
+                                    {
+                                        editar = false;
+                                    }
+
+
+
+
+
+                                }
+                                break;
+                            case 7:
+                                foreach (DataRow row in info.Rows)
+                                {
+                                    if (guna2TextBox1.Text != Convert.ToString((int)row["Valor"]))
+                                    {
+                                        editar = true;
+                                    }
+                                    else
+                                    {
+                                        editar = false;
+                                    }
+
+
+
+
+
+                                }
+                                break;
+                            case 8:
+                                foreach (DataRow row in info.Rows)
+                                {
+                                    if (guna2CirclePictureBox1.Image != byteArrayToImage((Byte[])row["Imagem"]))
+                                    {
+                                        editar = true;
+                                    }
+                                    else
+                                    {
+                                        editar = false;
+                                    }
+
+
+
+
+
+
+                                }
+                                break;
+                            case 9:
+                                foreach (DataRow row in info.Rows)
+                                {
+                                    if (guna2ComboBox4.SelectedItem != (string)row["Cor"])
+                                    {
+                                        editar = true;
+                                    }
+                                    else
+                                    {
+                                        editar = false;
+                                    }
+
+
+
+
+
+
+                                }
+                                break;
+                            case 10:
+                                foreach (DataRow row in info.Rows)
+                                {
+                                    if (guna2ComboBox5.SelectedItem != (string)row["Tipo_de_Caixa"])
+                                    {
+                                        editar = true;
+                                    }
+                                    else
+                                    {
+                                        editar = false;
+                                    }
+
+
+
+
+
+
+
+
+                                }
+                                break;
+                            case 11:
+                                foreach (DataRow row in info.Rows)
+                                {
+                                    if (guna2ComboBox6.SelectedItem != Convert.ToString((int)row["N_Portas"]))
+                                    {
+                                        editar = true;
+                                    }
+                                    else
+                                    {
+                                        editar = false;
+                                    }
+
+
+
+
+
+
+
+
+
+                                }
+                                break;
+                            case 12:
+                                foreach (DataRow row in info.Rows)
+                                {
+                                    if (guna2ComboBox8.SelectedItem != (string)row["Traccao"])
+                                    {
+                                        editar = true;
+                                    }
+                                    else
+                                    {
+                                        editar = false;
+                                    }
+
+
+
+
+
+
+
+
+
+                                }
+                                break;
+                        }
+
+                    }
+
+                    if (guna2TextBox3.Text.Length != 10)
+                    {
+                        MessageBox.Show("Insira uma data válida !");
+                        guna2TextBox3.Clear();
                     }
                     else
                     {
-                        if (guna2TextBox6.Text.Length != 8)
+                        if (guna2ComboBox1.SelectedIndex == -1)
                         {
-                            MessageBox.Show("Insira uma matricula válida !");
-                                guna2TextBox6.Clear();
-                            }
+                            MessageBox.Show("Selecione uma marca !");
+                        }
                         else
                         {
-                            DataTable verificar_matricula = BLL.veiculos.Load_dados1(guna2TextBox6.Text);
-                            if(verificar_matricula.Rows.Count > 1 && matricula_editada !=true || verificar_matricula.Rows.Count > 0 && matricula_editada == true)
+                            if (guna2ComboBox2.SelectedIndex == -1)
                             {
-                                MessageBox.Show("Esta matricula já existe");
+                                MessageBox.Show("Selecione um modelo !");
+                            }
+                            else
+                            {
+                                if (guna2TextBox6.Text.Length != 8)
+                                {
+                                    MessageBox.Show("Insira uma matricula válida !");
                                     guna2TextBox6.Clear();
                                 }
-                            else
-                            {
-
-                          
-                            if (guna2TextBox5.Text == "")
-                            {
-                                MessageBox.Show("Insira uma kilometragem válida !");
-                            }
-                            else
-                            {
-                                if (guna2ComboBox3.SelectedIndex == -1)
-                                {
-                                    MessageBox.Show("Selecione um tipo de combustivel !");
-                                }
                                 else
                                 {
-                                    if (guna2ComboBox4.SelectedIndex == -1)
+                                    DataTable verificar_matricula = BLL.veiculos.Load_dados1(guna2TextBox6.Text);
+                                    if (verificar_matricula.Rows.Count > 1 && matricula_editada != true || verificar_matricula.Rows.Count > 0 && matricula_editada == true)
                                     {
-                                        MessageBox.Show("Selecione uma cor !");
+                                        MessageBox.Show("Esta matricula já existe");
+                                        guna2TextBox6.Clear();
                                     }
                                     else
                                     {
-                                        if (guna2ComboBox5.SelectedIndex == -1)
+
+
+                                        if (guna2TextBox5.Text == "")
                                         {
-                                            MessageBox.Show("Selecione um tipo de caixa !");
+                                            MessageBox.Show("Insira uma kilometragem válida !");
                                         }
                                         else
                                         {
-                                            if (guna2ComboBox6.SelectedIndex == -1)
+                                            if (guna2ComboBox3.SelectedIndex == -1)
                                             {
-                                                MessageBox.Show("Selecione o nº de Portas !");
+                                                MessageBox.Show("Selecione um tipo de combustivel !");
                                             }
                                             else
                                             {
-                                                if (guna2ComboBox8.SelectedIndex == -1)
+                                                if (guna2ComboBox4.SelectedIndex == -1)
                                                 {
-                                                    MessageBox.Show("Selecione o tipo de tracção !");
+                                                    MessageBox.Show("Selecione uma cor !");
                                                 }
                                                 else
                                                 {
-                                                    if (guna2TextBox1.Text == "")
+                                                    if (guna2ComboBox5.SelectedIndex == -1)
                                                     {
-                                                        MessageBox.Show("Insira o valor do veiculo !");
+                                                        MessageBox.Show("Selecione um tipo de caixa !");
                                                     }
                                                     else
                                                     {
-                                                        if (guna2CirclePictureBox1.Image == Properties.Resources.car)
+                                                        if (guna2ComboBox6.SelectedIndex == -1)
                                                         {
-                                                            MessageBox.Show("Insira uma imagem do veiculo !");
-                                                        }
-                                                         else
-                                                        {
-                                                            
-
-                                                                if (listView1.SelectedIndices.Count > 0)
-                                                                {
-                                                                    index = listView1.SelectedIndices[0];
-                                                                }
-                                                                DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                                                                string data2 = data.ToString("dd/MM/yyyy");
-                                                                    DialogResult dr = MessageBox.Show("Pertende guardar as alterações do veiculo?", "", MessageBoxButtons.YesNo);
-                                                                    if (dr == DialogResult.Yes)
-                                                                    {
-                                                                         int x = BLL.veiculos.updateVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, listView1.SelectedItems[0].Text);
-                                                                        carregar_car_PARA_LISTVIEW();
-                                                                        limpar_caixas();
-                                                                    }
-                                                              
-                                                            
-                                                          
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            }
-                        }
-                    }
-                }
-           
-            }
-            }
-            else
-            {
-               
-
-                if (guna2TextBox3.Text.Length != 10)
-                {
-                    MessageBox.Show("Insira uma data válida !");
-                    guna2TextBox3.Clear();
-                }
-                else
-                {
-                    if (guna2ComboBox1.SelectedIndex == -1)
-                    {
-                        MessageBox.Show("Selecione uma marca !");
-                    }
-                    else
-                    {
-                        if (guna2ComboBox2.SelectedIndex == -1)
-                        {
-                            MessageBox.Show("Selecione um modelo !");
-                        }
-                        else
-                        {
-                            if (guna2TextBox6.Text.Length != 8)
-                            {
-                                MessageBox.Show("Insira uma matricula válida !");
-                            }
-                            else
-                            {
-                                DataTable verificar_matricula = BLL.veiculos.Load_dados1(guna2TextBox6.Text);
-                                if (verificar_matricula.Rows.Count > 0)
-                                {
-                                    MessageBox.Show("Esta matricula já existe");
-                                }
-                                else
-                                {
-
-
-                                    if (guna2TextBox5.Text == "")
-                                    {
-                                        MessageBox.Show("Insira uma kilometragem válida !");
-                                    }
-                                    else
-                                    {
-                                        if (guna2ComboBox3.SelectedIndex == -1)
-                                        {
-                                            MessageBox.Show("Selecione um tipo de combustivel !");
-                                        }
-                                        else
-                                        {
-                                            if (guna2ComboBox4.SelectedIndex == -1)
-                                            {
-                                                MessageBox.Show("Selecione uma cor !");
-                                            }
-                                            else
-                                            {
-                                                if (guna2ComboBox5.SelectedIndex == -1)
-                                                {
-                                                    MessageBox.Show("Selecione um tipo de caixa !");
-                                                }
-                                                else
-                                                {
-                                                    if (guna2ComboBox6.SelectedIndex == -1)
-                                                    {
-                                                        MessageBox.Show("Selecione o nº de Portas !");
-                                                    }
-                                                    else
-                                                    {
-                                                        if (guna2ComboBox8.SelectedIndex == -1)
-                                                        {
-                                                            MessageBox.Show("Selecione o tipo de tracção !");
+                                                            MessageBox.Show("Selecione o nº de Portas !");
                                                         }
                                                         else
                                                         {
-                                                            if (guna2TextBox1.Text == "")
+                                                            if (guna2ComboBox8.SelectedIndex == -1)
                                                             {
-                                                                MessageBox.Show("Insira o valor do veiculo !");
+                                                                MessageBox.Show("Selecione o tipo de tracção !");
                                                             }
                                                             else
                                                             {
-                                                                if (guna2CirclePictureBox1.Image == Properties.Resources.car)
+                                                                if (guna2TextBox1.Text == "")
                                                                 {
-                                                                    MessageBox.Show("Insira uma imagem do veiculo !");
+                                                                    MessageBox.Show("Insira o valor do veiculo !");
                                                                 }
                                                                 else
                                                                 {
-                                                             
+                                                                    if (guna2CirclePictureBox1.Image == Properties.Resources.car)
+                                                                    {
+                                                                        MessageBox.Show("Insira uma imagem do veiculo !");
+                                                                    }
+                                                                    else
+                                                                    {
+
+
+                                                                        if (listView1.SelectedIndices.Count > 0)
+                                                                        {
+                                                                            index = listView1.SelectedIndices[0];
+                                                                        }
+                                                                        DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                                                                        string data2 = data.ToString("dd/MM/yyyy");
+                                                                        DialogResult dr = MessageBox.Show("Pertende guardar as alterações do veiculo?", "", MessageBoxButtons.YesNo);
+                                                                        if (dr == DialogResult.Yes)
+                                                                        {
+                                                                            int x = BLL.veiculos.updateVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, listView1.SelectedItems[0].Text);
+                                                                            carregar_car_PARA_LISTVIEW();
+                                                                            limpar_caixas();
+                                                                        }
+
+
+
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                }
+                else
+                {
+
+
+                    if (guna2TextBox3.Text.Length != 10)
+                    {
+                        MessageBox.Show("Insira uma data válida !");
+                        guna2TextBox3.Clear();
+                    }
+                    else
+                    {
+                        if (guna2ComboBox1.SelectedIndex == -1)
+                        {
+                            MessageBox.Show("Selecione uma marca !");
+                        }
+                        else
+                        {
+                            if (guna2ComboBox2.SelectedIndex == -1)
+                            {
+                                MessageBox.Show("Selecione um modelo !");
+                            }
+                            else
+                            {
+                                if (guna2TextBox6.Text.Length != 8)
+                                {
+                                    MessageBox.Show("Insira uma matricula válida !");
+                                }
+                                else
+                                {
+                                    DataTable verificar_matricula = BLL.veiculos.Load_dados1(guna2TextBox6.Text);
+                                    if (verificar_matricula.Rows.Count > 0)
+                                    {
+                                        MessageBox.Show("Esta matricula já existe");
+                                    }
+                                    else
+                                    {
+
+
+                                        if (guna2TextBox5.Text == "")
+                                        {
+                                            MessageBox.Show("Insira uma kilometragem válida !");
+                                        }
+                                        else
+                                        {
+                                            if (guna2ComboBox3.SelectedIndex == -1)
+                                            {
+                                                MessageBox.Show("Selecione um tipo de combustivel !");
+                                            }
+                                            else
+                                            {
+                                                if (guna2ComboBox4.SelectedIndex == -1)
+                                                {
+                                                    MessageBox.Show("Selecione uma cor !");
+                                                }
+                                                else
+                                                {
+                                                    if (guna2ComboBox5.SelectedIndex == -1)
+                                                    {
+                                                        MessageBox.Show("Selecione um tipo de caixa !");
+                                                    }
+                                                    else
+                                                    {
+                                                        if (guna2ComboBox6.SelectedIndex == -1)
+                                                        {
+                                                            MessageBox.Show("Selecione o nº de Portas !");
+                                                        }
+                                                        else
+                                                        {
+                                                            if (guna2ComboBox8.SelectedIndex == -1)
+                                                            {
+                                                                MessageBox.Show("Selecione o tipo de tracção !");
+                                                            }
+                                                            else
+                                                            {
+                                                                if (guna2TextBox1.Text == "")
+                                                                {
+                                                                    MessageBox.Show("Insira o valor do veiculo !");
+                                                                }
+                                                                else
+                                                                {
+                                                                    if (guna2CirclePictureBox1.Image == Properties.Resources.car)
+                                                                    {
+                                                                        MessageBox.Show("Insira uma imagem do veiculo !");
+                                                                    }
+                                                                    else
+                                                                    {
+
                                                                         DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                                                                         string data2 = data.ToString("dd/MM/yyyy");
                                                                         //data = Convert.ToDateTime(data2);
@@ -699,15 +706,16 @@ namespace Stand_up
                                                                         DialogResult dr = MessageBox.Show("Pertende inserir este veiculo?", "", MessageBoxButtons.YesNo);
                                                                         if (dr == DialogResult.Yes)
                                                                         {
-                                                                            int x = BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text,false);
-                                                                        images.Images.Add(guna2CirclePictureBox1.Image);
-                                                                        
-                                                                        limpar_caixas();
+                                                                            int x = BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, false);
+                                                                            images.Images.Add(guna2CirclePictureBox1.Image);
+
+                                                                            limpar_caixas();
                                                                             carregar_car_PARA_LISTVIEW();
                                                                         }
 
-                                                                   
 
+
+                                                                    }
                                                                 }
                                                             }
                                                         }
@@ -719,13 +727,16 @@ namespace Stand_up
                                 }
                             }
                         }
+
                     }
 
+
                 }
-
-
             }
-
+            else
+            {
+                MessageBox.Show("Selecione um veiculo");
+            }
         }
 
         private void guna2TextBox3_TextChanged(object sender, EventArgs e)
@@ -1403,11 +1414,6 @@ namespace Stand_up
         }
 
         private void guna2Button33_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button33_Click_1(object sender, EventArgs e)
         {
 
         }
