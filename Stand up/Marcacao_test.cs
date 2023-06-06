@@ -1528,7 +1528,7 @@ namespace Stand_up
             if(data_atual == data_sem_hora1)
             {
                 guna2ComboBox1.Items.Clear();
-                if (hora1[0] == '0' && hora1[1] == '8')
+                if (hora1[0] == '0' && hora1[1] == '8' && hora1[3] != '3' && hora1[3] != '4' && hora1[3] != '5' && hora1[3] != '6')
                 {
                     guna2ComboBox1.Items.Clear();
                     guna2ComboBox1.Items.Add("08:30 - 09:00");
@@ -1550,11 +1550,10 @@ namespace Stand_up
                     guna2ComboBox1.Items.Add("16:30 - 17:00");
 
                 }
-                if (hora1[0] == '0' && hora1[1] == '8' && hora1[3] == '3' )
+                if (hora1[0] == '0' && hora1[1] == '8' && hora1[3] == '3' || hora1[0] == '0' && hora1[1] == '8' && hora1[3] == '4' || hora1[0] == '0' && hora1[1] == '8' && hora1[3] == '5' || hora1[0] == '0' && hora1[1] == '8' && hora1[3] == '6')
                 {
 
                     guna2ComboBox1.Items.Clear();
-                    guna2ComboBox1.Items.Add("08:30 - 09:00");
                     guna2ComboBox1.Items.Add("09:00 - 09:30");
                     guna2ComboBox1.Items.Add("09:30 - 10:00");
                     guna2ComboBox1.Items.Add("10:00 - 10:30");
@@ -1573,7 +1572,7 @@ namespace Stand_up
                     guna2ComboBox1.Items.Add("16:30 - 17:00");
 
                 }
-                    if (hora1[0] == '0' && hora1[1] == '9')
+                    if (hora1[0] == '0' && hora1[1] == '9' && hora1[3] != '3' && hora1[3] != '4' && hora1[3] != '5' && hora1[3] != '6')
                 {
 
                     guna2ComboBox1.Items.Clear();
@@ -1594,7 +1593,7 @@ namespace Stand_up
                     guna2ComboBox1.Items.Add("16:30 - 17:00");
 
                 }
-                if (hora1[0] == '0' && hora1[1] == '9' && hora1[3] == '3')
+                if (hora1[0] == '0' && hora1[1] == '9' && hora1[3] == '3' || hora1[0] == '0' && hora1[1] == '9' && hora1[3] == '4' || hora1[0] == '0' && hora1[1] == '9' && hora1[3] == '5' || hora1[0] == '0' && hora1[1] == '9' && hora1[3] == '6')
                 {
 
                     guna2ComboBox1.Items.Clear();
@@ -1617,7 +1616,7 @@ namespace Stand_up
 
 
 
-                if (hora1[0] == '1' && hora1[1] == '0')
+                if (hora1[0] == '1' && hora1[1] == '0' && hora1[3] != '3' && hora1[3] != '4' && hora1[3] != '5' && hora1[3] != '6')
                 {
                     guna2ComboBox1.Items.Clear();
                     guna2ComboBox1.Items.Add("10:30 - 11:00");
@@ -1634,7 +1633,7 @@ namespace Stand_up
                     guna2ComboBox1.Items.Add("16:00 - 16:30");
                     guna2ComboBox1.Items.Add("16:30 - 17:00");
                 }
-                if (hora1[0] == '1' && hora1[1] == '0' && hora1[3] == '3')
+                if (hora1[0] == '1' && hora1[1] == '0' && hora1[3] == '3' || hora1[0] == '1' && hora1[1] == '0' && hora1[3] == '4' || hora1[0] == '1' && hora1[1] == '0' && hora1[3] == '5' || hora1[0] == '1' && hora1[1] == '0' && hora1[3] == '6')
                 {
 
                     guna2ComboBox1.Items.Clear();
@@ -1653,7 +1652,7 @@ namespace Stand_up
 
                 }
 
-                if (hora1[0] == '1' && hora1[1] == '1')
+                if (hora1[0] == '1' && hora1[1] == '1' && hora1[3] != '3' && hora1[3] != '4' && hora1[3] != '5' && hora1[3] != '6')
                 {
                     guna2ComboBox1.Items.Clear();
                     guna2ComboBox1.Items.Add("11:30 - 12:00");
@@ -1668,7 +1667,7 @@ namespace Stand_up
                     guna2ComboBox1.Items.Add("16:00 - 16:30");
                     guna2ComboBox1.Items.Add("16:30 - 17:00");
                 }
-                if (hora1[0] == '1' && hora1[1] == '1' && hora1[3] == '3')
+                if (hora1[0] == '1' && hora1[1] == '1' && hora1[3] == '3' || hora1[0] == '1' && hora1[1] == '1' && hora1[3] == '4' || hora1[0] == '1' && hora1[1] == '1' && hora1[3] == '5' || hora1[3] == '6')
                 {
 
                     guna2ComboBox1.Items.Clear();
@@ -1686,7 +1685,7 @@ namespace Stand_up
                 }
 
 
-                if (hora1[0] == '1' && hora1[1] == '2')
+                if (hora1[0] == '1' && hora1[1] == '2' && hora1[3] != '3' && hora1[3] != '4' && hora1[3] != '5' && hora1[3] != '6')
                 {
                     guna2ComboBox1.Items.Clear();
                     guna2ComboBox1.Items.Add("12:30 - 13:00");
@@ -1699,7 +1698,7 @@ namespace Stand_up
                     guna2ComboBox1.Items.Add("16:00 - 16:30");
                     guna2ComboBox1.Items.Add("16:30 - 17:00");
                 }
-                if (hora1[0] == '1' && hora1[1] == '2' && hora1[3] == '3')
+                if (hora1[0] == '1' && hora1[1] == '2' && hora1[3] == '3' || hora1[0] == '1' && hora1[1] == '2' && hora1[3] == '4' || hora1[0] == '1' && hora1[1] == '2' && hora1[3] == '5' || hora1[3] == '6')
                 {
 
                     guna2ComboBox1.Items.Clear();
@@ -1714,7 +1713,7 @@ namespace Stand_up
                     guna2ComboBox1.Items.Add("16:30 - 17:00");
 
                 }
-                if (hora1[0] == '1' && hora1[1] == '3')
+                if (hora1[0] == '1' && hora1[1] == '3' && hora1[3] != '3' && hora1[3] != '4' && hora1[3] != '5' && hora1[3] != '6')
                 {
                     guna2ComboBox1.Items.Clear();
                     guna2ComboBox1.Items.Add("13:30 - 14:00");
@@ -1725,7 +1724,7 @@ namespace Stand_up
                     guna2ComboBox1.Items.Add("16:00 - 16:30");
                     guna2ComboBox1.Items.Add("16:30 - 17:00");
                 }
-                if (hora1[0] == '1' && hora1[1] == '3' && hora1[3] == '3')
+                if (hora1[0] == '1' && hora1[1] == '3' && hora1[3] == '3' || hora1[0] == '1' && hora1[1] == '3' && hora1[3] == '4' || hora1[0] == '1' && hora1[1] == '3' && hora1[3] == '5' || hora1[3] == '6')
                 {
 
                     guna2ComboBox1.Items.Clear();
@@ -1737,7 +1736,7 @@ namespace Stand_up
                     guna2ComboBox1.Items.Add("16:30 - 17:00");
 
                 }
-                if (hora1[0] == '1' && hora1[1] == '4')
+                if (hora1[0] == '1' && hora1[1] == '4' && hora1[3] != '3' && hora1[3] != '4' && hora1[3] != '5' && hora1[3] != '6')
                 {
                     guna2ComboBox1.Items.Clear();
                     guna2ComboBox1.Items.Add("14:30 - 15:00");
@@ -1747,7 +1746,7 @@ namespace Stand_up
                     guna2ComboBox1.Items.Add("16:30 - 17:00");
                   
                 }
-                if (hora1[0] == '1' && hora1[1] == '4' && hora1[3] == '3')
+                if (hora1[0] == '1' && hora1[1] == '4' && hora1[3] == '3' || hora1[0] == '1' && hora1[1] == '4' && hora1[3] == '4' || hora1[0] == '1' && hora1[1] == '4' && hora1[3] == '5' || hora1[3] == '6')
                 {
 
                     guna2ComboBox1.Items.Clear();
@@ -1757,14 +1756,14 @@ namespace Stand_up
                     guna2ComboBox1.Items.Add("16:30 - 17:00");
 
                 }
-                if (hora1[0] == '1' && hora1[1] == '5')
+                if (hora1[0] == '1' && hora1[1] == '5' && hora1[3] != '3' && hora1[3] != '4' && hora1[3] != '5' && hora1[3] != '6')
                 {
                     guna2ComboBox1.Items.Clear();
                     guna2ComboBox1.Items.Add("15:30 - 16:00");
                     guna2ComboBox1.Items.Add("16:00 - 16:30");
                     guna2ComboBox1.Items.Add("16:30 - 17:00");
                 }
-                if (hora1[0] == '1' && hora1[1] == '5' && hora1[3] == '3')
+                if (hora1[0] == '1' && hora1[1] == '5' && hora1[3] == '3' || hora1[0] == '1' && hora1[1] == '5' && hora1[3] == '4' || hora1[0] == '1' && hora1[1] == '5' && hora1[3] == '5' || hora1[3] == '6')
                 {
 
                     guna2ComboBox1.Items.Clear();
@@ -1772,18 +1771,17 @@ namespace Stand_up
                     guna2ComboBox1.Items.Add("16:30 - 17:00");
 
                 }
-                if (hora1[0] == '1' && hora1[1] == '6')
+                if (hora1[0] == '1' && hora1[1] == '6' && hora1[3] != '3' && hora1[3] != '4' && hora1[3] != '5' && hora1[3] != '6')
                 {
                     guna2ComboBox1.Items.Clear();
                     guna2ComboBox1.Items.Add("16:30 - 17:00");
                 }
-                if (hora1[0] == '1' && hora1[1] == '6' && hora1[3] == '3')
+                if (hora1[0] == '1' && hora1[1] == '6' && hora1[3] == '3' || hora1[0] == '1' && hora1[1] == '6' && hora1[3] == '4' || hora1[0] == '1' && hora1[1] == '6' && hora1[3] == '5' || hora1[3] == '6')
                 {
 
                     guna2ComboBox1.Items.Clear();
 
                 }
-         
             }
             else
             {
@@ -1809,6 +1807,7 @@ namespace Stand_up
                 guna2ComboBox1.Items.Add("16:00 - 16:30");
                 guna2ComboBox1.Items.Add("16:30 - 17:00");
             }
+
         }
 
 
@@ -2230,13 +2229,12 @@ verificar_dia();
 
             }
         }
-
+        string hora231 = "";
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
           
       
         
-            guna2ComboBox1.Items.Add("16:30 - 17:00");
             switch (guna2ComboBox1.Text)
             {
 
@@ -2328,6 +2326,25 @@ verificar_dia();
             {
                 MessageBox.Show("Para fazer uma marcação necessita de selecionar a data de hoje ou uma posterior");
                 listView3.SelectedItems.Clear();
+            }
+        }
+
+        private void guna2Button33_Click(object sender, EventArgs e)
+        {
+            DialogResult dr = MessageBox.Show("Pertende remover a marcação"+ data123+"", "", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                BLL.testDrive.EleminarTest(id_test);
+                Ativar_marcacao();
+            }
+        }
+        int id_test = 0;
+        private void guna2DataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                guna2Button33.Enabled = true;
+                id_test = (int)guna2DataGridView1.Rows[e.RowIndex].Cells["id"].Value;
             }
         }
     }

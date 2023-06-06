@@ -1406,6 +1406,11 @@ namespace Stand_up
         {
 
         }
+
+        private void guna2Button33_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

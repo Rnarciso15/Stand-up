@@ -39,7 +39,6 @@ namespace Stand_up
             guna2TextBox7.ReadOnly = false;
             guna2TextBox8.ReadOnly = false;
             guna2TextBox10.ReadOnly = false;
-            guna2TextBox11.ReadOnly = false;
             guna2ComboBox8.Enabled = true;
         }
         void readonly_caixas()
@@ -53,7 +52,6 @@ namespace Stand_up
             guna2TextBox7.ReadOnly = true;
             guna2TextBox8.ReadOnly = true;
             guna2TextBox10.ReadOnly = true;
-            guna2TextBox11.ReadOnly = true;
             guna2ComboBox8.Enabled = false;
         }
         void clear_caoxas()
@@ -126,27 +124,11 @@ namespace Stand_up
             
             DataTable dt = BLL.Func.LoadPerfil(Form5.n_func);
             string admin = BLL.Func.Buscar_admin(Form5.n_func);
-            if(admin != "True")
-            {
-                guna2GroupBox2.Visible = true;
-                admin_load = false;
-                Form1.flagInsertFunc = false;
-                Form1.flagInsertCliente = true;
-                guna2GroupBox3.Visible = false;
-             
-            }
-            else
-            {
-                admin_load = true;
-                Form1.flagInsertCliente = false;
-                guna2GroupBox2.Visible = true;
-                Form1.flagInsertFunc = true;
-                guna2GroupBox3.Visible = true; 
-               
-            }
+           
             if (Form1.flagInsertFunc == true)
             {
                 guna2GroupBox2.Text = "Inserir Funcionário";
+                guna2GroupBox3.Text = "Mudar Senha de Funcionários";
                 guna2DataGridView1.DataSource = BLL.Func.Load();
                 readonly_caixas();
             }
@@ -155,12 +137,14 @@ namespace Stand_up
 
                 guna2DataGridView1.DataSource = BLL.Func.Load();
                 guna2GroupBox2.Text = "Editar Funcionário";
+                guna2GroupBox3.Text = "Mudar Senha de Funcionários";
                 nao_readonly_caixas();
             }
 
             if (Form1.flagInsertCliente == true)
             {
                 guna2GroupBox2.Text = "Inserir Cliente";
+                guna2GroupBox3.Text = "Mudar Senha de Clientes";
                 readonly_caixas();
 
                 guna2DataGridView1.DataSource = BLL.Clientes.Load();
@@ -168,6 +152,7 @@ namespace Stand_up
             if (Form1.flagEditCliente == true)
             {
                 guna2GroupBox2.Text = "Editar Cliente";
+                guna2GroupBox3.Text = "Mudar Senha de Clientes";
 
                 guna2DataGridView1.DataSource = BLL.Clientes.Load();
                 nao_readonly_caixas();
@@ -176,6 +161,24 @@ namespace Stand_up
             {
                 guna2TextBox3.Text = (string)row["nome"];
                 guna2PictureBox1.Image = byteArrayToImage((Byte[])row["Imagem"]);              
+
+            }
+            if (admin != "True")
+            {
+                guna2GroupBox2.Visible = true;
+                admin_load = false;
+                Form1.flagInsertFunc = false;
+                Form1.flagInsertCliente = true;
+                guna2GroupBox3.Visible = false;
+
+            }
+            else
+            {
+                admin_load = true;
+                Form1.flagInsertCliente = false;
+                guna2GroupBox2.Visible = true;
+                Form1.flagInsertFunc = true;
+                guna2GroupBox3.Visible = true;
 
             }
 
@@ -1100,6 +1103,16 @@ namespace Stand_up
             Form1.flag_config = false;
             Form1.flagFunc = false;
             Form1.flagCliente = false;
+        }
+
+        private void guna2GroupBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2TextBox11_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

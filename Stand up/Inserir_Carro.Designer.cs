@@ -92,14 +92,14 @@ namespace Stand_up
             // inserirVeiculoToolStripMenuItem
             // 
             this.inserirVeiculoToolStripMenuItem.Name = "inserirVeiculoToolStripMenuItem";
-            this.inserirVeiculoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.inserirVeiculoToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.inserirVeiculoToolStripMenuItem.Text = "Inserir Veiculo";
             this.inserirVeiculoToolStripMenuItem.Click += new System.EventHandler(this.inserirVeiculoToolStripMenuItem_Click);
             // 
             // editarVeiculoToolStripMenuItem
             // 
             this.editarVeiculoToolStripMenuItem.Name = "editarVeiculoToolStripMenuItem";
-            this.editarVeiculoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.editarVeiculoToolStripMenuItem.Size = new System.Drawing.Size(163, 24);
             this.editarVeiculoToolStripMenuItem.Text = "Editar Veiculo";
             this.editarVeiculoToolStripMenuItem.Click += new System.EventHandler(this.editarVeiculoToolStripMenuItem_Click);
             // 
@@ -274,6 +274,7 @@ namespace Stand_up
             this.guna2Button33.Size = new System.Drawing.Size(116, 89);
             this.guna2Button33.TabIndex = 42;
             this.guna2Button33.Text = "Remover";
+            this.guna2Button33.Click += new System.EventHandler(this.guna2Button33_Click_1);
             // 
             // guna2Button32
             // 
