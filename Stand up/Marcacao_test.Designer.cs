@@ -761,6 +761,7 @@ namespace Stand_up
             this.guna2ComboBox1.Size = new System.Drawing.Size(140, 36);
             this.guna2ComboBox1.TabIndex = 36;
             this.guna2ComboBox1.SelectedIndexChanged += new System.EventHandler(this.guna2ComboBox1_SelectedIndexChanged);
+            this.guna2ComboBox1.Click += new System.EventHandler(this.guna2ComboBox1_Click);
             // 
             // listView1
             // 

@@ -56,57 +56,57 @@ namespace Stand_up
         int ano;
         int id_marca;
         int inicio;
-        bool editar =false;
+        bool editar = false;
         bool matricula_clear = false;
         bool matricula_editada = false;
 
         ArrayList intArray = new ArrayList();
-      
+
         int id_carro;
         int index;
         ImageList images = new ImageList();
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-       if(Form2.flagEditCAR == true && Form2.flagInsertCAR == false)
+            if (Form2.flagEditCAR == true && Form2.flagInsertCAR == false)
             {
 
-              
-           
-           
-         if(listView1.SelectedItems.Count > 0)
-            {
-                string Matricula = listView1.SelectedItems[0].Text;
-                
+
+
+
+                if (listView1.SelectedItems.Count > 0)
+                {
+                    string Matricula = listView1.SelectedItems[0].Text;
+
 
                     ativar_caixas();
-                   
+
                     DataTable info = BLL.veiculos.Load_dados(Matricula);
 
-            foreach (DataRow row in info.Rows)
-            {
-                guna2TextBox3.Text = (string)row["Data"];
-                guna2ComboBox1.SelectedItem = (string)row["Marca"];
-                guna2ComboBox2.SelectedItem = (string)row["Modelo"];
-                guna2TextBox6.Text = (string)row["Matricula"];
-                guna2TextBox5.Text = Convert.ToString((int)row["Quilometros"]);
-                guna2ComboBox3.SelectedItem = (string)row["Combustivel"];
-                guna2TextBox7.Text = (string)row["Descricao"];
-                guna2TextBox1.Text =Convert.ToString((int)row["Valor"]);
-                guna2CirclePictureBox1.Image = byteArrayToImage((Byte[])row["Imagem"]);  
-                guna2ComboBox4.SelectedItem = (string)row["Cor"];
-                guna2ComboBox5.SelectedItem = (string)row["Tipo_de_Caixa"];
-                guna2ComboBox6.SelectedItem = Convert.ToString((int)row["N_Portas"]);
-                guna2ComboBox8.SelectedItem = (string)row["Traccao"];
+                    foreach (DataRow row in info.Rows)
+                    {
+                        guna2TextBox3.Text = (string)row["Data"];
+                        guna2ComboBox1.SelectedItem = (string)row["Marca"];
+                        guna2ComboBox2.SelectedItem = (string)row["Modelo"];
+                        guna2TextBox6.Text = (string)row["Matricula"];
+                        guna2TextBox5.Text = Convert.ToString((int)row["Quilometros"]);
+                        guna2ComboBox3.SelectedItem = (string)row["Combustivel"];
+                        guna2TextBox7.Text = (string)row["Descricao"];
+                        guna2TextBox1.Text = Convert.ToString((int)row["Valor"]);
+                        guna2CirclePictureBox1.Image = byteArrayToImage((Byte[])row["Imagem"]);
+                        guna2ComboBox4.SelectedItem = (string)row["Cor"];
+                        guna2ComboBox5.SelectedItem = (string)row["Tipo_de_Caixa"];
+                        guna2ComboBox6.SelectedItem = Convert.ToString((int)row["N_Portas"]);
+                        guna2ComboBox8.SelectedItem = (string)row["Traccao"];
                     }
 
-            }
+                }
 
             }
         }
-        
 
 
-       
+
+
         void carregar_car_PARA_LISTVIEW()
         {
 
@@ -154,10 +154,10 @@ namespace Stand_up
                 ListViewItem item = new ListViewItem();
 
                 item.ImageIndex = k;
-                
+
                 item.Text = row["Matricula"].ToString();
-              
-                k+= 1;
+
+                k += 1;
 
                 this.listView1.Items.Add(item);
 
@@ -187,14 +187,14 @@ namespace Stand_up
             guna2TextBox6.Clear();
             guna2ComboBox2.DataSource = null;
             guna2TextBox3.Clear();
-            guna2ComboBox1.SelectedIndex = -1;            
+            guna2ComboBox1.SelectedIndex = -1;
             guna2CirclePictureBox1.Image = Properties.Resources.car;
             guna2ComboBox2.Enabled = false;
             guna2TextBox6.Enabled = false;
             guna2ComboBox2.SelectedIndex = -1;
             guna2ComboBox4.SelectedIndex = -1;
             guna2ComboBox5.SelectedIndex = -1;
-            guna2ComboBox6.SelectedIndex = -1;  
+            guna2ComboBox6.SelectedIndex = -1;
             guna2ComboBox8.SelectedIndex = -1;
 
         }
@@ -202,7 +202,7 @@ namespace Stand_up
         void desativar_caixas()
         {
 
-            guna2TextBox1.Enabled=false;
+            guna2TextBox1.Enabled = false;
             guna2TextBox7.Enabled = false;
             guna2ComboBox3.Enabled = false;
             guna2TextBox5.Enabled = false;
@@ -210,7 +210,7 @@ namespace Stand_up
             guna2TextBox3.Enabled = false;
             guna2ComboBox1.Enabled = false;
             guna2CirclePictureBox1.Enabled = false;
-            guna2ComboBox2.Enabled = false;         
+            guna2ComboBox2.Enabled = false;
             guna2ComboBox4.Enabled = false;
             guna2ComboBox5.Enabled = false;
             guna2ComboBox8.Enabled = false;
@@ -752,7 +752,7 @@ namespace Stand_up
                     {
                         if (dia == "01" || dia == "02" || dia == "03" || dia == "04" || dia == "05" || dia == "06" || dia == "07" || dia == "08" || dia == "09" || dia == "10" || dia == "11" || dia == "12" || dia == "13" || dia == "14" || dia == "15" || dia == "16" || dia == "17" || dia == "18" || dia == "19" || dia == "20" || dia == "21" || dia == "22" || dia == "23" || dia == "24" || dia == "25" || dia == "26" || dia == "27" || dia == "28" || dia == "29" || dia == "30" || dia == "31")
                         {
-                            
+
                         }
                         else
                         {
@@ -819,9 +819,9 @@ namespace Stand_up
             if (guna2TextBox3.Text.Length == 10)
             {
                 i = 1;
-               
+
                 DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                
+
                 ano = data.Year;
                 if (data.Year > DateTime.Now.Year || data.Year <= 1931)
                 {
@@ -829,11 +829,11 @@ namespace Stand_up
                     guna2TextBox3.Clear();
                     i = 0;
                 }
-                
+
 
 
             }
-            
+
             if (guna2TextBox3.Text.Length < 2)
             {
                 i = 0;
@@ -1158,9 +1158,9 @@ namespace Stand_up
                 }
             }
 
-     
+
         }
-      
+
 
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1174,7 +1174,7 @@ namespace Stand_up
 
         private void guna2Button1_Click_1(object sender, EventArgs e)
         {
-             matricula_clear = true;
+            matricula_clear = true;
             j = 0;
             guna2TextBox6.Text = "";
             matricula_clear = false;
@@ -1188,7 +1188,7 @@ namespace Stand_up
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-       
+
         }
 
         private void Inserir_Carro_Load(object sender, EventArgs e)
@@ -1200,11 +1200,12 @@ namespace Stand_up
                 guna2Button32.Text = "Guardar";
                 guna2Button33.Visible = true;
             }
-            else {
+            else
+            {
                 guna2Button33.Visible = false;
                 guna2Button32.Text = "Adicionar";
             }
-           
+
 
             carregar_car_PARA_LISTVIEW();
             DataTable dt = BLL.veiculos.queryMarca_veiculo();
@@ -1249,7 +1250,7 @@ namespace Stand_up
                 guna2CirclePictureBox1.ImageLocation = openFileDialog1.FileName;
             }
         }
- 
+
         private void guna2ComboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             if (guna2TextBox3.Text.Length == 10)
@@ -1257,7 +1258,7 @@ namespace Stand_up
                 guna2ComboBox2.Items.Clear();
                 int id_marca = (int)BLL.veiculos.queryBuscar_id_marca(guna2ComboBox1.Text);
                 DataTable modelos = BLL.veiculos.queryModelos_veiculo(id_marca);
-                DataTable table = BLL.veiculos.queryModelos_veiculo1234(id_marca,ano);
+                DataTable table = BLL.veiculos.queryModelos_veiculo1234(id_marca, ano);
 
                 foreach (DataRow row in table.Rows)
                 {
@@ -1284,12 +1285,12 @@ namespace Stand_up
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-         
+
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
-      
+
         }
 
         private void guna2ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -1298,29 +1299,32 @@ namespace Stand_up
 
         private void guna2TextBox5_TextChanged(object sender, EventArgs e)
         {
-            if (guna2TextBox5.Text != "") { 
-            
-            
-          
-            for (int j = 0; j < guna2TextBox5.Text.Length; j++) {
+            if (guna2TextBox5.Text != "")
+            {
 
-                if (guna2TextBox5.Text[j] == '0' || guna2TextBox5.Text[j] == '1' || guna2TextBox5.Text[j] == '2' || guna2TextBox5.Text[j] == '3' || guna2TextBox5.Text[j] == '4' || guna2TextBox5.Text[j] == '5' || guna2TextBox5.Text[j] == '6' || guna2TextBox5.Text[j] == '7' || guna2TextBox5.Text[j] == '8' || guna2TextBox5.Text[j] == '9')
+
+
+                for (int j = 0; j < guna2TextBox5.Text.Length; j++)
                 {
-                   
-                }
-                else {
 
-                    guna2TextBox5.Clear();
-                    MessageBox.Show("Insira uma kilometragem válida");
+                    if (guna2TextBox5.Text[j] == '0' || guna2TextBox5.Text[j] == '1' || guna2TextBox5.Text[j] == '2' || guna2TextBox5.Text[j] == '3' || guna2TextBox5.Text[j] == '4' || guna2TextBox5.Text[j] == '5' || guna2TextBox5.Text[j] == '6' || guna2TextBox5.Text[j] == '7' || guna2TextBox5.Text[j] == '8' || guna2TextBox5.Text[j] == '9')
+                    {
+
+                    }
+                    else
+                    {
+
+                        guna2TextBox5.Clear();
+                        MessageBox.Show("Insira uma kilometragem válida");
+                    }
+
                 }
-                    
+
+
+
+
             }
 
-            
-            
-
-            }
-            
         }
 
         private void guna2TextBox1_TextChanged_1(object sender, EventArgs e)
@@ -1345,12 +1349,12 @@ namespace Stand_up
                     }
 
                 }
-                
+
 
             }
             else
             {
-               
+
             }
         }
 
@@ -1361,8 +1365,8 @@ namespace Stand_up
 
         private void guna2TextBox7_TextChanged(object sender, EventArgs e)
         {
-           
-          
+
+
         }
 
         private void label9_Click(object sender, EventArgs e)
@@ -1410,12 +1414,28 @@ namespace Stand_up
             Form1.flagEditCAR = true;
             Form1.flagInsertCAR = false;
             Form2.flagEditCAR = true;
-            Form2. flagInsertCAR = false;
+            Form2.flagInsertCAR = false;
         }
 
         private void guna2Button33_Click(object sender, EventArgs e)
         {
+            if (listView1.SelectedItems.Count > 0)
+            {
 
+                if (Form2.flagEditCAR == true)
+                {
+                    string Matricula = listView1.SelectedItems[0].Text;
+                    DataTable info = BLL.veiculos.Load_dados(Matricula);
+                    DialogResult dr = MessageBox.Show("Pertende remover o veiculo com a matricula ("+Matricula+")?", "", MessageBoxButtons.YesNo);
+                    if (dr == DialogResult.Yes)
+                    {
+                        BLL.veiculos.deleteveiculo(Matricula);
+                        limpar_caixas();
+                        carregar_car_PARA_LISTVIEW();
+                    }
+
+                }
+            }
         }
     }
 }

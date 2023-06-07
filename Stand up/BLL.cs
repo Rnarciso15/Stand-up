@@ -124,7 +124,7 @@ namespace BusinessLogicLayer
                 SqlParameter[] sqlParams = new SqlParameter[]{
                     new SqlParameter("@data_sem_hora", data_sem_hora),
                 };
-                return dal.executarReader("select * from marcacao  where data_sem_hora = @data_sem_hora", sqlParams);
+                return dal.executarReader("select Id,data,id_func,nomefunc,id_cliente,nomecliente,marca,modelo,matricula,imagemcarro from marcacao  where data_sem_hora = @data_sem_hora", sqlParams);
             }
         }
         public class Clientes
@@ -481,7 +481,16 @@ namespace BusinessLogicLayer
 
                 return dal.executarNonQuery("INSERT into marcas (marca,modelo,inicio_producao,fim_producao) VALUES(@marca,@modelo,@inicio_producao,@fim_producao)", sqlParams);
             }
+            static public int deleteveiculo(string matricula)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
 
+                new SqlParameter("@matricula", matricula),
+
+            };
+                return dal.executarNonQuery("Delete From Veiculo where matricula = @matricula", sqlParams);
+            }
             static public int deleteveiculo()
             {
                 DAL dal = new DAL();

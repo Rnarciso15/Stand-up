@@ -1527,7 +1527,6 @@ namespace Stand_up
             string data_sem_hora1 = data_sem_hora2.ToShortDateString();
             if(data_atual == data_sem_hora1)
             {
-                guna2ComboBox1.Items.Clear();
                 if (hora1[0] == '0' && hora1[1] == '8' && hora1[3] != '3' && hora1[3] != '4' && hora1[3] != '5' && hora1[3] != '6')
                 {
                     guna2ComboBox1.Items.Clear();
@@ -2232,9 +2231,9 @@ verificar_dia();
         string hora231 = "";
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
-      
-        
+
+
+            hora231 = guna2ComboBox1.Text;
             switch (guna2ComboBox1.Text)
             {
 
@@ -2312,7 +2311,6 @@ verificar_dia();
                     break;
            
             }
-            Ativar_marcacao();
         }
 
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -2346,6 +2344,10 @@ verificar_dia();
                 guna2Button33.Enabled = true;
                 id_test = (int)guna2DataGridView1.Rows[e.RowIndex].Cells["id"].Value;
             }
+        }
+
+        private void guna2ComboBox1_Click(object sender, EventArgs e)
+        {
         }
     }
 }

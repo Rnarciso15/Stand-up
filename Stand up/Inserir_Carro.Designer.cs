@@ -274,7 +274,7 @@ namespace Stand_up
             this.guna2Button33.Size = new System.Drawing.Size(116, 89);
             this.guna2Button33.TabIndex = 42;
             this.guna2Button33.Text = "Remover";
-            this.guna2Button33.Click += new System.EventHandler(this.guna2Button33_Click_1);
+            this.guna2Button33.Click += new System.EventHandler(this.guna2Button33_Click);
             // 
             // guna2Button32
             // 

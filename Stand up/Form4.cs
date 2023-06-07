@@ -129,9 +129,36 @@ namespace Stand_up
             
             DataTable dt = BLL.Func.LoadPerfil(Form5.n_func);
             string admin = BLL.Func.Buscar_admin(Form5.n_func);
-           
-            
-          if(Form1.flagEditFunc == true)
+            if (admin != "True")
+            {
+                guna2GroupBox2.Visible = true;
+                admin_load = false;
+                if(Form1.ll == 0)
+                {
+                    Form1.flagInsertFunc = false;
+                    Form1.flagInsertCliente = true;
+                    Form1.ll = 1;
+                }
+                guna2GroupBox2.Visible = true;
+                guna2GroupBox3.Visible = false;
+
+            }
+            else
+            {
+                admin_load = true;
+                if (Form1.ll == 0)
+                {
+                 Form1.flagInsertCliente = false;
+                 Form1.flagInsertFunc = true;
+                 Form1.ll = 1;
+                }
+
+                    guna2GroupBox2.Visible = true;
+                    guna2GroupBox3.Visible = true;
+
+            }
+
+            if (Form1.flagEditFunc == true)
             {
 
                 guna2DataGridView1.DataSource = BLL.Func.Load();
@@ -149,43 +176,28 @@ namespace Stand_up
                 guna2DataGridView1.DataSource = BLL.Clientes.Load();
                 nao_readonly_caixas();
             }
+            if (Form1.flagInsertCliente == true)
+            {
+                guna2GroupBox2.Text = "Inserir Cliente";
+                guna2GroupBox3.Text = "Mudar Senha de Clientes";
+                readonly_caixas();
+
+                guna2DataGridView1.DataSource = BLL.Clientes.Load();
+            }
+            if (Form1.flagInsertFunc == true)
+            {
+                guna2GroupBox2.Text = "Inserir Funcionário";
+                guna2GroupBox3.Text = "Mudar Senha de Funcionários";
+                guna2DataGridView1.DataSource = BLL.Func.Load();
+                readonly_caixas();
+            }
             foreach (DataRow row in dt.Rows)
             {
                 guna2TextBox3.Text = (string)row["nome"];
                 guna2PictureBox1.Image = byteArrayToImage((Byte[])row["Imagem"]);              
 
             }
-            if (admin != "True")
-            {
-                guna2GroupBox2.Visible = true;
-                admin_load = false;
-                Form1.flagInsertFunc = false;
-                Form1.flagInsertCliente = true;
-                guna2GroupBox3.Visible = false;
-                if (Form1.flagInsertCliente == true)
-                {
-                    guna2GroupBox2.Text = "Inserir Cliente";
-                    guna2GroupBox3.Text = "Mudar Senha de Clientes";
-                    readonly_caixas();
-
-                    guna2DataGridView1.DataSource = BLL.Clientes.Load();
-                }
-            }
-            else
-            {
-                admin_load = true;
-                Form1.flagInsertCliente = false;
-                guna2GroupBox2.Visible = true;
-                Form1.flagInsertFunc = true;
-                guna2GroupBox3.Visible = true;
-                if (Form1.flagInsertFunc == true)
-                {
-                    guna2GroupBox2.Text = "Inserir Funcionário";
-                    guna2GroupBox3.Text = "Mudar Senha de Funcionários";
-                    guna2DataGridView1.DataSource = BLL.Func.Load();
-                    readonly_caixas();
-                }
-            }
+          
 
         }
 
