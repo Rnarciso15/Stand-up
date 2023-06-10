@@ -32,12 +32,19 @@ namespace Stand_up
         public static bool flagInsertCliente = false;
         public static bool flagEditCliente = false;
         public static bool flagEmail = false;
+
+        public static bool flagTransacao = false;
+
+
+        public static bool flagCancTransacao = false;
         int l = 0;
         int K = 0;
         int j = 0;
         int y = 0;
         int w = 0;
         int ww = 0;
+        int yyy = 0;
+        int yy = 0;
         public Image byteArrayToImage(byte[] byteArrayIn)
 
         {
@@ -207,6 +214,34 @@ namespace Stand_up
             {
                 flagEditCAR = false;
                 w = 0;
+            }
+            if (flagTransacao == true)
+            {
+                Form8 f2 = new Form8();
+                guna2Panel3.Controls.Clear();
+                f2.TopLevel = false;
+                f2.Parent = guna2Panel3;
+                f2.Show();
+                yy = 1;
+            }
+            if (yy == 1)
+            {
+                flagTransacao = false;
+                yy = 0;
+            }
+            if (flagCancTransacao == true)
+            {
+                carros_para_venda f2 = new carros_para_venda();
+                guna2Panel3.Controls.Clear();
+                f2.TopLevel = false;
+                f2.Parent = guna2Panel3;
+                f2.Show();
+                yyy = 1;
+            }
+            if (yyy == 1)
+            {
+                flagCancTransacao = false;
+                yyy = 0;
             }
         }
 

@@ -235,7 +235,15 @@ namespace BusinessLogicLayer
                 DAL dal = new DAL();
                 return dal.executarReader("select  n_cliente,nome,data_nascimento,genero,email,telefone,nib,nif,morada,Ativo,imagem from cliente", null);
             }
-        
+            static public DataTable LoadCliente_proc(int n_cliente)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@n_cliente", n_cliente ),
+                };
+                return dal.executarReader("select  n_cliente,nome,data_nascimento,genero,email,telefone,nib,nif,morada,Ativo,imagem from cliente where n_cliente = @n_cliente", sqlParams);
+            }
+
             static public DataTable queryCliente_Like(String nome)
             {
                 DAL dal = new DAL();
@@ -345,7 +353,22 @@ namespace BusinessLogicLayer
             }
         }
 
+        public class transacoes
+        {
+            static public int insertTrans(int n_cliente, string Matricula,DateTime data,int valor)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@n_cliente", n_cliente),
+                new SqlParameter("@Matricula", Matricula),
+                new SqlParameter("@data", data),
+                new SqlParameter("@valor", valor),
 
+           };
+
+                return dal.executarNonQuery("INSERT into transacoes (n_cliente,Matricula,data,valor) VALUES(@n_cliente,@Matricula,@data,@valor)", sqlParams);
+            }
+        }
         public class veiculos
         {
             static public DataTable Load()

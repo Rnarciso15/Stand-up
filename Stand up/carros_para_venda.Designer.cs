@@ -92,10 +92,11 @@ namespace Stand_up
             this.volvoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.motoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bMWToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.limparFiltrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listView1 = new System.Windows.Forms.ListView();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.limparFiltrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.históricoDeTransaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,7 +108,8 @@ namespace Stand_up
             this.especificaçõesDoVeículoToolStripMenuItem,
             this.corToolStripMenuItem,
             this.marcasToolStripMenuItem,
-            this.limparFiltrosToolStripMenuItem});
+            this.limparFiltrosToolStripMenuItem,
+            this.históricoDeTransaçõesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1683, 27);
@@ -632,6 +634,13 @@ namespace Stand_up
             this.bMWToolStripMenuItem2.Size = new System.Drawing.Size(112, 24);
             this.bMWToolStripMenuItem2.Text = "BMW";
             // 
+            // limparFiltrosToolStripMenuItem
+            // 
+            this.limparFiltrosToolStripMenuItem.Name = "limparFiltrosToolStripMenuItem";
+            this.limparFiltrosToolStripMenuItem.Size = new System.Drawing.Size(104, 23);
+            this.limparFiltrosToolStripMenuItem.Text = "Limpar Filtros";
+            this.limparFiltrosToolStripMenuItem.Click += new System.EventHandler(this.limparFiltrosToolStripMenuItem_Click);
+            // 
             // listView1
             // 
             this.listView1.BackColor = System.Drawing.Color.White;
@@ -661,12 +670,11 @@ namespace Stand_up
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // limparFiltrosToolStripMenuItem
+            // históricoDeTransaçõesToolStripMenuItem
             // 
-            this.limparFiltrosToolStripMenuItem.Name = "limparFiltrosToolStripMenuItem";
-            this.limparFiltrosToolStripMenuItem.Size = new System.Drawing.Size(104, 23);
-            this.limparFiltrosToolStripMenuItem.Text = "Limpar Filtros";
-            this.limparFiltrosToolStripMenuItem.Click += new System.EventHandler(this.limparFiltrosToolStripMenuItem_Click);
+            this.históricoDeTransaçõesToolStripMenuItem.Name = "históricoDeTransaçõesToolStripMenuItem";
+            this.históricoDeTransaçõesToolStripMenuItem.Size = new System.Drawing.Size(164, 23);
+            this.históricoDeTransaçõesToolStripMenuItem.Text = "Histórico de Transações";
             // 
             // carros_para_venda
             // 
@@ -753,5 +761,6 @@ namespace Stand_up
         private System.Windows.Forms.ToolStripMenuItem todosToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem rosaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem limparFiltrosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem históricoDeTransaçõesToolStripMenuItem;
     }
 }

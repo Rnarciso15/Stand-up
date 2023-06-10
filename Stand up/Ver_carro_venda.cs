@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using PdfSharp.Drawing;
+using Guna.UI2.WinForms;
 
 namespace Stand_up
 {
@@ -234,13 +235,9 @@ namespace Stand_up
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            
-            DialogResult dr = MessageBox.Show("Pertende vender o veiculo com a matricula ("+ carros_para_venda.Matricula+")?", "", MessageBoxButtons.YesNo);
-            if (dr == DialogResult.Yes)
-            {
-                int x = BLL.veiculos.updateVendido(carros_para_venda.Matricula, true);
-                carros_para_venda.flagVendido = true;
-            }
+            Form1.flagTransacao = true;
+           
+
         }
 
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
