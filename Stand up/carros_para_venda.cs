@@ -2238,5 +2238,10 @@ namespace Stand_up
             l = 0;
             carregar_car_PARA_LISTVIEW();
         }
+
+        private void históricoDeTransaçõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form1.flagHistTransacao = true;
+        }
     }
 }

@@ -37,6 +37,8 @@ namespace Stand_up
 
 
         public static bool flagCancTransacao = false;
+
+        public static bool flagHistTransacao = false;
         int l = 0;
         int K = 0;
         int j = 0;
@@ -45,6 +47,7 @@ namespace Stand_up
         int ww = 0;
         int yyy = 0;
         int yy = 0;
+        int  www = 0;
         public Image byteArrayToImage(byte[] byteArrayIn)
 
         {
@@ -242,6 +245,20 @@ namespace Stand_up
             {
                 flagCancTransacao = false;
                 yyy = 0;
+            }
+            if (flagHistTransacao == true)
+            {
+                Form9 f2 = new Form9();
+                guna2Panel3.Controls.Clear();
+                f2.TopLevel = false;
+                f2.Parent = guna2Panel3;
+                f2.Show();
+                www = 1;
+            }
+            if (www == 1)
+            {
+                flagHistTransacao = false;
+                www = 0;
             }
         }
 

@@ -368,6 +368,13 @@ namespace BusinessLogicLayer
 
                 return dal.executarNonQuery("INSERT into transacoes (n_cliente,Matricula,data,valor) VALUES(@n_cliente,@Matricula,@data,@valor)", sqlParams);
             }
+
+            static public DataTable loadTrans()
+            {
+                DAL dal = new DAL();
+                return dal.executarReader("select * from transacoes", null);
+
+            }
         }
         public class veiculos
         {

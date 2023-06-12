@@ -93,10 +93,10 @@ namespace Stand_up
             this.motoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bMWToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.limparFiltrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.históricoDeTransaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listView1 = new System.Windows.Forms.ListView();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.históricoDeTransaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -641,6 +641,13 @@ namespace Stand_up
             this.limparFiltrosToolStripMenuItem.Text = "Limpar Filtros";
             this.limparFiltrosToolStripMenuItem.Click += new System.EventHandler(this.limparFiltrosToolStripMenuItem_Click);
             // 
+            // históricoDeTransaçõesToolStripMenuItem
+            // 
+            this.históricoDeTransaçõesToolStripMenuItem.Name = "históricoDeTransaçõesToolStripMenuItem";
+            this.históricoDeTransaçõesToolStripMenuItem.Size = new System.Drawing.Size(164, 23);
+            this.históricoDeTransaçõesToolStripMenuItem.Text = "Histórico de Transações";
+            this.históricoDeTransaçõesToolStripMenuItem.Click += new System.EventHandler(this.históricoDeTransaçõesToolStripMenuItem_Click);
+            // 
             // listView1
             // 
             this.listView1.BackColor = System.Drawing.Color.White;
@@ -669,12 +676,6 @@ namespace Stand_up
             // 
             this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // históricoDeTransaçõesToolStripMenuItem
-            // 
-            this.históricoDeTransaçõesToolStripMenuItem.Name = "históricoDeTransaçõesToolStripMenuItem";
-            this.históricoDeTransaçõesToolStripMenuItem.Size = new System.Drawing.Size(164, 23);
-            this.históricoDeTransaçõesToolStripMenuItem.Text = "Histórico de Transações";
             // 
             // carros_para_venda
             // 

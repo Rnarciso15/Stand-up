@@ -200,6 +200,7 @@ namespace Stand_up
             }
 
         }
+        int valor=0;
         private void Form8_Load(object sender, EventArgs e)
         {
             DoubleBuffered = true;
@@ -211,6 +212,7 @@ namespace Stand_up
                 label4.Text = (string)row["Marca"];
                 label3.Text = (string)row["Modelo"];
                 label1.Text = (string)row["Matricula"];
+                valor = (int)row["Valor"];
                 label24.Text = Convert.ToString((int)row["Valor"]) + " €";
                 guna2PictureBox1.Image = byteArrayToImage((Byte[])row["Imagem"]);
                 
@@ -251,9 +253,10 @@ namespace Stand_up
             DialogResult dr = MessageBox.Show("Pertende efetuar a compra ?", "", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                BLL.transacoes.insertTrans(Convert.ToInt32(id_cliente), carros_para_venda.Matricula,DateTime.Now,Convert.ToInt32(label24.Text));
+                BLL.transacoes.insertTrans(Convert.ToInt32(id_cliente), carros_para_venda.Matricula,DateTime.Now,valor);
                 int x = BLL.veiculos.updateVendido(carros_para_venda.Matricula, true);
                 carros_para_venda.flagVendido = true;
+                Form1.flagCancTransacao = true;
             }
         }
 
