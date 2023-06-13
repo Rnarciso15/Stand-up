@@ -2113,6 +2113,7 @@ verificar_dia();
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Ativar_marcacao();
             if (listView2.SelectedItems.Count > 0 && flag_dataValida == true)
             {
                 string phrase = listView2.SelectedItems[0].Text; ;
@@ -2232,7 +2233,7 @@ verificar_dia();
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-
+         
             hora231 = guna2ComboBox1.Text;
             switch (guna2ComboBox1.Text)
             {

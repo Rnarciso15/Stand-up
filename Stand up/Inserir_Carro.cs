@@ -698,15 +698,23 @@ namespace Stand_up
                                                                     else
                                                                     {
 
+                                                                        bool mota = false;
                                                                         DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                                                                         string data2 = data.ToString("dd/MM/yyyy");
                                                                         //data = Convert.ToDateTime(data2);
-
+                                                                        if(guna2CheckBox2.Checked == true)
+                                                                        {
+                                                                            mota = false;
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            mota = true;
+                                                                        }
 
                                                                         DialogResult dr = MessageBox.Show("Pertende inserir este veiculo?", "", MessageBoxButtons.YesNo);
                                                                         if (dr == DialogResult.Yes)
                                                                         {
-                                                                            int x = BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, false);
+                                                                            int x = BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, false,mota);
                                                                             images.Images.Add(guna2CirclePictureBox1.Image);
 
                                                                             limpar_caixas();
@@ -1190,7 +1198,17 @@ namespace Stand_up
         {
 
         }
+        void carregar_marca()
+        {
+            DataTable dt = BLL.veiculos.queryMarca_veiculo();
+            int j = 0;
 
+            foreach (DataRow row in dt.Rows)
+            {
+
+                guna2ComboBox1.Items.Add(row[0].ToString());
+            }
+        }
         private void Inserir_Carro_Load(object sender, EventArgs e)
         {
             DoubleBuffered = true;
@@ -1205,17 +1223,10 @@ namespace Stand_up
                 guna2Button33.Visible = false;
                 guna2Button32.Text = "Adicionar";
             }
-
+            guna2CheckBox2.Checked = true;
 
             carregar_car_PARA_LISTVIEW();
-            DataTable dt = BLL.veiculos.queryMarca_veiculo();
-            int j = 0;
-
-            foreach (DataRow row in dt.Rows)
-            {
-
-                guna2ComboBox1.Items.Add(row[0].ToString());
-            }
+            carregar_marca();
 
 
 
@@ -1435,6 +1446,30 @@ namespace Stand_up
                     }
 
                 }
+            }
+        }
+
+        private void guna2CheckBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (guna2CheckBox2.Checked == true)
+            {
+                guna2CheckBox1.Checked = false;
+            }
+            else
+            {
+                guna2CheckBox1.Checked = true;
+            }
+        }
+
+        private void guna2CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(guna2CheckBox1.Checked == true)
+            {
+                guna2CheckBox2.Checked = false;
+            }
+            else
+            {
+                guna2CheckBox2.Checked = true;
             }
         }
     }

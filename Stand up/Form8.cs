@@ -250,6 +250,10 @@ namespace Stand_up
 
         private void guna2Button32_Click(object sender, EventArgs e)
         {
+            if(listView1.SelectedItems.Count > 0)
+            {
+
+        
             DialogResult dr = MessageBox.Show("Pertende efetuar a compra ?", "", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
@@ -257,6 +261,13 @@ namespace Stand_up
                 int x = BLL.veiculos.updateVendido(carros_para_venda.Matricula, true);
                 carros_para_venda.flagVendido = true;
                 Form1.flagCancTransacao = true;
+            }
+
+
+            }
+            else
+            {
+                MessageBox.Show("Selecione o cliente que irá efetuar a compra do veiculo");
             }
         }
 

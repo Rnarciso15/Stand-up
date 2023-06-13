@@ -5,6 +5,7 @@ using System.Web;
 using DataAccessLayer;
 using System.Data;
 using System.Data.SqlClient;
+using iTextSharp.text;
 
 namespace BusinessLogicLayer
 {
@@ -474,7 +475,7 @@ namespace BusinessLogicLayer
             };
                 return dal.executarNonQuery("update [Veiculo] set [Matricula]=@Matricula, [Quilometros]=@Quilometros, [Data]=@Data , [Marca]=@Marca, [Modelo]=@Modelo, [Descricao]=@Descricao, [Combustivel]=@Combustivel, [Imagem]=@Imagem, [Valor]=@Valor, [Cor]=@Cor, [tipo_de_caixa]=@tipo_de_caixa, [Traccao]=@Traccao where [Matricula]=@Matricula1", sqlParams);
             }
-            static public int insertVeiculo(string Matricula, int Quilometros, string Data, string Marca, string Modelo, string Descricao, string Combustivel, byte[] Imagem,int Valor,string Cor, string tipo_de_caixa, int N_Portas, string Traccao,bool vendido)
+            static public int insertVeiculo(string Matricula, int Quilometros, string Data, string Marca, string Modelo, string Descricao, string Combustivel, byte[] Imagem,int Valor,string Cor, string tipo_de_caixa, int N_Portas, string Traccao,bool vendido,bool mota)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
@@ -491,11 +492,12 @@ namespace BusinessLogicLayer
                          new SqlParameter("@tipo_de_caixa", tipo_de_caixa),
                            new SqlParameter("@N_Portas", N_Portas),
                             new SqlParameter("@vendido", vendido),
-                             new SqlParameter("@Traccao", Traccao)
-                              
+                             new SqlParameter("@Traccao", Traccao),
+                            new SqlParameter("@mota", mota)
+
            };
 
-                return dal.executarNonQuery("INSERT into Veiculo (Matricula,Quilometros,Data,Marca,Modelo,Descricao,Combustivel,Imagem,Valor,Cor,tipo_de_caixa,N_Portas,Traccao,vendido) VALUES(@Matricula,@Quilometros,@Data,@Marca,@Modelo,@Descricao,@Combustivel,@Imagem,@Valor,@Cor,@tipo_de_caixa,@N_Portas,@Traccao,@vendido)", sqlParams);
+                return dal.executarNonQuery("INSERT into Veiculo (Matricula,Quilometros,Data,Marca,Modelo,Descricao,Combustivel,Imagem,Valor,Cor,tipo_de_caixa,N_Portas,Traccao,vendido,mota) VALUES(@Matricula,@Quilometros,@Data,@Marca,@Modelo,@Descricao,@Combustivel,@Imagem,@Valor,@Cor,@tipo_de_caixa,@N_Portas,@Traccao,@vendido,@mota)", sqlParams);
             }
             static public int insert_modelo(string marca , string modelo, int inicio_producao,  int fim_producao)
             {
