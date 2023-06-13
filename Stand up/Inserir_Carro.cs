@@ -1454,10 +1454,14 @@ namespace Stand_up
             if (guna2CheckBox2.Checked == true)
             {
                 guna2CheckBox1.Checked = false;
+                label11.Visible = true;
+                guna2ComboBox6.Visible = true;
             }
             else
             {
                 guna2CheckBox1.Checked = true;
+                label11.Visible = false;
+                guna2ComboBox6.Visible = false;
             }
         }
 
@@ -1466,10 +1470,14 @@ namespace Stand_up
             if(guna2CheckBox1.Checked == true)
             {
                 guna2CheckBox2.Checked = false;
+                label11.Visible = false;
+                guna2ComboBox6.Visible = false;
             }
             else
             {
                 guna2CheckBox2.Checked = true;
+                label11.Visible = true;
+                guna2ComboBox6.Visible = true;
             }
         }
     }
