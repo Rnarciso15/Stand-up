@@ -2234,6 +2234,8 @@ verificar_dia();
         {
 
          
+                
+
             hora231 = guna2ComboBox1.Text;
             switch (guna2ComboBox1.Text)
             {
@@ -2312,6 +2314,7 @@ verificar_dia();
                     break;
            
             }
+            data123 = dataString + " " + hora;
         }
 
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

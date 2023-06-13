@@ -144,7 +144,7 @@ namespace BusinessLogicLayer
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@nome", nome + "%")
+                new SqlParameter("@nome","%"+ nome + "%")
                 };
                 return dal.executarReader("select n_cliente,nome,data_nascimento,genero,email,telefone,nib,morada,nif,imagem,ativo  from cliente where nome like @nome", sqlParams);
             }
@@ -153,7 +153,7 @@ namespace BusinessLogicLayer
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@nome", nome + "%"),
+                new SqlParameter("@nome","%"+ nome + "%"),
                  new SqlParameter("@Ativo", Ativo ),
                 };
                 return dal.executarReader("select n_cliente,nome,data_nascimento,genero,email,telefone,nib,morada,nif,imagem,ativo  from cliente where nome like @nome and Ativo = @Ativo", sqlParams);
