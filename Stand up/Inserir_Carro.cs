@@ -1590,7 +1590,6 @@ namespace Stand_up
             if(imagem_carro.Count > 0)
             {
                 imagem_carro.RemoveAt(IMG_Idx);
-                IMG_Idx -= 1;
                 if(imagem_carro.Count == 0)
                 {
                                         guna2CirclePictureBox1.Image = Properties.Resources.car;
