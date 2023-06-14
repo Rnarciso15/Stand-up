@@ -59,6 +59,8 @@ namespace Stand_up
         bool editar = false;
         bool matricula_clear = false;
         bool matricula_editada = false;
+        int IMG_Idx = 0;
+        ArrayList imagem_carro = new ArrayList();
 
         ArrayList intArray = new ArrayList();
 
@@ -1259,6 +1261,7 @@ namespace Stand_up
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 guna2CirclePictureBox1.ImageLocation = openFileDialog1.FileName;
+                imagem_carro.Add(guna2CirclePictureBox1.Image);
             }
         }
 
@@ -1479,6 +1482,63 @@ namespace Stand_up
                 label11.Visible = true;
                 guna2ComboBox6.Visible = true;
             }
+        }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+            if (IMG_Idx < imagem_carro.Count - 1)
+            {
+
+
+                if (IMG_Idx < 0)
+                {
+                    IMG_Idx = 0;
+                }
+                if (IMG_Idx > 10)
+                {
+                    IMG_Idx = 10;
+                }
+
+                object imagem_98 = imagem_carro[IMG_Idx];
+                if (imagem_98 != null)
+                {
+                    guna2CirclePictureBox1.Image = (Image)imagem_carro[IMG_Idx];
+                }
+                else
+                {
+                    guna2CirclePictureBox1.Image = Properties.Resources.car;
+                }
+            }
+            IMG_Idx += 1;
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+           if(IMG_Idx < imagem_carro.Count - 1)
+            {
+
+          
+            if(IMG_Idx < 0)
+            {
+                IMG_Idx = 0;
+            }
+            if(IMG_Idx > 10)
+            {
+                IMG_Idx = 10;
+            }
+
+                object imagem_98 = imagem_carro[IMG_Idx];
+                if (imagem_98 != null)
+                {
+                    guna2CirclePictureBox1.Image = (Image)imagem_carro[IMG_Idx];
+                }
+                else
+                {
+                    guna2CirclePictureBox1.Image = Properties.Resources.car;
+                }
+            }
+            
+            IMG_Idx -= 1;
         }
     }
 }

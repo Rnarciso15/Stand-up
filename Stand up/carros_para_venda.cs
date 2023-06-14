@@ -2058,7 +2058,7 @@ namespace Stand_up
                 flagMaior = true;
                 carregar_car_PARA_LISTVIEW23();
             }
-            if (flagMaior == false && j == 0 && k == 0 && l == 0|| flagMaior == false && j == 3 && k == 3 && l == 3)
+            if (flagMaior == false && j == 0 && k == 0 && l == 0|| flagMaior == false && j == 3 && k == 3 && l == 3 || flagMaior == false && j == 0 && k == 0 && l == 3 || flagMaior == false && j == 3 && k == 0 && l == 0 || flagMaior == false && j == 0 && k == 3 && l == 0 || flagMaior == false && j == 0 && k == 3 && l == 3 || flagMaior == false && j == 3 && k == 3 && l == 0 || flagMaior == false && j == 3 && k == 0 && l == 3)
             {
                 flagMaior = true;
                 carregar_car_PARA_LISTVIEW2();
@@ -2100,7 +2100,7 @@ namespace Stand_up
                 flagMenor = true;
                 carregar_car_PARA_LISTVIEW33();
             }
-            if (flagMenor == false && j == 0 && k == 0 && l == 0 || flagMenor == false && j == 3 && k == 3 && l == 3)
+            if (flagMenor == false && j == 0 && k == 0 && l == 0 || flagMenor == false && j == 3 && k == 3 && l == 3 || flagMenor == false && j == 0 && k == 0 && l == 3|| flagMenor == false && j == 3 && k == 0 && l == 0|| flagMenor == false && j == 0 && k == 3 && l == 0 || flagMenor == false && j == 0 && k == 3 && l == 3 || flagMenor == false && j == 3 && k == 3 && l == 0 || flagMenor == false && j == 3 && k == 0 && l == 3)
             {
                 flagMenor = true;
                 carregar_car_PARA_LISTVIEW3();
