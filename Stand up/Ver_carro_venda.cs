@@ -16,6 +16,7 @@ using PdfSharp.Pdf;
 using PdfSharp.Pdf.IO;
 using PdfSharp.Drawing;
 using Guna.UI2.WinForms;
+using System.Collections;
 
 namespace Stand_up
 {
@@ -71,7 +72,13 @@ namespace Stand_up
             DoubleBuffered = true;
             DataTable info = BLL.veiculos.Load_dados(carros_para_venda.Matricula);
 
-            foreach (DataRow row in info.Rows)
+            DataTable iMG_CAR = BLL.Imagem.LoadImagensCarro(carros_para_venda.Matricula);
+            foreach (DataRow row in iMG_CAR.Rows)
+            {
+                imagem_carro.Add((byte[])row["Image"]);
+            
+            }
+                foreach (DataRow row in info.Rows)
             {
                 label2.Text = (string)row["Data"];
                 label4.Text = (string)row["Marca"];
@@ -88,6 +95,7 @@ namespace Stand_up
                 label5.Text = (string)row["Traccao"];
 
             }
+            
         }
 
         private void Ver_carro_venda_FormClosed(object sender, FormClosedEventArgs e)
@@ -243,6 +251,38 @@ namespace Stand_up
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 
+        }
+
+        int IMG_Idx = 0;
+        ArrayList imagem_carro = new ArrayList();
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+            IMG_Idx++;
+            if (IMG_Idx >= imagem_carro.Count)
+            {
+                IMG_Idx = 0;
+            }
+
+            if (IMG_Idx >= 0 && IMG_Idx < imagem_carro.Count)
+            {
+                byte[] imagePath = (byte[])imagem_carro[IMG_Idx];
+                guna2PictureBox1.Image = byteArrayToImage( imagePath);
+            }
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            IMG_Idx -= 1;
+            if (IMG_Idx < 0)
+            {
+                IMG_Idx = imagem_carro.Count - 1;
+            }
+
+            if (IMG_Idx >= 0 && IMG_Idx < imagem_carro.Count)
+            {
+                byte[] imagePath = (byte[])imagem_carro[IMG_Idx];
+                guna2PictureBox1.Image = byteArrayToImage(imagePath);
+            }
         }
     }
 }

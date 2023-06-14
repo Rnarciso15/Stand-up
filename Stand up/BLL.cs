@@ -58,6 +58,27 @@ namespace BusinessLogicLayer
 
                 return dal.executarNonQuery("INSERT into Imagem (Img) VALUES(@img)", sqlParams);
             }
+            static public int insertImagemCarro(byte[] img, string Matricula)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@img", img),
+                new SqlParameter("@Matricula", Matricula),
+
+           };
+
+                return dal.executarNonQuery("INSERT into Imagem_carro (Image,Matricula) VALUES(@img,@Matricula)", sqlParams);
+            }
+            static public DataTable LoadImagensCarro(string Matricula)
+            {
+                DAL dal = new DAL();
+
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@Matricula", Matricula),
+                };
+                return dal.executarReader("select Image from Imagem_carro where Matricula = @Matricula", sqlParams);
+            }
+
         }
         public class testDrive
         {
@@ -541,6 +562,14 @@ namespace BusinessLogicLayer
                 };
                 return dal.executarReader("select Nome from Marcas", sqlParams);
             }
+            static public DataTable queryMarca_veiculoMotas()
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+
+                };
+                return dal.executarReader("select Nome from Marcas_Mota", sqlParams);
+            }
             static public DataTable queryLoad_veiculo(bool vendido)
             {
                 DAL dal = new DAL();
@@ -556,6 +585,14 @@ namespace BusinessLogicLayer
                         new SqlParameter("@id_marca", id_marca),
                 };
                 return dal.executarReader("select * from Modelos Where id_marca = @id_marca ", sqlParams);
+            }
+            static public DataTable queryModelos_veiculoMotas(int id_marca)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                        new SqlParameter("@id_marca", id_marca),
+                };
+                return dal.executarReader("select * from Modelos_Motas Where id_marca = @id_marca ", sqlParams);
             }
             static public DataTable queryGasolina_veiculo(string Combustivel, bool vendido)
             {
@@ -753,6 +790,22 @@ namespace BusinessLogicLayer
                 };
                 return dal.executarScalar("select Id from Marcas where Nome = @Nome", sqlParams);
             }
+            static public object queryBuscar_id_marcaModelos(string Nome)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                     new SqlParameter("@Nome", Nome),
+                };
+                return dal.executarScalar("select Id from Marcas_Mota where Nome = @Nome", sqlParams);
+            }
+            static public object queryBuscar_id_marcaModelosMotas(string Nome)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                     new SqlParameter("@Nome", Nome),
+                };
+                return dal.executarScalar("select Id from Marcas_Mota where Nome = @Nome", sqlParams);
+            }
             static public DataTable queryBuscar_Inicio_fim_producao(string Modelo)
             {
                 DAL dal = new DAL();
@@ -770,6 +823,15 @@ namespace BusinessLogicLayer
                           new SqlParameter("@ano", ano),
                 };
                 return dal.executarReader("select Modelo from Modelos Where id_marca = @id_marca and inicio_producao<=@ano and(fim_producao>=@ano or fim_producao is NULL)", sqlParams);
+            }
+            static public DataTable queryModelos_veiculo1234Motas(int id_marca, int ano)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                        new SqlParameter("@id_marca", id_marca),
+                          new SqlParameter("@ano", ano),
+                };
+                return dal.executarReader("select Modelo from Modelos_Motas Where id_marca = @id_marca and inicio_producao<=@ano and(fim_producao>=@ano or fim_producao is NULL)", sqlParams);
             }
 
 

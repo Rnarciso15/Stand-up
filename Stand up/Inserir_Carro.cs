@@ -240,12 +240,12 @@ namespace Stand_up
         private void guna2Button32_Click(object sender, EventArgs e)
         {
 
-            if (listView1.SelectedItems.Count > 0)
-            {
+            
 
                 if (Form2.flagEditCAR == true)
                 {
-
+                if (listView1.SelectedItems.Count > 0)
+                {
 
 
                     string Matricula = listView1.SelectedItems[0].Text;
@@ -615,6 +615,11 @@ namespace Stand_up
                 }
                 else
                 {
+                    MessageBox.Show("Selecione um veiculo");
+                }
+            }
+                else
+                {
 
 
                     if (guna2TextBox3.Text.Length != 10)
@@ -718,8 +723,16 @@ namespace Stand_up
                                                                         {
                                                                             int x = BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, false,mota);
                                                                             images.Images.Add(guna2CirclePictureBox1.Image);
-
-                                                                            limpar_caixas();
+                                                                            foreach (string item in imagem_carro)
+                                                                            {
+                                                                                guna2CirclePictureBox1.Image = Properties.Resources.car;
+                                                                                int i = 0;
+                                                                                guna2CirclePictureBox1.ImageLocation = item;
+                                                                                BLL.Imagem.insertImagemCarro(imgToByteArray( guna2CirclePictureBox1.Image), guna2TextBox6.Text);
+                                                                                
+                                                                            }
+                                                                            imagem_carro.Clear();
+                                                                                limpar_caixas();
                                                                             carregar_car_PARA_LISTVIEW();
                                                                         }
 
@@ -742,11 +755,7 @@ namespace Stand_up
 
 
                 }
-            }
-            else
-            {
-                MessageBox.Show("Selecione um veiculo");
-            }
+          
         }
 
         private void guna2TextBox3_TextChanged(object sender, EventArgs e)
@@ -1202,6 +1211,11 @@ namespace Stand_up
         }
         void carregar_marca()
         {
+            guna2ComboBox1.Items.Clear();
+            if (guna2CheckBox2.Checked == true)
+            {
+
+          
             DataTable dt = BLL.veiculos.queryMarca_veiculo();
             int j = 0;
 
@@ -1209,6 +1223,18 @@ namespace Stand_up
             {
 
                 guna2ComboBox1.Items.Add(row[0].ToString());
+            }
+            }
+            else
+            {
+                DataTable dt = BLL.veiculos.queryMarca_veiculoMotas();
+                int j = 0;
+                
+                foreach (DataRow row in dt.Rows)
+                {
+
+                    guna2ComboBox1.Items.Add(row[0].ToString());
+                }
             }
         }
         private void Inserir_Carro_Load(object sender, EventArgs e)
@@ -1252,23 +1278,35 @@ namespace Stand_up
         {
 
         }
-
+        int uu = 0;
         private void guna2CirclePictureBox1_Click(object sender, EventArgs e)
         {
 
             openFileDialog1.Filter = "PNG files (*.png)|*.png";
-
+            if (uu == 0)
+            {           
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 guna2CirclePictureBox1.ImageLocation = openFileDialog1.FileName;
-                imagem_carro.Add(guna2CirclePictureBox1.Image);
+                imagem_carro.Add(openFileDialog1.FileName);
+            }
+                uu = 1;
+                guna2Button3.Visible = true;
+                guna2Button4.Visible = true;
+                guna2Button6.Visible = true;
+                guna2Button5.Visible = true;
             }
         }
 
         private void guna2ComboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+
             if (guna2TextBox3.Text.Length == 10)
             {
+                if(guna2CheckBox2.Checked == true)
+                {
+
+             
                 guna2ComboBox2.Items.Clear();
                 int id_marca = (int)BLL.veiculos.queryBuscar_id_marca(guna2ComboBox1.Text);
                 DataTable modelos = BLL.veiculos.queryModelos_veiculo(id_marca);
@@ -1279,6 +1317,25 @@ namespace Stand_up
                     guna2ComboBox2.Items.Add(row["Modelo"]);
                 }
                 guna2ComboBox2.Enabled = true;
+                }
+                else
+                {
+
+                    guna2ComboBox2.Items.Clear();
+                    int id_marca = (int)BLL.veiculos.queryBuscar_id_marcaModelosMotas(guna2ComboBox1.Text);
+                    DataTable modelos = BLL.veiculos.queryModelos_veiculoMotas(id_marca);
+                    DataTable table = BLL.veiculos.queryModelos_veiculo1234Motas(id_marca, ano);
+
+                    foreach (DataRow row in table.Rows)
+                    {
+                        guna2ComboBox2.Items.Add(row["Modelo"]);
+                    }
+                    guna2ComboBox2.Enabled = true;
+
+
+
+
+                }
             }
             else
             {
@@ -1466,6 +1523,7 @@ namespace Stand_up
                 label11.Visible = false;
                 guna2ComboBox6.Visible = false;
             }
+            carregar_marca();
         }
 
         private void guna2CheckBox1_CheckedChanged(object sender, EventArgs e)
@@ -1482,63 +1540,80 @@ namespace Stand_up
                 label11.Visible = true;
                 guna2ComboBox6.Visible = true;
             }
+
+            carregar_marca();
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
-            if (IMG_Idx < imagem_carro.Count - 1)
+            IMG_Idx++;
+            if (IMG_Idx >= imagem_carro.Count)
             {
-
-
-                if (IMG_Idx < 0)
-                {
-                    IMG_Idx = 0;
-                }
-                if (IMG_Idx > 10)
-                {
-                    IMG_Idx = 10;
-                }
-
-                object imagem_98 = imagem_carro[IMG_Idx];
-                if (imagem_98 != null)
-                {
-                    guna2CirclePictureBox1.Image = (Image)imagem_carro[IMG_Idx];
-                }
-                else
-                {
-                    guna2CirclePictureBox1.Image = Properties.Resources.car;
-                }
+                IMG_Idx = 0;
             }
-            IMG_Idx += 1;
+
+            if (IMG_Idx >= 0 && IMG_Idx < imagem_carro.Count)
+            {
+                string imagePath = (string)imagem_carro[IMG_Idx];
+                guna2CirclePictureBox1.ImageLocation = imagePath;
+            }
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-           if(IMG_Idx < imagem_carro.Count - 1)
+            IMG_Idx -= 1;
+            if (IMG_Idx < 0)
             {
-
-          
-            if(IMG_Idx < 0)
-            {
-                IMG_Idx = 0;
-            }
-            if(IMG_Idx > 10)
-            {
-                IMG_Idx = 10;
+                IMG_Idx = imagem_carro.Count - 1;
             }
 
-                object imagem_98 = imagem_carro[IMG_Idx];
-                if (imagem_98 != null)
+            if (IMG_Idx >= 0 && IMG_Idx < imagem_carro.Count)
+            {
+                string imagePath = (string)imagem_carro[IMG_Idx];
+                guna2CirclePictureBox1.ImageLocation = imagePath;
+            }
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "PNG files (*.png)|*.png";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                guna2CirclePictureBox1.ImageLocation = openFileDialog1.FileName;
+                imagem_carro.Add(openFileDialog1.FileName);
+            }
+        }
+
+        private void guna2Button6_Click(object sender, EventArgs e)
+        {
+            if(imagem_carro.Count > 0)
+            {
+                imagem_carro.RemoveAt(IMG_Idx);
+                IMG_Idx -= 1;
+                if(imagem_carro.Count == 0)
                 {
-                    guna2CirclePictureBox1.Image = (Image)imagem_carro[IMG_Idx];
+                                        guna2CirclePictureBox1.Image = Properties.Resources.car;
                 }
-                else
+            }
+            else
+            {
+                guna2CirclePictureBox1.Image = Properties.Resources.car;
+            }
+            if(imagem_carro.Count < 1 )
+            {
+                uu = 0;
+                if (imagem_carro.Count != 0)
                 {
-                    guna2CirclePictureBox1.Image = Properties.Resources.car;
+                    string imagePath = (string)imagem_carro[IMG_Idx];
+                    guna2CirclePictureBox1.ImageLocation = imagePath;
                 }
+                guna2Button3.Visible = false;
+                guna2Button4.Visible = false;
+                guna2Button6.Visible = false;
+                guna2Button5.Visible = false;
             }
             
-            IMG_Idx -= 1;
         }
     }
 }

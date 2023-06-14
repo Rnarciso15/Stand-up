@@ -1,6 +1,5 @@
 Funcionalidades a implementar:
 
-Adicionar mais imagens nos veiculos
 
 Enviar emails a varias pessoas em especifico
 
@@ -9,6 +8,7 @@ Filtros no historico de transações
 
 Erro:
 
+remover imagens do Veiculo, arrebenta!
 
 Update no inserir veiculos não muda entre motos e carros
 
@@ -19,3 +19,9 @@ Resolvido:
 
 
 Filtro da kilometragem no comprar e alugar não funciona
+
+
+
+Funcionalidades já implementadas:
+
+Adicionar mais imagens nos veiculos

@@ -113,6 +113,16 @@ namespace Stand_up.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bin__1_ {
+            get {
+                object obj = ResourceManager.GetObject("bin (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BMW {
             get {
                 object obj = ResourceManager.GetObject("BMW", resourceCulture);
