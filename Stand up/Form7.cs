@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Mail;
 using BusinessLogicLayer;
 using System.IO;
+using System.Collections;
 
 namespace Stand_up
 {
@@ -74,6 +75,77 @@ namespace Stand_up
                 i += 1;
 
                 this.listView1.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+        }
+        void carregar_cliente_PARA_LISTVIEW1()
+        {
+
+
+
+
+
+            DataTable dt = BLL.Clientes.queryLoad_cliente();
+
+            listView2.Clear();
+            images2.Images.Clear();
+
+            i = 0;
+
+
+
+
+
+            foreach (DataRow row in dt.Rows)
+
+            {
+
+
+
+                images2.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView2.LargeImageList = images2;
+
+                listView2.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+
+
+
+                byte[] imagebyte = (byte[])(row["imagem"]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images2.Images.Add(row["imagem"].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = " " + row["n_cliente"].ToString() + " " + row["nome"].ToString();
+
+                i += 1;
+
+                this.listView2.Items.Add(item);
 
 
 
@@ -360,6 +432,111 @@ namespace Stand_up
 
                 MessageBox.Show("Preencha todos os campos");
             }
+        }
+
+        private void guna2Button6_Click(object sender, EventArgs e)
+        {
+
+            foreach (DataRow row in addCl)
+            {
+
+
+                string fromemail = "standuprla@gmail.com";
+                string frompasssword = "qisznqsrmsszpvif";
+
+                MailMessage message = new MailMessage();
+                // Criando a mensagem de e-mail
+                message.From = new MailAddress(fromemail);
+                message.To.Add(new MailAddress((string)row["email"]));
+                message.Subject = guna2TextBox1.Text;
+                string texto = "Bom dia Sr " + (string)row["nome"] + "," + "\r\n" + "\r\n" + guna2TextBox7.Text + "\r\n" + "\r\n" + "\r\n" + "Obrigado, \r\n" + "Stand Up";
+                message.Body = "<html><body>" + texto + "</body></html>";
+                message.IsBodyHtml = true;
+
+                var smtpClient = new SmtpClient("smtp.gmail.com")
+                {
+                    Port = 587,
+                    Credentials = new NetworkCredential(fromemail, frompasssword),
+                    EnableSsl = true,
+                };
+
+
+
+                if (caminhoArquivo != "")
+                {
+                    Attachment anexo = new Attachment(caminhoArquivo);
+                    message.Attachments.Add(anexo);
+                }
+                smtpClient.Send(message);
+            }
+
+            MessageBox.Show("Email enviados com sucesso!");
+        }
+    
+        ArrayList addCl = new ArrayList();
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(q == 1)
+            {
+
+            if (listView2.SelectedItems.Count > 0)
+            {
+                string phrase = listView2.SelectedItems[0].Text; ;
+                string[] words = phrase.Split(' ');
+                string email = "";
+                
+                id_cliente = words[1];
+                nomeCliente = words[2];
+                guna2Button32.Enabled = true;
+                dt = BLL.Clientes.queryCliente_mostrar_dados(Convert.ToInt32(id_cliente));
+                foreach (DataRow row in dt.Rows)
+                {
+                    email = (string)row["email"];
+                    nomeCliente = (string)row["nome"];
+                    addCl.Add(row);
+                }
+               
+            }
+
+            }
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {if(guna2TextBox7.Text != "")
+            {
+
+          
+            guna2GroupBox4.Visible = true;
+            carregar_cliente_PARA_LISTVIEW1();
+            }
+            else
+            {
+                MessageBox.Show("Insira primeiro o Email");
+            }
+        }
+
+        private void guna2Button7_Click(object sender, EventArgs e)
+        {
+            guna2GroupBox4.Visible = false;
+        }
+        int q = 0;
+        
+        private void guna2Button8_Click(object sender, EventArgs e)
+        {
+            if(q == 0)
+            {
+                q = 1;
+                guna2Button8.Text = "x";
+                guna2Button8.FillColor =Color.FromArgb(234, 45, 63);
+            }
+            else
+            {
+                q = 0;
+
+                guna2Button8.Image = Properties.Resources.correct1;
+                guna2Button8.FillColor = Color.FromArgb(75, 174, 79);
+            }
+         
         }
     }
 }

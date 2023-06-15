@@ -30,7 +30,7 @@ namespace Stand_up
         public static bool admin_load = false;
         void nao_readonly_caixas()
         {
-
+            guna2PictureBox2.Enabled = true;
             guna2TextBox9.ReadOnly = false;
             guna2TextBox4.ReadOnly = false;
             guna2TextBox2.ReadOnly = false;
@@ -174,14 +174,14 @@ namespace Stand_up
                 guna2GroupBox3.Text = "Mudar Senha de Clientes";
 
                 guna2DataGridView1.DataSource = BLL.Clientes.Load();
-                nao_readonly_caixas();
+               
             }
             if (Form1.flagInsertCliente == true)
             {
                 guna2GroupBox2.Text = "Inserir Cliente";
                 guna2GroupBox3.Text = "Mudar Senha de Clientes";
-                readonly_caixas();
 
+                nao_readonly_caixas();
                 guna2DataGridView1.DataSource = BLL.Clientes.Load();
             }
             if (Form1.flagInsertFunc == true)
@@ -189,7 +189,7 @@ namespace Stand_up
                 guna2GroupBox2.Text = "Inserir Funcionário";
                 guna2GroupBox3.Text = "Mudar Senha de Funcionários";
                 guna2DataGridView1.DataSource = BLL.Func.Load();
-                readonly_caixas();
+                nao_readonly_caixas();
             }
             foreach (DataRow row in dt.Rows)
             {
@@ -528,7 +528,7 @@ namespace Stand_up
 
         private void guna2PictureBox2_Click(object sender, EventArgs e)
         {
-            if (Form1.flagInsertFunc != true && Form1.flagInsertCliente != true)
+            if (Form1.flagInsertFunc == true || Form1.flagInsertCliente == true)
             {
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
