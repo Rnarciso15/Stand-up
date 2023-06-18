@@ -11,6 +11,8 @@ using System.Net.Mail;
 using BusinessLogicLayer;
 using System.IO;
 using System.Collections;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using Guna.UI2.WinForms;
 
 namespace Stand_up
 {
@@ -166,6 +168,7 @@ namespace Stand_up
         int i = 0;
         int ww = 0;
         ImageList images2 = new ImageList();
+        ImageList images3 = new ImageList();
         string id_cliente;
         string nomeCliente;
         DataTable dt = null;
@@ -436,7 +439,10 @@ namespace Stand_up
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
+            if(q == 1)
+            {
 
+          
             foreach (DataRow row in addCl)
             {
 
@@ -469,21 +475,53 @@ namespace Stand_up
                 }
                 smtpClient.Send(message);
             }
-
-            MessageBox.Show("Email enviados com sucesso!");
+                        MessageBox.Show("Email enviados com sucesso!");
+            }
+            else
+            {
+                MessageBox.Show("Confirme os clientes selecionados para poder enviar o email");
+            }
         }
+
     
         ArrayList addCl = new ArrayList();
-        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+
+        string email = "";
+        public Image byteArrayToImage(byte[] byteArrayIn)
+
         {
-            if(q == 1)
+
+            using (MemoryStream mStream = new MemoryStream(byteArrayIn))
+
             {
 
+                return Image.FromStream(mStream);
+
+            }
+
+        }
+        public byte[] imgToByteArray(Image img)
+
+        {
+
+            using (MemoryStream mStream = new MemoryStream())
+
+            {
+
+                img.Save(mStream, img.RawFormat);
+
+                return mStream.ToArray();
+
+            }
+
+        }
+        private void listView2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+       
             if (listView2.SelectedItems.Count > 0)
             {
                 string phrase = listView2.SelectedItems[0].Text; ;
                 string[] words = phrase.Split(' ');
-                string email = "";
                 
                 id_cliente = words[1];
                 nomeCliente = words[2];
@@ -493,31 +531,46 @@ namespace Stand_up
                 {
                     email = (string)row["email"];
                     nomeCliente = (string)row["nome"];
-                    addCl.Add(row);
-                }
-               
-            }
+                    guna2PictureBox1.Image = byteArrayToImage((Byte[])row["imagem"]);
+                    }
+
+                    if (guna2PictureBox1.Image != null)
+                    {
+                        guna2Button10.Visible = true;
+                        guna2Button9.Visible = true;
+                    }
+                    else
+                    {
+
+                        guna2Button10.Visible = false;
+                        guna2Button9.Visible = false;
+                    }
+                
 
             }
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)
-        {if(guna2TextBox7.Text != "")
-            {
-
-          
+        {
+          if(guna2TextBox7.Text!= "") { 
             guna2GroupBox4.Visible = true;
-            carregar_cliente_PARA_LISTVIEW1();
-            }
+                carregar_cliente_PARA_LISTVIEW1();
+          }
             else
             {
-                MessageBox.Show("Insira primeiro o Email");
+                MessageBox.Show("Escreva a menssagem de texto primeiro");
             }
+
         }
 
         private void guna2Button7_Click(object sender, EventArgs e)
         {
             guna2GroupBox4.Visible = false;
+            guna2TextBox7.Clear();
+            listView2.Clear();
+            listView3.Clear();
+            guna2PictureBox1.Image = null;
+            q = 0;
         }
         int q = 0;
         
@@ -525,18 +578,208 @@ namespace Stand_up
         {
             if(q == 0)
             {
-                q = 1;
+               
                 guna2Button8.Text = "x";
+                guna2Button8.Image = null;
                 guna2Button8.FillColor =Color.FromArgb(234, 45, 63);
-            }
+                DialogResult dr = MessageBox.Show("\"Têm a certeza que quer enviar a email aos clientes selecionados ?\"", "", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
+                {
+                    q = 1;
+                }
+                else
+                {
+
+                    q = 0;
+                    guna2Button8.Text = "";
+                    guna2Button8.Image = Properties.Resources.correct1;
+                    guna2Button8.FillColor = Color.FromArgb(75, 174, 79);
+                }
+                }
             else
             {
                 q = 0;
-
+                guna2Button8.Text = "";
                 guna2Button8.Image = Properties.Resources.correct1;
                 guna2Button8.FillColor = Color.FromArgb(75, 174, 79);
             }
          
+        }
+
+        private void guna2Button10_Click(object sender, EventArgs e)
+        {
+            if (listView2.SelectedItems.Count > 0)
+            {
+                dt = BLL.Clientes.queryCliente_mostrar_dados(Convert.ToInt32(id_cliente));
+                foreach (DataRow row in dt.Rows)
+                {
+                    email = (string)row["email"];
+                    nomeCliente = (string)row["nome"];
+                    id_cliente = Convert.ToString((int)row["n_cliente"]);
+                    addCl.Add(row);
+                }
+              
+                    listView3.Clear();
+                images3.Images.Clear();
+
+                    i = 0;
+
+
+
+
+
+                    foreach (DataRow row1 in addCl)
+
+                    {
+
+
+
+                    images3.ColorDepth = ColorDepth.Depth32Bit;
+
+                        listView3.LargeImageList = images3;
+
+                        listView3.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+
+
+
+                        byte[] imagebyte = (byte[])(row1["imagem"]);
+
+                        MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                        image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                    images3.Images.Add(row1["imagem"].ToString(), new Bitmap(image_stream));
+
+
+
+                        image_stream.Close();
+
+
+
+                        ListViewItem item = new ListViewItem();
+
+                        item.ImageIndex = i;
+
+                        item.Text = " " + row1["n_cliente"].ToString() + " " + row1["nome"].ToString();
+
+                        i += 1;
+
+                        this.listView3.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+                    }
+                
+                }
+        }
+
+        private void guna2PictureBox1_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void guna2Button9_Click(object sender, EventArgs e)
+        {
+            for (int i = addCl.Count - 1; i >= 0; i--)
+            {
+                DataRow row = (DataRow)addCl[i];
+                // Condição para remover a linha
+                if (row["n_cliente"].ToString() == id_cliente)
+
+                {
+                    addCl.RemoveAt(i);
+                    guna2PictureBox1.Image = null;
+                    MessageBox.Show("Removido");
+                }
+            }
+
+            listView3.Clear();
+                images3.Images.Clear();
+
+                i = 0;
+
+
+
+
+
+                foreach (DataRow row1 in addCl)
+
+                {
+
+
+
+                    images3.ColorDepth = ColorDepth.Depth32Bit;
+
+                    listView3.LargeImageList = images3;
+
+                    listView3.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
+
+
+
+                    byte[] imagebyte = (byte[])(row1["imagem"]);
+
+                    MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                    image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                    images3.Images.Add(row1["imagem"].ToString(), new Bitmap(image_stream));
+
+
+
+                    image_stream.Close();
+
+
+
+                    ListViewItem item = new ListViewItem();
+
+                    item.ImageIndex = i;
+
+                    item.Text = " " + row1["n_cliente"].ToString() + " " + row1["nome"].ToString();
+
+                    i += 1;
+
+                    this.listView3.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+                
+            }
+        }
+
+        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView3.SelectedItems.Count > 0)
+            {
+                string phrase = listView3.SelectedItems[0].Text; ;
+                string[] words = phrase.Split(' ');
+
+                id_cliente = words[1];
+                nomeCliente = words[2];
+            }
+            }
+
+        private void guna2Button11_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                caminhoArquivo = openFileDialog1.FileName;
+            }
         }
     }
 }

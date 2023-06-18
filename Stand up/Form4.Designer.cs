@@ -180,7 +180,7 @@ namespace Stand_up
             // enviadosToolStripMenuItem
             // 
             this.enviadosToolStripMenuItem.Name = "enviadosToolStripMenuItem";
-            this.enviadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.enviadosToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
             this.enviadosToolStripMenuItem.Text = "Enviar";
             this.enviadosToolStripMenuItem.Click += new System.EventHandler(this.enviadosToolStripMenuItem_Click);
             // 
@@ -440,7 +440,7 @@ namespace Stand_up
             this.guna2TextBox9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.guna2TextBox9.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox9.Location = new System.Drawing.Point(126, 312);
-            this.guna2TextBox9.MaxLength = 10;
+            this.guna2TextBox9.MaxLength = 400;
             this.guna2TextBox9.Name = "guna2TextBox9";
             this.guna2TextBox9.PasswordChar = '\0';
             this.guna2TextBox9.PlaceholderText = "";

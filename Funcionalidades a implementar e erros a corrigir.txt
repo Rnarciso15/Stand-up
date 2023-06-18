@@ -1,8 +1,6 @@
 Funcionalidades a implementar:
 
 
-Enviar emails a varias pessoas em especifico
-
 Filtros no historico de transações
 
 
@@ -12,7 +10,7 @@ remover imagens do Veiculo, arrebenta!
 
 Update no inserir veiculos não muda entre motos e carros
 
-Horas das marcações do dia, quando são e 30 e poucos minutos ainda deixa marcar na hora
+
 
 
 Resolvido:
@@ -20,8 +18,14 @@ Resolvido:
 
 Filtro da kilometragem no comprar e alugar não funciona
 
+Horas das marcações do dia, quando são e 30 e poucos minutos ainda deixa marcar na hora
+
+
+
 
 
 Funcionalidades já implementadas:
 
 Adicionar mais imagens nos veiculos
+
+Enviar emails a varias pessoas em especifico
