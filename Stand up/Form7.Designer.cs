@@ -45,6 +45,11 @@ namespace Stand_up
             this.listView1 = new System.Windows.Forms.ListView();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.guna2GroupBox4 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.guna2Button11 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2GroupBox6 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.guna2GroupBox5 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.listView3 = new System.Windows.Forms.ListView();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Button9 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button10 = new Guna.UI2.WinForms.Guna2Button();
@@ -67,19 +72,14 @@ namespace Stand_up
             this.guna2TextBox7 = new Guna.UI2.WinForms.Guna2TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.listView3 = new System.Windows.Forms.ListView();
-            this.guna2GroupBox5 = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.guna2GroupBox6 = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.listView2 = new System.Windows.Forms.ListView();
-            this.guna2Button11 = new Guna.UI2.WinForms.Guna2Button();
             this.menuStrip1.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
             this.guna2GroupBox4.SuspendLayout();
+            this.guna2GroupBox6.SuspendLayout();
+            this.guna2GroupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2GroupBox3.SuspendLayout();
-            this.guna2GroupBox5.SuspendLayout();
-            this.guna2GroupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -256,6 +256,83 @@ namespace Stand_up
             this.guna2GroupBox4.Text = "Selecionar os clientes para enviar o Email";
             this.guna2GroupBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.guna2GroupBox4.Visible = false;
+            // 
+            // guna2Button11
+            // 
+            this.guna2Button11.Animated = true;
+            this.guna2Button11.BorderRadius = 10;
+            this.guna2Button11.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button11.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button11.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button11.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button11.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.guna2Button11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.guna2Button11.ForeColor = System.Drawing.Color.White;
+            this.guna2Button11.Location = new System.Drawing.Point(691, 488);
+            this.guna2Button11.Name = "guna2Button11";
+            this.guna2Button11.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
+            this.guna2Button11.Size = new System.Drawing.Size(132, 80);
+            this.guna2Button11.TabIndex = 100;
+            this.guna2Button11.Text = "Carregar Ficheiros";
+            this.guna2Button11.Click += new System.EventHandler(this.guna2Button11_Click);
+            // 
+            // guna2GroupBox6
+            // 
+            this.guna2GroupBox6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.guna2GroupBox6.BorderRadius = 10;
+            this.guna2GroupBox6.Controls.Add(this.listView2);
+            this.guna2GroupBox6.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.guna2GroupBox6.FillColor = System.Drawing.SystemColors.Control;
+            this.guna2GroupBox6.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2GroupBox6.ForeColor = System.Drawing.Color.White;
+            this.guna2GroupBox6.Location = new System.Drawing.Point(21, 60);
+            this.guna2GroupBox6.Name = "guna2GroupBox6";
+            this.guna2GroupBox6.Size = new System.Drawing.Size(519, 459);
+            this.guna2GroupBox6.TabIndex = 99;
+            this.guna2GroupBox6.Text = "Clientes a Selecionar";
+            this.guna2GroupBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // listView2
+            // 
+            this.listView2.BackColor = System.Drawing.Color.White;
+            this.listView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.listView2.HideSelection = false;
+            this.listView2.Location = new System.Drawing.Point(25, 59);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(471, 377);
+            this.listView2.TabIndex = 33;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
+            // 
+            // guna2GroupBox5
+            // 
+            this.guna2GroupBox5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.guna2GroupBox5.BorderRadius = 10;
+            this.guna2GroupBox5.Controls.Add(this.listView3);
+            this.guna2GroupBox5.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.guna2GroupBox5.FillColor = System.Drawing.SystemColors.Control;
+            this.guna2GroupBox5.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2GroupBox5.ForeColor = System.Drawing.Color.White;
+            this.guna2GroupBox5.Location = new System.Drawing.Point(829, 59);
+            this.guna2GroupBox5.Name = "guna2GroupBox5";
+            this.guna2GroupBox5.Size = new System.Drawing.Size(519, 453);
+            this.guna2GroupBox5.TabIndex = 76;
+            this.guna2GroupBox5.Text = "Clientes Selecionados";
+            this.guna2GroupBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // listView3
+            // 
+            this.listView3.BackColor = System.Drawing.Color.White;
+            this.listView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.listView3.HideSelection = false;
+            this.listView3.Location = new System.Drawing.Point(21, 59);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(473, 370);
+            this.listView3.TabIndex = 99;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            this.listView3.SelectedIndexChanged += new System.EventHandler(this.listView3_SelectedIndexChanged);
             // 
             // guna2PictureBox1
             // 
@@ -650,83 +727,6 @@ namespace Stand_up
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // listView3
-            // 
-            this.listView3.BackColor = System.Drawing.Color.White;
-            this.listView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.listView3.HideSelection = false;
-            this.listView3.Location = new System.Drawing.Point(21, 59);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(473, 370);
-            this.listView3.TabIndex = 99;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            this.listView3.SelectedIndexChanged += new System.EventHandler(this.listView3_SelectedIndexChanged);
-            // 
-            // guna2GroupBox5
-            // 
-            this.guna2GroupBox5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.guna2GroupBox5.BorderRadius = 10;
-            this.guna2GroupBox5.Controls.Add(this.listView3);
-            this.guna2GroupBox5.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.guna2GroupBox5.FillColor = System.Drawing.SystemColors.Control;
-            this.guna2GroupBox5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2GroupBox5.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox5.Location = new System.Drawing.Point(829, 59);
-            this.guna2GroupBox5.Name = "guna2GroupBox5";
-            this.guna2GroupBox5.Size = new System.Drawing.Size(519, 453);
-            this.guna2GroupBox5.TabIndex = 76;
-            this.guna2GroupBox5.Text = "Clientes Selecionados";
-            this.guna2GroupBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // guna2GroupBox6
-            // 
-            this.guna2GroupBox6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.guna2GroupBox6.BorderRadius = 10;
-            this.guna2GroupBox6.Controls.Add(this.listView2);
-            this.guna2GroupBox6.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.guna2GroupBox6.FillColor = System.Drawing.SystemColors.Control;
-            this.guna2GroupBox6.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2GroupBox6.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox6.Location = new System.Drawing.Point(21, 60);
-            this.guna2GroupBox6.Name = "guna2GroupBox6";
-            this.guna2GroupBox6.Size = new System.Drawing.Size(519, 459);
-            this.guna2GroupBox6.TabIndex = 99;
-            this.guna2GroupBox6.Text = "Clientes a Selecionar";
-            this.guna2GroupBox6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // listView2
-            // 
-            this.listView2.BackColor = System.Drawing.Color.White;
-            this.listView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(25, 59);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(471, 377);
-            this.listView2.TabIndex = 33;
-            this.listView2.UseCompatibleStateImageBehavior = false;
-            this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
-            // 
-            // guna2Button11
-            // 
-            this.guna2Button11.Animated = true;
-            this.guna2Button11.BorderRadius = 10;
-            this.guna2Button11.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button11.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button11.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button11.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button11.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.guna2Button11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            this.guna2Button11.ForeColor = System.Drawing.Color.White;
-            this.guna2Button11.Location = new System.Drawing.Point(691, 488);
-            this.guna2Button11.Name = "guna2Button11";
-            this.guna2Button11.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
-            this.guna2Button11.Size = new System.Drawing.Size(132, 80);
-            this.guna2Button11.TabIndex = 100;
-            this.guna2Button11.Text = "Carregar Ficheiros";
-            this.guna2Button11.Click += new System.EventHandler(this.guna2Button11_Click);
-            // 
             // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -745,11 +745,11 @@ namespace Stand_up
             this.guna2GroupBox2.ResumeLayout(false);
             this.guna2GroupBox2.PerformLayout();
             this.guna2GroupBox4.ResumeLayout(false);
+            this.guna2GroupBox6.ResumeLayout(false);
+            this.guna2GroupBox5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2GroupBox3.ResumeLayout(false);
             this.guna2GroupBox3.PerformLayout();
-            this.guna2GroupBox5.ResumeLayout(false);
-            this.guna2GroupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

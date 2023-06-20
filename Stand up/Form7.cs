@@ -407,8 +407,7 @@ namespace Stand_up
                 message.From = new MailAddress(fromemail);
                 message.To.Add(new MailAddress((string)row["email"]));
                 message.Subject = guna2TextBox1.Text;
-                string texto = "Bom dia Sr " + (string)row["nome"] + "," + "\r\n" + "\r\n" + guna2TextBox7.Text + "\r\n" + "\r\n" + "\r\n" + "Obrigado, \r\n" + "Stand Up";
-                message.Body = "<html><body>" + texto + "</body></html>";
+                message.Body = "<html><body>" + guna2TextBox7.Text + "</body></html>";
                 message.IsBodyHtml = true;
 
                 var smtpClient = new SmtpClient("smtp.gmail.com")
@@ -552,7 +551,7 @@ namespace Stand_up
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
-          if(guna2TextBox7.Text!= "") { 
+          if(guna2TextBox1.Text!= "" && guna2TextBox7.Text != "") { 
             guna2GroupBox4.Visible = true;
                 carregar_cliente_PARA_LISTVIEW1();
           }

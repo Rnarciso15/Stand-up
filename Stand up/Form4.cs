@@ -113,11 +113,15 @@ namespace Stand_up
                 guna2Button7.Visible = false;
                 label13.Visible = false;
                 guna2TextBox1.Clear();
+                guna2TextBox12.Clear();
+                guna2TextBox12.UseSystemPasswordChar = true;
+                guna2Button7.Image = Properties.Resources.invisible1;
+                uu = 0;
                 q = 0;
                 guna2TextBox1.UseSystemPasswordChar = true;
                 guna2Button1.Image = Properties.Resources.invisible1;
                 u = 0;
-                guna2TextBox1.Clear();
+                
             }
         }
 
@@ -624,10 +628,10 @@ namespace Stand_up
                             if (guna2TextBox4.Text.Length == 10)
                             {
 
-                                if (guna2TextBox2.Text != "")
+                                if (guna2TextBox5.Text.Length == 11) 
                                 {
 
-                                    if (guna2TextBox5.Text.Length == 11)
+                                    if (guna2TextBox2.Text != "")
                                     {
 
                                         if (guna2TextBox6.Text.Length == 21)
@@ -656,7 +660,7 @@ namespace Stand_up
                                                         }
                                                         else
                                                         {
-                                                            MessageBox.Show("Email é inválido.");
+                                                            MessageBox.Show("Email é inválido");
                                                         }
                                                     }
                                                     else
@@ -666,7 +670,7 @@ namespace Stand_up
                                                 }
                                                 else
                                                 {
-                                                    MessageBox.Show("Insira um nif válido");
+                                                    MessageBox.Show("Insira um NIF válido");
 
                                                 }
                                             }
@@ -944,13 +948,14 @@ namespace Stand_up
             {
                 int x = BLL.Func.senhaFunc(Hash(guna2TextBox1.Text), Form5.n_func, Hash(guna2TextBox12.Text));
                 guna2TextBox1.Clear();
+                    guna2TextBox12.Clear();
                     if (x > 0)
                     {
                         MessageBox.Show("Senha alterada com sucesso.");
                     }
                     else
                     {
-                        MessageBox.Show("Confirmação de senha errada");
+                        MessageBox.Show("Senha antiga errada");
                     }
                 }
 

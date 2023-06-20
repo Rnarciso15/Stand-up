@@ -323,6 +323,11 @@ namespace Stand_up
         {
             guna2TextBox1.Clear();
         }
+
+        private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
         
