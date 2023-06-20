@@ -104,8 +104,7 @@ namespace Stand_up
                 b = 0;
                 j = 0;
                 guna2Button5.Visible = true;
-                MessageBox.Show("Insira o ano do veiculo e em seguida insira a matricula" + ", EX.:(2020 AA-00-AA)");
-
+               
 
 
             }

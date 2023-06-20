@@ -52,6 +52,7 @@ namespace Stand_up
             InitializeComponent();
         }
         int i = 0;
+        int ii = 0;
         int j = 0;
         int ano;
         int id_marca;
@@ -67,6 +68,9 @@ namespace Stand_up
         int id_carro;
         int index;
         ImageList images = new ImageList();
+
+
+        ImageList images3 = new ImageList();
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (Form2.flagEditCAR == true && Form2.flagInsertCAR == false)
@@ -1288,12 +1292,14 @@ namespace Stand_up
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 guna2CirclePictureBox1.ImageLocation = openFileDialog1.FileName;
-                imagem_carro.Add(openFileDialog1.FileName);
+                    string fileName = openFileDialog1.FileName;
+                    Image image = Image.FromFile(fileName);
+                    addCl.Add(image);
+                    imagem_carro.Add(openFileDialog1.FileName);
             }
                 uu = 1;
                 guna2Button3.Visible = true;
                 guna2Button4.Visible = true;
-                guna2Button6.Visible = true;
                 guna2Button5.Visible = true;
             }
         }
@@ -1556,18 +1562,110 @@ namespace Stand_up
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "PNG files (*.png)|*.png";
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                guna2CirclePictureBox1.ImageLocation = openFileDialog1.FileName;
-            }
+            guna2GroupBox4.Visible = true;
         }
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
             
             
+        }
+        ArrayList addCl = new ArrayList();
+       
+        private void guna2Button10_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Filter = "PNG files (*.png)|*.png";
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+               string fileName= openFileDialog1.FileName;
+                
+                    Image image = Image.FromFile(fileName);
+                    addCl.Add(image);         
+
+            }
+
+
+            listView3.Clear();
+            images3.Images.Clear();
+
+            ii = 0;
+
+
+
+
+
+            foreach (Image row1 in addCl)
+
+            {
+
+
+
+                images3.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView3.LargeImageList = images3;
+
+                listView3.LargeImageList.ImageSize = new System.Drawing.Size(100, 100);
+
+
+
+                byte[] imagebyte = (byte[])(imgToByteArray(row1));
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images3.Images.Add((imgToByteArray(row1)).ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = ii;
+
+                item.Text = ii.ToString();
+                item.ForeColor = Color.Transparent;
+
+                ii += 1;
+
+                this.listView3.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+        }
+
+        private void guna2Button11_Click(object sender, EventArgs e)
+        {
+            guna2GroupBox4.Visible = false;
+        }
+
+        private void listView3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listView3.SelectedItems.Count > 0)
+            {
+                guna2PictureBox1.Image = (Image)addCl[Convert.ToInt32(listView3.SelectedItems[0].Text)];
+            }
         }
     }
 }
