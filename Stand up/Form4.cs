@@ -89,10 +89,13 @@ namespace Stand_up
         {
             if (q == 0)
             {
-                guna2HtmlLabel1.Location = new Point(326, 353);
+                guna2HtmlLabel1.Location = new Point(328, 392);
                 guna2HtmlLabel1.Text = "Cancelar";               
                 guna2TextBox1.Visible = true;
                 guna2Button1.Visible = true;
+                guna2Button7.Visible = true;
+                guna2TextBox12.Visible = true;
+                label13.Visible = true;
                 label3.Visible = true;
                 guna2Button2.Visible = true;
                 q += 1;
@@ -100,12 +103,15 @@ namespace Stand_up
             else
             {
 
-                guna2HtmlLabel1.Location = new Point(308, 311);
+                guna2HtmlLabel1.Location = new Point(302, 311);
                 guna2HtmlLabel1.Text = "Mudar Senha";
                 guna2TextBox1.Visible = false;
                 guna2Button1.Visible = false;
                 label3.Visible = false;
                 guna2Button2.Visible = false;
+                guna2TextBox12.Visible = false;
+                guna2Button7.Visible = false;
+                label13.Visible = false;
                 guna2TextBox1.Clear();
                 q = 0;
                 guna2TextBox1.UseSystemPasswordChar = true;
@@ -126,7 +132,8 @@ namespace Stand_up
             guna2HtmlLabel1.Location = new Point(308, 311);
             guna2TextBox1.UseSystemPasswordChar = true;
             guna2TextBox11.UseSystemPasswordChar = true;
-            
+            guna2TextBox12.UseSystemPasswordChar = true;
+
             DataTable dt = BLL.Func.LoadPerfil(Form5.n_func);
             string admin = BLL.Func.Buscar_admin(Form5.n_func);
             if (admin != "True")
@@ -935,10 +942,17 @@ namespace Stand_up
             DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar a senha?", "", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                int x = BLL.Func.senhaFunc(Hash(guna2TextBox1.Text), Form5.n_func);
+                int x = BLL.Func.senhaFunc(Hash(guna2TextBox1.Text), Form5.n_func, Hash(guna2TextBox12.Text));
                 guna2TextBox1.Clear();
-
-            }
+                    if (x > 0)
+                    {
+                        MessageBox.Show("Senha alterada com sucesso.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Confirmação de senha errada");
+                    }
+                }
 
             }
 
@@ -1005,7 +1019,7 @@ namespace Stand_up
                 DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar a senha do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.Yes)
                 {
-                    BLL.Func.senhaFunc(Hash(guna2TextBox11.Text), Convert.ToInt32(guna2TextBox10.Text));
+                    BLL.Func.senhaFunc1(Hash(guna2TextBox11.Text), Convert.ToInt32(guna2TextBox10.Text));
                     guna2TextBox11.Clear();
                     guna2TextBox10.Clear();
 
@@ -1023,7 +1037,7 @@ namespace Stand_up
                     DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar a senha do cliente " + Nome + "?", "", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.Yes)
                 {
-                    BLL.Func.senhaFunc(Hash(guna2TextBox11.Text), Convert.ToInt32(guna2TextBox10.Text));
+                    BLL.Clientes.senhaCliente(Hash(guna2TextBox11.Text), Convert.ToInt32(guna2TextBox10.Text));
                     guna2TextBox11.Clear();
                     guna2TextBox10.Clear();
 
@@ -1133,10 +1147,21 @@ namespace Stand_up
         {
 
         }
-
+        int uu = 0;
         private void guna2Button7_Click(object sender, EventArgs e)
         {
-            
+            if (uu == 0)
+            {
+                guna2TextBox12.UseSystemPasswordChar = false;
+                guna2Button7.Image = Properties.Resources.show1;
+                uu+= 1;
+            }
+            else
+            {
+                guna2TextBox12.UseSystemPasswordChar = true;
+                guna2Button7.Image = Properties.Resources.invisible1;
+                uu = 0;
+            }
         }
 
         private void enviadosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1156,5 +1181,6 @@ namespace Stand_up
         {
 
         }
+     
     }
 }

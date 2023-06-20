@@ -1,7 +1,6 @@
 Funcionalidades a implementar:
 
 
-Filtros no historico de transações
 
 
 Erro:
@@ -25,6 +24,8 @@ Horas das marcações do dia, quando são e 30 e poucos minutos ainda deixa marc
 
 
 Funcionalidades já implementadas:
+
+Filtros no historico de transações
 
 Adicionar mais imagens nos veiculos
 

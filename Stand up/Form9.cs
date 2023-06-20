@@ -1,7 +1,9 @@
 ﻿using BusinessLogicLayer;
 using Guna.UI2.WinForms;
+using Guna.UI2.WinForms.Suite;
 using iTextSharp.text;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,10 +12,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Stand_up
 {
-    public partial class Form9 : Form                                                                                                                                                                    
+    public partial class Form9 : Form
     {
         public Form9()
         {
@@ -67,12 +70,27 @@ namespace Stand_up
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            if (d == 1)
+            {
+                guna2DataGridView1.DataSource = BLL.transacoes.queryFunc_Like_N_cliete(guna2TextBox1.Text);
+            }
+            if (t == 1)
+            {
+                guna2DataGridView1.DataSource = BLL.transacoes.queryFunc_Like_N_Matricula(guna2TextBox1.Text);
+            }
+            if (a == 1)
+            {
+                guna2DataGridView1.DataSource = BLL.transacoes.queryFunc_Like_N_data(guna2TextBox1.Text);
+            }
+            if (b == 1)
+            {
+                guna2DataGridView1.DataSource = BLL.transacoes.queryFunc_Like_N_valor(guna2TextBox1.Text);
+            }
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            if (t== 0)
+            if (t == 0)
             {
                 guna2TextBox1.Clear();
                 guna2Button3.FillColor = Color.DodgerBlue;
@@ -85,10 +103,16 @@ namespace Stand_up
                 a = 0;
                 b = 0;
                 j = 0;
+                guna2Button5.Visible = true;
+                MessageBox.Show("Insira o ano do veiculo e em seguida insira a matricula" + ", EX.:(2020 AA-00-AA)");
+
+
+
             }
             else
             {
 
+                guna2Button5.Visible = false;
                 guna2Button3.FillColor = Color.Silver;
                 t = 0;
 
@@ -110,12 +134,14 @@ namespace Stand_up
                 t = 0;
                 b = 0;
                 j = 0;
+                guna2Button5.Visible = true;
             }
             else
             {
 
                 guna2Button2.FillColor = Color.Silver;
                 a = 0;
+                guna2Button5.Visible = false;
 
             }
         }
@@ -146,6 +172,11 @@ namespace Stand_up
         }
         int yy = 0;
         int jj = 0;
+
+        string ano1 = "";
+        string matricula = "";
+        string[] words;
+        string numeros = "";
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
             if (a == 1)
@@ -258,309 +289,42 @@ namespace Stand_up
                     }
                 }
             }
-            if (t == 1) { 
-            }
-            
-            if (guna2TextBox1.Text.Length < 8 && guna2TextBox1.Text.Length > 5 || guna2TextBox1.Text.Length > 8 && guna2TextBox1.Text.Length < 11 || guna2TextBox1.Text.Length > 11 && guna2TextBox1.Text.Length < 14)
+
+            if (t == 1)
             {
-                yy = 0;
-            }
-            if (guna2TextBox1.Text.Length == 7 || guna2TextBox1.Text.Length == 10)
-            {
-                if (yy != 1)
+                if (guna2TextBox1.Text.Length < 2 || guna2TextBox1.Text.Length > 3 && guna2TextBox1.Text.Length < 5 || guna2TextBox1.Text.Length > 6 && guna2TextBox1.Text.Length < 8)
                 {
-                    guna2TextBox1.Text += "-";
-                    guna2TextBox1.Select(guna2TextBox1.Text.Length, 0);
+                    jj = 0;
                 }
-
-            }
-            if (guna2TextBox1.Text.Length == 5)
-            {
-                yy = 0;
-            }
-            guna2TextBox1.MaxLength = 13;
-            if (jj == 0)
-            {         
-            MessageBox.Show("Insira o ano do veiculo e em seguida insira a matricula"+", EX.:(2020 AA-00-AA)");
-                jj = 1;
-            }
-
-            if (guna2TextBox1.Text.Length == 13)
-            {         
-            string phrase = guna2TextBox1.Text;
-            string[] words = phrase.Split(' ');
-            string ano1  = words[0];
-            string matricula = words[1];
-                if (ano1 != "")
+                if (guna2TextBox1.Text.Length == 2 || guna2TextBox1.Text.Length == 5)
                 {
-
-
-
-                    for (int j = 0; j < ano1.Length; j++)
+                    if (jj != 1)
                     {
-
-                        if (ano1[j] == '0' || ano1[j] == '1' || ano1[j] == '2' || ano1[j] == '3' || ano1[j] == '4' || ano1[j] == '5' || ano1[j] == '6' || ano1[j] == '7' || ano1[j] == '8' || ano1[j] == '9')
-                        {
-
-                        }
-                        else
-                        {
-
-                            guna2TextBox1.Clear();
-                            MessageBox.Show("Insira um ano válido");
-                        }
-
+                        guna2TextBox1.Text += "-";
+                        guna2TextBox1.Select(guna2TextBox1.Text.Length, 0);
                     }
 
-
                 }
-                if (matricula != "")
+                if (guna2TextBox1.Text.Length == 0)
                 {
-
-           
-                if (Convert.ToInt32(ano1) >= 1932 && Convert.ToInt32(ano1) <= 1992)
-                {
-                    
-                        for (int l = 0; l < 2; l++)
-                        {
-                            if (matricula[l] == '0' || matricula[l] == '1' || matricula[l] == '2' || matricula[l] == '3' || matricula[l] == '4' || matricula[l] == '5' || matricula[l] == '6' || matricula[l] == '7' || matricula[l] == '8' || matricula[l] == '9')
-                            {
-                                MessageBox.Show("Tem de usar o formato AA-00-00, devido à idade do seu carro ");
-                                matricula="";
-                            matricula = ano1 + " "+matricula;
-                                break;
-
-                            }
-                            else
-                            {
-
-                            }
-
-                        }
-                  
-
-                        for (int o = 3; o < 5; o++)
-                        {
-                            if (matricula[o] == '0' || matricula[o] == '0' || matricula[o] == '1' || matricula[o] == '2' || matricula[o] == '3' || matricula[o] == '4' || matricula[o] == '5' || matricula[o] == '6' || matricula[o] == '7' || matricula[o] == '8' || matricula[o] == '9')
-                            {
-
-                            }
-                            else
-                            {
-
-                                MessageBox.Show("Tem de usar o formato AA-00-00, devido á idade do seu carro ");
-                            matricula = "";
-                            matricula = ano1 + " " + matricula;
-                            break;
-                            }
-
-                        }
-            
-                    
-                        for (int o = 7; o < 8; o++)
-                        {
-                            if (matricula[o] == '0' || matricula[o] == '0' || matricula[o] == '1' || matricula[o] == '2' || matricula[o] == '3' || matricula[o] == '4' || matricula[o] == '5' || matricula[o] == '6' || matricula[o] == '7' || matricula[o] == '8' || matricula[o] == '9')
-                            {
-
-                            }
-                            else
-                            {
-
-                                MessageBox.Show("Tem de usar o formato AA-00-00, devido á idade do seu carro ");
-                            matricula = "";
-                            matricula = ano1 + " " + matricula;
-                            break;
-                            }
-
-                    
-                    }
+                    jj = 0;
                 }
-
-
-                if (Convert.ToInt32(ano1) >= 1993 && Convert.ToInt32(ano1) <= 2005)
-                {
-                   
-                        for (int l = 0; l < 2; l++)
-                        {
-                            if (matricula[l] == '0' || matricula[l] == '1' || matricula[l] == '2' || matricula[l] == '3' || matricula[l] == '4' || matricula[l] == '5' || matricula[l] == '6' || matricula[l] == '7' || matricula[l] == '8' || matricula[l] == '9')
-                            {
-
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("Tem de usar o formato 00-00-AA, devido á idade do seu carro ");
-                            matricula = "";
-                            matricula = ano1 + " " + matricula;
-                            break;
-                            }
-
-                        }
-                 
-                 
-                        for (int o = 3; o < 5; o++)
-                        {
-                            if (matricula[o] == '0' || matricula[o] == '0' || matricula[o] == '1' || matricula[o] == '2' || matricula[o] == '3' || matricula[o] == '4' || matricula[o] == '5' || matricula[o] == '6' || matricula[o] == '7' || matricula[o] == '8' || matricula[o] == '9')
-                            {
-
-                            }
-                            else
-                            {
-
-                                MessageBox.Show("Tem de usar o formato 00-00-AA, devido á idade do seu carro ");
-                            matricula = "";
-                            matricula = ano1 + " " + matricula;
-                            break;
-                            }
-
-                        }
-                    
-                        for (int o = 7; o < 8; o++)
-                        {
-                            if (matricula[o] == '0' || matricula[o] == '0' || matricula[o] == '1' || matricula[o] == '2' || matricula[o] == '3' || matricula[o] == '4' || matricula[o] == '5' || matricula[o] == '6' || matricula[o] == '7' || matricula[o] == '8' || matricula[o] == '9')
-                            {
-                                MessageBox.Show("Tem de usar o formato 00-00-AA, devido á idade do seu carro ");
-                            matricula = "";
-                            matricula = ano1 + " " + matricula;
-                            break;
-                            }
-                            else
-                            {
-
-
-                            }
-
-                        }
-                   
-
-                }
-
-                    if (Convert.ToInt32(ano1) >= 2006 && Convert.ToInt32(ano1) <= 2020)
-                    {
-                            for (int l = 0; l < 2; l++)
-                            {
-                                if (matricula[l] == '0' || matricula[l] == '1' || matricula[l] == '2' || matricula[l] == '3' || matricula[l] == '4' || matricula[l] == '5' || matricula[l] == '6' || matricula[l] == '7' || matricula[l] == '8' || matricula[l] == '9')
-                                {
-
-
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Tem de usar o formato 00-AA-00, devido á idade do seu carro ");
-                                matricula = "";
-                                matricula = ano1 + " " + matricula;
-                                break;
-                                }
-
-                            }
-                  
-                     
-
-                            for (int o = 3; o < 5; o++)
-                            {
-                                if (matricula[
-                                    o] == '0' || matricula[o] == '0' || matricula[o] == '0' || matricula[o] == '1' || matricula[o] == '2' || matricula[o] == '3' || matricula[o] == '4' || matricula[o] == '5' || matricula[o] == '6' || matricula[o] == '7' || matricula[o] == '8' || matricula[o] == '9')
-                                {
-                                    MessageBox.Show("Tem de usar o formato 00-AA-00, devido á idade do seu carro ");
-                                matricula = "";
-                                matricula = ano1 + " " + matricula;
-                                break;
-                                }
-                                else
-                                {
-
-
-                                }
-
-                            }
-                     
-                            for (int o = 6; o < 8; o++)
-                            {
-                                if (matricula[o] == '0' || matricula[o] == '0' || matricula[o] == '1' || matricula[o] == '2' || matricula[o] == '3' || matricula[o] == '4' || matricula[o] == '5' || matricula[o] == '6' || matricula[o] == '7' || matricula[o] == '8' || matricula[o] == '9')
-                                {
-
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Tem de usar o formato 00-AA-00, devido á idade do seu carro ");
-                                matricula = "";
-                                matricula = ano1 + " " + matricula;
-                                break;
-
-                                }
-
-                            }
-                     
-
-                    }
-
-                    if (Convert.ToInt32(ano1) >= 2021)
-                    {
-                       
-                            for (int l = 0; l < 2; l++)
-                            {
-                                if (matricula[l] == '0' || matricula[l] == '1' || matricula[l] == '2' || matricula[l] == '3' || matricula[l] == '4' || matricula[l] == '5' || matricula[l] == '6' || matricula[l] == '7' || matricula[l] == '8' || matricula[l] == '9')
-                                {
-                                    MessageBox.Show("Tem de usar o formato AA-00-AA, devido á idade do seu carro ");
-                                matricula = "";
-                                matricula = ano1 + " " + matricula;
-                                break;
-
-                                }
-                                else
-                                {
-
-                                }
-
-                            }
-                        
-                       
-
-                            for (int o = 3; o < 5; o++)
-                            {
-                                if (matricula[
-                                    o] == '0' || matricula[o] == '0' || matricula[o] == '0' || matricula[o] == '1' || matricula[o] == '2' || matricula[o] == '3' || matricula[o] == '4' || matricula[o] == '5' || matricula[o] == '6' || matricula[o] == '7' || matricula[o] == '8' || matricula[o] == '9')
-                                {
-
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Tem de usar o formato AA-00-AA, devido á idade do seu carro ");
-                                matricula = "";
-                                matricula = ano1 + " " + matricula;
-                                break;
-
-                                }
-
-                            }
-                        
-                        
-                            for (int o = 7; o < 8; o++)
-                            {
-                                if (matricula[o] == '0' || matricula[o] == '0' || matricula[o] == '1' || matricula[o] == '2' || matricula[o] == '3' || matricula[o] == '4' || matricula[o] == '5' || matricula[o] == '6' || matricula[o] == '7' || matricula[o] == '8' || matricula[o] == '9')
-                                {
-                                    MessageBox.Show("Tem de usar o formato AA-00-AA, devido á idade do seu carro ");
-                                matricula = "";
-                                matricula = ano1 + " " + matricula;
-                                break;
-                                }
-                                else
-                                {
-
-
-                                }
-
-                            }
-                        
-
-                    }
-
-
-
-                }
-            }
+            }    
 
         }
-        
+  
+
+        private void guna2TextBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            guna2TextBox1.Clear();
+        }
     }
 }
+        
+    
+

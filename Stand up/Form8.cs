@@ -257,7 +257,7 @@ namespace Stand_up
             DialogResult dr = MessageBox.Show("Pertende efetuar a compra ?", "", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                BLL.transacoes.insertTrans(Convert.ToInt32(id_cliente), carros_para_venda.Matricula,DateTime.Now,valor);
+                BLL.transacoes.insertTrans(Convert.ToInt32(id_cliente), carros_para_venda.Matricula,DateTime.Now.ToString(),valor);
                 int x = BLL.veiculos.updateVendido(carros_para_venda.Matricula, true);
                 carros_para_venda.flagVendido = true;
                 Form1.flagCancTransacao = true;

@@ -377,7 +377,7 @@ namespace BusinessLogicLayer
 
         public class transacoes
         {
-            static public int insertTrans(int n_cliente, string Matricula,DateTime data,int valor)
+            static public int insertTrans(int n_cliente, string Matricula,string data,int valor)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
@@ -397,6 +397,39 @@ namespace BusinessLogicLayer
                 return dal.executarReader("select * from transacoes", null);
 
             }
+            static public DataTable queryFunc_Like_N_cliete(string id_cliente)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@id_cliente", id_cliente + "%")
+                };
+                return dal.executarReader("select * from transacoes where n_cliente like @id_cliente", sqlParams);
+            }
+            static public DataTable queryFunc_Like_N_Matricula(string Matricula)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@Matricula", Matricula + "%")
+                };
+                return dal.executarReader("select * from transacoes where Matricula like @Matricula", sqlParams);
+            }
+            static public DataTable queryFunc_Like_N_data(string data)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@data", data + "%")
+                };
+                return dal.executarReader("select * from transacoes where data like @data", sqlParams);
+            }
+            static public DataTable queryFunc_Like_N_valor(string valor)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@valor", valor + "%")
+                };
+                return dal.executarReader("select * from transacoes where valor like @valor", sqlParams);
+            }
+
         }
         public class veiculos
         {
@@ -1035,8 +1068,7 @@ namespace BusinessLogicLayer
             };
                 return dal.executarNonQuery("update [funcionario] set  [nome]=@nome, [ativo]=@ativo , [data_nascimento]=@data_nascimento, [email]=@email, [telefone]=@telefone, [nib]=@nib, [imagem]=@imagem, [nif]=@nif, [morada]=@morada, [genero]=@genero where n_func  = @n_func", sqlParams);
             }
-
-            static public int senhaFunc(string senha, int n_func)
+            static public int senhaFunc1(string senha, int n_func)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
@@ -1044,8 +1076,20 @@ namespace BusinessLogicLayer
                  new SqlParameter("@n_func", n_func)
            };
 
-                return dal.executarNonQuery("update [funcionario] set [senha]=@senha where n_func = @n_func", sqlParams);
+                return dal.executarNonQuery("update [funcionario] set [senha]=@senha where n_func = @n_func ", sqlParams);
+              
+            }
+            static public int senhaFunc(string senha, int n_func,string senha_pricipal)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@senha", senha),
+                new SqlParameter("@senha_pricipal", senha_pricipal),
+                 new SqlParameter("@n_func", n_func)
+           };
 
+                int x = dal.executarNonQuery("update [funcionario] set [senha]=@senha where n_func = @n_func and senha = @senha_pricipal ", sqlParams);
+                return x;
             }
 
 

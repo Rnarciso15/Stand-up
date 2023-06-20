@@ -1546,32 +1546,12 @@ namespace Stand_up
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
-            IMG_Idx++;
-            if (IMG_Idx >= imagem_carro.Count)
-            {
-                IMG_Idx = 0;
-            }
-
-            if (IMG_Idx >= 0 && IMG_Idx < imagem_carro.Count)
-            {
-                string imagePath = (string)imagem_carro[IMG_Idx];
-                guna2CirclePictureBox1.ImageLocation = imagePath;
-            }
+            
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            IMG_Idx -= 1;
-            if (IMG_Idx < 0)
-            {
-                IMG_Idx = imagem_carro.Count - 1;
-            }
-
-            if (IMG_Idx >= 0 && IMG_Idx < imagem_carro.Count)
-            {
-                string imagePath = (string)imagem_carro[IMG_Idx];
-                guna2CirclePictureBox1.ImageLocation = imagePath;
-            }
+       
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)
@@ -1581,37 +1561,12 @@ namespace Stand_up
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 guna2CirclePictureBox1.ImageLocation = openFileDialog1.FileName;
-                imagem_carro.Add(openFileDialog1.FileName);
             }
         }
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
-            if(imagem_carro.Count > 0)
-            {
-                imagem_carro.RemoveAt(IMG_Idx);
-                if(imagem_carro.Count == 0)
-                {
-                                        guna2CirclePictureBox1.Image = Properties.Resources.car;
-                }
-            }
-            else
-            {
-                guna2CirclePictureBox1.Image = Properties.Resources.car;
-            }
-            if(imagem_carro.Count < 1 )
-            {
-                uu = 0;
-                if (imagem_carro.Count != 0)
-                {
-                    string imagePath = (string)imagem_carro[IMG_Idx];
-                    guna2CirclePictureBox1.ImageLocation = imagePath;
-                }
-                guna2Button3.Visible = false;
-                guna2Button4.Visible = false;
-                guna2Button6.Visible = false;
-                guna2Button5.Visible = false;
-            }
+            
             
         }
     }
