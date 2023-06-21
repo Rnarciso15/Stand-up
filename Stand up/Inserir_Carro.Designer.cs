@@ -843,6 +843,7 @@ namespace Stand_up
             this.guna2Button9.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
             this.guna2Button9.Size = new System.Drawing.Size(37, 37);
             this.guna2Button9.TabIndex = 71;
+            this.guna2Button9.Click += new System.EventHandler(this.guna2Button9_Click);
             // 
             // guna2Button10
             // 

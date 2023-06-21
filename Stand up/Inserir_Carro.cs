@@ -1283,6 +1283,7 @@ namespace Stand_up
 
         }
         int uu = 0;
+        int iiii = 0;
         private void guna2CirclePictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -1301,6 +1302,65 @@ namespace Stand_up
                 guna2Button3.Visible = true;
                 guna2Button4.Visible = true;
                 guna2Button5.Visible = true;
+                listView3.Clear();
+                images3.Images.Clear();
+
+                iiii = 0;
+
+
+
+
+
+                foreach (Image row1 in addCl)
+
+                {
+
+
+
+                    images3.ColorDepth = ColorDepth.Depth32Bit;
+
+                    listView3.LargeImageList = images3;
+
+                    listView3.LargeImageList.ImageSize = new System.Drawing.Size(100, 100);
+
+
+
+                    byte[] imagebyte = (byte[])(imgToByteArray(row1));
+
+                    MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                    image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                    images3.Images.Add((imgToByteArray(row1)).ToString(), new Bitmap(image_stream));
+
+
+
+                    image_stream.Close();
+
+
+
+                    ListViewItem item = new ListViewItem();
+
+                    item.ImageIndex = iiii;
+
+                    item.Text = iiii.ToString();
+                    item.ForeColor = Color.Transparent;
+
+                    iiii += 1;
+
+                    this.listView3.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+                }
             }
         }
 
@@ -1659,12 +1719,81 @@ namespace Stand_up
         {
             guna2GroupBox4.Visible = false;
         }
-
+        string id = "";
         private void listView3_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listView3.SelectedItems.Count > 0)
             {
+                 id = listView3.SelectedItems[0].Text;
                 guna2PictureBox1.Image = (Image)addCl[Convert.ToInt32(listView3.SelectedItems[0].Text)];
+            }
+        }
+        int iii = 0;
+        private void guna2Button9_Click(object sender, EventArgs e)
+        {
+            if (listView3.SelectedItems.Count > 0)
+            {
+                addCl.RemoveAt(Convert.ToInt32(id));
+                guna2PictureBox1.Image = null;
+                listView3.Clear();
+                images3.Images.Clear();
+
+                iii = 0;
+
+
+
+
+
+                foreach (Image row1 in addCl)
+
+                {
+
+
+
+                    images3.ColorDepth = ColorDepth.Depth32Bit;
+
+                    listView3.LargeImageList = images3;
+
+                    listView3.LargeImageList.ImageSize = new System.Drawing.Size(100, 100);
+
+
+
+                    byte[] imagebyte = (byte[])(imgToByteArray(row1));
+
+                    MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                    image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                    images3.Images.Add((imgToByteArray(row1)).ToString(), new Bitmap(image_stream));
+
+
+
+                    image_stream.Close();
+
+
+
+                    ListViewItem item = new ListViewItem();
+
+                    item.ImageIndex = iii;
+
+                    item.Text = iii.ToString();
+                    item.ForeColor = Color.Transparent;
+
+                    iii += 1;
+
+                    this.listView3.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+                }
             }
         }
     }

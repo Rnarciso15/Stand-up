@@ -5,7 +5,7 @@ Funcionalidades a implementar:
 
 Erro:
 
-remover imagens do Veiculo, arrebenta!
+
 
 Update no inserir veiculos não muda entre motos e carros
 
@@ -19,6 +19,7 @@ Filtro da kilometragem no comprar e alugar não funciona
 
 Horas das marcações do dia, quando são e 30 e poucos minutos ainda deixa marcar na hora
 
+remover imagens do Veiculo, arrebenta!
 
 
 
