@@ -9,6 +9,7 @@ using System.IO;
 using System.Drawing;
 using System.Collections;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Guna.UI2.WinForms;
 
 
 namespace Stand_up
@@ -75,14 +76,16 @@ namespace Stand_up
         {
             if (Form2.flagEditCAR == true && Form2.flagInsertCAR == false)
             {
-
-
+                guna2Button3.Visible = true;
+                guna2Button4.Visible = true;
+                guna2Button5.Visible = true;
 
 
                 if (listView1.SelectedItems.Count > 0)
                 {
                     string Matricula = listView1.SelectedItems[0].Text;
 
+                    bool mota = false;
 
                     ativar_caixas();
 
@@ -90,6 +93,19 @@ namespace Stand_up
 
                     foreach (DataRow row in info.Rows)
                     {
+                        mota = (bool)row["mota"];
+                        if (mota == false)
+                        {
+                            guna2ComboBox6.SelectedItem = Convert.ToString((int)row["N_Portas"]);
+                            guna2CheckBox2.Checked = true;
+                            guna2CheckBox1.Checked = false;
+                        }
+                        else
+                        {
+                            guna2CheckBox2.Checked = false;
+                            guna2CheckBox1.Checked = true;
+
+                        }
                         guna2TextBox3.Text = (string)row["Data"];
                         guna2ComboBox1.SelectedItem = (string)row["Marca"];
                         guna2ComboBox2.SelectedItem = (string)row["Modelo"];
@@ -98,15 +114,88 @@ namespace Stand_up
                         guna2ComboBox3.SelectedItem = (string)row["Combustivel"];
                         guna2TextBox7.Text = (string)row["Descricao"];
                         guna2TextBox1.Text = Convert.ToString((int)row["Valor"]);
-                        guna2CirclePictureBox1.Image = byteArrayToImage((Byte[])row["Imagem"]);
+                        guna2PictureBox2.Image = byteArrayToImage((Byte[])row["Imagem"]);
+                        addCl.Add(byteArrayToImage((Byte[])row["Imagem"]));
                         guna2ComboBox4.SelectedItem = (string)row["Cor"];
                         guna2ComboBox5.SelectedItem = (string)row["Tipo_de_Caixa"];
-                        guna2ComboBox6.SelectedItem = Convert.ToString((int)row["N_Portas"]);
+                       
                         guna2ComboBox8.SelectedItem = (string)row["Traccao"];
+                    }
+                    DataTable infoimagem = BLL.Imagem.LoadImagensCarro(Matricula);
+
+
+                    foreach (DataRow row1 in infoimagem.Rows)
+                    {
+                        Image image = byteArrayToImage((byte[])row1["Image"]);
+                        addCl.Add(image);
+                    }
+                    foreach (Image row1 in addCl)
+                    {
+                        guna2PictureBox1.Image = row1;
+                        break;
+                    }
+
+                    listView3.Clear();
+                    images3.Images.Clear();
+
+                    ii = 0;
+
+
+
+
+
+                    foreach (Image row1 in addCl)
+
+                    {
+
+
+
+                        images3.ColorDepth = ColorDepth.Depth32Bit;
+
+                        listView3.LargeImageList = images3;
+
+                        listView3.LargeImageList.ImageSize = new System.Drawing.Size(100, 100);
+
+
+
+                        byte[] imagebyte = (byte[])(imgToByteArray(row1));
+
+                        MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                        image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                        images3.Images.Add((imgToByteArray(row1)).ToString(), new Bitmap(image_stream));
+
+
+
+                        image_stream.Close();
+
+
+
+                        ListViewItem item = new ListViewItem();
+
+                        item.ImageIndex = ii;
+
+                        item.Text = ii.ToString();
+                        item.ForeColor = Color.Transparent;
+
+                        ii += 1;
+
+                        this.listView3.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
                     }
 
                 }
-
             }
         }
 
@@ -194,7 +283,7 @@ namespace Stand_up
             guna2ComboBox2.DataSource = null;
             guna2TextBox3.Clear();
             guna2ComboBox1.SelectedIndex = -1;
-            guna2CirclePictureBox1.Image = Properties.Resources.car;
+            guna2PictureBox2.Image = Properties.Resources.car;
             guna2ComboBox2.Enabled = false;
             guna2TextBox6.Enabled = false;
             guna2ComboBox2.SelectedIndex = -1;
@@ -215,7 +304,7 @@ namespace Stand_up
             guna2TextBox6.Enabled = false;
             guna2TextBox3.Enabled = false;
             guna2ComboBox1.Enabled = false;
-            guna2CirclePictureBox1.Enabled = false;
+            guna2PictureBox2.Enabled = false;
             guna2ComboBox2.Enabled = false;
             guna2ComboBox4.Enabled = false;
             guna2ComboBox5.Enabled = false;
@@ -231,7 +320,7 @@ namespace Stand_up
             guna2TextBox5.Enabled = true;
             guna2TextBox3.Enabled = true;
             guna2ComboBox1.Enabled = true;
-            guna2CirclePictureBox1.Enabled = true;
+            guna2PictureBox2.Enabled = true;
             guna2ComboBox4.Enabled = true;
             guna2ComboBox5.Enabled = true;
             guna2ComboBox6.Enabled = true;
@@ -240,13 +329,25 @@ namespace Stand_up
             guna2Button1.Enabled = true;
 
 
+
+
         }
+        bool mota = false;
         private void guna2Button32_Click(object sender, EventArgs e)
         {
 
-            
+          
+            if (guna2CheckBox2.Checked == true)
+            {
+                mota = false;
+            }
+            else
+            {
+                mota = true;
+            }
 
-                if (Form2.flagEditCAR == true)
+
+            if (Form2.flagEditCAR == true)
                 {
                 if (listView1.SelectedItems.Count > 0)
                 {
@@ -396,7 +497,7 @@ namespace Stand_up
                             case 8:
                                 foreach (DataRow row in info.Rows)
                                 {
-                                    if (guna2CirclePictureBox1.Image != byteArrayToImage((Byte[])row["Imagem"]))
+                                    if (guna2PictureBox2.Image != byteArrayToImage((Byte[])row["Imagem"]))
                                     {
                                         editar = true;
                                     }
@@ -578,7 +679,7 @@ namespace Stand_up
                                                                 }
                                                                 else
                                                                 {
-                                                                    if (guna2CirclePictureBox1.Image == Properties.Resources.car)
+                                                                    if (guna2PictureBox2.Image == Properties.Resources.car)
                                                                     {
                                                                         MessageBox.Show("Insira uma imagem do veiculo !");
                                                                     }
@@ -595,7 +696,7 @@ namespace Stand_up
                                                                         DialogResult dr = MessageBox.Show("Pertende guardar as alterações do veiculo?", "", MessageBoxButtons.YesNo);
                                                                         if (dr == DialogResult.Yes)
                                                                         {
-                                                                            int x = BLL.veiculos.updateVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, listView1.SelectedItems[0].Text);
+                                                                            int x = BLL.veiculos.updateVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2PictureBox2.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, listView1.SelectedItems[0].Text);
                                                                             carregar_car_PARA_LISTVIEW();
                                                                             limpar_caixas();
                                                                         }
@@ -684,7 +785,7 @@ namespace Stand_up
                                                     }
                                                     else
                                                     {
-                                                        if (guna2ComboBox6.SelectedIndex == -1)
+                                                        if (guna2ComboBox6.SelectedIndex == -1 && mota != true)
                                                         {
                                                             MessageBox.Show("Selecione o nº de Portas !");
                                                         }
@@ -702,37 +803,42 @@ namespace Stand_up
                                                                 }
                                                                 else
                                                                 {
-                                                                    if (guna2CirclePictureBox1.Image == Properties.Resources.car)
+                                                                    if (guna2PictureBox2.Image == Properties.Resources.car)
                                                                     {
                                                                         MessageBox.Show("Insira uma imagem do veiculo !");
                                                                     }
                                                                     else
                                                                     {
 
-                                                                        bool mota = false;
-                                                                        DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
+                                                                    DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                                                                         string data2 = data.ToString("dd/MM/yyyy");
                                                                         //data = Convert.ToDateTime(data2);
-                                                                        if(guna2CheckBox2.Checked == true)
+                                                                       
+                                                                        DialogResult dr = MessageBox.Show("Pertende inserir este veiculo?", "", MessageBoxButtons.YesNo);
+                                                                        if (dr == DialogResult.Yes)
+                                                                        {
+                                                                        if (guna2CheckBox2.Checked == true)
                                                                         {
                                                                             mota = false;
+                                                                           BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2PictureBox2.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, false, mota);
+
                                                                         }
                                                                         else
                                                                         {
                                                                             mota = true;
+                                                                            BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2PictureBox2.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, 0, guna2ComboBox8.Text, false, mota);
+
                                                                         }
 
-                                                                        DialogResult dr = MessageBox.Show("Pertende inserir este veiculo?", "", MessageBoxButtons.YesNo);
-                                                                        if (dr == DialogResult.Yes)
+
+                                                                         images.Images.Add(guna2PictureBox2.Image);
+                                                                        foreach (Image row1 in addCl)
+
                                                                         {
-                                                                            int x = BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2CirclePictureBox1.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, false,mota);
-                                                                            images.Images.Add(guna2CirclePictureBox1.Image);
-                                                                            foreach (string item in imagem_carro)
-                                                                            {
-                                                                                guna2CirclePictureBox1.Image = Properties.Resources.car;
+                                                                            guna2PictureBox2.Image = Properties.Resources.car;
                                                                                 int i = 0;
-                                                                                guna2CirclePictureBox1.ImageLocation = item;
-                                                                                BLL.Imagem.insertImagemCarro(imgToByteArray( guna2CirclePictureBox1.Image), guna2TextBox6.Text);
+                                                                                BLL.Imagem.insertImagemCarro(imgToByteArray(row1), guna2TextBox6.Text);
                                                                                 
                                                                             }
                                                                             imagem_carro.Clear();
@@ -842,16 +948,25 @@ namespace Stand_up
             if (guna2TextBox3.Text.Length == 10)
             {
                 i = 1;
+                try {
 
-                DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
-                ano = data.Year;
-                if (data.Year > DateTime.Now.Year || data.Year <= 1931)
-                {
-                    MessageBox.Show("insira um ano válido");
+                    ano = data.Year;
+                    if (data.Year > DateTime.Now.Year || data.Year <= 1931)
+                    {
+                        MessageBox.Show("insira um ano válido");
+                        guna2TextBox3.Clear();
+                        i = 0;
+                    }
+                }
+                catch(Exception) {
+
+                    MessageBox.Show("insira uma data válida");
                     guna2TextBox3.Clear();
                     i = 0;
                 }
+        
 
 
 
@@ -1284,24 +1399,35 @@ namespace Stand_up
         }
         int uu = 0;
         int iiii = 0;
-        private void guna2CirclePictureBox1_Click(object sender, EventArgs e)
+        private void guna2PictureBox2_Click(object sender, EventArgs e)
         {
+            if(Form1.flagInsertCAR == true || Form2.flagInsertCAR == true || listView1.SelectedItems.Count > 0)
+            {
 
             openFileDialog1.Filter = "PNG files (*.png)|*.png";
             if (uu == 0)
             {           
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                guna2CirclePictureBox1.ImageLocation = openFileDialog1.FileName;
+                guna2PictureBox2.ImageLocation = openFileDialog1.FileName;
                     string fileName = openFileDialog1.FileName;
                     Image image = Image.FromFile(fileName);
                     addCl.Add(image);
                     imagem_carro.Add(openFileDialog1.FileName);
-            }
-                uu = 1;
-                guna2Button3.Visible = true;
-                guna2Button4.Visible = true;
-                guna2Button5.Visible = true;
+
+                        uu = 1;
+                        guna2Button3.Visible = true;
+                        guna2Button4.Visible = true;
+                        guna2Button5.Visible = true;
+             }
+                    else
+                    {
+                        uu = 0;
+                        guna2Button3.Visible = false;
+                        guna2Button4.Visible = false;
+                        guna2Button5.Visible = false;
+                    }
+
                 listView3.Clear();
                 images3.Images.Clear();
 
@@ -1361,6 +1487,8 @@ namespace Stand_up
 
 
                 }
+            }
+
             }
         }
 
@@ -1612,12 +1740,39 @@ namespace Stand_up
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
-            
+            if (IMG_Idx >= addCl.Count-1)
+            {
+                IMG_Idx = 0;
+            }
+            else
+            {
+                IMG_Idx += 1;
+            }
+            if (addCl.Count > 0 &&addCl.Count  > IMG_Idx && IMG_Idx >-1)
+            {
+                Image imagem = (Image)addCl[IMG_Idx]; 
+
+                guna2PictureBox2.Image = imagem;
+            }
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-       
+            if(IMG_Idx < 1)
+            {
+                IMG_Idx = addCl.Count - 1;
+            }
+            else
+            {
+                IMG_Idx -= 1;
+            }
+            if (addCl.Count > 0 && addCl.Count  > IMG_Idx && IMG_Idx > -1)
+            {
+                Image imagem = (Image)addCl[IMG_Idx];
+
+                guna2PictureBox2.Image = imagem;
+            }
+            
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)
@@ -1734,6 +1889,15 @@ namespace Stand_up
             if (listView3.SelectedItems.Count > 0)
             {
                 addCl.RemoveAt(Convert.ToInt32(id));
+                if (addCl.Count == 0)
+                {
+                    guna2PictureBox2.Image = Properties.Resources.car;
+                    guna2GroupBox4.Visible=false;
+                    uu = 0;
+                    guna2Button3.Visible = false;
+                    guna2Button4.Visible = false;
+                    guna2Button5.Visible = false;
+                }
                 guna2PictureBox1.Image = null;
                 listView3.Clear();
                 images3.Images.Clear();

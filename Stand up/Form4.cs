@@ -243,6 +243,8 @@ namespace Stand_up
         string ativo;
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if(Form1.flagInsertCliente != true && Form1.flagInsertFunc != true)
+            {
 
             if (e.RowIndex > -1 && guna2DataGridView1.Rows.Count-1 > e.RowIndex)
             {
@@ -300,8 +302,10 @@ namespace Stand_up
                     guna2ImageButton1.Image = Properties.Resources.flash_black;
                     t = 1;
                     Ativo = false;
-                }
+                    }
+             
             }
+               }
         }
 
         private void guna2TextBox12_TextChanged(object sender, EventArgs e)
@@ -504,15 +508,25 @@ namespace Stand_up
             {
                 i = 1;
 
-                DateTime data = DateTime.ParseExact(guna2TextBox4.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-
-                ano = data.Year;
-                if (data.Year >= DateTime.Now.Year -18 || data.Year <= 1931)
+                try
                 {
-                    MessageBox.Show("insira um ano válido");
+                    DateTime data = DateTime.ParseExact(guna2TextBox4.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    ano = data.Year;
+                    if (data.Year >= DateTime.Now.Year - 18 || data.Year <= 1931)
+                    {
+                        MessageBox.Show("insira um ano válido");
+                        guna2TextBox4.Clear();
+                        i = 0;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("insira uma data válida");
                     guna2TextBox4.Clear();
                     i = 0;
                 }
+               
+               
 
 
 
@@ -650,13 +664,51 @@ namespace Stand_up
 
                                                         if (IsValidEmail(email))
                                                         {
+                                                            DataTable emailverification = BLL.Func.queryFunc_emailIgual(guna2TextBox2.Text);
+                                                            if (emailverification.Rows.Count < 1)
+                                                            {
+                                                                DataTable telefoneverification = BLL.Func.queryFunc_telefoneIgual(guna2TextBox5.Text);
+                                                                if (telefoneverification.Rows.Count < 1)
+                                                                {
+                                                                    DataTable Nibverification = BLL.Func.queryFunc_NibIgual(guna2TextBox6.Text);
+                                                                    if (Nibverification.Rows.Count < 1)
+                                                                    {
+                                                                        DataTable nifverification = BLL.Func.queryFunc_NifIgual(guna2TextBox8.Text);
+                                                                        if (nifverification.Rows.Count < 1)
+                                                                        {
+
+                                                                            DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo funcionário ?", "", MessageBoxButtons.YesNo);
+                                                                            if (dr == DialogResult.Yes)
+                                                                            {
+                                                                                int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash("123"), true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.SelectedItem.ToString(), false);
+                                                                                guna2DataGridView1.DataSource = BLL.Func.Load();
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+
+
+                                                                            MessageBox.Show("Nif inserido já existe");
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+
+
+                                                                        MessageBox.Show("Nib inserido já existe");
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+
+                                                                    MessageBox.Show("telefone inserido já existe");
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                MessageBox.Show("Email inserido já existe");
+                                                            }
                                                        
-                                                        DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo funcionário ?", "", MessageBoxButtons.YesNo);
-                                                        if (dr == DialogResult.Yes)
-                                                        {
-                                                            int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash("123"), true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.SelectedItem.ToString(), false);
-                                                            guna2DataGridView1.DataSource = BLL.Func.Load();
-                                                        }
                                                         }
                                                         else
                                                         {
@@ -746,13 +798,51 @@ namespace Stand_up
 
                                                         if (IsValidEmail(email))
                                                         {
+                                                            DataTable emailverification = BLL.Func.queryFunc_emailIgual(guna2TextBox2.Text);
+                                                            if(emailverification.Rows.Count < 1)
+                                                            {
+                                                                DataTable telefoneverification = BLL.Func.queryFunc_telefoneIgual(guna2TextBox5.Text);
+                                                                if (telefoneverification.Rows.Count < 1)
+                                                                {
+                                                                    DataTable Nibverification = BLL.Func.queryFunc_NibIgual(guna2TextBox6.Text);
+                                                                    if (Nibverification.Rows.Count < 1)
+                                                                    {
+                                                                        DataTable nifverification = BLL.Func.queryFunc_NifIgual(guna2TextBox8.Text);
+                                                                        if (nifverification.Rows.Count < 1)
+                                                                        {
 
-                                                            DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informções do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
-                                                        if (dr == DialogResult.Yes)
-                                                        {
-                                                            int x = BLL.Func.updateFunc(n_func, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
-                                                            guna2DataGridView1.DataSource = BLL.Func.Load();
-                                                        }
+                                                                            DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informções do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
+                                                                            if (dr == DialogResult.Yes)
+                                                                            {
+                                                                                int x = BLL.Func.updateFunc(n_func, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
+                                                                                guna2DataGridView1.DataSource = BLL.Func.Load();
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+
+
+                                                                            MessageBox.Show("Nif inserido já existe");
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+
+
+                                                                        MessageBox.Show("Nib inserido já existe");
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+
+                                                                    MessageBox.Show("telefone inserido já existe");
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                MessageBox.Show("Email inserido já existe");
+                                                            }
+                                                      
                                                         }
                                                         else
                                                         {
@@ -847,13 +937,52 @@ namespace Stand_up
 
                                                         if (IsValidEmail(email))
                                                         {
-
-                                                            DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo Cliente ?", "", MessageBoxButtons.YesNo);
-                                                            if (dr == DialogResult.Yes)
+                                                            DataTable emailverification = BLL.Clientes.queryFunc_emailIgual(guna2TextBox2.Text);
+                                                            if (emailverification.Rows.Count < 1)
                                                             {
-                                                                int x = BLL.Clientes.insertCliente(guna2TextBox5.Text, guna2TextBox9.Text, true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text, Hash("1234"));
-                                                                guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                                                                DataTable telefoneverification = BLL.Clientes.queryFunc_telefoneIgual(guna2TextBox5.Text);
+                                                                if (telefoneverification.Rows.Count < 1)
+                                                                {
+                                                                    DataTable Nibverification = BLL.Clientes.queryFunc_NibIgual(guna2TextBox6.Text);
+                                                                    if (Nibverification.Rows.Count < 1)
+                                                                    {
+                                                                        DataTable nifverification = BLL.Clientes.queryFunc_NifIgual(guna2TextBox8.Text);
+                                                                        if (nifverification.Rows.Count < 1)
+                                                                        {
+
+                                                                            DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo Cliente ?", "", MessageBoxButtons.YesNo);
+                                                                            if (dr == DialogResult.Yes)
+                                                                            {
+                                                                                int x = BLL.Clientes.insertCliente(guna2TextBox5.Text, guna2TextBox9.Text, true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text, Hash("1234"));
+                                                                                guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+
+
+                                                                            MessageBox.Show("Nif inserido já existe");
+                                                                        }
+                                                                    }
+                                                                    else
+                                                                    {
+
+
+                                                                        MessageBox.Show("Nib inserido já existe");
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+
+                                                                    MessageBox.Show("telefone inserido já existe");
+                                                                }
                                                             }
+                                                            else
+                                                            {
+                                                                MessageBox.Show("Email inserido já existe");
+                                                            }
+
+                                                           
                                                         }
                                                         else
                                                         {
@@ -913,13 +1042,53 @@ namespace Stand_up
 
                     if (IsValidEmail(email))
                     {
-
-                        DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informações do Cliente " + Nome + "?", "", MessageBoxButtons.YesNo);
-                        if (dr == DialogResult.Yes)
+                        DataTable emailverification = BLL.Clientes.queryFunc_emailIgual(guna2TextBox2.Text);
+                        if (emailverification.Rows.Count < 1)
                         {
-                            int x = BLL.Clientes.updateCliente(n_cliente, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
-                            guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                            DataTable telefoneverification = BLL.Clientes.queryFunc_telefoneIgual(guna2TextBox5.Text);
+                            if (telefoneverification.Rows.Count < 1)
+                            {
+                                DataTable Nibverification = BLL.Clientes.queryFunc_NibIgual(guna2TextBox6.Text);
+                                if (Nibverification.Rows.Count < 1)
+                                {
+                                    DataTable nifverification = BLL.Clientes.queryFunc_NifIgual(guna2TextBox8.Text);
+                                    if (nifverification.Rows.Count < 1)
+                                    {
+
+                                        DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informações do Cliente " + Nome + "?", "", MessageBoxButtons.YesNo);
+                                        if (dr == DialogResult.Yes)
+                                        {
+                                            int x = BLL.Clientes.updateCliente(n_cliente, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
+                                            guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                                        }
+                                    }
+                                    else
+                                    {
+
+
+                                        MessageBox.Show("Nif inserido já existe");
+                                    }
+                                }
+                                else
+                                {
+
+
+                                    MessageBox.Show("Nib inserido já existe");
+                                }
+                            }
+                            else
+                            {
+
+                                MessageBox.Show("telefone inserido já existe");
+                            }
                         }
+                        else
+                        {
+                            MessageBox.Show("Email inserido já existe");
+                        }
+
+
+                      
                     }
                     else
                         {
