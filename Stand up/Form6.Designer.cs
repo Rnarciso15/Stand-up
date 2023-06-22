@@ -268,7 +268,7 @@ namespace Stand_up
             this.guna2Button2.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
             this.guna2Button2.Size = new System.Drawing.Size(116, 36);
             this.guna2Button2.TabIndex = 73;
-            this.guna2Button2.Text = "Idade";
+            this.guna2Button2.Text = "Data de nas.";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2Button3
@@ -288,7 +288,7 @@ namespace Stand_up
             this.guna2Button3.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
             this.guna2Button3.Size = new System.Drawing.Size(116, 36);
             this.guna2Button3.TabIndex = 74;
-            this.guna2Button3.Text = "Id";
+            this.guna2Button3.Text = "ID";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
             // guna2Button4
@@ -328,7 +328,7 @@ namespace Stand_up
             this.guna2Button5.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
             this.guna2Button5.Size = new System.Drawing.Size(116, 36);
             this.guna2Button5.TabIndex = 76;
-            this.guna2Button5.Text = "Nif";
+            this.guna2Button5.Text = "NIF";
             this.guna2Button5.Click += new System.EventHandler(this.guna2Button5_Click);
             // 
             // guna2Button6

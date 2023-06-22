@@ -69,8 +69,14 @@ namespace Stand_up
         }
 
         private void timer1_Tick(object sender, EventArgs e)
+
         {
-            if (d == 1)
+
+            if (d != 0 || t != 0 || a != 0 || b !=0) {
+
+                guna2TextBox1.Enabled = true;
+
+                if (d == 1)
             {
                 guna2DataGridView1.DataSource = BLL.transacoes.queryFunc_Like_N_cliete(guna2TextBox1.Text);
             }
@@ -85,6 +91,15 @@ namespace Stand_up
             if (b == 1)
             {
                 guna2DataGridView1.DataSource = BLL.transacoes.queryFunc_Like_N_valor(guna2TextBox1.Text);
+            }
+
+            }
+            else
+            {
+                guna2TextBox1.Clear();
+                guna2Button5.Visible=false;
+                guna2TextBox1.Enabled = false;
+                guna2DataGridView1.DataSource = BLL.transacoes.loadTrans();
             }
         }
 

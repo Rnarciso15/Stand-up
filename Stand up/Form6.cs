@@ -199,25 +199,6 @@ namespace Stand_up
         int i = 0;
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
-            
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            if (Form1.flagCliente != true)
-            {
-
-
-     
-            if (b == 1)
-            {
-
-                guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_nome(guna2TextBox1.Text);
-            }
-            if (t == 1)
-            {
-                guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_id(guna2TextBox1.Text);
-            }
             if (a == 1)
             {
 
@@ -257,6 +238,7 @@ namespace Stand_up
                             }
 
                         }
+
                         if (mes == "02")
                         {
                             if (dia == "01" || dia == "02" || dia == "03" || dia == "04" || dia == "05" || dia == "06" || dia == "07" || dia == "08" || dia == "09" || dia == "10" || dia == "11" || dia == "12" || dia == "13" || dia == "14" || dia == "15" || dia == "16" || dia == "17" || dia == "18" || dia == "19" || dia == "20" || dia == "21" || dia == "22" || dia == "23" || dia == "24" || dia == "25" || dia == "26" || dia == "27" || dia == "28")
@@ -329,6 +311,25 @@ namespace Stand_up
                 }
                 guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_idade(guna2TextBox1.Text);
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (Form1.flagCliente != true)
+            {
+
+
+     
+            if (b == 1)
+            {
+
+                guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_nome(guna2TextBox1.Text);
+            }
+            if (t == 1)
+            {
+                guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_id(guna2TextBox1.Text);
+            }
+         
             if (d == 1)
             {
 

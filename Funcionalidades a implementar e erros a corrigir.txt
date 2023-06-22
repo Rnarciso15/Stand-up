@@ -5,8 +5,6 @@ Funcionalidades a implementar:
 
 Erro:
 
-
-
 Update no inserir veiculos não muda entre motos e carros
 
 Raramente ao clicar na lista das configurações do funcionario ele da o erro que não possivel encontrar a coluna 'n_cliente'
@@ -17,11 +15,6 @@ No inserir funcionario não verifica se os dados dos funcionarios sao iguais a f
 
 No inserir/editar funcionario e cliente o codigo arrebenta quando vamos buscar dados de um funcionario existente e trocamos o mes para uma data invalida   (System.FormatException: 'O DateTime representado pela cadeia de caracteres está fora do intervalo System.Globalization.GregorianCalendar.')
 
-Na lista de funcionarios/clientes quando se insere uma data de nascimento invalida ele aparece com + de 20 messagebox a dizer data invalida
-
-Nos filtros da lista de funcionario/clientes o filtro idade devia-se chamar data de nascimento
-
-Lista de transacoes o filtro de id não estava a funcionar corretamente
 
 
 Resolvido:
@@ -33,6 +26,11 @@ Horas das marcações do dia, quando são e 30 e poucos minutos ainda deixa marc
 
 remover imagens do Veiculo, arrebenta!
 
+Nos filtros da lista de funcionario/clientes o filtro idade devia-se chamar data de nascimento
+
+Na lista de funcionarios/clientes quando se insere uma data de nascimento invalida ele aparece com + de 20 messagebox a dizer data invalida
+
+Na lista de transacoes ao filtrar e depois deselecionar o filtro e nao limpa e mostra tudo novamente
 
 
 
