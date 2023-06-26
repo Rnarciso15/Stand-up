@@ -5,11 +5,7 @@ Funcionalidades a implementar:
 
 Erro:
 
-
-
-
-
-
+Lista de clientes/funcionarios não da clear quando não há nenhum filtro selecionado e mostrar todos os clientes/funcionarios
 
 
 Resolvido:
