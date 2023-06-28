@@ -5,7 +5,6 @@ Funcionalidades a implementar:
 
 Erro:
 
-Lista de clientes/funcionarios não da clear quando não há nenhum filtro selecionado e mostrar todos os clientes/funcionarios
 
 
 Resolvido:
@@ -33,6 +32,8 @@ No inserir/editar funcionario e cliente o codigo arrebenta quando vamos buscar d
 No inserir funcionario não verifica se os dados dos funcionarios sao iguais a funcionarios ja inseridos
 
 Raramente ao clicar na lista das configurações do funcionario ele da o erro que não possivel encontrar a coluna 'n_cliente'
+
+Lista de clientes/funcionarios não da clear quando não há nenhum filtro selecionado e mostrar todos os clientes/funcionarios
 
 
 Funcionalidades já implementadas:
