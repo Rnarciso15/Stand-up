@@ -612,7 +612,9 @@ namespace Stand_up
             this.guna2ComboBox8.ItemHeight = 30;
             this.guna2ComboBox8.Items.AddRange(new object[] {
             "Dianteira",
-            "Traseira"});
+            "Traseira",
+            "4 Rodas",
+            "AWD"});
             this.guna2ComboBox8.Location = new System.Drawing.Point(774, 146);
             this.guna2ComboBox8.Name = "guna2ComboBox8";
             this.guna2ComboBox8.Size = new System.Drawing.Size(200, 36);
