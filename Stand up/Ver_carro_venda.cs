@@ -75,7 +75,7 @@ namespace Stand_up
             DataTable iMG_CAR = BLL.Imagem.LoadImagensCarro(carros_para_venda.Matricula);
             foreach (DataRow row in iMG_CAR.Rows)
             {
-                imagem_carro.Add((byte[])row["Image"]);
+                imagem_carro.Add(byteArrayToImage((byte[])row["Image"]));
             
             }
                 foreach (DataRow row in info.Rows)
@@ -257,31 +257,37 @@ namespace Stand_up
         ArrayList imagem_carro = new ArrayList();
         private void guna2Button4_Click(object sender, EventArgs e)
         {
-            IMG_Idx++;
-            if (IMG_Idx >= imagem_carro.Count)
+            if (IMG_Idx >= imagem_carro.Count - 1)
             {
                 IMG_Idx = 0;
             }
-
-            if (IMG_Idx >= 0 && IMG_Idx < imagem_carro.Count)
+            else
             {
-                byte[] imagePath = (byte[])imagem_carro[IMG_Idx];
-                guna2PictureBox1.Image = byteArrayToImage( imagePath);
+                IMG_Idx += 1;
+            }
+            if (imagem_carro.Count > 0 && imagem_carro.Count > IMG_Idx && IMG_Idx > -1)
+            {
+                Image imagem = (Image)imagem_carro[IMG_Idx];
+
+                guna2PictureBox1.Image = imagem;
             }
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            IMG_Idx -= 1;
-            if (IMG_Idx < 0)
+            if (IMG_Idx < 1)
             {
                 IMG_Idx = imagem_carro.Count - 1;
             }
-
-            if (IMG_Idx >= 0 && IMG_Idx < imagem_carro.Count)
+            else
             {
-                byte[] imagePath = (byte[])imagem_carro[IMG_Idx];
-                guna2PictureBox1.Image = byteArrayToImage(imagePath);
+                IMG_Idx -= 1;
+            }
+            if (imagem_carro.Count > 0 && imagem_carro.Count > IMG_Idx && IMG_Idx > -1)
+            {
+                Image imagem = (Image)imagem_carro[IMG_Idx];
+
+                guna2PictureBox1.Image = imagem;
             }
         }
     }

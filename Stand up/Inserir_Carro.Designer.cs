@@ -903,6 +903,7 @@ namespace Stand_up
             this.guna2PictureBox2.TabIndex = 81;
             this.guna2PictureBox2.TabStop = false;
             this.guna2PictureBox2.UseTransparentBackground = true;
+            this.guna2PictureBox2.Click += new System.EventHandler(this.guna2PictureBox2_Click);
             // 
             // Inserir_Carro
             // 

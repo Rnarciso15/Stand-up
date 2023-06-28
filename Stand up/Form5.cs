@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,13 +25,13 @@ namespace Stand_up
         {
             if (u == 0)
             {
-                guna2TextBox1.UseSystemPasswordChar = false;
+                guna2TextBox3.UseSystemPasswordChar = false;
                 guna2Button1.Image = Properties.Resources.show1;
                 u += 1;
             }
             else
             {
-                guna2TextBox1.UseSystemPasswordChar = true;
+                guna2TextBox3.UseSystemPasswordChar = true;
                 guna2Button1.Image = Properties.Resources.invisible1;
                 u = 0;
             }
@@ -78,34 +79,43 @@ namespace Stand_up
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            if(guna2TextBox1.Text!="" && guna2TextBox3.Text != "")
+            
+                for (int j = 0; j < guna2TextBox3.Text.Length; j++)
+                {
+                    if (guna2TextBox3.Text[j] == '0' || guna2TextBox3.Text[j] == '1' || guna2TextBox3.Text[j] == '2' || guna2TextBox3.Text[j] == '3' || guna2TextBox3.Text[j] == '4' || guna2TextBox3.Text[j] == '5' || guna2TextBox3.Text[j] == '6' || guna2TextBox3.Text[j] == '7' || guna2TextBox3.Text[j] == '8' || guna2TextBox3.Text[j] == '9')
+                    {
+                    }
+                    else
+                    {
+                        guna2TextBox3.Clear();
+                        MessageBox.Show("Dados incorretos");
+                    }
+                }
+         
+
+            if (guna2TextBox3.Text != "" && guna2TextBox3.Text != "")
             {
-
-            DataTable x = BLL.Func.login(Convert.ToInt32(guna2TextBox3.Text), Hash(guna2TextBox1.Text));
-            if(x.Rows.Count > 0)
-            {
-                n_func = Convert.ToInt32(guna2TextBox3.Text);
-                Form1 f1 = new Form1();
-                f1.Show();
-                this.Hide();
-                admin = BLL.Func.Buscar_admin(n_func);
-
-            }
-            else
-            {
-                guna2TextBox1.Clear();
-                guna2TextBox3.Clear();
-                MessageBox.Show("Dados incorretos");
-
-            }
-
-
+                DataTable x = BLL.Func.login(Convert.ToInt32(guna2TextBox3.Text), Hash(guna2TextBox1.Text));
+                if(x.Rows.Count > 0)
+                {
+                    n_func = Convert.ToInt32(guna2TextBox3.Text);
+                    Form1 f1 = new Form1();
+                    f1.Show();
+                    this.Hide();
+                    admin = BLL.Func.Buscar_admin(n_func);
+                }
+                else
+                {
+                    guna2TextBox3.Clear();
+                    guna2TextBox1.Clear();
+                    MessageBox.Show("Dados incorretos");
+                }
             }
         }
 
         private void Form5_Load(object sender, EventArgs e)
         {
-            guna2TextBox1.UseSystemPasswordChar = true;
+            guna2TextBox3.UseSystemPasswordChar = true;
             DoubleBuffered = true;
         }
     }

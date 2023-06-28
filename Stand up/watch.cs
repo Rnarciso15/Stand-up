@@ -15,8 +15,8 @@ namespace Stand_up
         {
             InitializeComponent();
         }
-
-        private void watch_Load(object sender, EventArgs e)
+        
+private void watch_Load(object sender, EventArgs e)
         {
             timer1.Start();
             DoubleBuffered = true;

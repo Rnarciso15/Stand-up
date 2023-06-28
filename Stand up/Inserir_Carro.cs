@@ -123,7 +123,7 @@ namespace Stand_up
                     }
                     DataTable infoimagem = BLL.Imagem.LoadImagensCarro(Matricula);
 
-
+                    addCl.Clear();
                     foreach (DataRow row1 in infoimagem.Rows)
                     {
                         Image image = byteArrayToImage((byte[])row1["Image"]);
@@ -661,7 +661,7 @@ namespace Stand_up
                                                     }
                                                     else
                                                     {
-                                                        if (guna2ComboBox6.SelectedIndex == -1)
+                                                        if (guna2ComboBox6.SelectedIndex == -1 && mota ==false)
                                                         {
                                                             MessageBox.Show("Selecione o nº de Portas !");
                                                         }
@@ -696,7 +696,21 @@ namespace Stand_up
                                                                         DialogResult dr = MessageBox.Show("Pertende guardar as alterações do veiculo?", "", MessageBoxButtons.YesNo);
                                                                         if (dr == DialogResult.Yes)
                                                                         {
-                                                                            int x = BLL.veiculos.updateVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2PictureBox2.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, listView1.SelectedItems[0].Text);
+                                                                            if(mota == false)
+                                                                            {
+                                                                                int x = BLL.veiculos.updateVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2PictureBox2.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, listView1.SelectedItems[0].Text);
+
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                int x = BLL.veiculos.updateVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2PictureBox2.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text,0, guna2ComboBox8.Text, listView1.SelectedItems[0].Text);
+
+                                                                            }
+                                                                            foreach (Image row1 in addCl)
+                                                                            {
+                                                                                guna2PictureBox2.Image = Properties.Resources.car;
+                                                                                BLL.Imagem.insertImagemCarro(imgToByteArray(row1), guna2TextBox6.Text);
+                                                                            }
                                                                             carregar_car_PARA_LISTVIEW();
                                                                             limpar_caixas();
                                                                         }
@@ -832,15 +846,12 @@ namespace Stand_up
                                                                         }
 
 
-                                                                         images.Images.Add(guna2PictureBox2.Image);
-                                                                        foreach (Image row1 in addCl)
-
-                                                                        {
-                                                                            guna2PictureBox2.Image = Properties.Resources.car;
-                                                                                int i = 0;
-                                                                                BLL.Imagem.insertImagemCarro(imgToByteArray(row1), guna2TextBox6.Text);
-                                                                                
-                                                                            }
+                                                                                   images.Images.Add(guna2PictureBox2.Image);
+                                                                                 foreach (Image row1 in addCl)
+                                                                                    {
+                                                                                     guna2PictureBox2.Image = Properties.Resources.car;
+                                                                                       BLL.Imagem.insertImagemCarro(imgToByteArray(row1), guna2TextBox6.Text);                                                                                
+                                                                                    }
                                                                             imagem_carro.Clear();
                                                                                 limpar_caixas();
                                                                             carregar_car_PARA_LISTVIEW();
