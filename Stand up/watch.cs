@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLogicLayer;
+using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +22,7 @@ private void watch_Load(object sender, EventArgs e)
         {
             timer1.Start();
             DoubleBuffered = true;
+         
         }
 
         private void timer1_Tick(object sender, EventArgs e)

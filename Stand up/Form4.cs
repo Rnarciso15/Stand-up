@@ -19,13 +19,17 @@ namespace Stand_up
         {
             InitializeComponent();
         }
+        bool email_eeditado = false;
+        bool telefone_eeditado = false;
+        bool nif_eeditado = false;
+        bool nib_eeditado = false;
         int q = 0;
         int u = 0;
         int i = 0;
         int h = 0;
         int w = 0;
         int ano;
-        int n_func;
+        int n_func=-1;
         int n_cliente;
         public static bool admin_load = false;
         void nao_readonly_caixas()
@@ -241,6 +245,10 @@ namespace Stand_up
         }
         string Nome;
         string ativo;
+        string email_edit;
+        string telefone_edit;
+        string nif_edit;
+        string nib_edit;
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if(Form1.flagInsertCliente != true && Form1.flagInsertFunc != true)
@@ -255,7 +263,14 @@ namespace Stand_up
                     {
                         guna2TextBox10.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["n_func"].Value.ToString();
                     }
-                    n_cliente = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["n_func"].Value);
+
+                        email_edit = guna2DataGridView1.Rows[e.RowIndex].Cells["email"].Value.ToString(); ;
+                        telefone_edit = guna2DataGridView1.Rows[e.RowIndex].Cells["telefone"].Value.ToString();
+                        nif_edit = guna2DataGridView1.Rows[e.RowIndex].Cells["nif"].Value.ToString();
+                        nib_edit = guna2DataGridView1.Rows[e.RowIndex].Cells["nib"].Value.ToString();
+
+                        Nome = guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
+                        n_func = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["n_func"].Value);
                 guna2PictureBox2.Image = byteArrayToImage((Byte[])guna2DataGridView1.Rows[e.RowIndex].Cells["imagem"].Value);
                Nome= guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
                 guna2TextBox9.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
@@ -263,7 +278,7 @@ namespace Stand_up
                 guna2TextBox2.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["email"].Value.ToString();
                 guna2TextBox5.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["telefone"].Value.ToString();
                 guna2TextBox6.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nib"].Value.ToString();
-                guna2TextBox7.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["morada"].Value.ToString();
+                        guna2TextBox7.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["morada"].Value.ToString();
                 guna2TextBox8.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nif"].Value.ToString();
                 guna2ComboBox8.SelectedItem = guna2DataGridView1.Rows[e.RowIndex].Cells["genero"].Value.ToString();
                 }
@@ -276,7 +291,11 @@ namespace Stand_up
                         guna2TextBox10.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["n_cliente"].Value.ToString();
 
                     }
-                    n_func = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["n_cliente"].Value);
+                        email_edit = guna2DataGridView1.Rows[e.RowIndex].Cells["email"].Value.ToString(); ;
+                        telefone_edit = guna2DataGridView1.Rows[e.RowIndex].Cells["telefone"].Value.ToString();
+                        nif_edit = guna2DataGridView1.Rows[e.RowIndex].Cells["nif"].Value.ToString();
+                        nib_edit = guna2DataGridView1.Rows[e.RowIndex].Cells["nib"].Value.ToString();
+                        n_cliente = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["n_cliente"].Value);
                     guna2PictureBox2.Image = byteArrayToImage((Byte[])guna2DataGridView1.Rows[e.RowIndex].Cells["imagem"].Value);
                     Nome = guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
                     guna2TextBox9.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
@@ -664,16 +683,16 @@ namespace Stand_up
 
                                                         if (IsValidEmail(email))
                                                         {
-                                                            DataTable emailverification = BLL.Func.queryFunc_emailIgual(guna2TextBox2.Text);
+                                                            DataTable emailverification = BLL.Func.queryFunc_emailIgual(guna2TextBox2.Text, n_func);
                                                             if (emailverification.Rows.Count < 1)
                                                             {
-                                                                DataTable telefoneverification = BLL.Func.queryFunc_telefoneIgual(guna2TextBox5.Text);
+                                                                DataTable telefoneverification = BLL.Func.queryFunc_telefoneIgual(guna2TextBox5.Text, n_func);
                                                                 if (telefoneverification.Rows.Count < 1)
                                                                 {
-                                                                    DataTable Nibverification = BLL.Func.queryFunc_NibIgual(guna2TextBox6.Text);
+                                                                    DataTable Nibverification = BLL.Func.queryFunc_NibIgual(guna2TextBox6.Text, n_func) ;
                                                                     if (Nibverification.Rows.Count < 1)
                                                                     {
-                                                                        DataTable nifverification = BLL.Func.queryFunc_NifIgual(guna2TextBox8.Text);
+                                                                        DataTable nifverification = BLL.Func.queryFunc_NifIgual(guna2TextBox8.Text, n_func) ;
                                                                         if (nifverification.Rows.Count < 1)
                                                                         {
 
@@ -793,56 +812,105 @@ namespace Stand_up
 
                                                     if (guna2ComboBox8.SelectedIndex != -1)
                                                     {
-
+                                                        
                                                         string email = guna2TextBox2.Text;
 
                                                         if (IsValidEmail(email))
                                                         {
-                                                            DataTable emailverification = BLL.Func.queryFunc_emailIgual(guna2TextBox2.Text);
-                                                            if(emailverification.Rows.Count < 1)
+                                                            if(guna2TextBox2.Text !=email_edit)
                                                             {
-                                                                DataTable telefoneverification = BLL.Func.queryFunc_telefoneIgual(guna2TextBox5.Text);
-                                                                if (telefoneverification.Rows.Count < 1)
+                                                                email_eeditado = true;
+                                                                DataTable emailverification = BLL.Func.queryFunc_emailIgual(guna2TextBox2.Text,n_func);
+                                                                if (emailverification.Rows.Count < 1)
                                                                 {
-                                                                    DataTable Nibverification = BLL.Func.queryFunc_NibIgual(guna2TextBox6.Text);
-                                                                    if (Nibverification.Rows.Count < 1)
-                                                                    {
-                                                                        DataTable nifverification = BLL.Func.queryFunc_NifIgual(guna2TextBox8.Text);
-                                                                        if (nifverification.Rows.Count < 1)
-                                                                        {
 
-                                                                            DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informções do funcionário " + Nome + "?", "", MessageBoxButtons.YesNo);
-                                                                            if (dr == DialogResult.Yes)
-                                                                            {
-                                                                                int x = BLL.Func.updateFunc(n_func, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
-                                                                                guna2DataGridView1.DataSource = BLL.Func.Load();
-                                                                            }
-                                                                        }
-                                                                        else
-                                                                        {
-
-
-                                                                            MessageBox.Show("Nif inserido já existe");
-                                                                        }
-                                                                    }
-                                                                    else
-                                                                    {
-
-
-                                                                        MessageBox.Show("Nib inserido já existe");
-                                                                    }
+                                                                    email_eeditado = false;
                                                                 }
                                                                 else
                                                                 {
 
-                                                                    MessageBox.Show("telefone inserido já existe");
+                                                                    email_eeditado = true;
+                                                                    MessageBox.Show("Email inserido já existe");
                                                                 }
                                                             }
                                                             else
                                                             {
-                                                                MessageBox.Show("Email inserido já existe");
+                                                                email_eeditado = false;
                                                             }
-                                                      
+
+                                                            if (guna2TextBox5.Text != telefone_edit)
+                                                            {
+                                                                telefone_eeditado = true;
+                                                                DataTable telefoneverification = BLL.Func.queryFunc_telefoneIgual(guna2TextBox5.Text, n_func);
+                                                                if (telefoneverification.Rows.Count < 1)
+                                                                {
+
+                                                                    telefone_eeditado = false;
+                                                                }
+                                                                else
+                                                                {
+
+                                                                    telefone_eeditado = true;
+                                                                    MessageBox.Show("Telefone inserido já existe");
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                telefone_eeditado = false;
+                                                            }
+
+                                                            if (guna2TextBox6.Text != nib_edit)
+                                                            {
+                                                                nib_eeditado = true;
+                                                                DataTable Nibverification = BLL.Func.queryFunc_NibIgual(guna2TextBox6.Text, n_func);
+                                                                if (Nibverification.Rows.Count < 1)
+                                                                {
+                                                                    nib_eeditado = false;
+                                                                }
+                                                                else
+                                                                {
+                                                                    nib_eeditado = true;
+                                                                    MessageBox.Show("Nib inserido já existe");
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                nib_eeditado = false;
+                                                            }
+
+                                                            if (guna2TextBox8.Text != nif_edit)
+                                                            {
+                                                                nif_eeditado = true;
+                                                                DataTable nifverification = BLL.Func.queryFunc_NifIgual(guna2TextBox8.Text, n_func);
+                                                                if (nifverification.Rows.Count < 1)
+                                                                {
+                                                                    nif_eeditado = false;
+                                                                }
+                                                                else
+                                                                {
+
+                                                                    nif_eeditado = true;
+                                                                    MessageBox.Show("Nif inserido já existe");
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                nif_eeditado = false;
+                                                            }
+
+
+                                                            if(email_eeditado == false && telefone_eeditado == false && nib_eeditado ==false && nif_eeditado == false)
+                                                            {
+                                                                DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informações do Cliente " +Nome  + "?", "", MessageBoxButtons.YesNo);
+                                                                if (dr == DialogResult.Yes)
+                                                                {
+                                                                    int x = BLL.Func.updateFunc(Convert.ToInt32(guna2TextBox10.Text), guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
+                                                                    guna2DataGridView1.DataSource = BLL.Func.Load();
+                                                                }
+                                                            }
+
+
+
                                                         }
                                                         else
                                                         {
@@ -937,16 +1005,16 @@ namespace Stand_up
 
                                                         if (IsValidEmail(email))
                                                         {
-                                                            DataTable emailverification = BLL.Clientes.queryFunc_emailIgual(guna2TextBox2.Text);
+                                                            DataTable emailverification = BLL.Clientes.queryFunc_emailIgual(guna2TextBox2.Text, n_cliente);
                                                             if (emailverification.Rows.Count < 1)
                                                             {
-                                                                DataTable telefoneverification = BLL.Clientes.queryFunc_telefoneIgual(guna2TextBox5.Text);
+                                                                DataTable telefoneverification = BLL.Clientes.queryFunc_telefoneIgual(guna2TextBox5.Text, n_cliente);
                                                                 if (telefoneverification.Rows.Count < 1)
                                                                 {
-                                                                    DataTable Nibverification = BLL.Clientes.queryFunc_NibIgual(guna2TextBox6.Text);
+                                                                    DataTable Nibverification = BLL.Clientes.queryFunc_NibIgual(guna2TextBox6.Text, n_cliente);
                                                                     if (Nibverification.Rows.Count < 1)
                                                                     {
-                                                                        DataTable nifverification = BLL.Clientes.queryFunc_NifIgual(guna2TextBox8.Text);
+                                                                        DataTable nifverification = BLL.Clientes.queryFunc_NifIgual(guna2TextBox8.Text, n_cliente);
                                                                         if (nifverification.Rows.Count < 1)
                                                                         {
 
@@ -1042,53 +1110,90 @@ namespace Stand_up
 
                     if (IsValidEmail(email))
                     {
-                        DataTable emailverification = BLL.Clientes.queryFunc_emailIgual(guna2TextBox2.Text);
-                        if (emailverification.Rows.Count < 1)
+                        if (guna2TextBox2.Text != email_edit)
                         {
-                            DataTable telefoneverification = BLL.Clientes.queryFunc_telefoneIgual(guna2TextBox5.Text);
+                            email_eeditado = true;
+                            DataTable emailverification = BLL.Clientes.queryFunc_emailIgual(guna2TextBox2.Text,n_cliente);
+                            if (emailverification.Rows.Count < 1)
+                            {
+                            }
+                            else
+                            {
+                                MessageBox.Show("Email inserido já existe");
+                            }
+                        }
+                        else
+                        {
+                            email_eeditado = false;
+                        }
+
+                        if (guna2TextBox5.Text != telefone_edit)
+                        {
+                            telefone_eeditado = true;
+                            DataTable telefoneverification = BLL.Clientes.queryFunc_telefoneIgual(guna2TextBox5.Text, n_cliente);
                             if (telefoneverification.Rows.Count < 1)
                             {
-                                DataTable Nibverification = BLL.Clientes.queryFunc_NibIgual(guna2TextBox6.Text);
-                                if (Nibverification.Rows.Count < 1)
-                                {
-                                    DataTable nifverification = BLL.Clientes.queryFunc_NifIgual(guna2TextBox8.Text);
-                                    if (nifverification.Rows.Count < 1)
-                                    {
 
-                                        DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informações do Cliente " + Nome + "?", "", MessageBoxButtons.YesNo);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Telefone inserido já existe");
+                            }
+                        }
+                        else
+                        {
+                            telefone_eeditado = false;
+                        }
+
+                        if (guna2TextBox6.Text != nib_edit)
+                        {
+                            nib_eeditado = true;
+                            DataTable Nibverification = BLL.Clientes.queryFunc_NibIgual(guna2TextBox6.Text, n_cliente);
+                            if (Nibverification.Rows.Count < 1)
+                            {
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nib inserido já existe");
+                            }
+                        }
+                        else
+                        {
+                            nib_eeditado = false;
+                        }
+
+                        if (guna2TextBox8.Text != nif_edit)
+                        {
+                            nif_eeditado = true;
+                            DataTable nifverification = BLL.Clientes.queryFunc_NifIgual(guna2TextBox8.Text, n_cliente);
+                            if (nifverification.Rows.Count < 1)
+                            {
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Nib inserido já existe");
+                            }
+                        }
+                        else
+                        {
+                            nib_eeditado = false;
+                        }
+
+
+                        if (email_eeditado == false && telefone_eeditado == false && nib_eeditado == false && nif_eeditado == false)
+                        {
+
+                            DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informações do Cliente " + Nome + "?", "", MessageBoxButtons.YesNo);
                                         if (dr == DialogResult.Yes)
                                         {
                                             int x = BLL.Clientes.updateCliente(n_cliente, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
                                             guna2DataGridView1.DataSource = BLL.Clientes.Load();
                                         }
-                                    }
-                                    else
-                                    {
-
-
-                                        MessageBox.Show("Nif inserido já existe");
-                                    }
-                                }
-                                else
-                                {
-
-
-                                    MessageBox.Show("Nib inserido já existe");
-                                }
-                            }
-                            else
-                            {
-
-                                MessageBox.Show("telefone inserido já existe");
-                            }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Email inserido já existe");
                         }
 
 
-                      
                     }
                     else
                         {
@@ -1117,8 +1222,8 @@ namespace Stand_up
             {
                 int x = BLL.Func.senhaFunc(Hash(guna2TextBox1.Text), Form5.n_func, Hash(guna2TextBox12.Text));
                 guna2TextBox1.Clear();
-                    guna2TextBox12.Clear();
-                    if (x > 0)
+                guna2TextBox12.Clear();
+                    if (x < 0)
                     {
                         MessageBox.Show("Senha alterada com sucesso.");
                     }

@@ -1237,6 +1237,75 @@ namespace Stand_up
 
 
         }
+        void carregar_car_PARA_LISTVIEW123()
+        {
+
+
+
+
+
+            DataTable dr = BLL.veiculos.queryLoad_veiculoMatricula(false,guna2TextBox3.Text);
+
+            listView3.Clear();
+            images.Images.Clear();
+            i = 0;
+
+
+
+
+
+            foreach (DataRow row in dr.Rows)
+
+            {
+
+
+
+                images.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView3.LargeImageList = images;
+
+                listView3.LargeImageList.ImageSize = new System.Drawing.Size(123, 123);
+
+
+
+                byte[] imagebyte = (byte[])(row["Imagem"]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images.Images.Add(row["Imagem"].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = row["Matricula"].ToString();
+
+                i += 1;
+
+                this.listView3.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+        }
         void carregar_car_PARA_LISTVIEW()
         {
 
@@ -1306,7 +1375,77 @@ namespace Stand_up
 
 
         }
+        void carregar_func_PARA_LISTVIEW1234()
+        {
 
+
+
+
+
+            DataTable dt = BLL.Func.queryLoad_Func1234(guna2TextBox4.Text);
+
+            listView1.Clear();
+            images1.Images.Clear();
+
+            i = 0;
+
+
+
+
+
+            foreach (DataRow row in dt.Rows)
+
+            {
+
+
+
+                images1.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView1.LargeImageList = images1;
+
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(123, 123);
+
+
+
+                byte[] imagebyte = (byte[])(row["imagem"]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images1.Images.Add(row["imagem"].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = " " + row["n_func"].ToString() + " " + row["nome"].ToString();
+
+                i += 1;
+
+                this.listView1.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+        }
         void carregar_func_PARA_LISTVIEW()
         {
 
@@ -1362,6 +1501,78 @@ namespace Stand_up
                 i += 1;
 
                 this.listView1.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+        }
+
+        void carregar_cliente_PARA_LISTVIEW1234()
+        {
+
+
+
+
+
+            DataTable dt = BLL.Clientes.queryLoad_cliente1234(guna2TextBox5.Text);
+
+            listView2.Clear();
+            images2.Images.Clear();
+
+            i = 0;
+
+
+
+
+
+            foreach (DataRow row in dt.Rows)
+
+            {
+
+
+
+                images2.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView2.LargeImageList = images2;
+
+                listView2.LargeImageList.ImageSize = new System.Drawing.Size(123, 123);
+
+
+
+                byte[] imagebyte = (byte[])(row["imagem"]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images2.Images.Add(row["imagem"].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = " " + row["n_cliente"].ToString() + " " + row["nome"].ToString();
+
+                i += 1;
+
+                this.listView2.Items.Add(item);
 
 
 
@@ -2083,8 +2294,9 @@ verificar_dia();
             Ativar_marcacao();
 
             if (listView3.SelectedItems.Count > 0 && flag_dataValida==true)
-            {
-               matricula = listView3.SelectedItems[0].Text; ;
+            {              
+                
+                matricula = listView3.SelectedItems[0].Text;
               
                 
 
@@ -2352,6 +2564,54 @@ verificar_dia();
 
         private void guna2ComboBox1_Click(object sender, EventArgs e)
         {
+        }
+
+        private void guna2TextBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        int jj = 0;
+        private void guna2TextBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (guna2TextBox3.Text.Length < 2 || guna2TextBox3.Text.Length > 3 && guna2TextBox3.Text.Length < 5 || guna2TextBox3.Text.Length > 6 && guna2TextBox3.Text.Length < 8)
+            {
+                jj = 0;
+            }
+            if (guna2TextBox3.Text.Length == 2 || guna2TextBox3.Text.Length == 5)
+            {
+                if (jj != 1)
+                {
+                    guna2TextBox3.Text += "-";
+                    guna2TextBox3.Select(guna2TextBox1.Text.Length, 0);
+                }
+
+            }
+            if (guna2TextBox3.Text.Length == 0)
+            {
+                jj = 0;
+            }
+            carregar_car_PARA_LISTVIEW123();
+        }
+
+        private void guna2TextBox4_TextChanged(object sender, EventArgs e)
+        {
+            if (listView1.Items.Count > 0)
+            {
+                carregar_func_PARA_LISTVIEW1234();
+            }
+        }
+
+        private void guna2TextBox5_TextChanged(object sender, EventArgs e)
+        {
+            if (listView2.Items.Count > 0)
+            {
+                carregar_cliente_PARA_LISTVIEW1234();
+            }
+            }
+
+        private void guna2Button36_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

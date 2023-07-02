@@ -6,6 +6,8 @@ using DataAccessLayer;
 using System.Data;
 using System.Data.SqlClient;
 using iTextSharp.text;
+using System.Drawing;
+using static BusinessLogicLayer.BLL;
 
 namespace BusinessLogicLayer
 {
@@ -151,37 +153,52 @@ namespace BusinessLogicLayer
         }
         public class Clientes
         {
-            static public DataTable queryFunc_emailIgual(string email)
+            static public DataTable queryFunc_emailIgual(string email, int n_clinte)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@email", email )
+                new SqlParameter("@email", email ),
+                new SqlParameter("@n_clinte", n_clinte )
                 };
-                return dal.executarReader("select * from cliente where email = @email", sqlParams);
+                return dal.executarReader("select * from cliente where email = @email and n_cliente <> @n_clinte", sqlParams);
             }
-            static public DataTable queryFunc_telefoneIgual(string telefone)
+            static public DataTable queryFunc_telefoneIgual(string telefone, int n_clinte)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@telefone", telefone )
+                new SqlParameter("@telefone", telefone ),
+                new SqlParameter("@n_clinte", n_clinte )
                 };
-                return dal.executarReader("select * from cliente where telefone = @telefone", sqlParams);
+                return dal.executarReader("select * from cliente where telefone = @telefone and n_cliente <> @n_clinte", sqlParams);
             }
-            static public DataTable queryFunc_NibIgual(string nib)
+            static public DataTable queryFunc_NibIgual(string nib, int n_clinte)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@nib", nib )
+                new SqlParameter("@nib", nib ),
+                new SqlParameter("@n_clinte", n_clinte )
                 };
-                return dal.executarReader("select * from cliente where nib = @nib", sqlParams);
+                return dal.executarReader("select * from cliente where nib = @nib and n_cliente <> @n_clinte", sqlParams);
             }
-            static public DataTable queryFunc_NifIgual(string nif)
+            static public DataTable queryFunc_NifIgual(string nif, int n_clinte)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@nif", nif )
+                new SqlParameter("@nif", nif ),
+                new SqlParameter("@n_clinte", n_clinte )
                 };
-                return dal.executarReader("select * from cliente where nif = @nif", sqlParams);
+                return dal.executarReader("select * from cliente where nif = @nif and n_cliente <> @n_clinte", sqlParams);
+            }
+            static public DataTable queryLoad_cliente1234(string n_cliente)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+
+                new SqlParameter("@n_cliente", "%" + n_cliente + "%" ),
+
+                };
+
+                return dal.executarReader("select n_cliente,nome,data_nascimento,genero,email,telefone,nib,morada,nif,imagem,ativo  from cliente where n_cliente like @n_cliente ", sqlParams);
             }
             static public DataTable queryLoad_cliente()
             {
@@ -321,6 +338,38 @@ namespace BusinessLogicLayer
                 };
                 return dal.executarReader("select n_cliente,nome,data_nascimento,genero,email,telefone,nib,morada,nif,imagem,ativo  from Clientes where ID=@id and Nome=@nome", sqlParams);
             }
+            static public DataTable querycliente_emailIgual(string email)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@email", email )
+                };
+                return dal.executarReader("select * from cliente where email = @email", sqlParams);
+            }
+            static public DataTable queryCliente_telefoneIgual(string telefone)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@telefone", telefone )
+                };
+                return dal.executarReader("select * from cliente where telefone = @telefone", sqlParams);
+            }
+            static public DataTable queryCliente_NibIgual(string nib)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@nib", nib )
+                };
+                return dal.executarReader("select * from cliente where nib = @nib", sqlParams);
+            }
+            static public DataTable queryCliente_NifIgual(string nif)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@nif", nif )
+                };
+                return dal.executarReader("select * from cliente where nif = @nif", sqlParams);
+            }
             static public DataTable queryCliente_3(int id)
             {
                 DAL dal = new DAL();
@@ -408,20 +457,30 @@ namespace BusinessLogicLayer
 
         public class transacoes
         {
-            static public int insertTrans(int n_cliente, string Matricula,string data,int valor)
+            static public int insertTrans(int nif, string Matricula,string data,int valor,string nome)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@n_cliente", n_cliente),
+                new SqlParameter("@nif", nif),
                 new SqlParameter("@Matricula", Matricula),
+                new SqlParameter("@nome", nome),
                 new SqlParameter("@data", data),
                 new SqlParameter("@valor", valor),
 
            };
 
-                return dal.executarNonQuery("INSERT into transacoes (n_cliente,Matricula,data,valor) VALUES(@n_cliente,@Matricula,@data,@valor)", sqlParams);
+                return dal.executarNonQuery("INSERT into transacoes (nif,Matricula,data,valor,nome) VALUES(@nif,@Matricula,@data,@valor,@nome)", sqlParams);
             }
+            static public DataTable loadnif_Cliente(int N_cliente)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@N_cliente", N_cliente),
 
+           };
+                return dal.executarReader("select nif from cliente where n_cliente = @n_cliente", sqlParams);
+
+            }
             static public DataTable loadTrans()
             {
                 DAL dal = new DAL();
@@ -434,7 +493,7 @@ namespace BusinessLogicLayer
                 SqlParameter[] sqlParams = new SqlParameter[]{
                 new SqlParameter("@id_cliente", id_cliente + "%")
                 };
-                return dal.executarReader("select * from transacoes where n_cliente like @id_cliente", sqlParams);
+                return dal.executarReader("select * from transacoes where nif like @id_cliente", sqlParams);
             }
             static public DataTable queryFunc_Like_N_Matricula(string Matricula)
             {
@@ -633,6 +692,17 @@ namespace BusinessLogicLayer
 
                 };
                 return dal.executarReader("select Nome from Marcas_Mota", sqlParams);
+            }
+            static public DataTable queryLoad_veiculoMatricula(bool vendido,string Matricula)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+
+                        new SqlParameter("@vendido", vendido),
+                        new SqlParameter("@Matricula", "%"+ Matricula +"%"),
+
+                };
+                return dal.executarReader("select * from Veiculo where vendido = @vendido and Matricula like @Matricula", sqlParams);
             }
             static public DataTable queryLoad_veiculo(bool vendido)
             {
@@ -934,7 +1004,14 @@ namespace BusinessLogicLayer
                     };
                 return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,morada,nif,imagem,ativo,admin from funcionario ", sqlParams);
             }
-
+            static public DataTable queryLoad_Func1234(string n_func)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                     new SqlParameter("@n_func", "%"+ n_func +"%")
+            };
+                return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,morada,nif,imagem,ativo,admin  from funcionario where n_func like @n_func", sqlParams);
+            }
             static public DataTable queryLoad_Func()
             {
                 DAL dal = new DAL();
@@ -944,37 +1021,41 @@ namespace BusinessLogicLayer
                 return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,morada,nif,imagem,ativo,admin  from funcionario", sqlParams);
             }
 
-            static public DataTable queryFunc_emailIgual(string email)
+            static public DataTable queryFunc_emailIgual(string email,int n_func)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@email", email )
+                new SqlParameter("@email", email ),
+                new SqlParameter("@n_func", n_func )
                 };
-                return dal.executarReader("select * from funcionario where email = @email", sqlParams);
+                return dal.executarReader("select * from funcionario where email = @email and n_func <> @n_func", sqlParams);
             }
-            static public DataTable queryFunc_telefoneIgual(string telefone)
+            static public DataTable queryFunc_telefoneIgual(string telefone, int n_func)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@telefone", telefone )
+                new SqlParameter("@telefone", telefone ),
+                new SqlParameter("@n_func", n_func )
                 };
-                return dal.executarReader("select * from funcionario where telefone = @telefone", sqlParams);
+                return dal.executarReader("select * from funcionario where telefone = @telefone and n_func <> @n_func", sqlParams);
             }
-            static public DataTable queryFunc_NibIgual(string nib)
+            static public DataTable queryFunc_NibIgual(string nib, int n_func)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@nib", nib )
+                new SqlParameter("@nib", nib ),
+                new SqlParameter("@n_func", n_func )
                 };
-                return dal.executarReader("select * from funcionario where nib = @nib", sqlParams);
+                return dal.executarReader("select * from funcionario where nib = @nib and n_func <> @n_func", sqlParams);
             }
-            static public DataTable queryFunc_NifIgual(string nif)
+            static public DataTable queryFunc_NifIgual(string nif, int n_func)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@nif", nif )
+                new SqlParameter("@nif", nif ),
+                new SqlParameter("@n_func", n_func )
                 };
-                return dal.executarReader("select * from funcionario where nif = @nif", sqlParams);
+                return dal.executarReader("select * from funcionario where nif = @nif and n_func <> @n_func", sqlParams);
             }
 
             static public DataTable LoadPerfil(int n_func)
@@ -1150,7 +1231,8 @@ namespace BusinessLogicLayer
                  new SqlParameter("@n_func", n_func)
            };
 
-                int x = dal.executarNonQuery("update [funcionario] set [senha]=@senha where n_func = @n_func and senha = @senha_pricipal ", sqlParams);
+                int x = Convert.ToInt32(dal.executarScalar("select * from funcionario where n_func = @n_func and senha = @senha_pricipal ", sqlParams));
+                dal.executarNonQuery("update [funcionario] set [senha]=@senha where n_func = @n_func and senha = @senha_pricipal ", sqlParams);
                 return x;
             }
 

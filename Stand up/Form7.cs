@@ -192,7 +192,7 @@ namespace Stand_up
             // Configurar o cliente SMTP
             if (guna2TextBox5.Text != "" && guna2TextBox1.Text != "" && guna2TextBox7.Text != "")
             {
-
+                try { 
                 string fromemail = "standuprla@gmail.com";
                 string frompasssword = "qisznqsrmsszpvif";
 
@@ -221,6 +221,12 @@ namespace Stand_up
                 }
                 smtpClient.Send(message);
                 MessageBox.Show("Email enviado com sucesso!");
+                }
+                catch
+                {
+
+                    MessageBox.Show("Falha ao enviar email");
+                }
             }
             else
             {
@@ -279,31 +285,10 @@ namespace Stand_up
         private void guna2Button2_Click(object sender, EventArgs e)
         {
           
-
-            if(ww == 0)
-            {
-                guna2GroupBox3.Visible = true;
-                ww = 1;
-            }
-            else
-            {
-                guna2GroupBox3.Visible = false;
-                ww = 0;
-            }
-            string texto = "Bom dia Sr " + nomeCliente + "," + "\r\n" +
-                "\r\n" +
-                              guna2TextBox7.Text +
-                                 "\r\n" +
-                "\r\n" +
-                       "\r\n" +
-                       "Obrigado, \r\n"
-                        + "Stand Up";
-            guna2TextBox2.Text = texto;
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            guna2GroupBox3.Visible = false;
             guna2TextBox2.Clear();
         }
 
@@ -394,6 +379,10 @@ namespace Stand_up
         {
             if (guna2TextBox1.Text != "" && guna2TextBox7.Text != "")
             {
+                try
+                {
+
+             
                 DataTable dt1 = BLL.Clientes.queryLoad_cliente();
             foreach (DataRow row in dt1.Rows)
             {   
@@ -411,24 +400,31 @@ namespace Stand_up
                 message.IsBodyHtml = true;
 
                 var smtpClient = new SmtpClient("smtp.gmail.com")
-                {
+                       {
                     Port = 587,
                     Credentials = new NetworkCredential(fromemail, frompasssword),
                     EnableSsl = true,
-                };
+                        };
 
 
 
-                if (caminhoArquivo != "")
+                     if (caminhoArquivo != "")
+                      {
+                      Attachment anexo = new Attachment(caminhoArquivo);
+                       message.Attachments.Add(anexo);
+                      }
+    
+                          smtpClient.Send(message);
+                         }
+
+                          MessageBox.Show("Email enviados com sucesso!");
+                        }
+                catch
                 {
-                    Attachment anexo = new Attachment(caminhoArquivo);
-                    message.Attachments.Add(anexo);
-                }
-                smtpClient.Send(message);
-            }
 
-                MessageBox.Show("Email enviados com sucesso!");
-            }
+                    MessageBox.Show("Falha ao enviar email");
+                }
+                   }
             else
             {
 
@@ -440,7 +436,10 @@ namespace Stand_up
         {
             if(q == 1)
             {
+                try
+                {
 
+                
           
             foreach (DataRow row in addCl)
             {
@@ -476,6 +475,12 @@ namespace Stand_up
             }
                         MessageBox.Show("Email enviados com sucesso!");
             }
+                catch
+                {
+
+                MessageBox.Show("Falha ao enviar email");
+            }
+        }
             else
             {
                 MessageBox.Show("Confirme os clientes selecionados para poder enviar o email");
@@ -778,6 +783,164 @@ namespace Stand_up
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 caminhoArquivo = openFileDialog1.FileName;
+            }
+        }
+        void carregar_cliente_PARA_LISTVIEW1234()
+        {
+
+
+
+
+
+            DataTable dt = BLL.Clientes.queryLoad_cliente1234(guna2TextBox5.Text);
+
+            listView2.Clear();
+            images2.Images.Clear();
+
+            i = 0;
+
+
+
+
+
+            foreach (DataRow row in dt.Rows)
+
+            {
+
+
+
+                images2.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView2.LargeImageList = images2;
+
+                listView2.LargeImageList.ImageSize = new System.Drawing.Size(123, 123);
+
+
+
+                byte[] imagebyte = (byte[])(row["imagem"]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images2.Images.Add(row["imagem"].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = " " + row["n_cliente"].ToString() + " " + row["nome"].ToString();
+
+                i += 1;
+
+                this.listView2.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+        }
+        void carregar_cliente_PARA_LISTVIEW12345()
+        {
+
+
+
+
+
+            DataTable dt = BLL.Clientes.queryLoad_cliente1234(guna2TextBox5.Text);
+
+            listView1.Clear();
+            images2.Images.Clear();
+
+            i = 0;
+
+
+
+
+
+            foreach (DataRow row in dt.Rows)
+
+            {
+
+
+
+                images2.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView1.LargeImageList = images2;
+
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(123, 123);
+
+
+
+                byte[] imagebyte = (byte[])(row["imagem"]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images2.Images.Add(row["imagem"].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = " " + row["n_cliente"].ToString() + " " + row["nome"].ToString();
+
+                i += 1;
+
+                this.listView1.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+        }
+
+        private void guna2TextBox2_TextChanged_1(object sender, EventArgs e)
+        {
+            if (listView1.Items.Count > 0)
+            {
+                carregar_cliente_PARA_LISTVIEW12345();
+            }
+        }
+
+        private void guna2TextBox3_TextChanged(object sender, EventArgs e)
+        {
+            if (listView2.Items.Count > 0)
+            {
+                carregar_cliente_PARA_LISTVIEW1234();
             }
         }
     }

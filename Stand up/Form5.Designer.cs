@@ -174,9 +174,9 @@ namespace Stand_up
             this.guna2PictureBox1.BorderRadius = 10;
             this.guna2PictureBox1.Image = global::Stand_up.Properties.Resources.logo;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(78, 43);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(78, 74);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(249, 214);
+            this.guna2PictureBox1.Size = new System.Drawing.Size(249, 164);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2PictureBox1.TabIndex = 57;
             this.guna2PictureBox1.TabStop = false;

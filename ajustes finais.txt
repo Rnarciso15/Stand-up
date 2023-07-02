@@ -1,0 +1,30 @@
+Apresentação:
+
+-Utilizar guião 
+-Distribuir melhor as tarefas
+-Utilizar dados pré feitos para a aplicação 
+-Focar mais nas mais valias em vez das dificuldades 
+
+Aplicação:
+
+- Se o carro for importado a data da matrícula é diferente da de fabrico 
+- No gerir frota ter filtro de mota e de carro
+- Corrigir a parte do inserir e editar motas
+-  nas transações remodelar o design
+ 
+
+
+- Email meter lista de clientes
+
+- inserir funcionario enviar uma senha aleatória gerado por email ao funcionário 
+
+
+
+Aplicação Problemas resolvidos:
+
+- Retirar ou adicionar o alugar 
+-Adicionar nif e nome nas Transações
+- Nas marcações meter labels
+- Nas marcações meter lista de clientes
+- A questão do NIB/IBAN
+- Reformular design de email

@@ -73,9 +73,21 @@ namespace Stand_up
             this.guna2Button33 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button22 = new Guna.UI2.WinForms.Guna2Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.listView3 = new System.Windows.Forms.ListView();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.guna2GroupBox5 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.guna2Button34 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.guna2Button36 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2TextBox5 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.guna2Button35 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
+            this.guna2GroupBox5.SuspendLayout();
+            this.guna2GroupBox1.SuspendLayout();
+            this.guna2GroupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Button1
@@ -743,6 +755,7 @@ namespace Stand_up
             this.guna2TextBox2.Size = new System.Drawing.Size(116, 45);
             this.guna2TextBox2.TabIndex = 34;
             this.guna2TextBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.guna2TextBox2.TextChanged += new System.EventHandler(this.guna2TextBox2_TextChanged);
             // 
             // guna2ComboBox1
             // 
@@ -769,9 +782,9 @@ namespace Stand_up
             this.listView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(1112, 65);
+            this.listView1.Location = new System.Drawing.Point(16, 98);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(545, 686);
+            this.listView1.Size = new System.Drawing.Size(535, 623);
             this.listView1.TabIndex = 37;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
@@ -782,9 +795,9 @@ namespace Stand_up
             this.listView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listView2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(426, 433);
+            this.listView2.Location = new System.Drawing.Point(19, 101);
             this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(664, 432);
+            this.listView2.Size = new System.Drawing.Size(631, 308);
             this.listView2.TabIndex = 38;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.SelectedIndexChanged += new System.EventHandler(this.listView2_SelectedIndexChanged);
@@ -859,20 +872,6 @@ namespace Stand_up
             this.label2.TabIndex = 91;
             this.label2.Text = "Horas";
             // 
-            // listView3
-            // 
-            this.listView3.BackColor = System.Drawing.Color.White;
-            this.listView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.listView3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.listView3.HideSelection = false;
-            this.listView3.Location = new System.Drawing.Point(426, 63);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(664, 351);
-            this.listView3.TabIndex = 92;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            this.listView3.SelectedIndexChanged += new System.EventHandler(this.listView3_SelectedIndexChanged);
-            this.listView3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView3_MouseClick);
-            // 
             // guna2DataGridView1
             // 
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
@@ -928,18 +927,218 @@ namespace Stand_up
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.guna2DataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.guna2DataGridView1_CellContentClick_1);
             // 
+            // guna2GroupBox5
+            // 
+            this.guna2GroupBox5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.guna2GroupBox5.BorderRadius = 10;
+            this.guna2GroupBox5.Controls.Add(this.guna2Button34);
+            this.guna2GroupBox5.Controls.Add(this.guna2TextBox3);
+            this.guna2GroupBox5.Controls.Add(this.listView3);
+            this.guna2GroupBox5.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.guna2GroupBox5.FillColor = System.Drawing.SystemColors.Control;
+            this.guna2GroupBox5.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2GroupBox5.ForeColor = System.Drawing.Color.White;
+            this.guna2GroupBox5.Location = new System.Drawing.Point(426, 12);
+            this.guna2GroupBox5.Name = "guna2GroupBox5";
+            this.guna2GroupBox5.Size = new System.Drawing.Size(664, 415);
+            this.guna2GroupBox5.TabIndex = 94;
+            this.guna2GroupBox5.Text = "Selecionar o Veiculo";
+            this.guna2GroupBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // guna2Button34
+            // 
+            this.guna2Button34.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button34.BorderRadius = 17;
+            this.guna2Button34.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button34.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button34.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button34.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button34.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button34.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button34.ForeColor = System.Drawing.Color.White;
+            this.guna2Button34.Image = global::Stand_up.Properties.Resources.search;
+            this.guna2Button34.Location = new System.Drawing.Point(571, 52);
+            this.guna2Button34.Name = "guna2Button34";
+            this.guna2Button34.Size = new System.Drawing.Size(36, 36);
+            this.guna2Button34.TabIndex = 95;
+            this.guna2Button34.UseTransparentBackground = true;
+            // 
+            // guna2TextBox3
+            // 
+            this.guna2TextBox3.Animated = true;
+            this.guna2TextBox3.AutoRoundedCorners = true;
+            this.guna2TextBox3.BorderRadius = 17;
+            this.guna2TextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox3.DefaultText = "";
+            this.guna2TextBox3.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.guna2TextBox3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2TextBox3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox3.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2TextBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.guna2TextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox3.Location = new System.Drawing.Point(55, 51);
+            this.guna2TextBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2TextBox3.MaxLength = 10;
+            this.guna2TextBox3.Name = "guna2TextBox3";
+            this.guna2TextBox3.PasswordChar = '\0';
+            this.guna2TextBox3.PlaceholderText = "";
+            this.guna2TextBox3.SelectedText = "";
+            this.guna2TextBox3.Size = new System.Drawing.Size(552, 36);
+            this.guna2TextBox3.TabIndex = 94;
+            this.guna2TextBox3.TextChanged += new System.EventHandler(this.guna2TextBox3_TextChanged);
+            // 
+            // listView3
+            // 
+            this.listView3.BackColor = System.Drawing.Color.White;
+            this.listView3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listView3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.listView3.HideSelection = false;
+            this.listView3.Location = new System.Drawing.Point(19, 98);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(631, 304);
+            this.listView3.TabIndex = 93;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            this.listView3.SelectedIndexChanged += new System.EventHandler(this.listView3_SelectedIndexChanged);
+            // 
+            // guna2GroupBox1
+            // 
+            this.guna2GroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.guna2GroupBox1.BorderRadius = 10;
+            this.guna2GroupBox1.Controls.Add(this.guna2Button36);
+            this.guna2GroupBox1.Controls.Add(this.guna2TextBox5);
+            this.guna2GroupBox1.Controls.Add(this.listView2);
+            this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.guna2GroupBox1.FillColor = System.Drawing.SystemColors.Control;
+            this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
+            this.guna2GroupBox1.Location = new System.Drawing.Point(426, 433);
+            this.guna2GroupBox1.Name = "guna2GroupBox1";
+            this.guna2GroupBox1.Size = new System.Drawing.Size(664, 428);
+            this.guna2GroupBox1.TabIndex = 95;
+            this.guna2GroupBox1.Text = "Selecionar o Cliente";
+            this.guna2GroupBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // guna2Button36
+            // 
+            this.guna2Button36.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button36.BorderRadius = 17;
+            this.guna2Button36.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button36.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button36.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button36.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button36.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button36.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button36.ForeColor = System.Drawing.Color.White;
+            this.guna2Button36.Image = global::Stand_up.Properties.Resources.search;
+            this.guna2Button36.Location = new System.Drawing.Point(571, 59);
+            this.guna2Button36.Name = "guna2Button36";
+            this.guna2Button36.Size = new System.Drawing.Size(36, 36);
+            this.guna2Button36.TabIndex = 97;
+            this.guna2Button36.UseTransparentBackground = true;
+            this.guna2Button36.Click += new System.EventHandler(this.guna2Button36_Click_1);
+            // 
+            // guna2TextBox5
+            // 
+            this.guna2TextBox5.Animated = true;
+            this.guna2TextBox5.AutoRoundedCorners = true;
+            this.guna2TextBox5.BorderRadius = 17;
+            this.guna2TextBox5.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox5.DefaultText = "";
+            this.guna2TextBox5.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.guna2TextBox5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2TextBox5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox5.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox5.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox5.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2TextBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.guna2TextBox5.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox5.Location = new System.Drawing.Point(55, 58);
+            this.guna2TextBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2TextBox5.MaxLength = 10;
+            this.guna2TextBox5.Name = "guna2TextBox5";
+            this.guna2TextBox5.PasswordChar = '\0';
+            this.guna2TextBox5.PlaceholderText = "";
+            this.guna2TextBox5.SelectedText = "";
+            this.guna2TextBox5.Size = new System.Drawing.Size(552, 36);
+            this.guna2TextBox5.TabIndex = 96;
+            this.guna2TextBox5.TextChanged += new System.EventHandler(this.guna2TextBox5_TextChanged);
+            // 
+            // guna2GroupBox2
+            // 
+            this.guna2GroupBox2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.guna2GroupBox2.BorderRadius = 10;
+            this.guna2GroupBox2.Controls.Add(this.guna2Button35);
+            this.guna2GroupBox2.Controls.Add(this.guna2TextBox4);
+            this.guna2GroupBox2.Controls.Add(this.listView1);
+            this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.guna2GroupBox2.FillColor = System.Drawing.SystemColors.Control;
+            this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2GroupBox2.ForeColor = System.Drawing.Color.White;
+            this.guna2GroupBox2.Location = new System.Drawing.Point(1105, 12);
+            this.guna2GroupBox2.Name = "guna2GroupBox2";
+            this.guna2GroupBox2.Size = new System.Drawing.Size(566, 739);
+            this.guna2GroupBox2.TabIndex = 96;
+            this.guna2GroupBox2.Text = "Seleciona o Funcionário";
+            this.guna2GroupBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // guna2Button35
+            // 
+            this.guna2Button35.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button35.BorderRadius = 17;
+            this.guna2Button35.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button35.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button35.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button35.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button35.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button35.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button35.ForeColor = System.Drawing.Color.White;
+            this.guna2Button35.Image = global::Stand_up.Properties.Resources.search;
+            this.guna2Button35.Location = new System.Drawing.Point(486, 53);
+            this.guna2Button35.Name = "guna2Button35";
+            this.guna2Button35.Size = new System.Drawing.Size(36, 36);
+            this.guna2Button35.TabIndex = 97;
+            this.guna2Button35.UseTransparentBackground = true;
+            // 
+            // guna2TextBox4
+            // 
+            this.guna2TextBox4.Animated = true;
+            this.guna2TextBox4.AutoRoundedCorners = true;
+            this.guna2TextBox4.BorderRadius = 17;
+            this.guna2TextBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox4.DefaultText = "";
+            this.guna2TextBox4.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.guna2TextBox4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2TextBox4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox4.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox4.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2TextBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.guna2TextBox4.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox4.Location = new System.Drawing.Point(39, 52);
+            this.guna2TextBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.guna2TextBox4.MaxLength = 10;
+            this.guna2TextBox4.Name = "guna2TextBox4";
+            this.guna2TextBox4.PasswordChar = '\0';
+            this.guna2TextBox4.PlaceholderText = "";
+            this.guna2TextBox4.SelectedText = "";
+            this.guna2TextBox4.Size = new System.Drawing.Size(483, 36);
+            this.guna2TextBox4.TabIndex = 96;
+            this.guna2TextBox4.TextChanged += new System.EventHandler(this.guna2TextBox4_TextChanged);
+            // 
             // Marcacao_test
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1683, 925);
+            this.Controls.Add(this.guna2GroupBox2);
+            this.Controls.Add(this.guna2GroupBox1);
+            this.Controls.Add(this.guna2GroupBox5);
             this.Controls.Add(this.guna2DataGridView1);
-            this.Controls.Add(this.listView3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.guna2Button33);
             this.Controls.Add(this.guna2Button32);
-            this.Controls.Add(this.listView2);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.guna2ComboBox1);
             this.Controls.Add(this.guna2TextBox2);
             this.Controls.Add(this.guna2TextBox1);
@@ -981,6 +1180,9 @@ namespace Stand_up
             this.Text = "Marcacao_test";
             this.Load += new System.EventHandler(this.Marcacao_test_Load);
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
+            this.guna2GroupBox5.ResumeLayout(false);
+            this.guna2GroupBox1.ResumeLayout(false);
+            this.guna2GroupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1029,7 +1231,16 @@ namespace Stand_up
         private Guna.UI2.WinForms.Guna2Button guna2Button33;
         private Guna.UI2.WinForms.Guna2Button guna2Button22;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListView listView3;
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
+        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox5;
+        private System.Windows.Forms.ListView listView3;
+        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
+        private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox2;
+        private Guna.UI2.WinForms.Guna2Button guna2Button34;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
+        private Guna.UI2.WinForms.Guna2Button guna2Button36;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox5;
+        private Guna.UI2.WinForms.Guna2Button guna2Button35;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox4;
     }
 }

@@ -10,6 +10,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Threading;
+using Guna.UI2.WinForms;
 
 namespace Stand_up
 {
@@ -109,7 +110,7 @@ namespace Stand_up
             foreach (DataRow row in dt.Rows)
             {
                 label1.Text = (string)row["nome"];
-                guna2CirclePictureBox2.Image = byteArrayToImage((Byte[])row["Imagem"]);
+                guna2PictureBox4.Image = byteArrayToImage((Byte[])row["Imagem"]);
 
             }
         }
@@ -131,11 +132,7 @@ namespace Stand_up
 
         private void guna2CirclePictureBox1_Click(object sender, EventArgs e)
         {
-            watch f2 = new watch();
-            guna2Panel3.Controls.Clear();
-            f2.TopLevel = false;
-            f2.Parent = guna2Panel3;
-            f2.Show();
+           
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -295,16 +292,7 @@ namespace Stand_up
 
         private void guna2CirclePictureBox2_Click(object sender, EventArgs e)
         {
-            if (K == 0)
-            {
-                guna2Panel4.Visible = true;
-                K += 1;
-            }
-            else
-            {
-                guna2Panel4.Visible = false;
-                K = 0;
-            }
+          
 
         }
 
@@ -372,5 +360,35 @@ namespace Stand_up
         {
            
         }
-    }
+
+        private void guna2PictureBox4_Click(object sender, EventArgs e)
+        {
+            if (K == 0)
+            {
+                guna2Panel4.Visible = true;
+                K += 1;
+            }
+            else
+            {
+                guna2Panel4.Visible = false;
+                K = 0;
+            }
+        }
+
+        private void guna2PictureBox3_Click(object sender, EventArgs e)
+        {
+            watch f2 = new watch();
+            guna2Panel3.Controls.Clear();
+            f2.TopLevel = false;
+            f2.Parent = guna2Panel3;
+            f2.Show();
+        }
+    
+                                                               
+                                                                  
+                                                                       
+
+
 }
+    }
+

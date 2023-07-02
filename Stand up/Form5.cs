@@ -25,13 +25,13 @@ namespace Stand_up
         {
             if (u == 0)
             {
-                guna2TextBox3.UseSystemPasswordChar = false;
+                guna2TextBox1.UseSystemPasswordChar = false;
                 guna2Button1.Image = Properties.Resources.show1;
                 u += 1;
             }
             else
             {
-                guna2TextBox3.UseSystemPasswordChar = true;
+                guna2TextBox1.UseSystemPasswordChar = true;
                 guna2Button1.Image = Properties.Resources.invisible1;
                 u = 0;
             }
@@ -115,7 +115,7 @@ namespace Stand_up
 
         private void Form5_Load(object sender, EventArgs e)
         {
-            guna2TextBox3.UseSystemPasswordChar = true;
+            guna2TextBox1.UseSystemPasswordChar = true;
             DoubleBuffered = true;
         }
     }
