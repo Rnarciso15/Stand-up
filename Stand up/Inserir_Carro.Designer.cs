@@ -79,6 +79,7 @@ namespace Stand_up
             this.guna2Button11 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GroupBox4 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2CheckBox3 = new Guna.UI2.WinForms.Guna2CheckBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2GroupBox5.SuspendLayout();
@@ -905,11 +906,31 @@ namespace Stand_up
             this.guna2PictureBox2.UseTransparentBackground = true;
             this.guna2PictureBox2.Click += new System.EventHandler(this.guna2PictureBox2_Click);
             // 
+            // guna2CheckBox3
+            // 
+            this.guna2CheckBox3.AutoSize = true;
+            this.guna2CheckBox3.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2CheckBox3.CheckedState.BorderRadius = 0;
+            this.guna2CheckBox3.CheckedState.BorderThickness = 0;
+            this.guna2CheckBox3.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2CheckBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.guna2CheckBox3.Location = new System.Drawing.Point(400, 192);
+            this.guna2CheckBox3.Name = "guna2CheckBox3";
+            this.guna2CheckBox3.Size = new System.Drawing.Size(155, 24);
+            this.guna2CheckBox3.TabIndex = 82;
+            this.guna2CheckBox3.Text = "Veículo importado";
+            this.guna2CheckBox3.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.guna2CheckBox3.UncheckedState.BorderRadius = 0;
+            this.guna2CheckBox3.UncheckedState.BorderThickness = 0;
+            this.guna2CheckBox3.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.guna2CheckBox3.CheckedChanged += new System.EventHandler(this.guna2CheckBox3_CheckedChanged);
+            // 
             // Inserir_Carro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1683, 925);
+            this.Controls.Add(this.guna2CheckBox3);
             this.Controls.Add(this.guna2PictureBox2);
             this.Controls.Add(this.guna2GroupBox4);
             this.Controls.Add(this.guna2Button5);
@@ -1012,5 +1033,6 @@ namespace Stand_up
         private Guna.UI2.WinForms.Guna2Button guna2Button11;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox4;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox2;
+        private Guna.UI2.WinForms.Guna2CheckBox guna2CheckBox3;
     }
 }

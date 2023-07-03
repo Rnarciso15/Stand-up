@@ -1514,8 +1514,19 @@ namespace Stand_up
              
                 guna2ComboBox2.Items.Clear();
                 int id_marca = (int)BLL.veiculos.queryBuscar_id_marca(guna2ComboBox1.Text);
-                DataTable modelos = BLL.veiculos.queryModelos_veiculo(id_marca);
-                DataTable table = BLL.veiculos.queryModelos_veiculo1234(id_marca, ano);
+
+                    DataTable table = BLL.veiculos.queryModelos_veiculo(id_marca);
+
+                    if (guna2CheckBox3.Checked==true)
+                    {
+                         table = BLL.veiculos.queryModelos_veiculo(id_marca);
+                    }
+                    else
+                    {
+                         table = BLL.veiculos.queryModelos_veiculo1234(id_marca, ano);
+                    }
+                
+                
 
                 foreach (DataRow row in table.Rows)
                 {
@@ -1528,8 +1539,21 @@ namespace Stand_up
 
                     guna2ComboBox2.Items.Clear();
                     int id_marca = (int)BLL.veiculos.queryBuscar_id_marcaModelosMotas(guna2ComboBox1.Text);
-                    DataTable modelos = BLL.veiculos.queryModelos_veiculoMotas(id_marca);
-                    DataTable table = BLL.veiculos.queryModelos_veiculo1234Motas(id_marca, ano);
+
+
+                    DataTable table = BLL.veiculos.queryModelos_veiculoMotas(id_marca);
+
+
+                    if (guna2CheckBox3.Checked == true)
+                    {
+                         table = BLL.veiculos.queryModelos_veiculoMotas(id_marca);
+                    }
+                    else
+                    {
+                         table = BLL.veiculos.queryModelos_veiculo1234Motas(id_marca, ano);
+                    }
+                   
+                 
 
                     foreach (DataRow row in table.Rows)
                     {
@@ -1970,6 +1994,88 @@ namespace Stand_up
 
                 }
             }
+        }
+
+        private void guna2CheckBox3_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (guna2TextBox3.Text.Length == 10)
+            {
+                if (guna2CheckBox2.Checked == true)
+                {
+
+
+                    guna2ComboBox2.Items.Clear();
+                    int id_marca = (int)BLL.veiculos.queryBuscar_id_marca(guna2ComboBox1.Text);
+
+                    DataTable table = BLL.veiculos.queryModelos_veiculo(id_marca);
+
+                    if (guna2CheckBox3.Checked == true)
+                    {
+                        table = BLL.veiculos.queryModelos_veiculo(id_marca);
+                    }
+                    else
+                    {
+                        table = BLL.veiculos.queryModelos_veiculo1234(id_marca, ano);
+                    }
+
+
+
+                    foreach (DataRow row in table.Rows)
+                    {
+                        guna2ComboBox2.Items.Add(row["Modelo"]);
+                    }
+                    guna2ComboBox2.Enabled = true;
+                }
+                else
+                {
+
+                    guna2ComboBox2.Items.Clear();
+                    int id_marca = (int)BLL.veiculos.queryBuscar_id_marcaModelosMotas(guna2ComboBox1.Text);
+
+
+                    DataTable table = BLL.veiculos.queryModelos_veiculoMotas(id_marca);
+
+
+                    if (guna2CheckBox3.Checked == true)
+                    {
+                        table = BLL.veiculos.queryModelos_veiculoMotas(id_marca);
+                    }
+                    else
+                    {
+                        table = BLL.veiculos.queryModelos_veiculo1234Motas(id_marca, ano);
+                    }
+
+
+
+                    foreach (DataRow row in table.Rows)
+                    {
+                        guna2ComboBox2.Items.Add(row["Modelo"]);
+                    }
+                    guna2ComboBox2.Enabled = true;
+
+
+
+
+                }
+            }
+            else
+            {
+
+
+                if (guna2ComboBox1.SelectedIndex == -1)
+                {
+
+                }
+                else
+                {
+                    MessageBox.Show("preencha a data antes de selecionar a Marca");
+                    guna2ComboBox1.SelectedIndex = -1;
+                }
+
+            }
+
+
         }
     }
 }
