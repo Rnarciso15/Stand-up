@@ -10,6 +10,9 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Net.Mail;
+using System.Net;
+using PdfSharp.Drawing;
 
 namespace Stand_up
 {
@@ -642,6 +645,19 @@ namespace Stand_up
             }
 
         }
+        static string GerarSenha()
+        {
+            const string caracteresPermitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            Random random = new Random();
+            char[] senhaArray = new char[8];
+
+            for (int i = 0; i < 8; i++)
+            {
+                senhaArray[i] = caracteresPermitidos[random.Next(caracteresPermitidos.Length)];
+            }
+
+            return new string(senhaArray);
+        }
         bool Ativo;
         private void guna2Button3_Click(object sender, EventArgs e)
         {
@@ -696,11 +712,53 @@ namespace Stand_up
                                                                         if (nifverification.Rows.Count < 1)
                                                                         {
 
+
+                                                                            string senha = GerarSenha();
+                                                                            MessageBox.Show(senha);
                                                                             DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo funcionário ?", "", MessageBoxButtons.YesNo);
                                                                             if (dr == DialogResult.Yes)
                                                                             {
-                                                                                int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash("123"), true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.SelectedItem.ToString(), false);
+                                                                                int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash(senha), true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.SelectedItem.ToString(), false);
                                                                                 guna2DataGridView1.DataSource = BLL.Func.Load();
+
+                                                                                try
+                                                                                {
+                                                                                                                                                                     
+
+                                                                                    
+                                                                                   
+                                                                                        string fromemail = "standuprla@gmail.com";
+                                                                                        string frompassword = "qisznqsrmsszpvif";
+
+                                                                                        MailMessage message = new MailMessage();
+                                                                                        // Criando a mensagem de e-mail
+                                                                                        message.From = new MailAddress(fromemail);
+                                                                                        message.To.Add(new MailAddress(guna2TextBox2.Text));
+                                                                                        message.Subject = guna2TextBox1.Text;
+                                                                                        string texto = "Bom dia Sr " + guna2TextBox9.Text + "," + "\r\n" + "a sua senha para efetuar login é esta "+senha+"\r\n" + "\r\n" + "\r\n" + "\r\n" + "Obrigado, \r\n" + "Stand Up";
+                                                                                        message.Body = "<html><body>" + texto + "</body></html>";
+                                                                                        message.IsBodyHtml = true;
+
+                                                                                        var smtpClient = new SmtpClient("smtp.gmail.com")
+                                                                                        {
+                                                                                            Port = 587,
+                                                                                            Credentials = new NetworkCredential(fromemail, frompassword),
+                                                                                            EnableSsl = true
+                                                                                        };
+
+                                                                                        
+
+                                                                                            // Enviar o email
+                                                                                            smtpClient.Send(message);
+                                                                                        
+                                                                                    
+
+                                                                                    MessageBox.Show("Email enviados com sucesso!");
+                                                                                }
+                                                                                catch
+                                                                                {
+                                                                                    MessageBox.Show("Falha ao enviar email");
+                                                                                }
                                                                             }
                                                                         }
                                                                         else
@@ -1223,14 +1281,8 @@ namespace Stand_up
                 int x = BLL.Func.senhaFunc(Hash(guna2TextBox1.Text), Form5.n_func, Hash(guna2TextBox12.Text));
                 guna2TextBox1.Clear();
                 guna2TextBox12.Clear();
-                    if (x < 0)
-                    {
-                        MessageBox.Show("Senha alterada com sucesso.");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Senha antiga errada");
-                    }
+
+
                 }
 
             }

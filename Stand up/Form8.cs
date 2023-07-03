@@ -275,172 +275,175 @@ namespace Stand_up
                 carros_para_venda.flagVendido = true;
                 Form1.flagCancTransacao = true;
             }
-                try
+                if (dr == DialogResult.Yes)
                 {
-                    DataTable informacao = BLL.veiculos.Load_dados_imagem(carros_para_venda.Matricula);
-                    string data = "";
-                    string Marca = "";
-                    string Modelo = "";
-                    string Matricula = "";
-                    string Quilometros = "";
-                    string Combustivel = "";
-                    string Descricao = "";
-                    string Valor = "";
-                    string Traccao = "";
-                    string Cor = "";
-                    string Tipo_de_Caixa = "";
-                    string N_Portas = "";
-                    byte[] imageBytes = null;
-                    foreach (DataRow row in informacao.Rows)
+                    try
                     {
-                        data = (string)row["Data"];
-                        Marca = (string)row["Marca"];
-                        Modelo = (string)row["Modelo"];
-                        Matricula = (string)row["Matricula"];
-                        Quilometros = Convert.ToString((int)row["Quilometros"]);
-                        Combustivel = (string)row["Combustivel"];
-                        Descricao = (string)row["Descricao"];
-                        Valor = Convert.ToString((int)row["Valor"]) + " €";
-                        imageBytes = (Byte[])row["Imagem"];
-                        Cor = (string)row["Cor"];
-                        Tipo_de_Caixa = (string)row["Tipo_de_Caixa"];
-                        N_Portas = Convert.ToString((int)row["N_Portas"]);
-                        Traccao = (string)row["Traccao"];
-
-                    }
-                    // Cria um novo documento PDF
-                    PdfDocument document = new PdfDocument();
-
-                    // Cria uma nova página
-                    PdfPage page = document.AddPage();
-
-                    // Obtém um objeto XGraphics para desenhar na página
-                    XGraphics gfx = XGraphics.FromPdfPage(page);
-                    DataTable logo = BLL.Imagem.loadlogo();
-                    XImage image9 = null;
-                    foreach (DataRow row in logo.Rows)
-                    {
-
-                        Image img5 = byteArrayToImage((Byte[])row["logo"]);
-                        byte[] img7 = imgToByteArray(img5);
-                        using (MemoryStream stream = new MemoryStream(img7))
+                        DataTable informacao = BLL.veiculos.Load_dados_imagem(carros_para_venda.Matricula);
+                        string data = "";
+                        string Marca = "";
+                        string Modelo = "";
+                        string Matricula = "";
+                        string Quilometros = "";
+                        string Combustivel = "";
+                        string Descricao = "";
+                        string Valor = "";
+                        string Traccao = "";
+                        string Cor = "";
+                        string Tipo_de_Caixa = "";
+                        string N_Portas = "";
+                        byte[] imageBytes = null;
+                        foreach (DataRow row in informacao.Rows)
                         {
-                            image9 = XImage.FromStream(stream);
+                            data = (string)row["Data"];
+                            Marca = (string)row["Marca"];
+                            Modelo = (string)row["Modelo"];
+                            Matricula = (string)row["Matricula"];
+                            Quilometros = Convert.ToString((int)row["Quilometros"]);
+                            Combustivel = (string)row["Combustivel"];
+                            Descricao = (string)row["Descricao"];
+                            Valor = Convert.ToString((int)row["Valor"]) + " €";
+                            imageBytes = (Byte[])row["Imagem"];
+                            Cor = (string)row["Cor"];
+                            Tipo_de_Caixa = (string)row["Tipo_de_Caixa"];
+                            N_Portas = Convert.ToString((int)row["N_Portas"]);
+                            Traccao = (string)row["Traccao"];
 
-                            // Usar o objeto XImage como necessário (por exemplo, desenhar ou adicionar ao PDF)
+                        }
+                        // Cria um novo documento PDF
+                        PdfDocument document = new PdfDocument();
+
+                        // Cria uma nova página
+                        PdfPage page = document.AddPage();
+
+                        // Obtém um objeto XGraphics para desenhar na página
+                        XGraphics gfx = XGraphics.FromPdfPage(page);
+                        DataTable logo = BLL.Imagem.loadlogo();
+                        XImage image9 = null;
+                        foreach (DataRow row in logo.Rows)
+                        {
+
+                            Image img5 = byteArrayToImage((Byte[])row["logo"]);
+                            byte[] img7 = imgToByteArray(img5);
+                            using (MemoryStream stream = new MemoryStream(img7))
+                            {
+                                image9 = XImage.FromStream(stream);
+
+                                // Usar o objeto XImage como necessário (por exemplo, desenhar ou adicionar ao PDF)
+                            }
+
+                        }
+                        // Carrega as imagens
+
+                        XImage image;
+
+                        using (MemoryStream ms = new MemoryStream(imageBytes))
+                        {
+                            image = XImage.FromStream(ms);
                         }
 
-                    }
-                    // Carrega as imagens
+                        double x = 50;
+                        double y = 50;
 
-                    XImage image;
+                        // Redimensiona o logo para um tamanho menor
+                        double logoWidth = 75;  // Largura desejada para o logo
+                        double logoHeight = logoWidth * image9.PixelHeight / image9.PixelWidth;
 
-                    using (MemoryStream ms = new MemoryStream(imageBytes))
-                    {
-                        image = XImage.FromStream(ms);
-                    }
+                        // Obtém as coordenadas para posicionar o logo no canto superior direito
+                        double logoX = page.Width - logoWidth - 15;
+                        double logoY = 2;
 
-                    double x = 50;
-                    double y = 50;
+                        // Adiciona o logo no canto superior direito com ajuste de tamanho
+                        gfx.DrawImage(image9, logoX, logoY, logoWidth, logoHeight);
 
-                    // Redimensiona o logo para um tamanho menor
-                    double logoWidth = 75;  // Largura desejada para o logo
-                    double logoHeight = logoWidth * image9.PixelHeight / image9.PixelWidth;
+                        // Adiciona o título
 
-                    // Obtém as coordenadas para posicionar o logo no canto superior direito
-                    double logoX = page.Width - logoWidth - 15;
-                    double logoY = 2;
+                        XFont titleFont = new XFont("Arial", 28, XFontStyle.Bold);
+                        XSize titleSize = gfx.MeasureString(Marca + " " + Modelo, titleFont);
+                        double titleX = (page.Width - titleSize.Width) / 2;
+                        double titleY = y + 65;
+                        gfx.DrawString(Marca + " " + Modelo, titleFont, XBrushes.Black, titleX, titleY);
 
-                    // Adiciona o logo no canto superior direito com ajuste de tamanho
-                    gfx.DrawImage(image9, logoX, logoY, logoWidth, logoHeight);
+                        // Adiciona a imagem do carro
+                        double carImageWidth = 400;  // Largura desejada para a imagem do carro
+                        double carImageHeight = carImageWidth * image.PixelHeight / image.PixelWidth;
+                        double carImageX = (page.Width - carImageWidth) / 2;
+                        double carImageY = y + 100;
+                        gfx.DrawImage(image, carImageX, carImageY, carImageWidth, carImageHeight);
+                        // Adiciona as especificações
+                        XFont contentFont = new XFont("Arial", 12);
+                        gfx.DrawString("Especificações:", contentFont, XBrushes.Black, x, y + 500);
+                        y += 20;
+                        // Restante das especificações
+                        gfx.DrawString("Data: " + data, contentFont, XBrushes.Black, x, y + 520);
+                        gfx.DrawString("Cor: " + Cor, contentFont, XBrushes.Black, x + 200, y + 520);
+                        y += 20;
+                        // Restante das especificações
+                        gfx.DrawString("Marca: " + Marca, contentFont, XBrushes.Black, x, y + 520);
+                        gfx.DrawString("Tipo de Caixa: " + Tipo_de_Caixa, contentFont, XBrushes.Black, x + 200, y + 520);
+                        y += 20;
+                        // Restante das especificações
+                        gfx.DrawString("Modelo: " + Modelo, contentFont, XBrushes.Black, x, y + 520);
+                        gfx.DrawString("Nº de Portas: " + N_Portas, contentFont, XBrushes.Black, x + 200, y + 520);
+                        y += 20;
+                        // Restante das especificações
+                        gfx.DrawString("Matricula: " + Matricula, contentFont, XBrushes.Black, x, y + 520);
+                        gfx.DrawString("Traccção: " + Traccao, contentFont, XBrushes.Black, x + 200, y + 520);
+                        y += 20;
+                        // Restante das especificações
+                        gfx.DrawString("Quilómetros: " + Quilometros, contentFont, XBrushes.Black, x, y + 520);
+                        gfx.DrawString("Combustivel: " + Combustivel, contentFont, XBrushes.Black, x + 200, y + 520);
 
-                    // Adiciona o título
+                        y += 40;
+                        // Restante das especificações
+                        gfx.DrawString("Valor: " + Valor, contentFont, XBrushes.Black, x + 200, y + 520);
+                        // Restante das especificações...
 
-                    XFont titleFont = new XFont("Arial", 28, XFontStyle.Bold);
-                    XSize titleSize = gfx.MeasureString(Marca + " " + Modelo, titleFont);
-                    double titleX = (page.Width - titleSize.Width) / 2;
-                    double titleY = y + 65;
-                    gfx.DrawString(Marca + " " + Modelo, titleFont, XBrushes.Black, titleX, titleY);
-
-                    // Adiciona a imagem do carro
-                    double carImageWidth = 400;  // Largura desejada para a imagem do carro
-                    double carImageHeight = carImageWidth * image.PixelHeight / image.PixelWidth;
-                    double carImageX = (page.Width - carImageWidth) / 2;
-                    double carImageY = y + 100;
-                    gfx.DrawImage(image, carImageX, carImageY, carImageWidth, carImageHeight);
-                    // Adiciona as especificações
-                    XFont contentFont = new XFont("Arial", 12);
-                    gfx.DrawString("Especificações:", contentFont, XBrushes.Black, x, y + 500);
-                    y += 20;
-                    // Restante das especificações
-                    gfx.DrawString("Data: " + data, contentFont, XBrushes.Black, x, y + 520);
-                    gfx.DrawString("Cor: " + Cor, contentFont, XBrushes.Black, x + 200, y + 520);
-                    y += 20;
-                    // Restante das especificações
-                    gfx.DrawString("Marca: " + Marca, contentFont, XBrushes.Black, x, y + 520);
-                    gfx.DrawString("Tipo de Caixa: " + Tipo_de_Caixa, contentFont, XBrushes.Black, x + 200, y + 520);
-                    y += 20;
-                    // Restante das especificações
-                    gfx.DrawString("Modelo: " + Modelo, contentFont, XBrushes.Black, x, y + 520);
-                    gfx.DrawString("Nº de Portas: " + N_Portas, contentFont, XBrushes.Black, x + 200, y + 520);
-                    y += 20;
-                    // Restante das especificações
-                    gfx.DrawString("Matricula: " + Matricula, contentFont, XBrushes.Black, x, y + 520);
-                    gfx.DrawString("Traccção: " + Traccao, contentFont, XBrushes.Black, x + 200, y + 520);
-                    y += 20;
-                    // Restante das especificações
-                    gfx.DrawString("Quilómetros: " + Quilometros, contentFont, XBrushes.Black, x, y + 520);
-                    gfx.DrawString("Combustivel: " + Combustivel, contentFont, XBrushes.Black, x + 200, y + 520);
-
-                    y += 40;
-                    // Restante das especificações
-                    gfx.DrawString("Valor: " + Valor, contentFont, XBrushes.Black, x + 200, y + 520);
-                    // Restante das especificações...
-
-                    DataTable addcl = BLL.Clientes.LoadCliente_proc(Convert.ToInt32(id_cliente));
-                    foreach (DataRow row in addcl.Rows)
-                    {
-                        string fromemail = "standuprla@gmail.com";
-                        string frompassword = "qisznqsrmsszpvif";
-
-                        MailMessage message = new MailMessage();
-                        // Criando a mensagem de e-mail
-                        message.From = new MailAddress(fromemail);
-                        message.To.Add(new MailAddress((string)row["email"]));
-                        message.Subject = guna2TextBox1.Text;
-                        string texto = "Bom dia Sr " + (string)row["nome"] + "," + "\r\n" + "\r\n"  + "\r\n" + "\r\n" + "\r\n" + "Obrigado, \r\n" + "Stand Up";
-                        message.Body = "<html><body>" + texto + "</body></html>";
-                        message.IsBodyHtml = true;
-
-                        var smtpClient = new SmtpClient("smtp.gmail.com")
+                        DataTable addcl = BLL.Clientes.LoadCliente_proc(Convert.ToInt32(id_cliente));
+                        foreach (DataRow row in addcl.Rows)
                         {
-                            Port = 587,
-                            Credentials = new NetworkCredential(fromemail, frompassword),
-                            EnableSsl = true
-                        };
+                            string fromemail = "standuprla@gmail.com";
+                            string frompassword = "qisznqsrmsszpvif";
 
-                        // Criar o arquivo PDF em um fluxo de memória
-                        using (MemoryStream memoryStream = new MemoryStream())
-                        {
-                            // Salvar o documento PDF no fluxo de memória
-                            document.Save(memoryStream);
-                            memoryStream.Position = 0;
+                            MailMessage message = new MailMessage();
+                            // Criando a mensagem de e-mail
+                            message.From = new MailAddress(fromemail);
+                            message.To.Add(new MailAddress((string)row["email"]));
+                            message.Subject = guna2TextBox1.Text;
+                            string texto = "Bom dia Sr " + (string)row["nome"] + "," + "\r\n" + "\r\n" + "\r\n" + "\r\n" + "\r\n" + "Obrigado, \r\n" + "Stand Up";
+                            message.Body = "<html><body>" + texto + "</body></html>";
+                            message.IsBodyHtml = true;
 
-                            // Anexar o arquivo PDF ao email
-                            Attachment attachment = new Attachment(memoryStream, ""+ Modelo + ".pdf", "application/pdf");
-                            message.Attachments.Add(attachment);
+                            var smtpClient = new SmtpClient("smtp.gmail.com")
+                            {
+                                Port = 587,
+                                Credentials = new NetworkCredential(fromemail, frompassword),
+                                EnableSsl = true
+                            };
 
-                            // Enviar o email
-                            smtpClient.Send(message);
+                            // Criar o arquivo PDF em um fluxo de memória
+                            using (MemoryStream memoryStream = new MemoryStream())
+                            {
+                                // Salvar o documento PDF no fluxo de memória
+                                document.Save(memoryStream);
+                                memoryStream.Position = 0;
+
+                                // Anexar o arquivo PDF ao email
+                                Attachment attachment = new Attachment(memoryStream, "" + Modelo + ".pdf", "application/pdf");
+                                message.Attachments.Add(attachment);
+
+                                // Enviar o email
+                                smtpClient.Send(message);
+                            }
                         }
-                    }
 
-                    MessageBox.Show("Email enviados com sucesso!");
-                }
-                catch
-                {
-                    MessageBox.Show("Falha ao enviar email");
-                }
+                        MessageBox.Show("Email enviados com sucesso!");
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Falha ao enviar email");
+                    }
+                    }
 
 
             }

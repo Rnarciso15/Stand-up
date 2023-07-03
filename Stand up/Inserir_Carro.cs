@@ -84,7 +84,7 @@ namespace Stand_up
                 if (listView1.SelectedItems.Count > 0)
                 {
                     string Matricula = listView1.SelectedItems[0].Text;
-
+                    guna2PictureBox1.Image = null;
                     bool mota = false;
 
                     ativar_caixas();

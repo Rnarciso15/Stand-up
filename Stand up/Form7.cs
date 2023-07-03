@@ -168,6 +168,8 @@ namespace Stand_up
         int i = 0;
         int ww = 0;
         ImageList images2 = new ImageList();
+
+        ImageList images1 = new ImageList();
         ImageList images3 = new ImageList();
         string id_cliente;
         string nomeCliente;
@@ -787,15 +789,15 @@ namespace Stand_up
         }
         void carregar_cliente_PARA_LISTVIEW1234()
         {
+            
 
 
 
 
-
-            DataTable dt = BLL.Clientes.queryLoad_cliente1234(guna2TextBox5.Text);
+            DataTable dt = BLL.Clientes.queryLoad_cliente1234(guna2TextBox3.Text);
 
             listView2.Clear();
-            images2.Images.Clear();
+            images1.Images.Clear();
 
             i = 0;
 
@@ -809,11 +811,11 @@ namespace Stand_up
 
 
 
-                images2.ColorDepth = ColorDepth.Depth32Bit;
+                images1.ColorDepth = ColorDepth.Depth32Bit;
 
-                listView2.LargeImageList = images2;
+                listView2.LargeImageList = images1;
 
-                listView2.LargeImageList.ImageSize = new System.Drawing.Size(123, 123);
+                listView2.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
 
 
 
@@ -823,7 +825,7 @@ namespace Stand_up
 
                 image_stream.Write(imagebyte, 0, imagebyte.Length);
 
-                images2.Images.Add(row["imagem"].ToString(), new Bitmap(image_stream));
+                images1.Images.Add(row["imagem"].ToString(), new Bitmap(image_stream));
 
 
 
@@ -863,7 +865,7 @@ namespace Stand_up
 
 
 
-            DataTable dt = BLL.Clientes.queryLoad_cliente1234(guna2TextBox5.Text);
+            DataTable dt = BLL.Clientes.queryLoad_cliente1234(guna2TextBox2.Text);
 
             listView1.Clear();
             images2.Images.Clear();
@@ -884,7 +886,7 @@ namespace Stand_up
 
                 listView1.LargeImageList = images2;
 
-                listView1.LargeImageList.ImageSize = new System.Drawing.Size(123, 123);
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(200, 200);
 
 
 
@@ -930,18 +932,21 @@ namespace Stand_up
 
         private void guna2TextBox2_TextChanged_1(object sender, EventArgs e)
         {
-            if (listView1.Items.Count > 0)
-            {
+            
                 carregar_cliente_PARA_LISTVIEW12345();
-            }
+            
         }
 
         private void guna2TextBox3_TextChanged(object sender, EventArgs e)
         {
-            if (listView2.Items.Count > 0)
-            {
+           
                 carregar_cliente_PARA_LISTVIEW1234();
-            }
+           
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

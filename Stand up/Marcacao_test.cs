@@ -2595,7 +2595,7 @@ verificar_dia();
 
         private void guna2TextBox4_TextChanged(object sender, EventArgs e)
         {
-            if (listView1.Items.Count > 0)
+            if (listView3.SelectedItems.Count > 0)
             {
                 carregar_func_PARA_LISTVIEW1234();
             }
@@ -2603,7 +2603,7 @@ verificar_dia();
 
         private void guna2TextBox5_TextChanged(object sender, EventArgs e)
         {
-            if (listView2.Items.Count > 0)
+            if (listView1.SelectedItems.Count > 0)
             {
                 carregar_cliente_PARA_LISTVIEW1234();
             }

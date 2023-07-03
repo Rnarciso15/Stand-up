@@ -10,14 +10,7 @@ Aplicação:
 
 - No gerir frota ter filtro de mota e de carro
 - Corrigir a parte do inserir e editar motas
--  nas transações remodelar o design
- - Reformular design de email
-
-
-- Email meter lista de clientes
-
-- inserir funcionario enviar uma senha aleatória gerado por email ao funcionário 
-
+- Quando erra na mudança de password manda menssagebox a dizer que errou passoword
 
 
 Aplicação Problemas resolvidos:
@@ -28,3 +21,7 @@ Aplicação Problemas resolvidos:
 - Nas marcações meter labels
 - Nas marcações meter lista de clientes
 - A questão do NIB/IBAN
+- Email meter lista de clientes
+- Reformular design de email
+- nas transações remodelar o design
+- inserir funcionario enviar uma senha aleatória gerado por email ao funcionário 
