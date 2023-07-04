@@ -1342,6 +1342,9 @@ namespace Stand_up
         void carregar_marca()
         {
             guna2ComboBox1.Items.Clear();
+            guna2ComboBox2.Items.Clear();
+            guna2CheckBox3.Checked = false;
+            guna2CheckBox3.Enabled = false;
             if (guna2CheckBox2.Checked == true)
             {
 
@@ -1533,6 +1536,8 @@ namespace Stand_up
                     guna2ComboBox2.Items.Add(row["Modelo"]);
                 }
                 guna2ComboBox2.Enabled = true;
+                    guna2CheckBox3.Enabled = true;
+
                 }
                 else
                 {
@@ -1560,7 +1565,7 @@ namespace Stand_up
                         guna2ComboBox2.Items.Add(row["Modelo"]);
                     }
                     guna2ComboBox2.Enabled = true;
-
+                    guna2CheckBox3.Enabled = true;
 
 
 
@@ -1745,12 +1750,15 @@ namespace Stand_up
                 guna2CheckBox1.Checked = false;
                 label11.Visible = true;
                 guna2ComboBox6.Visible = true;
+                guna2PictureBox2.Image = Properties.Resources.car;
+
             }
             else
             {
                 guna2CheckBox1.Checked = true;
                 label11.Visible = false;
                 guna2ComboBox6.Visible = false;
+                guna2PictureBox2.Image = Properties.Resources.motorcycle;
             }
             carregar_marca();
         }
@@ -1762,12 +1770,15 @@ namespace Stand_up
                 guna2CheckBox2.Checked = false;
                 label11.Visible = false;
                 guna2ComboBox6.Visible = false;
+                guna2PictureBox2.Image = Properties.Resources.motorcycle;
             }
             else
             {
                 guna2CheckBox2.Checked = true;
                 label11.Visible = true;
                 guna2ComboBox6.Visible = true;
+                guna2PictureBox2.Image = Properties.Resources.car;
+
             }
 
             carregar_marca();
@@ -1824,84 +1835,92 @@ namespace Stand_up
        
         private void guna2Button10_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "PNG files (*.png)|*.png";
 
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            if (addCl.Count <= 11)
             {
-               string fileName= openFileDialog1.FileName;
-                
+
+                openFileDialog1.Filter = "PNG files (*.png)|*.png";
+
+                if (openFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+                    string fileName = openFileDialog1.FileName;
+
                     Image image = Image.FromFile(fileName);
-                    addCl.Add(image);         
+                    addCl.Add(image);
+
+                }
+
+
+                listView3.Clear();
+                images3.Images.Clear();
+
+                ii = 0;
+
+
+
+
+
+                foreach (Image row1 in addCl)
+
+                {
+
+
+
+                    images3.ColorDepth = ColorDepth.Depth32Bit;
+
+                    listView3.LargeImageList = images3;
+
+                    listView3.LargeImageList.ImageSize = new System.Drawing.Size(100, 100);
+
+
+
+                    byte[] imagebyte = (byte[])(imgToByteArray(row1));
+
+                    MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                    image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                    images3.Images.Add((imgToByteArray(row1)).ToString(), new Bitmap(image_stream));
+
+
+
+                    image_stream.Close();
+
+
+
+                    ListViewItem item = new ListViewItem();
+
+                    item.ImageIndex = ii;
+
+                    item.Text = ii.ToString();
+                    item.ForeColor = Color.Transparent;
+
+                    ii += 1;
+
+                    this.listView3.Items.Add(item);
+
+
+
+
+
+
+
+
+
+
+
+                }
+
+
+
+
+
 
             }
-
-
-            listView3.Clear();
-            images3.Images.Clear();
-
-            ii = 0;
-
-
-
-
-
-            foreach (Image row1 in addCl)
-
+            else
             {
-
-
-
-                images3.ColorDepth = ColorDepth.Depth32Bit;
-
-                listView3.LargeImageList = images3;
-
-                listView3.LargeImageList.ImageSize = new System.Drawing.Size(100, 100);
-
-
-
-                byte[] imagebyte = (byte[])(imgToByteArray(row1));
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images3.Images.Add((imgToByteArray(row1)).ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
-
-
-
-                ListViewItem item = new ListViewItem();
-
-                item.ImageIndex = ii;
-
-                item.Text = ii.ToString();
-                item.ForeColor = Color.Transparent;
-
-                ii += 1;
-
-                this.listView3.Items.Add(item);
-
-
-
-
-
-
-
-
-
-
-
+                MessageBox.Show("Só pode inserir no máximo 12 imagens");
             }
-
-
-
-
-
-
-
 
         }
 
@@ -1999,9 +2018,9 @@ namespace Stand_up
         private void guna2CheckBox3_CheckedChanged(object sender, EventArgs e)
         {
 
-            if (guna2TextBox3.Text.Length == 10)
+            if (guna2TextBox3.Text.Length == 10 && guna2ComboBox1.Text != "")
             {
-                if (guna2CheckBox2.Checked == true)
+                if (guna2CheckBox2.Checked == true )
                 {
 
 
@@ -2026,6 +2045,7 @@ namespace Stand_up
                         guna2ComboBox2.Items.Add(row["Modelo"]);
                     }
                     guna2ComboBox2.Enabled = true;
+                   
                 }
                 else
                 {
@@ -2057,6 +2077,7 @@ namespace Stand_up
 
 
 
+
                 }
             }
             else
@@ -2069,12 +2090,17 @@ namespace Stand_up
                 }
                 else
                 {
-                    MessageBox.Show("preencha a data antes de selecionar a Marca");
+                    MessageBox.Show("Preencha a data antes de selecionar a marca");
                     guna2ComboBox1.SelectedIndex = -1;
                 }
 
             }
 
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
 
         }
     }

@@ -577,6 +577,8 @@ namespace Stand_up
         {
             if (Form1.flagInsertFunc == true || Form1.flagInsertCliente == true)
             {
+                openFileDialog1.Filter = "PNG files (*.png)|*.png";
+
                 if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 {
                     guna2PictureBox2.ImageLocation = openFileDialog1.FileName;

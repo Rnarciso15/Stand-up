@@ -10,7 +10,8 @@ Aplicação:
 
 - No gerir frota ter filtro de mota e de carro
 - Corrigir a parte do inserir e editar motas
-- Quando erra na mudança de password manda menssagebox a dizer que errou passoword
+- Quando erra na mudança de password manda menssagebox a dizer que errou password
+- Adicionar cores 
 
 
 Aplicação Problemas resolvidos:
@@ -25,3 +26,7 @@ Aplicação Problemas resolvidos:
 - Reformular design de email
 - nas transações remodelar o design
 - inserir funcionario enviar uma senha aleatória gerado por email ao funcionário 
+-Trocar a imagem default do insert de carro para moto
+-Meter uma label no inserir imagem
+- inserir funcionario enviar uma senha aleatória gerado por email ao funcionário 
+-Corrigir o inserir quando se clica nos carros importados depois de selecionar um modelo e mudar de carro/mota 
