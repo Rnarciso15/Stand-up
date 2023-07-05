@@ -12,7 +12,8 @@ Aplicação:
 - Corrigir a parte do inserir e editar motas
 - Quando erra na mudança de password manda menssagebox a dizer que errou password
 - Adicionar cores 
-
+- Botão de ativar/desativar funcionario/cliente
+- Meter NIF nas transaçoes e filtro no historico
 
 Aplicação Problemas resolvidos:
 

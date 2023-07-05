@@ -189,17 +189,19 @@ namespace BusinessLogicLayer
                 };
                 return dal.executarReader("select * from cliente where nif = @nif and n_cliente <> @n_clinte", sqlParams);
             }
-            static public DataTable queryLoad_cliente1234(string n_cliente)
+            static public DataTable queryLoad_cliente1234(string n_cliente, bool Ativo)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
 
                 new SqlParameter("@n_cliente", "%" + n_cliente + "%" ),
-
+                new SqlParameter("@nome", "%" + n_cliente + "%" ),
+                 new SqlParameter("@ativo", Ativo ),
                 };
 
-                return dal.executarReader("select n_cliente,nome,data_nascimento,genero,email,telefone,nib,morada,nif,imagem,ativo  from cliente where n_cliente like @n_cliente ", sqlParams);
+                return dal.executarReader("select n_cliente,nome,data_nascimento,genero,email,telefone,nib,morada,nif,imagem,ativo  from cliente where n_cliente like @n_cliente  and ativo = @ativo or nome like @nome  and ativo = @ativo ", sqlParams);
             }
+           
             static public DataTable queryLoad_cliente()
             {
                 DAL dal = new DAL();
@@ -487,13 +489,13 @@ namespace BusinessLogicLayer
                 return dal.executarReader("select * from transacoes", null);
 
             }
-            static public DataTable queryFunc_Like_N_cliete(string id_cliente)
+            static public DataTable queryFunc_Like_NIF(string nif)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                new SqlParameter("@id_cliente", id_cliente + "%")
+                new SqlParameter("@nif", nif + "%")
                 };
-                return dal.executarReader("select * from transacoes where nif like @id_cliente", sqlParams);
+                return dal.executarReader("select * from transacoes where nif like @nif", sqlParams);
             }
             static public DataTable queryFunc_Like_N_Matricula(string Matricula)
             {
@@ -1004,13 +1006,15 @@ namespace BusinessLogicLayer
                     };
                 return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,morada,nif,imagem,ativo,admin from funcionario ", sqlParams);
             }
-            static public DataTable queryLoad_Func1234(string n_func)
+            static public DataTable queryLoad_Func1234(string n_func, bool ativo)
             {
                 DAL dal = new DAL();
                 SqlParameter[] sqlParams = new SqlParameter[]{
-                     new SqlParameter("@n_func", "%"+ n_func +"%")
+                     new SqlParameter("@n_func", "%"+ n_func +"%"),
+                     new SqlParameter("@nome", "%"+ n_func +"%"),
+                      new SqlParameter("@ativo", ativo ),
             };
-                return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,morada,nif,imagem,ativo,admin  from funcionario where n_func like @n_func", sqlParams);
+                return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,morada,nif,imagem,ativo,admin  from funcionario where n_func like @n_func and ativo = @ativo or nome like @nome and ativo = @ativo", sqlParams);
             }
             static public DataTable queryLoad_Func()
             {
@@ -1019,6 +1023,15 @@ namespace BusinessLogicLayer
 
                 };
                 return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,morada,nif,imagem,ativo,admin  from funcionario", sqlParams);
+            }
+
+            static public DataTable queryLoad_Func_ativo(bool ativo)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                     new SqlParameter("@ativo", ativo ),
+                };
+                return dal.executarReader("select n_func,nome,data_nascimento,genero,email,telefone,nib,morada,nif,imagem,ativo,admin  from funcionario where ativo = @ativo", sqlParams);
             }
 
             static public DataTable queryFunc_emailIgual(string email,int n_func)
@@ -1236,7 +1249,14 @@ namespace BusinessLogicLayer
                 return x;
             }
 
-
+            static public DataTable queryFunc_get_senha(int n_func)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@n_func", n_func)
+                };
+                return dal.executarReader("select senha from funcionario where  n_func = @n_func ", sqlParams);
+            }
 
         }
     }

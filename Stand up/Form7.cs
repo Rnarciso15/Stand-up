@@ -794,7 +794,7 @@ namespace Stand_up
 
 
 
-            DataTable dt = BLL.Clientes.queryLoad_cliente1234(guna2TextBox3.Text);
+            DataTable dt = BLL.Clientes.queryLoad_cliente1234(guna2TextBox3.Text,true);
 
             listView2.Clear();
             images1.Images.Clear();
@@ -865,7 +865,7 @@ namespace Stand_up
 
 
 
-            DataTable dt = BLL.Clientes.queryLoad_cliente1234(guna2TextBox2.Text);
+            DataTable dt = BLL.Clientes.queryLoad_cliente1234(guna2TextBox2.Text, true);
 
             listView1.Clear();
             images2.Images.Clear();

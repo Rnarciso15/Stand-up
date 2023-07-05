@@ -961,7 +961,7 @@ namespace Stand_up
 
                                                             if(email_eeditado == false && telefone_eeditado == false && nib_eeditado ==false && nif_eeditado == false)
                                                             {
-                                                                DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informações do Cliente " +Nome  + "?", "", MessageBoxButtons.YesNo);
+                                                                DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informações do funcionário " +Nome  + "?", "", MessageBoxButtons.YesNo);
                                                                 if (dr == DialogResult.Yes)
                                                                 {
                                                                     int x = BLL.Func.updateFunc(Convert.ToInt32(guna2TextBox10.Text), guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
@@ -1274,19 +1274,33 @@ namespace Stand_up
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            if(guna2TextBox1.Text != "")
+            if(guna2TextBox1.Text != "" && guna2TextBox12.Text != "")
             {
+                if (Hash(guna2TextBox12.Text) == BLL.Func.queryFunc_get_senha(Form5.n_func).Rows[0]["senha"].ToString())
+                {
+                    DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar a senha?", "", MessageBoxButtons.YesNo);
+                    if (dr == DialogResult.Yes)
+                    {
+                        int x = BLL.Func.senhaFunc(Hash(guna2TextBox1.Text), Form5.n_func, Hash(guna2TextBox12.Text));
+                        guna2TextBox1.Clear();
+                        guna2TextBox12.Clear();
 
-            DialogResult dr = MessageBox.Show("Tem a certexa que quer alterar a senha?", "", MessageBoxButtons.YesNo);
-            if (dr == DialogResult.Yes)
-            {
-                int x = BLL.Func.senhaFunc(Hash(guna2TextBox1.Text), Form5.n_func, Hash(guna2TextBox12.Text));
-                guna2TextBox1.Clear();
-                guna2TextBox12.Clear();
 
-
+                    }
                 }
+                else
+                {
+                    MessageBox.Show("Senha incorreta");
+                    guna2TextBox1.Clear();
+                    guna2TextBox12.Clear();
+                }
+            
+            
 
+            }
+            else
+            {
+                MessageBox.Show("Preencha todos os campos");
             }
 
 

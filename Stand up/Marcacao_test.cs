@@ -1382,7 +1382,7 @@ namespace Stand_up
 
 
 
-            DataTable dt = BLL.Func.queryLoad_Func1234(guna2TextBox4.Text);
+            DataTable dt = BLL.Func.queryLoad_Func1234(guna2TextBox4.Text,true);
 
             listView1.Clear();
             images1.Images.Clear();
@@ -1453,7 +1453,7 @@ namespace Stand_up
 
 
 
-            DataTable dt = BLL.Func.queryLoad_Func();
+            DataTable dt = BLL.Func.queryLoad_Func_ativo(true);
 
             listView1.Clear();
             images1.Images.Clear();
@@ -1525,7 +1525,7 @@ namespace Stand_up
 
 
 
-            DataTable dt = BLL.Clientes.queryLoad_cliente1234(guna2TextBox5.Text);
+            DataTable dt = BLL.Clientes.queryLoad_cliente1234(guna2TextBox5.Text,true);
 
             listView2.Clear();
             images2.Images.Clear();
