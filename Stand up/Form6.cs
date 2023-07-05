@@ -33,6 +33,7 @@ namespace Stand_up
                 guna2DataGridView1.DataSource = BLL.Func.Load();
             }
             timer1.Start();
+            guna2DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
         int t = 0;
         int a = 0;
