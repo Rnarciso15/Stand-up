@@ -314,13 +314,15 @@ namespace Stand_up
                 }
                 if (ativo == "True")
                 {
-                    guna2ImageButton1.Image = Properties.Resources.flash1;
+                        guna2GroupBox4.Text = "Ativo";
+                        guna2ImageButton1.Image = Properties.Resources.flash1;
                     t = 0;
                     Ativo = true;
 
                 }
                 else
                 {
+                        guna2GroupBox4.Text = "Inativo";
                     guna2ImageButton1.Image = Properties.Resources.flash_black;
                     t = 1;
                     Ativo = false;
@@ -404,7 +406,7 @@ namespace Stand_up
                 for (int j = 0; j < guna2TextBox5.Text.Length; j++)
                 {
 
-                    if (guna2TextBox5.Text[j] == '0' || guna2TextBox5.Text[j] == '1' || guna2TextBox5.Text[j] == '2' || guna2TextBox5.Text[j] == '3' || guna2TextBox5.Text[j] == '4' || guna2TextBox5.Text[j] == '5' || guna2TextBox5.Text[j] == '6' || guna2TextBox5.Text[j] == '7' || guna2TextBox5.Text[j] == '8' || guna2TextBox5.Text[j] == '9'|| guna2TextBox5.Text[3] == ' ' || guna2TextBox5.Text[6] == ' ')
+                    if (guna2TextBox5.Text[j] == '0' || guna2TextBox5.Text[j] == '1' || guna2TextBox5.Text[j] == '2' || guna2TextBox5.Text[j] == '3' || guna2TextBox5.Text[j] == '4' || guna2TextBox5.Text[j] == '5' || guna2TextBox5.Text[j] == '6' || guna2TextBox5.Text[j] == '7' || guna2TextBox5.Text[j] == '8' || guna2TextBox5.Text[j] == '9')
                     {
 
                     }
@@ -412,26 +414,14 @@ namespace Stand_up
                     {
 
                         guna2TextBox5.Clear();
-                        MessageBox.Show("Insira um Nº de telefone válido ");
+                        MessageBox.Show("Insira um telefone válido ");
                     }
 
                 }
 
 
-        
-            if (guna2TextBox5.Text.Length < 3)
-            {
-                h = 0;
             }
-            if (guna2TextBox5.Text.Length == 3 || guna2TextBox5.Text.Length == 7)
-            {
-                if (h != 1)
-                {
-                    guna2TextBox5.Text += " ";
-                    guna2TextBox5.Select(guna2TextBox5.Text.Length, 0);
-                }
-            }
-            }
+
         }
         public static bool IsValidEmail(string email)
         {
@@ -679,7 +669,7 @@ namespace Stand_up
                             if (guna2TextBox4.Text.Length == 10)
                             {
 
-                                if (guna2TextBox5.Text.Length == 11) 
+                                if (guna2TextBox5.Text.Length == 9) 
                                 {
 
                                     if (guna2TextBox2.Text != "")
@@ -858,7 +848,7 @@ namespace Stand_up
                                 if (guna2TextBox2.Text != "")
                                 {
 
-                                    if (guna2TextBox5.Text.Length == 11)
+                                    if (guna2TextBox5.Text.Length == 9)
                                     {
 
                                         if (guna2TextBox6.Text.Length == 21)
@@ -1046,7 +1036,7 @@ namespace Stand_up
                                 if (guna2TextBox2.Text != "")
                                 {
 
-                                    if (guna2TextBox5.Text.Length == 11)
+                                    if (guna2TextBox5.Text.Length == 9)
                                     {
 
                                         if (guna2TextBox6.Text.Length == 21)

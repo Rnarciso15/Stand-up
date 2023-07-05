@@ -26,6 +26,7 @@ namespace Stand_up
         private void Form9_Load(object sender, EventArgs e)
         {
             guna2DataGridView1.DataSource = BLL.transacoes.loadTrans();
+            guna2DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             timer1.Start();
         }
 
