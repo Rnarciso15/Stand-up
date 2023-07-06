@@ -1258,6 +1258,15 @@ namespace BusinessLogicLayer
                 return dal.executarReader("select senha from funcionario where  n_func = @n_func ", sqlParams);
             }
 
+            static public DataTable queryFunc_get_id(string nif)
+            {
+                DAL dal = new DAL();
+                SqlParameter[] sqlParams = new SqlParameter[]{
+                new SqlParameter("@nif", nif)
+                };
+                return dal.executarReader("select n_func from funcionario where nif = @nif ", sqlParams);
+            }
+
         }
     }
    

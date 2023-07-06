@@ -79,7 +79,7 @@ namespace Stand_up
 
                 if (d == 1)
             {
-                guna2DataGridView1.DataSource = BLL.transacoes.queryFunc_Like_N_cliete(guna2TextBox1.Text);
+                guna2DataGridView1.DataSource = BLL.transacoes.queryFunc_Like_NIF(guna2TextBox1.Text);
             }
             if (t == 1)
             {

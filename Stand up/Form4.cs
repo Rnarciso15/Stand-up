@@ -706,7 +706,7 @@ namespace Stand_up
 
 
                                                                             string senha = GerarSenha();
-                                                                            MessageBox.Show(senha);
+                                                                            string id_novoFunc=BLL.Func.queryFunc_get_id(guna2TextBox8.Text).Rows[0]["n_func"].ToString();
                                                                             DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo funcionário ?", "", MessageBoxButtons.YesNo);
                                                                             if (dr == DialogResult.Yes)
                                                                             {
@@ -727,7 +727,7 @@ namespace Stand_up
                                                                                         message.From = new MailAddress(fromemail);
                                                                                         message.To.Add(new MailAddress(guna2TextBox2.Text));
                                                                                         message.Subject = guna2TextBox1.Text;
-                                                                                        string texto = "Bom dia Sr " + guna2TextBox9.Text + "," + "\r\n" + "a sua senha para efetuar login é esta "+senha+"\r\n" + "\r\n" + "\r\n" + "\r\n" + "Obrigado, \r\n" + "Stand Up";
+                                                                                        string texto = "Bom dia Sr. " + guna2TextBox9.Text + "," + "\r\n" + "a sua senha para efetuar login é "+senha+ " e o seu ID é " + id_novoFunc +". Não se esqueça de alterar a password da sua conta ao iniciar sessão."+ "\r\n" + "\r\n" + "\r\n" + "\r\n" + "Obrigado, \r\n" + "Stand Up";
                                                                                         message.Body = "<html><body>" + texto + "</body></html>";
                                                                                         message.IsBodyHtml = true;
 

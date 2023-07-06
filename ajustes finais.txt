@@ -11,7 +11,8 @@ Aplicação:
 - No gerir frota ter filtro de mota e de carro
 - Corrigir a parte do inserir e editar motas
 - Adicionar cores 
-- Botão de ativar/desativar funcionario/cliente
+-No editar funcionario ao selecionar ele diz que o telefone está invalido
+
 
 Aplicação Problemas resolvidos:
 
@@ -30,3 +31,4 @@ Aplicação Problemas resolvidos:
 - inserir funcionario enviar uma senha aleatória gerado por email ao funcionário 
 -Corrigir o inserir quando se clica nos carros importados depois de selecionar um modelo e mudar de carro/mota 
 - Quando erra na mudança de password manda menssagebox a dizer que errou password
+- Botão de ativar/desativar funcionario/cliente
