@@ -63,6 +63,16 @@ namespace Stand_up.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _5860fcc24fc7f3474eb80dbe_1613867145 {
+            get {
+                object obj = ResourceManager.GetObject("5860fcc24fc7f3474eb80dbe-1613867145", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Alfa_Romeo {
             get {
                 object obj = ResourceManager.GetObject("Alfa_Romeo", resourceCulture);
@@ -76,6 +86,16 @@ namespace Stand_up.Properties {
         internal static System.Drawing.Bitmap amarelo {
             get {
                 object obj = ResourceManager.GetObject("amarelo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Aprilia_Logo_4029162585 {
+            get {
+                object obj = ResourceManager.GetObject("Aprilia-Logo-4029162585", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +123,29 @@ namespace Stand_up.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Bajaj_logo_980x972_2768014893 {
+            get {
+                object obj = ResourceManager.GetObject("Bajaj-logo-980x972-2768014893", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bege {
             get {
                 object obj = ResourceManager.GetObject("bege", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap benelli_2_logo_png_transparent_2972132350 {
+            get {
+                object obj = ResourceManager.GetObject("benelli-2-logo-png-transparent-2972132350", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,6 +176,16 @@ namespace Stand_up.Properties {
         internal static System.Drawing.Bitmap branco {
             get {
                 object obj = ResourceManager.GetObject("branco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap c7f0e26290d330fba9f3e6c4fcff4b9f {
+            get {
+                object obj = ResourceManager.GetObject("c7f0e26290d330fba9f3e6c4fcff4b9f", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -323,6 +373,16 @@ namespace Stand_up.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap italjet_logo_png_transparent_1689991611 {
+            get {
+                object obj = ResourceManager.GetObject("italjet-logo-png-transparent-1689991611", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap jaguar {
             get {
                 object obj = ResourceManager.GetObject("jaguar", resourceCulture);
@@ -343,9 +403,49 @@ namespace Stand_up.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap kawasaki_logo_75837122 {
+            get {
+                object obj = ResourceManager.GetObject("kawasaki_logo-75837122", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap keeway_1562184292 {
+            get {
+                object obj = ResourceManager.GetObject("keeway-1562184292", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap kia {
             get {
                 object obj = ResourceManager.GetObject("kia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ktm_racing_logo_png_transparent_3311080751 {
+            get {
+                object obj = ResourceManager.GetObject("ktm-racing-logo-png-transparent-3311080751", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lambretta_logo_png_transparent_3171900278 {
+            get {
+                object obj = ResourceManager.GetObject("lambretta-logo-png-transparent-3171900278", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -406,6 +506,16 @@ namespace Stand_up.Properties {
         internal static System.Drawing.Bitmap logo {
             get {
                 object obj = ResourceManager.GetObject("logo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap logo_ducati_png_ducati_logo_5000_2749117700 {
+            get {
+                object obj = ResourceManager.GetObject("logo-ducati-png-ducati-logo-5000-2749117700", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -603,6 +713,16 @@ namespace Stand_up.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Royal_Enfield_Embleme_1536x868_675057394 {
+            get {
+                object obj = ResourceManager.GetObject("Royal-Enfield-Embleme-1536x868-675057394", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search {
             get {
                 object obj = ResourceManager.GetObject("search", resourceCulture);
@@ -673,6 +793,16 @@ namespace Stand_up.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Suzuki_logo_296106882 {
+            get {
+                object obj = ResourceManager.GetObject("Suzuki-logo-296106882", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap tesla {
             get {
                 object obj = ResourceManager.GetObject("tesla", resourceCulture);
@@ -706,6 +836,16 @@ namespace Stand_up.Properties {
         internal static System.Drawing.Bitmap toyota {
             get {
                 object obj = ResourceManager.GetObject("toyota", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Triumph_Logo_2_4101824269 {
+            get {
+                object obj = ResourceManager.GetObject("Triumph_Logo_2-4101824269", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -756,6 +896,36 @@ namespace Stand_up.Properties {
         internal static System.Drawing.Bitmap volvo {
             get {
                 object obj = ResourceManager.GetObject("volvo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Yamaha_Logo_PNG_Image_517579999 {
+            get {
+                object obj = ResourceManager.GetObject("Yamaha-Logo-PNG-Image-517579999", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zero_motorcycle_logo_lama_e1527992884972_862356834 {
+            get {
+                object obj = ResourceManager.GetObject("zero-motorcycle-logo-lama-e1527992884972-862356834", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zundapp_logo_EE0E4E2AA3_seeklogo {
+            get {
+                object obj = ResourceManager.GetObject("zundapp-logo-EE0E4E2AA3-seeklogo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

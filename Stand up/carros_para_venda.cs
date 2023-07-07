@@ -27,6 +27,7 @@ namespace Stand_up
         int k=0;
         int l = 0;
         int j = 0;
+        int m = 0;
         private void carros_para_venda_Load(object sender, EventArgs e)
         {
             carregar_car_PARA_LISTVIEW();
@@ -42,7 +43,18 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryCarro4(Combustivel, Cor,false);
+            DataTable dr = BLL.veiculos.queryCarro4(Combustivel, Cor,false, false);
+
+
+            if (m == 0)
+            {
+                dr = BLL.veiculos.queryCarro4(Combustivel, Cor, false, false);
+            }
+            else
+            {
+                dr = BLL.veiculos.queryCarro4(Combustivel, Cor, false, true);
+            }
+
 
             listView1.Clear();
             images.Images.Clear();
@@ -109,12 +121,21 @@ namespace Stand_up
         }
         void carregar_car_PARA_LISTVIEW6()
         {
+            DataTable dr = BLL.veiculos.queryCarro(Cor, Marca, false,false);
 
 
+            if (m == 0)
+            {
+                 dr = BLL.veiculos.queryCarro(Cor, Marca, false,false);
+
+            }
+            else
+            {
+                dr = BLL.veiculos.queryCarro(Cor, Marca, false,true);
+
+            }
 
 
-
-            DataTable dr = BLL.veiculos.queryCarro(Cor, Marca,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -186,7 +207,16 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryCarro3(Combustivel,Marca ,Cor,false);
+            DataTable dr = BLL.veiculos.queryCarro3(Combustivel,Marca ,Cor,false,false);
+
+            if (m == 0)
+            {
+                dr = BLL.veiculos.queryCarro3(Combustivel, Marca, Cor, false,false);
+            }
+            else
+            {
+                dr = BLL.veiculos.queryCarro3(Combustivel, Marca, Cor, false,true);
+            }
 
             listView1.Clear();
             images.Images.Clear();
@@ -255,10 +285,19 @@ namespace Stand_up
         {
 
 
+            DataTable dr = BLL.veiculos.queryCarro2(Combustivel, Marca, false,false);
+
+            if (m == 0)
+            {
+                 dr = BLL.veiculos.queryCarro2(Combustivel, Marca, false,false);
+            }
+            else
+            {
+                dr = BLL.veiculos.queryCarro2(Combustivel, Marca, false,true);
+            }
 
 
 
-            DataTable dr = BLL.veiculos.queryCarro2(Combustivel, Marca,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -331,7 +370,9 @@ namespace Stand_up
 
 
             DataTable dr = BLL.veiculos.queryLoad_veiculo(false);
-          
+
+
+
             listView1.Clear();
             images.Images.Clear();
             int i = 0;
@@ -396,6 +437,91 @@ namespace Stand_up
 
         }
 
+        void carregar_car_PARA_LISTVIEW_mota()
+        {
+
+
+
+
+
+            DataTable dr = BLL.veiculos.queryLoad_veiculo_mota(false, false);
+
+            if (m == 0)
+            {
+                dr = BLL.veiculos.queryLoad_veiculo_mota(false, false);
+            }
+            else
+            {
+                dr = BLL.veiculos.queryLoad_veiculo_mota(false, true);
+            }
+
+
+
+            listView1.Clear();
+            images.Images.Clear();
+            int i = 0;
+
+
+
+
+
+            foreach (DataRow row in dr.Rows)
+
+            {
+
+
+
+                images.ColorDepth = ColorDepth.Depth32Bit;
+
+                listView1.LargeImageList = images;
+
+                listView1.LargeImageList.ImageSize = new System.Drawing.Size(255, 255);
+
+
+
+                byte[] imagebyte = (byte[])(row[9]);
+
+                MemoryStream image_stream = new MemoryStream(imagebyte);
+
+                image_stream.Write(imagebyte, 0, imagebyte.Length);
+
+                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
+
+
+
+                image_stream.Close();
+
+
+
+                ListViewItem item = new ListViewItem();
+
+                item.ImageIndex = i;
+
+                item.Text = row["Matricula"].ToString();
+
+                i += 1;
+
+                this.listView1.Items.Add(item);
+
+
+
+                listView1.ForeColor = Color.Black;
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+        }
+
+
         void carregar_car_PARA_LISTVIEW1()
         {
 
@@ -403,7 +529,16 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryGasolina_veiculo(Combustivel,false);
+            DataTable dr = BLL.veiculos.queryGasolina_veiculo(Combustivel,false, false);
+
+            if (m == 0)
+            {
+                dr = BLL.veiculos.queryGasolina_veiculo(Combustivel, false, false);
+            }
+            else
+            {
+                dr = BLL.veiculos.queryGasolina_veiculo(Combustivel, false, true);
+            }
 
             listView1.Clear();
             images.Images.Clear();
@@ -475,7 +610,17 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca(Marca, false);
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca(Marca, false,false);
+
+
+            if (m == 0)
+            {
+                dr = BLL.veiculos.querymaior_quiilometros_Marca(Marca, false, false);
+            }
+            else
+            {
+                dr = BLL.veiculos.querymaior_quiilometros_Marca(Marca, false, true);
+            }
 
             listView1.Clear();
             images.Images.Clear();
@@ -691,7 +836,16 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca_cor(Marca,Cor,false);
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca_cor(Marca,Cor,false,false);
+
+            if (m == 0)
+            {
+                dr = BLL.veiculos.querymaior_quiilometros_Marca_cor(Marca, Cor, false,true);
+            }
+            else
+            {
+                dr = BLL.veiculos.querymaior_quiilometros_Marca_cor(Marca, Cor, false,true);
+            }
 
             listView1.Clear();
             images.Images.Clear();
@@ -763,7 +917,16 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca_combustivel(Marca, Combustivel,false);
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca_combustivel(Marca, Combustivel,false, false);
+
+            if (m == 0)
+            {
+                dr = BLL.veiculos.querymaior_quiilometros_Marca_combustivel(Marca, Combustivel, false, false);
+            }
+            else
+            {
+                dr = BLL.veiculos.querymaior_quiilometros_Marca_combustivel(Marca, Combustivel, false, true); ;
+            }
 
             listView1.Clear();
             images.Images.Clear();
@@ -908,7 +1071,16 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymenor_quiilometros_Marca(Marca, false);
+            DataTable dr = BLL.veiculos.querymenor_quiilometros_Marca(Marca, false, false);
+
+            if (m == 0)
+            {
+                dr = BLL.veiculos.querymenor_quiilometros_Marca(Marca, false, false);
+            }
+            else
+            {
+                dr = BLL.veiculos.querymenor_quiilometros_Marca(Marca, false, true);
+            }
 
             listView1.Clear();
             images.Images.Clear();
@@ -1125,7 +1297,16 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymenor_quiilometros_Marca_cor(Marca, Cor,false);
+            DataTable dr = BLL.veiculos.querymenor_quiilometros_Marca_cor(Marca, Cor,false, false);
+
+            if (m == 0)
+            {
+                dr = BLL.veiculos.querymenor_quiilometros_Marca_cor(Marca, Cor, false, false);
+            }
+            else
+            {
+                dr = BLL.veiculos.querymenor_quiilometros_Marca_cor(Marca, Cor, false, true);
+            }
 
             listView1.Clear();
             images.Images.Clear();
@@ -1198,7 +1379,17 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymenor_quiilometros_Marca_combustivel(Marca, Combustivel,false);
+            DataTable dr = BLL.veiculos.querymenor_quiilometros_Marca_combustivel(Marca, Combustivel,false, false);
+
+
+            if (m == 0)
+            {
+                dr = BLL.veiculos.querymenor_quiilometros_Marca_combustivel(Marca, Combustivel, false, false);
+            }
+            else
+            {
+                dr = BLL.veiculos.querymenor_quiilometros_Marca_combustivel(Marca, Combustivel, false, true);
+            }
 
             listView1.Clear();
             images.Images.Clear();
@@ -1342,7 +1533,16 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros(false);
+            DataTable dr = BLL.veiculos.querymaior_quiilometros(false, false);
+
+            if (m == 0)
+            {
+                dr = BLL.veiculos.querymaior_quiilometros(false, false);
+            }
+            else
+            {
+                dr = BLL.veiculos.querymaior_quiilometros(false, true);
+            }
 
             listView1.Clear();
             images.Images.Clear();
@@ -1414,7 +1614,16 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryMenor_quiilometros(false);
+            DataTable dr = BLL.veiculos.queryMenor_quiilometros(false,false);
+
+            if (m == 0)
+            {
+                dr = BLL.veiculos.queryMenor_quiilometros(false, false);
+            }
+            else
+            {
+                dr = BLL.veiculos.queryMenor_quiilometros(false, true);
+            }
 
             listView1.Clear();
             images.Images.Clear();
@@ -1485,10 +1694,17 @@ namespace Stand_up
         {
 
 
+            DataTable dr = BLL.veiculos.queryMarca_veiculo(Marca, false, false);
 
-
-
-            DataTable dr = BLL.veiculos.queryMarca_veiculo(Marca, false);
+            if (m == 0)
+            {
+                 dr = BLL.veiculos.queryMarca_veiculo(Marca, false,false);
+            }
+            else
+            {
+                dr = BLL.veiculos.queryMarca_veiculo(Marca, false, true);
+            }
+        
 
             listView1.Clear();
             images.Images.Clear();
@@ -1554,6 +1770,8 @@ namespace Stand_up
 
         }
 
+ 
+
         void carregar_car_PARA_LISTVIEW5()
         {
 
@@ -1561,7 +1779,16 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryCor_veiculo(Cor,false);
+            DataTable dr = BLL.veiculos.queryCor_veiculo(Cor,false, false);
+
+            if (m == 0)
+            {
+                dr = BLL.veiculos.queryCor_veiculo(Cor, false, false);
+            }
+            else
+            {
+                dr = BLL.veiculos.queryCor_veiculo(Cor, false, true);
+            }
 
             listView1.Clear();
             images.Images.Clear();
@@ -1722,6 +1949,7 @@ namespace Stand_up
             Marca = "Alfa Romeo";
             l = 1;
             funcoesCarregadas = false;
+            m = 0;
         }
 
         private void audiToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1729,6 +1957,8 @@ namespace Stand_up
             Marca = "Audi";
             l = 1;
             funcoesCarregadas = false;
+            m = 0;
+
         }
 
         private void bMWToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1736,6 +1966,8 @@ namespace Stand_up
             funcoesCarregadas = false;
             Marca = "BMW";
             l = 1;
+            m = 0;
+
         }
 
         private void chevroletToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1743,6 +1975,8 @@ namespace Stand_up
             funcoesCarregadas = false;
             Marca = "Chevrolet";
             l = 1;
+            m = 0;
+
         }
 
         private void citroënToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1750,6 +1984,8 @@ namespace Stand_up
             funcoesCarregadas = false;
             Marca = "Citroën";
             l = 1;
+            m = 0;
+
         }
 
         private void cupraToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1757,18 +1993,24 @@ namespace Stand_up
             funcoesCarregadas = false;
             Marca = "Cupra";
             l = 1;
+            m = 0;
+
         }
 
         private void daciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
             Marca = "Dacia";
+            m = 0;
+
             l = 1;
         }
 
         private void fiatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
+            m = 0;
+
             Marca = "Fiat";
             l = 1;
         }
@@ -1777,12 +2019,16 @@ namespace Stand_up
         {
             funcoesCarregadas = false;
             Marca = "Ford";
+            m = 0;
+
             l = 1;
         }
 
         private void hondaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
+            m = 0;
+
             Marca = "Honda";
             l = 1;
         }
@@ -1790,6 +2036,8 @@ namespace Stand_up
         private void hyondaiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
+            m = 0;
+
             Marca = "Hyundai";
             l = 1;
         }
@@ -1798,6 +2046,8 @@ namespace Stand_up
         {
             funcoesCarregadas = false;
             Marca = "Jaguar";
+            m = 0;
+
             l = 1;
         }
 
@@ -1805,12 +2055,16 @@ namespace Stand_up
         {
             funcoesCarregadas = false;
             Marca = "Jeep";
+            m = 0;
+
             l = 1;
         }
 
         private void kiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
+            m = 0;
+
             Marca = "Kia";
             l = 1;
         }
@@ -1819,6 +2073,8 @@ namespace Stand_up
         {
             funcoesCarregadas = false;
             Marca = "Land Rover";
+            m = 0;
+
             l = 1;
         }
 
@@ -1826,6 +2082,8 @@ namespace Stand_up
         {
             funcoesCarregadas = false;
             Marca = "Lexus";
+            m = 0;
+
             l = 1;
         }
 
@@ -1834,18 +2092,24 @@ namespace Stand_up
             funcoesCarregadas = false;
             Marca = "Mazda";
             l = 1;
+            m = 0;
+
         }
 
         private void mercedesBenzToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
             Marca = "Mercedes-Benz";
+            m = 0;
+
             l = 1;
         }
 
         private void miniToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
+            m = 0;
+
             Marca = "Mini";
             l = 1;
         }
@@ -1853,6 +2117,8 @@ namespace Stand_up
         private void mitsubishiToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
+            m = 0;
+
             Marca = "Mitsubishi";
             l = 1;
         }
@@ -1860,6 +2126,8 @@ namespace Stand_up
         private void nissanToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
+            m = 0;
+
             Marca = "Nissan";
             l = 1;
         }
@@ -1867,6 +2135,8 @@ namespace Stand_up
         private void opelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
+            m = 0;
+
             Marca = "Opel";
             l = 1;
         }
@@ -1876,6 +2146,8 @@ namespace Stand_up
 
             funcoesCarregadas = false;
             Marca = "Peugeot";
+            m = 0;
+
             l = 1;
         }
 
@@ -1883,12 +2155,16 @@ namespace Stand_up
         {
             funcoesCarregadas = false;
             Marca = "Renault";
+            m = 0;
+
             l = 1;
         }
 
         private void seatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
+            m = 0;
+
             Marca = "Seat";
             l = 1;
         }
@@ -1897,6 +2173,8 @@ namespace Stand_up
         {
             funcoesCarregadas = false;
             Marca = "Skoda";
+            m = 0;
+
             l = 1;
         }
 
@@ -1904,6 +2182,8 @@ namespace Stand_up
         {
             funcoesCarregadas = false;
             Marca = "Smart";
+            m = 0;
+
             l = 1;
         }
 
@@ -1911,6 +2191,8 @@ namespace Stand_up
         {
             funcoesCarregadas = false;
             Marca = "Tesla";
+            m = 0;
+
             l = 1;
         }
 
@@ -1918,12 +2200,16 @@ namespace Stand_up
         {
             funcoesCarregadas = false;
             Marca = "Toyota";
+            m = 0;
+
             l = 1;
         }
 
         private void volkswagenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
+            m = 0;
+
             Marca = "Volkswagen";
             l = 1;
         }
@@ -1931,6 +2217,8 @@ namespace Stand_up
         private void volvoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
+            m = 0;
+
             Marca = "Volvo";
             l = 1;
         }
@@ -2022,9 +2310,14 @@ namespace Stand_up
             }
             if (l == 3 && k == 3 && j == 3 && funcoesCarregadas == false || l == 0 && k == 3 && j == 3 && funcoesCarregadas == false || l == 3 && k == 0 && j == 3 && funcoesCarregadas == false || l == 3 && k == 3 && j == 0 && funcoesCarregadas == false || l == 0 && k == 3 && j == 0 && funcoesCarregadas == false || l == 0 && k == 0 && j == 3 && funcoesCarregadas == false || l == 3 && k == 0 && j == 0 && funcoesCarregadas == false)
             {
-                carregar_car_PARA_LISTVIEW();
+                carregar_car_PARA_LISTVIEW_mota();
                 funcoesCarregadas = true;
+
+                
             }
+
+
+          
 
 
             if (flagMaior == false && j == 0 && k == 0 && l == 1)
@@ -2217,6 +2510,7 @@ namespace Stand_up
         {
             funcoesCarregadas = false;
             l = 3;
+            m = 0;
         }
 
         private void todosToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -2236,12 +2530,185 @@ namespace Stand_up
             k = 0;
             j = 0;
             l = 0;
+            m = 0;
             carregar_car_PARA_LISTVIEW();
         }
 
         private void históricoDeTransaçõesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1.flagHistTransacao = true;
+        }
+
+        private void motoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void apriliaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Aprilia";
+            m = 1;
+            funcoesCarregadas = false;
+            l = 1;
+        }
+
+        private void bajajToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Bajaj";
+            m = 1;
+            funcoesCarregadas = false;
+            l = 1;
+        }
+
+        private void bMWToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Marca = "BMW";
+            m = 1;
+            l = 1;
+            funcoesCarregadas = false;
+        }
+
+        private void benelliToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Benelli";
+            m = 1;
+            funcoesCarregadas = false;
+            l = 1;
+        }
+
+        private void ducatiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Ducati";
+            m = 1;
+            funcoesCarregadas = false;
+            l = 1;
+        }
+
+        private void hondaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Marca = "Honda";
+            m = 1;
+            l = 1;
+            funcoesCarregadas = false;
+        }
+
+        private void italjetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Italjet";
+            m = 1;
+            l = 1;
+            funcoesCarregadas = false;
+        }
+
+        private void indianMotorcycleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Indian Motorcycle";
+            m = 1;
+            l = 1;
+            funcoesCarregadas = false;
+        }
+
+        private void kawasakiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Kawasaki";
+            m = 1;
+            l = 1;
+            funcoesCarregadas = false;
+        }
+
+        private void keewayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Keeway";
+            m = 1;
+            funcoesCarregadas = false;
+            l = 1;
+        }
+
+        private void kTMToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "KTM";
+            m = 1;
+            l = 1;
+            funcoesCarregadas = false;
+        }
+
+        private void lambrettaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Lambretta";
+            m = 1;
+            l = 1;
+            funcoesCarregadas = false;
+        }
+
+        private void vespaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Vespa";
+            m = 1;
+            l = 1;
+            funcoesCarregadas = false;
+        }
+
+        private void royalEnfieldToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Royal Enfield";
+            m = 1;
+            l = 1;
+            funcoesCarregadas = false;
+        }
+
+        private void peugeotMotocyclesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Peugeot Motorcycles";
+            m = 1;
+            l = 1;
+            funcoesCarregadas = false;
+        }
+
+        private void suzukiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Suzuki";
+            l = 1;
+            m = 1;
+            funcoesCarregadas = false;
+        }
+
+        private void triumphToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Triumph";
+            m = 1;
+            l = 1;
+            funcoesCarregadas = false;
+        }
+
+        private void yamahaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Yamaha";
+            m = 1;
+            l = 1;
+            funcoesCarregadas = false;
+        }
+
+        private void zeroMotorcyclesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Zero Motorcycles";
+            m = 1;
+            l = 1;
+            funcoesCarregadas = false;
+        }
+
+        private void zündappToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Marca = "Zündapp";
+            m = 1;
+            l = 1;
+            funcoesCarregadas = false;
+        }
+
+        private void todasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            funcoesCarregadas = false;
+            l = 3;
+            m = 1;
         }
     }
 }

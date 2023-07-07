@@ -124,6 +124,12 @@
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ktm-racing-logo-png-transparent-3311080751" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\ktm-racing-logo-png-transparent-3311080751.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="profile-user1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\profile-user1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="logout (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\logout (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -142,8 +148,8 @@
   <data name="smart" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\smart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="profile-user1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\profile-user1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tesla" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Marcas\tesla.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="hyuandai" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\hyuandai.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -153,6 +159,9 @@
   </data>
   <data name="amarelo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\amarelo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="italjet-logo-png-transparent-1689991611" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\italjet-logo-png-transparent-1689991611.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="peugeut" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\peugeut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,11 +181,20 @@
   <data name="BMW" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\BMW.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="keeway-1562184292" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\keeway-1562184292.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Aprilia-Logo-4029162585" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Aprilia-Logo-4029162585.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="lexus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\lexus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Mini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\Mini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="c7f0e26290d330fba9f3e6c4fcff4b9f" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\c7f0e26290d330fba9f3e6c4fcff4b9f.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bege" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\bege.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,17 +205,23 @@
   <data name="lata-de-lixo11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\lata-de-lixo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="logo-ducati-png-ducati-logo-5000-2749117700" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\logo-ducati-png-ducati-logo-5000-2749117700.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="vermelho" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\vermelho.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cupra" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\cupra.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Bajaj-logo-980x972-2768014893" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Bajaj-logo-980x972-2768014893.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="maxda" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\maxda.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="zero-motorcycle-logo-lama-e1527992884972-862356834" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\zero-motorcycle-logo-lama-e1527992884972-862356834.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="jaguar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\jaguar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -207,6 +231,9 @@
   </data>
   <data name="seat" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\seat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kawasaki_logo-75837122" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\kawasaki_logo-75837122.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="frod" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\frod.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -220,11 +247,23 @@
   <data name="rosa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\rosa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="nissan" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\nissan.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fiat" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\fiat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="benelli-2-logo-png-transparent-2972132350" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\benelli-2-logo-png-transparent-2972132350.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Royal-Enfield-Embleme-1536x868-675057394" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Royal-Enfield-Embleme-1536x868-675057394.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Triumph_Logo_2-4101824269" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Triumph_Logo_2-4101824269.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="branco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\branco.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -250,8 +289,8 @@
   <data name="todascores" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\todascores.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tesla" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\Marcas\tesla.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="preto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\preto.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -286,6 +325,9 @@
   <data name="Sell_And_Buy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Sell_And_Buy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="5860fcc24fc7f3474eb80dbe-1613867145" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\5860fcc24fc7f3474eb80dbe-1613867145.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="correct11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\correct1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -295,11 +337,14 @@
   <data name="show1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\show1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Yamaha-Logo-PNG-Image-517579999" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Yamaha-Logo-PNG-Image-517579999.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="castanho" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\castanho.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="citroen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\Marcas\citroen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="motorcycle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\motorcycle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pdf-file" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\pdf-file.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -307,14 +352,20 @@
   <data name="text_drive_appoiment" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\text_drive_appoiment.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="user" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\user.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="citroen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Marcas\citroen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="verde" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\verde.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cinzento" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\cinzento.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lambretta-logo-png-transparent-3171900278" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\lambretta-logo-png-transparent-3171900278.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Suzuki-logo-296106882" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Suzuki-logo-296106882.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="land rover" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Marcas\land rover.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -325,7 +376,7 @@
   <data name="azul" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\azul.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="motorcycle" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\motorcycle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="zundapp-logo-EE0E4E2AA3-seeklogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\zundapp-logo-EE0E4E2AA3-seeklogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

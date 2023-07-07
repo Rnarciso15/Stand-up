@@ -91,7 +91,27 @@ namespace Stand_up
             this.volkswagenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.volvoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.motoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.todasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.apriliaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bajajToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bMWToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.benelliToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ducatiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.hondaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.italjetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.indianMotorcycleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kawasakiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.keewayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kTMToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lambrettaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.vespaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.royalEnfieldToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.peugeotMotocyclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.suzukiToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.triumphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.yamahaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zeroMotorcyclesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.zündappToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.limparFiltrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.históricoDeTransaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -359,7 +379,7 @@ namespace Stand_up
             this.volvoToolStripMenuItem});
             this.carroToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.carroToolStripMenuItem.Name = "carroToolStripMenuItem";
-            this.carroToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.carroToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.carroToolStripMenuItem.Text = "Carro";
             this.carroToolStripMenuItem.Click += new System.EventHandler(this.carroToolStripMenuItem_Click);
             // 
@@ -367,7 +387,7 @@ namespace Stand_up
             // 
             this.todosToolStripMenuItem.Image = global::Stand_up.Properties.Resources.car;
             this.todosToolStripMenuItem.Name = "todosToolStripMenuItem";
-            this.todosToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.todosToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.todosToolStripMenuItem.Text = "Todos";
             this.todosToolStripMenuItem.Click += new System.EventHandler(this.todosToolStripMenuItem_Click);
             // 
@@ -375,7 +395,7 @@ namespace Stand_up
             // 
             this.bMWToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Alfa_Romeo;
             this.bMWToolStripMenuItem.Name = "bMWToolStripMenuItem";
-            this.bMWToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.bMWToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.bMWToolStripMenuItem.Text = "Alfa Romeo";
             this.bMWToolStripMenuItem.Click += new System.EventHandler(this.bMWToolStripMenuItem_Click);
             // 
@@ -383,7 +403,7 @@ namespace Stand_up
             // 
             this.audiToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Audi;
             this.audiToolStripMenuItem.Name = "audiToolStripMenuItem";
-            this.audiToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.audiToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.audiToolStripMenuItem.Text = "Audi";
             this.audiToolStripMenuItem.Click += new System.EventHandler(this.audiToolStripMenuItem_Click);
             // 
@@ -391,7 +411,7 @@ namespace Stand_up
             // 
             this.bMWToolStripMenuItem1.Image = global::Stand_up.Properties.Resources.BMW;
             this.bMWToolStripMenuItem1.Name = "bMWToolStripMenuItem1";
-            this.bMWToolStripMenuItem1.Size = new System.Drawing.Size(170, 24);
+            this.bMWToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
             this.bMWToolStripMenuItem1.Text = "BMW";
             this.bMWToolStripMenuItem1.Click += new System.EventHandler(this.bMWToolStripMenuItem1_Click);
             // 
@@ -399,7 +419,7 @@ namespace Stand_up
             // 
             this.chevroletToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Chevrolet;
             this.chevroletToolStripMenuItem.Name = "chevroletToolStripMenuItem";
-            this.chevroletToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.chevroletToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.chevroletToolStripMenuItem.Text = "Chevrolet";
             this.chevroletToolStripMenuItem.Click += new System.EventHandler(this.chevroletToolStripMenuItem_Click);
             // 
@@ -407,7 +427,7 @@ namespace Stand_up
             // 
             this.citroënToolStripMenuItem.Image = global::Stand_up.Properties.Resources.citroen;
             this.citroënToolStripMenuItem.Name = "citroënToolStripMenuItem";
-            this.citroënToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.citroënToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.citroënToolStripMenuItem.Text = "Citroën";
             this.citroënToolStripMenuItem.Click += new System.EventHandler(this.citroënToolStripMenuItem_Click);
             // 
@@ -415,7 +435,7 @@ namespace Stand_up
             // 
             this.cupraToolStripMenuItem.Image = global::Stand_up.Properties.Resources.cupra;
             this.cupraToolStripMenuItem.Name = "cupraToolStripMenuItem";
-            this.cupraToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.cupraToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.cupraToolStripMenuItem.Text = "Cupra";
             this.cupraToolStripMenuItem.Click += new System.EventHandler(this.cupraToolStripMenuItem_Click);
             // 
@@ -423,7 +443,7 @@ namespace Stand_up
             // 
             this.daciaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.dacia;
             this.daciaToolStripMenuItem.Name = "daciaToolStripMenuItem";
-            this.daciaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.daciaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.daciaToolStripMenuItem.Text = "Dacia";
             this.daciaToolStripMenuItem.Click += new System.EventHandler(this.daciaToolStripMenuItem_Click);
             // 
@@ -431,7 +451,7 @@ namespace Stand_up
             // 
             this.fiatToolStripMenuItem.Image = global::Stand_up.Properties.Resources.fiat;
             this.fiatToolStripMenuItem.Name = "fiatToolStripMenuItem";
-            this.fiatToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.fiatToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.fiatToolStripMenuItem.Text = "Fiat";
             this.fiatToolStripMenuItem.Click += new System.EventHandler(this.fiatToolStripMenuItem_Click);
             // 
@@ -439,7 +459,7 @@ namespace Stand_up
             // 
             this.fordToolStripMenuItem.Image = global::Stand_up.Properties.Resources.frod;
             this.fordToolStripMenuItem.Name = "fordToolStripMenuItem";
-            this.fordToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.fordToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.fordToolStripMenuItem.Text = "Ford";
             this.fordToolStripMenuItem.Click += new System.EventHandler(this.fordToolStripMenuItem_Click);
             // 
@@ -447,7 +467,7 @@ namespace Stand_up
             // 
             this.hondaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.hond;
             this.hondaToolStripMenuItem.Name = "hondaToolStripMenuItem";
-            this.hondaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.hondaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.hondaToolStripMenuItem.Text = "Honda";
             this.hondaToolStripMenuItem.Click += new System.EventHandler(this.hondaToolStripMenuItem_Click);
             // 
@@ -455,7 +475,7 @@ namespace Stand_up
             // 
             this.hyondaiToolStripMenuItem.Image = global::Stand_up.Properties.Resources.hyuandai;
             this.hyondaiToolStripMenuItem.Name = "hyondaiToolStripMenuItem";
-            this.hyondaiToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.hyondaiToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.hyondaiToolStripMenuItem.Text = "Hyundai";
             this.hyondaiToolStripMenuItem.Click += new System.EventHandler(this.hyondaiToolStripMenuItem_Click);
             // 
@@ -463,7 +483,7 @@ namespace Stand_up
             // 
             this.jaguarToolStripMenuItem.Image = global::Stand_up.Properties.Resources.jaguar;
             this.jaguarToolStripMenuItem.Name = "jaguarToolStripMenuItem";
-            this.jaguarToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.jaguarToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.jaguarToolStripMenuItem.Text = "Jaguar";
             this.jaguarToolStripMenuItem.Click += new System.EventHandler(this.jaguarToolStripMenuItem_Click);
             // 
@@ -471,7 +491,7 @@ namespace Stand_up
             // 
             this.jeepToolStripMenuItem.Image = global::Stand_up.Properties.Resources.jeep;
             this.jeepToolStripMenuItem.Name = "jeepToolStripMenuItem";
-            this.jeepToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.jeepToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.jeepToolStripMenuItem.Text = "Jeep";
             this.jeepToolStripMenuItem.Click += new System.EventHandler(this.jeepToolStripMenuItem_Click);
             // 
@@ -479,7 +499,7 @@ namespace Stand_up
             // 
             this.kiaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.kia;
             this.kiaToolStripMenuItem.Name = "kiaToolStripMenuItem";
-            this.kiaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.kiaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.kiaToolStripMenuItem.Text = "Kia";
             this.kiaToolStripMenuItem.Click += new System.EventHandler(this.kiaToolStripMenuItem_Click);
             // 
@@ -487,7 +507,7 @@ namespace Stand_up
             // 
             this.landRoverToolStripMenuItem.Image = global::Stand_up.Properties.Resources.land_rover;
             this.landRoverToolStripMenuItem.Name = "landRoverToolStripMenuItem";
-            this.landRoverToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.landRoverToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.landRoverToolStripMenuItem.Text = "Land Rover";
             this.landRoverToolStripMenuItem.Click += new System.EventHandler(this.landRoverToolStripMenuItem_Click);
             // 
@@ -495,7 +515,7 @@ namespace Stand_up
             // 
             this.lexusToolStripMenuItem.Image = global::Stand_up.Properties.Resources.lexus;
             this.lexusToolStripMenuItem.Name = "lexusToolStripMenuItem";
-            this.lexusToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.lexusToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.lexusToolStripMenuItem.Text = "Lexus";
             this.lexusToolStripMenuItem.Click += new System.EventHandler(this.lexusToolStripMenuItem_Click);
             // 
@@ -503,7 +523,7 @@ namespace Stand_up
             // 
             this.mazdaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.maxda;
             this.mazdaToolStripMenuItem.Name = "mazdaToolStripMenuItem";
-            this.mazdaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.mazdaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.mazdaToolStripMenuItem.Text = "Mazda";
             this.mazdaToolStripMenuItem.Click += new System.EventHandler(this.mazdaToolStripMenuItem_Click);
             // 
@@ -511,7 +531,7 @@ namespace Stand_up
             // 
             this.mercedesBenzToolStripMenuItem.Image = global::Stand_up.Properties.Resources.mercedes_;
             this.mercedesBenzToolStripMenuItem.Name = "mercedesBenzToolStripMenuItem";
-            this.mercedesBenzToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.mercedesBenzToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.mercedesBenzToolStripMenuItem.Text = "Mercedes Benz";
             this.mercedesBenzToolStripMenuItem.Click += new System.EventHandler(this.mercedesBenzToolStripMenuItem_Click);
             // 
@@ -519,7 +539,7 @@ namespace Stand_up
             // 
             this.miniToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Mini;
             this.miniToolStripMenuItem.Name = "miniToolStripMenuItem";
-            this.miniToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.miniToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.miniToolStripMenuItem.Text = "Mini";
             this.miniToolStripMenuItem.Click += new System.EventHandler(this.miniToolStripMenuItem_Click);
             // 
@@ -527,7 +547,7 @@ namespace Stand_up
             // 
             this.mitsubishiToolStripMenuItem.Image = global::Stand_up.Properties.Resources.mitsubishi;
             this.mitsubishiToolStripMenuItem.Name = "mitsubishiToolStripMenuItem";
-            this.mitsubishiToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.mitsubishiToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.mitsubishiToolStripMenuItem.Text = "Mitsubishi";
             this.mitsubishiToolStripMenuItem.Click += new System.EventHandler(this.mitsubishiToolStripMenuItem_Click);
             // 
@@ -535,7 +555,7 @@ namespace Stand_up
             // 
             this.nissanToolStripMenuItem.Image = global::Stand_up.Properties.Resources.nissan;
             this.nissanToolStripMenuItem.Name = "nissanToolStripMenuItem";
-            this.nissanToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.nissanToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.nissanToolStripMenuItem.Text = "Nissan";
             this.nissanToolStripMenuItem.Click += new System.EventHandler(this.nissanToolStripMenuItem_Click);
             // 
@@ -543,7 +563,7 @@ namespace Stand_up
             // 
             this.opelToolStripMenuItem.Image = global::Stand_up.Properties.Resources.opel;
             this.opelToolStripMenuItem.Name = "opelToolStripMenuItem";
-            this.opelToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.opelToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.opelToolStripMenuItem.Text = "Opel";
             this.opelToolStripMenuItem.Click += new System.EventHandler(this.opelToolStripMenuItem_Click);
             // 
@@ -551,7 +571,7 @@ namespace Stand_up
             // 
             this.peugeotToolStripMenuItem.Image = global::Stand_up.Properties.Resources.peugeut;
             this.peugeotToolStripMenuItem.Name = "peugeotToolStripMenuItem";
-            this.peugeotToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.peugeotToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.peugeotToolStripMenuItem.Text = "Peugeot";
             this.peugeotToolStripMenuItem.Click += new System.EventHandler(this.peugeotToolStripMenuItem_Click);
             // 
@@ -559,7 +579,7 @@ namespace Stand_up
             // 
             this.renaultToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Renault;
             this.renaultToolStripMenuItem.Name = "renaultToolStripMenuItem";
-            this.renaultToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.renaultToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.renaultToolStripMenuItem.Text = "Renault";
             this.renaultToolStripMenuItem.Click += new System.EventHandler(this.renaultToolStripMenuItem_Click);
             // 
@@ -567,7 +587,7 @@ namespace Stand_up
             // 
             this.seatToolStripMenuItem.Image = global::Stand_up.Properties.Resources.seat;
             this.seatToolStripMenuItem.Name = "seatToolStripMenuItem";
-            this.seatToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.seatToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.seatToolStripMenuItem.Text = "Seat";
             this.seatToolStripMenuItem.Click += new System.EventHandler(this.seatToolStripMenuItem_Click);
             // 
@@ -575,7 +595,7 @@ namespace Stand_up
             // 
             this.skodaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.skoda;
             this.skodaToolStripMenuItem.Name = "skodaToolStripMenuItem";
-            this.skodaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.skodaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.skodaToolStripMenuItem.Text = "Skoda";
             this.skodaToolStripMenuItem.Click += new System.EventHandler(this.skodaToolStripMenuItem_Click);
             // 
@@ -583,7 +603,7 @@ namespace Stand_up
             // 
             this.smartToolStripMenuItem.Image = global::Stand_up.Properties.Resources.smart;
             this.smartToolStripMenuItem.Name = "smartToolStripMenuItem";
-            this.smartToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.smartToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.smartToolStripMenuItem.Text = "Smart";
             this.smartToolStripMenuItem.Click += new System.EventHandler(this.smartToolStripMenuItem_Click);
             // 
@@ -591,7 +611,7 @@ namespace Stand_up
             // 
             this.teslaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.tesla;
             this.teslaToolStripMenuItem.Name = "teslaToolStripMenuItem";
-            this.teslaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.teslaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.teslaToolStripMenuItem.Text = "Tesla";
             this.teslaToolStripMenuItem.Click += new System.EventHandler(this.teslaToolStripMenuItem_Click);
             // 
@@ -599,7 +619,7 @@ namespace Stand_up
             // 
             this.toyotaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.toyota;
             this.toyotaToolStripMenuItem.Name = "toyotaToolStripMenuItem";
-            this.toyotaToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.toyotaToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.toyotaToolStripMenuItem.Text = "Toyota";
             this.toyotaToolStripMenuItem.Click += new System.EventHandler(this.toyotaToolStripMenuItem_Click);
             // 
@@ -607,7 +627,7 @@ namespace Stand_up
             // 
             this.volkswagenToolStripMenuItem.Image = global::Stand_up.Properties.Resources.volkswagen;
             this.volkswagenToolStripMenuItem.Name = "volkswagenToolStripMenuItem";
-            this.volkswagenToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.volkswagenToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.volkswagenToolStripMenuItem.Text = "Volkswagen";
             this.volkswagenToolStripMenuItem.Click += new System.EventHandler(this.volkswagenToolStripMenuItem_Click);
             // 
@@ -615,24 +635,206 @@ namespace Stand_up
             // 
             this.volvoToolStripMenuItem.Image = global::Stand_up.Properties.Resources.volvo;
             this.volvoToolStripMenuItem.Name = "volvoToolStripMenuItem";
-            this.volvoToolStripMenuItem.Size = new System.Drawing.Size(170, 24);
+            this.volvoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.volvoToolStripMenuItem.Text = "Volvo";
             this.volvoToolStripMenuItem.Click += new System.EventHandler(this.volvoToolStripMenuItem_Click);
             // 
             // motoToolStripMenuItem
             // 
             this.motoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bMWToolStripMenuItem2});
+            this.todasToolStripMenuItem,
+            this.apriliaToolStripMenuItem,
+            this.bajajToolStripMenuItem,
+            this.bMWToolStripMenuItem2,
+            this.benelliToolStripMenuItem,
+            this.ducatiToolStripMenuItem,
+            this.hondaToolStripMenuItem1,
+            this.italjetToolStripMenuItem,
+            this.indianMotorcycleToolStripMenuItem,
+            this.kawasakiToolStripMenuItem,
+            this.keewayToolStripMenuItem,
+            this.kTMToolStripMenuItem,
+            this.lambrettaToolStripMenuItem,
+            this.vespaToolStripMenuItem,
+            this.royalEnfieldToolStripMenuItem,
+            this.peugeotMotocyclesToolStripMenuItem,
+            this.suzukiToolStripMenuItem,
+            this.triumphToolStripMenuItem,
+            this.yamahaToolStripMenuItem,
+            this.zeroMotorcyclesToolStripMenuItem,
+            this.zündappToolStripMenuItem});
             this.motoToolStripMenuItem.Name = "motoToolStripMenuItem";
-            this.motoToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.motoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.motoToolStripMenuItem.Text = "Moto";
+            this.motoToolStripMenuItem.Click += new System.EventHandler(this.motoToolStripMenuItem_Click);
+            // 
+            // todasToolStripMenuItem
+            // 
+            this.todasToolStripMenuItem.Image = global::Stand_up.Properties.Resources.motorcycle;
+            this.todasToolStripMenuItem.Name = "todasToolStripMenuItem";
+            this.todasToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.todasToolStripMenuItem.Text = "Todas";
+            this.todasToolStripMenuItem.Click += new System.EventHandler(this.todasToolStripMenuItem_Click);
+            // 
+            // apriliaToolStripMenuItem
+            // 
+            this.apriliaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Aprilia_Logo_4029162585;
+            this.apriliaToolStripMenuItem.Name = "apriliaToolStripMenuItem";
+            this.apriliaToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.apriliaToolStripMenuItem.Text = "Aprilia";
+            this.apriliaToolStripMenuItem.Click += new System.EventHandler(this.apriliaToolStripMenuItem_Click);
+            // 
+            // bajajToolStripMenuItem
+            // 
+            this.bajajToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Bajaj_logo_980x972_2768014893;
+            this.bajajToolStripMenuItem.Name = "bajajToolStripMenuItem";
+            this.bajajToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.bajajToolStripMenuItem.Text = "Bajaj";
+            this.bajajToolStripMenuItem.Click += new System.EventHandler(this.bajajToolStripMenuItem_Click);
             // 
             // bMWToolStripMenuItem2
             // 
             this.bMWToolStripMenuItem2.Image = global::Stand_up.Properties.Resources.BMW;
             this.bMWToolStripMenuItem2.Name = "bMWToolStripMenuItem2";
-            this.bMWToolStripMenuItem2.Size = new System.Drawing.Size(112, 24);
+            this.bMWToolStripMenuItem2.Size = new System.Drawing.Size(201, 24);
             this.bMWToolStripMenuItem2.Text = "BMW";
+            this.bMWToolStripMenuItem2.Click += new System.EventHandler(this.bMWToolStripMenuItem2_Click);
+            // 
+            // benelliToolStripMenuItem
+            // 
+            this.benelliToolStripMenuItem.Image = global::Stand_up.Properties.Resources.benelli_2_logo_png_transparent_2972132350;
+            this.benelliToolStripMenuItem.Name = "benelliToolStripMenuItem";
+            this.benelliToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.benelliToolStripMenuItem.Text = "Benelli";
+            this.benelliToolStripMenuItem.Click += new System.EventHandler(this.benelliToolStripMenuItem_Click);
+            // 
+            // ducatiToolStripMenuItem
+            // 
+            this.ducatiToolStripMenuItem.Image = global::Stand_up.Properties.Resources.logo_ducati_png_ducati_logo_5000_2749117700;
+            this.ducatiToolStripMenuItem.Name = "ducatiToolStripMenuItem";
+            this.ducatiToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.ducatiToolStripMenuItem.Text = "Ducati";
+            this.ducatiToolStripMenuItem.Click += new System.EventHandler(this.ducatiToolStripMenuItem_Click);
+            // 
+            // hondaToolStripMenuItem1
+            // 
+            this.hondaToolStripMenuItem1.Image = global::Stand_up.Properties.Resources.hond;
+            this.hondaToolStripMenuItem1.Name = "hondaToolStripMenuItem1";
+            this.hondaToolStripMenuItem1.Size = new System.Drawing.Size(201, 24);
+            this.hondaToolStripMenuItem1.Text = "Honda";
+            this.hondaToolStripMenuItem1.Click += new System.EventHandler(this.hondaToolStripMenuItem1_Click);
+            // 
+            // italjetToolStripMenuItem
+            // 
+            this.italjetToolStripMenuItem.Image = global::Stand_up.Properties.Resources.italjet_logo_png_transparent_1689991611;
+            this.italjetToolStripMenuItem.Name = "italjetToolStripMenuItem";
+            this.italjetToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.italjetToolStripMenuItem.Text = "Italjet";
+            this.italjetToolStripMenuItem.Click += new System.EventHandler(this.italjetToolStripMenuItem_Click);
+            // 
+            // indianMotorcycleToolStripMenuItem
+            // 
+            this.indianMotorcycleToolStripMenuItem.Image = global::Stand_up.Properties.Resources.c7f0e26290d330fba9f3e6c4fcff4b9f;
+            this.indianMotorcycleToolStripMenuItem.Name = "indianMotorcycleToolStripMenuItem";
+            this.indianMotorcycleToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.indianMotorcycleToolStripMenuItem.Text = "Indian Motorcycle";
+            this.indianMotorcycleToolStripMenuItem.Click += new System.EventHandler(this.indianMotorcycleToolStripMenuItem_Click);
+            // 
+            // kawasakiToolStripMenuItem
+            // 
+            this.kawasakiToolStripMenuItem.Image = global::Stand_up.Properties.Resources.kawasaki_logo_75837122;
+            this.kawasakiToolStripMenuItem.Name = "kawasakiToolStripMenuItem";
+            this.kawasakiToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.kawasakiToolStripMenuItem.Text = "Kawasaki";
+            this.kawasakiToolStripMenuItem.Click += new System.EventHandler(this.kawasakiToolStripMenuItem_Click);
+            // 
+            // keewayToolStripMenuItem
+            // 
+            this.keewayToolStripMenuItem.Image = global::Stand_up.Properties.Resources.keeway_1562184292;
+            this.keewayToolStripMenuItem.Name = "keewayToolStripMenuItem";
+            this.keewayToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.keewayToolStripMenuItem.Text = "Keeway";
+            this.keewayToolStripMenuItem.Click += new System.EventHandler(this.keewayToolStripMenuItem_Click);
+            // 
+            // kTMToolStripMenuItem
+            // 
+            this.kTMToolStripMenuItem.Image = global::Stand_up.Properties.Resources.ktm_racing_logo_png_transparent_3311080751;
+            this.kTMToolStripMenuItem.Name = "kTMToolStripMenuItem";
+            this.kTMToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.kTMToolStripMenuItem.Text = "KTM";
+            this.kTMToolStripMenuItem.Click += new System.EventHandler(this.kTMToolStripMenuItem_Click);
+            // 
+            // lambrettaToolStripMenuItem
+            // 
+            this.lambrettaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.lambretta_logo_png_transparent_3171900278;
+            this.lambrettaToolStripMenuItem.Name = "lambrettaToolStripMenuItem";
+            this.lambrettaToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.lambrettaToolStripMenuItem.Text = "Lambretta";
+            this.lambrettaToolStripMenuItem.Click += new System.EventHandler(this.lambrettaToolStripMenuItem_Click);
+            // 
+            // vespaToolStripMenuItem
+            // 
+            this.vespaToolStripMenuItem.Image = global::Stand_up.Properties.Resources._5860fcc24fc7f3474eb80dbe_1613867145;
+            this.vespaToolStripMenuItem.Name = "vespaToolStripMenuItem";
+            this.vespaToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.vespaToolStripMenuItem.Text = "Vespa";
+            this.vespaToolStripMenuItem.Click += new System.EventHandler(this.vespaToolStripMenuItem_Click);
+            // 
+            // royalEnfieldToolStripMenuItem
+            // 
+            this.royalEnfieldToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Royal_Enfield_Embleme_1536x868_675057394;
+            this.royalEnfieldToolStripMenuItem.Name = "royalEnfieldToolStripMenuItem";
+            this.royalEnfieldToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.royalEnfieldToolStripMenuItem.Text = "Royal Enfield";
+            this.royalEnfieldToolStripMenuItem.Click += new System.EventHandler(this.royalEnfieldToolStripMenuItem_Click);
+            // 
+            // peugeotMotocyclesToolStripMenuItem
+            // 
+            this.peugeotMotocyclesToolStripMenuItem.Image = global::Stand_up.Properties.Resources.peugeut;
+            this.peugeotMotocyclesToolStripMenuItem.Name = "peugeotMotocyclesToolStripMenuItem";
+            this.peugeotMotocyclesToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.peugeotMotocyclesToolStripMenuItem.Text = "Peugeot Motocycles";
+            this.peugeotMotocyclesToolStripMenuItem.Click += new System.EventHandler(this.peugeotMotocyclesToolStripMenuItem_Click);
+            // 
+            // suzukiToolStripMenuItem
+            // 
+            this.suzukiToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Suzuki_logo_296106882;
+            this.suzukiToolStripMenuItem.Name = "suzukiToolStripMenuItem";
+            this.suzukiToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.suzukiToolStripMenuItem.Text = "Suzuki";
+            this.suzukiToolStripMenuItem.Click += new System.EventHandler(this.suzukiToolStripMenuItem_Click);
+            // 
+            // triumphToolStripMenuItem
+            // 
+            this.triumphToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Triumph_Logo_2_4101824269;
+            this.triumphToolStripMenuItem.Name = "triumphToolStripMenuItem";
+            this.triumphToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.triumphToolStripMenuItem.Text = "Triumph";
+            this.triumphToolStripMenuItem.Click += new System.EventHandler(this.triumphToolStripMenuItem_Click);
+            // 
+            // yamahaToolStripMenuItem
+            // 
+            this.yamahaToolStripMenuItem.Image = global::Stand_up.Properties.Resources.Yamaha_Logo_PNG_Image_517579999;
+            this.yamahaToolStripMenuItem.Name = "yamahaToolStripMenuItem";
+            this.yamahaToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.yamahaToolStripMenuItem.Text = "Yamaha";
+            this.yamahaToolStripMenuItem.Click += new System.EventHandler(this.yamahaToolStripMenuItem_Click);
+            // 
+            // zeroMotorcyclesToolStripMenuItem
+            // 
+            this.zeroMotorcyclesToolStripMenuItem.Image = global::Stand_up.Properties.Resources.zero_motorcycle_logo_lama_e1527992884972_862356834;
+            this.zeroMotorcyclesToolStripMenuItem.Name = "zeroMotorcyclesToolStripMenuItem";
+            this.zeroMotorcyclesToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.zeroMotorcyclesToolStripMenuItem.Text = "Zero Motorcycles";
+            this.zeroMotorcyclesToolStripMenuItem.Click += new System.EventHandler(this.zeroMotorcyclesToolStripMenuItem_Click);
+            // 
+            // zündappToolStripMenuItem
+            // 
+            this.zündappToolStripMenuItem.Image = global::Stand_up.Properties.Resources.zundapp_logo_EE0E4E2AA3_seeklogo;
+            this.zündappToolStripMenuItem.Name = "zündappToolStripMenuItem";
+            this.zündappToolStripMenuItem.Size = new System.Drawing.Size(201, 24);
+            this.zündappToolStripMenuItem.Text = "Zündapp";
+            this.zündappToolStripMenuItem.Click += new System.EventHandler(this.zündappToolStripMenuItem_Click);
             // 
             // limparFiltrosToolStripMenuItem
             // 
@@ -763,5 +965,25 @@ namespace Stand_up
         private System.Windows.Forms.ToolStripMenuItem rosaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem limparFiltrosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem históricoDeTransaçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem apriliaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kTMToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kawasakiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem indianMotorcycleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ducatiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem hondaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem lambrettaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem vespaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem yamahaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zündappToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem keewayToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem triumphToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem suzukiToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem royalEnfieldToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem peugeotMotocyclesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem zeroMotorcyclesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem italjetToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bajajToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem benelliToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem todasToolStripMenuItem;
     }
 }
