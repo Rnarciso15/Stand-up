@@ -178,7 +178,6 @@ namespace Stand_up
 
             if (Form1.flagEditFunc == true)
             {
-
                 guna2DataGridView1.DataSource = BLL.Func.Load();
                 guna2GroupBox2.Text = "Editar Funcionário";
                 guna2GroupBox3.Text = "Mudar Senha de Funcionários";
@@ -188,6 +187,7 @@ namespace Stand_up
           
             if (Form1.flagEditCliente == true)
             {
+                guna2GroupBox3.Visible = false;
                 guna2GroupBox2.Text = "Editar Cliente";
                 guna2GroupBox3.Text = "Mudar Senha de Clientes";
 
@@ -196,6 +196,7 @@ namespace Stand_up
             }
             if (Form1.flagInsertCliente == true)
             {
+                guna2GroupBox3.Visible = true;
                 guna2GroupBox2.Text = "Inserir Cliente";
                 guna2GroupBox3.Text = "Mudar Senha de Clientes";
 
@@ -204,6 +205,7 @@ namespace Stand_up
             }
             if (Form1.flagInsertFunc == true)
             {
+                guna2GroupBox3.Visible = true;
                 guna2GroupBox2.Text = "Inserir Funcionário";
                 guna2GroupBox3.Text = "Mudar Senha de Funcionários";
                 guna2DataGridView1.DataSource = BLL.Func.Load();
@@ -565,7 +567,7 @@ namespace Stand_up
 
         private void guna2PictureBox2_Click(object sender, EventArgs e)
         {
-            if (Form1.flagInsertFunc == true || Form1.flagInsertCliente == true)
+            if (Form1.flagEditCliente == true || Form1.flagEditFunc == true)
             {
                 openFileDialog1.Filter = "PNG files (*.png)|*.png";
 
@@ -706,13 +708,13 @@ namespace Stand_up
 
 
                                                                             string senha = GerarSenha();
-                                                                            string id_novoFunc=BLL.Func.queryFunc_get_id(guna2TextBox8.Text).Rows[0]["n_func"].ToString();
                                                                             DialogResult dr = MessageBox.Show("Tem a certeza que quer adicionar um novo funcionário ?", "", MessageBoxButtons.YesNo);
                                                                             if (dr == DialogResult.Yes)
                                                                             {
                                                                                 int x = BLL.Func.insertFunc(guna2TextBox9.Text, Hash(senha), true, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.SelectedItem.ToString(), false);
                                                                                 guna2DataGridView1.DataSource = BLL.Func.Load();
 
+                                                                                string id_novoFunc = BLL.Func.queryFunc_get_id(guna2TextBox8.Text).Rows[0]["n_func"].ToString();
                                                                                 try
                                                                                 {
                                                                                                                                                                      
@@ -727,7 +729,7 @@ namespace Stand_up
                                                                                         message.From = new MailAddress(fromemail);
                                                                                         message.To.Add(new MailAddress(guna2TextBox2.Text));
                                                                                         message.Subject = guna2TextBox1.Text;
-                                                                                        string texto = "Bom dia Sr. " + guna2TextBox9.Text + "," + "\r\n" + "a sua senha para efetuar login é "+senha+ " e o seu ID é " + id_novoFunc +". Não se esqueça de alterar a password da sua conta ao iniciar sessão."+ "\r\n" + "\r\n" + "\r\n" + "\r\n" + "Obrigado, \r\n" + "Stand Up";
+                                                                                        string texto = "Bom dia Sr. " + guna2TextBox9.Text + "," + "\n" + "a sua senha para efetuar login é "+senha+ " e o seu ID é " + id_novoFunc +". Não se esqueça de alterar a password da sua conta ao iniciar sessão."+ "\n" + "\n" + "\n" + "\n" + "Obrigado, \n" + "Stand Up";
                                                                                         message.Body = "<html><body>" + texto + "</body></html>";
                                                                                         message.IsBodyHtml = true;
 

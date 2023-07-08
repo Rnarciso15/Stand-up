@@ -54,6 +54,7 @@ namespace Stand_up
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button7 = new Guna.UI2.WinForms.Guna2Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -374,11 +375,33 @@ namespace Stand_up
             this.guna2Button1.TabIndex = 71;
             this.guna2Button1.UseTransparentBackground = true;
             // 
+            // guna2Button7
+            // 
+            this.guna2Button7.Animated = true;
+            this.guna2Button7.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button7.BorderRadius = 17;
+            this.guna2Button7.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button7.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button7.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button7.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button7.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button7.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button7.ForeColor = System.Drawing.Color.White;
+            this.guna2Button7.Image = global::Stand_up.Properties.Resources.lata_de_lixo1;
+            this.guna2Button7.Location = new System.Drawing.Point(1103, 69);
+            this.guna2Button7.Name = "guna2Button7";
+            this.guna2Button7.Size = new System.Drawing.Size(37, 36);
+            this.guna2Button7.TabIndex = 87;
+            this.guna2Button7.UseTransparentBackground = true;
+            this.guna2Button7.Visible = false;
+            this.guna2Button7.Click += new System.EventHandler(this.guna2Button7_Click);
+            // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1683, 925);
+            this.Controls.Add(this.guna2Button7);
             this.Controls.Add(this.guna2Button4);
             this.Controls.Add(this.guna2Button5);
             this.Controls.Add(this.guna2Button6);
@@ -424,5 +447,6 @@ namespace Stand_up
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.ToolStripMenuItem emailToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem enviarToolStripMenuItem;
+        private Guna.UI2.WinForms.Guna2Button guna2Button7;
     }
 }

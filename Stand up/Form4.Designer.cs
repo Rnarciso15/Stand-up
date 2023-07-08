@@ -105,7 +105,7 @@ namespace Stand_up
             this.emailToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1386, 27);
+            this.menuStrip1.Size = new System.Drawing.Size(1683, 27);
             this.menuStrip1.TabIndex = 17;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -156,21 +156,21 @@ namespace Stand_up
             // inserirEspecificaçõesDoVeículoToolStripMenuItem
             // 
             this.inserirEspecificaçõesDoVeículoToolStripMenuItem.Name = "inserirEspecificaçõesDoVeículoToolStripMenuItem";
-            this.inserirEspecificaçõesDoVeículoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.inserirEspecificaçõesDoVeículoToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
             this.inserirEspecificaçõesDoVeículoToolStripMenuItem.Text = "Inserir Clientes";
             this.inserirEspecificaçõesDoVeículoToolStripMenuItem.Click += new System.EventHandler(this.inserirEspecificaçõesDoVeículoToolStripMenuItem_Click);
             // 
             // editarEspecificaçõesDoVeículoToolStripMenuItem
             // 
             this.editarEspecificaçõesDoVeículoToolStripMenuItem.Name = "editarEspecificaçõesDoVeículoToolStripMenuItem";
-            this.editarEspecificaçõesDoVeículoToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.editarEspecificaçõesDoVeículoToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
             this.editarEspecificaçõesDoVeículoToolStripMenuItem.Text = "Editar Clientes";
             this.editarEspecificaçõesDoVeículoToolStripMenuItem.Click += new System.EventHandler(this.editarEspecificaçõesDoVeículoToolStripMenuItem_Click);
             // 
             // listaDeClientesToolStripMenuItem
             // 
             this.listaDeClientesToolStripMenuItem.Name = "listaDeClientesToolStripMenuItem";
-            this.listaDeClientesToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.listaDeClientesToolStripMenuItem.Size = new System.Drawing.Size(177, 24);
             this.listaDeClientesToolStripMenuItem.Text = "Lista de Clientes";
             this.listaDeClientesToolStripMenuItem.Click += new System.EventHandler(this.listaDeClientesToolStripMenuItem_Click);
             // 
@@ -1024,7 +1024,7 @@ namespace Stand_up
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1386, 788);
+            this.ClientSize = new System.Drawing.Size(1683, 925);
             this.Controls.Add(this.guna2GroupBox3);
             this.Controls.Add(this.guna2GroupBox2);
             this.Controls.Add(this.guna2GroupBox1);

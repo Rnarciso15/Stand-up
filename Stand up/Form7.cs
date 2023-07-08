@@ -455,7 +455,7 @@ namespace Stand_up
                 message.From = new MailAddress(fromemail);
                 message.To.Add(new MailAddress((string)row["email"]));
                 message.Subject = guna2TextBox1.Text;
-                string texto = "Bom dia Sr " + (string)row["nome"] + "," + "\r\n" + "\r\n" + guna2TextBox7.Text + "\r\n" + "\r\n" + "\r\n" + "Obrigado, \r\n" + "Stand Up";
+                string texto = "Bom dia Sr " + (string)row["nome"] + "," + "\n" + "\n" + guna2TextBox7.Text + "\n" + "\n" + "\n" + "Obrigado, \n" + "Stand Up";
                 message.Body = "<html><body>" + texto + "</body></html>";
                 message.IsBodyHtml = true;
 
