@@ -86,8 +86,9 @@ namespace Stand_up
             Form1.flagEditCliente = false;
             Form1.flagInsertFunc = false;
             Form1.flagEditFunc = false;
+
             guna2GroupBox2.Text = "Inserir Cliente";
-            guna2Button4.Visible = false;
+
             guna2DataGridView1.DataSource = BLL.Clientes.Load();
             clear_caoxas();
         }
@@ -144,7 +145,6 @@ namespace Stand_up
             guna2TextBox1.UseSystemPasswordChar = true;
             guna2TextBox11.UseSystemPasswordChar = true;
             guna2TextBox12.UseSystemPasswordChar = true;
-
             DataTable dt = BLL.Func.LoadPerfil(Form5.n_func);
             string admin = BLL.Func.Buscar_admin(Form5.n_func);
             if (admin != "True")
@@ -181,6 +181,8 @@ namespace Stand_up
                 guna2DataGridView1.DataSource = BLL.Func.Load();
                 guna2GroupBox2.Text = "Editar Funcionário";
                 guna2GroupBox3.Text = "Mudar Senha de Funcionários";
+                guna2GroupBox4.Visible = true;
+                guna2Button4.Visible = true;
                 nao_readonly_caixas();
             }
 
@@ -190,7 +192,8 @@ namespace Stand_up
                 guna2GroupBox3.Visible = false;
                 guna2GroupBox2.Text = "Editar Cliente";
                 guna2GroupBox3.Text = "Mudar Senha de Clientes";
-
+                guna2GroupBox4.Visible = true;
+                guna2Button4.Visible = true;
                 guna2DataGridView1.DataSource = BLL.Clientes.Load();
                
             }
@@ -199,7 +202,8 @@ namespace Stand_up
                 guna2GroupBox3.Visible = true;
                 guna2GroupBox2.Text = "Inserir Cliente";
                 guna2GroupBox3.Text = "Mudar Senha de Clientes";
-
+                guna2GroupBox4.Visible = false;
+                guna2Button4.Visible = false;
                 nao_readonly_caixas();
                 guna2DataGridView1.DataSource = BLL.Clientes.Load();
             }
@@ -209,6 +213,9 @@ namespace Stand_up
                 guna2GroupBox2.Text = "Inserir Funcionário";
                 guna2GroupBox3.Text = "Mudar Senha de Funcionários";
                 guna2DataGridView1.DataSource = BLL.Func.Load();
+                guna2GroupBox4.Visible = false;
+                guna2Button4.Visible = false;
+
                 nao_readonly_caixas();
             }
             foreach (DataRow row in dt.Rows)
@@ -567,7 +574,7 @@ namespace Stand_up
 
         private void guna2PictureBox2_Click(object sender, EventArgs e)
         {
-            if (Form1.flagEditCliente == true || Form1.flagEditFunc == true)
+            if (Form1.flagEditCliente == true || Form1.flagEditFunc == true || Form1.flagInsertCliente == true || Form1.flagInsertFunc == true)
             {
                 openFileDialog1.Filter = "PNG files (*.png)|*.png";
 
@@ -748,6 +755,16 @@ namespace Stand_up
                                                                                     
 
                                                                                     MessageBox.Show("Email enviados com sucesso!");
+
+                                                                                    guna2TextBox9.Clear();
+                                                                                    guna2TextBox4.Clear();
+                                                                                    guna2TextBox2.Clear();
+                                                                                    guna2TextBox5  .Clear();
+                                                                                    guna2TextBox6.Clear();
+                                                                                    guna2PictureBox2.Image = null;
+                                                                                    guna2TextBox8.Clear();
+                                                                                    guna2TextBox7.Clear();
+                                                                                    guna2ComboBox8.SelectedItem = null;
                                                                                 }
                                                                                 catch
                                                                                 {
@@ -1315,8 +1332,8 @@ namespace Stand_up
             Form1.flagEditFunc = false;
             Form1.flagInsertCliente = false;
             Form1.flagEditCliente = false;
-            guna2GroupBox2.Text = "Inserir Funcionário";
-            guna2Button4.Visible = false;
+
+                guna2GroupBox2.Text = "Inserir Funcionário";
             guna2DataGridView1.DataSource = BLL.Func.Load();
             clear_caoxas();
             }
@@ -1338,8 +1355,9 @@ namespace Stand_up
                 Form1.flagEditFunc = true;
                 Form1.flagInsertCliente = false;
                 Form1.flagEditCliente = false;
+
+
                 guna2GroupBox2.Text = "Editar Funcionário";
-                guna2Button4.Visible = true;
                 guna2DataGridView1.DataSource = BLL.Func.Load();
                 clear_caoxas();
             }
@@ -1455,7 +1473,6 @@ namespace Stand_up
             Form1.flagInsertFunc = false;
             Form1.flagEditFunc = false;
             guna2GroupBox2.Text = "editar Cliente";
-            guna2Button4.Visible = true;
             guna2DataGridView1.DataSource = BLL.Clientes.Load();
             clear_caoxas();
         }
@@ -1520,6 +1537,15 @@ namespace Stand_up
         {
 
         }
-     
+
+        private void guna2GroupBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
