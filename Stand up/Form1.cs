@@ -96,6 +96,11 @@ namespace Stand_up
             {
                 Form1.flagFunc = false;
                 Form1.flagCliente = true;
+
+                Form1.flagInsertFunc = false;
+
+                Form1.flagInsertCliente = true;
+
             }
             else
             {

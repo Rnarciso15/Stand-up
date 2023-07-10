@@ -396,6 +396,7 @@ namespace BusinessLogicLayer
                 new SqlParameter("@morada", morada),
                 new SqlParameter("@senha", senha),
 
+
            };
 
                 return dal.executarNonQuery("INSERT into cliente (nome,senha,Ativo,data_nascimento,email,telefone,nib,imagem,nif,genero,morada) VALUES(@nome,@senha,@Ativo,@data_nascimento,@email,@telefone,@nib,@imagem,@nif,@genero,@morada)", sqlParams);

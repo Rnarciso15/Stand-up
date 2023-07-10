@@ -16,7 +16,7 @@ namespace DataAccessLayer
 
         public DAL()
         {
-            _SqlConn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="+System.Windows.Forms.Application.StartupPath +@"\BD_Stand.mdf;Integrated Security=True;Connect Timeout=30");
+            _SqlConn = new SqlConnection(@"Data Source=DESKTOP-N03FR9F\SQLEXPRESS;Initial Catalog=BD_Stand;User ID=sa;Password=teste;Connect Timeout=30;Encrypt=False");
         }
 
         private void abrirLigacao()

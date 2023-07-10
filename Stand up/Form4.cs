@@ -308,8 +308,18 @@ namespace Stand_up
                         nif_edit = guna2DataGridView1.Rows[e.RowIndex].Cells["nif"].Value.ToString();
                         nib_edit = guna2DataGridView1.Rows[e.RowIndex].Cells["nib"].Value.ToString();
                         n_cliente = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["n_cliente"].Value);
-                    guna2PictureBox2.Image = byteArrayToImage((Byte[])guna2DataGridView1.Rows[e.RowIndex].Cells["imagem"].Value);
-                    Nome = guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
+
+                        object cellValue = guna2DataGridView1.Rows[e.RowIndex].Cells["imagem"].Value;
+                        if (cellValue != DBNull.Value && cellValue != null)
+                        {
+                            Byte[] imageBytes = (Byte[])cellValue;
+                            Image img123 = byteArrayToImage(imageBytes);
+                            if (img123 != null)
+                            {
+                                guna2PictureBox2.Image = img123;
+                            }
+                        }
+                        Nome = guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
                     guna2TextBox9.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
                     guna2TextBox4.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["data_nascimento"].Value.ToString();
                     guna2TextBox2.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["email"].Value.ToString();
