@@ -308,17 +308,28 @@ namespace Stand_up
                         nif_edit = guna2DataGridView1.Rows[e.RowIndex].Cells["nif"].Value.ToString();
                         nib_edit = guna2DataGridView1.Rows[e.RowIndex].Cells["nib"].Value.ToString();
                         n_cliente = Convert.ToInt32(guna2DataGridView1.Rows[e.RowIndex].Cells["n_cliente"].Value);
-
                         object cellValue = guna2DataGridView1.Rows[e.RowIndex].Cells["imagem"].Value;
+
                         if (cellValue != DBNull.Value && cellValue != null)
                         {
-                            Byte[] imageBytes = (Byte[])cellValue;
-                            Image img123 = byteArrayToImage(imageBytes);
-                            if (img123 != null)
+                            byte[] imageBytes = (byte[])cellValue;
+                            Image img = byteArrayToImage(imageBytes);
+
+                            if (img != null)
                             {
-                                guna2PictureBox2.Image = img123;
+                                guna2PictureBox2.Image = img;
+                            }
+                            else
+                            {
+                                guna2PictureBox2.Image = Properties.Resources.logo;
                             }
                         }
+                        else
+                        {
+                            guna2PictureBox2.Image = Properties.Resources.logo;
+                        }
+
+                       
                         Nome = guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
                     guna2TextBox9.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["nome"].Value.ToString();
                     guna2TextBox4.Text = guna2DataGridView1.Rows[e.RowIndex].Cells["data_nascimento"].Value.ToString();
