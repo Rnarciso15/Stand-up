@@ -444,13 +444,13 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryLoad_veiculo_mota(false, false);
+            DataTable dr = BLL.veiculos.queryLoad_veiculo(false);
 
-            if (m == 0)
+            if (m == 0 && l!=0)
             {
                 dr = BLL.veiculos.queryLoad_veiculo_mota(false, false);
             }
-            else
+            else if(m == 1 && l!=0)
             {
                 dr = BLL.veiculos.queryLoad_veiculo_mota(false, true);
             }
@@ -529,13 +529,13 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryGasolina_veiculo(Combustivel,false, false);
+            DataTable dr = BLL.veiculos.queryGasolina_veiculo_tudo(Combustivel,false);
 
-            if (m == 0)
+            if (m == 0 && l!= 0)
             {
                 dr = BLL.veiculos.queryGasolina_veiculo(Combustivel, false, false);
             }
-            else
+            else if(m == 1 && l!= 0)
             {
                 dr = BLL.veiculos.queryGasolina_veiculo(Combustivel, false, true);
             }
@@ -1533,13 +1533,13 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros(false, false);
+            DataTable dr = BLL.veiculos.querymaior_quiilometros_tudo(false);
 
-            if (m == 0)
+            if (m == 0 && l!=0)
             {
                 dr = BLL.veiculos.querymaior_quiilometros(false, false);
             }
-            else
+            else if (m == 1 && l!=0)
             {
                 dr = BLL.veiculos.querymaior_quiilometros(false, true);
             }
@@ -1614,13 +1614,13 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryMenor_quiilometros(false,false);
+            DataTable dr = BLL.veiculos.queryMenor_quiilometros_tudo(false);
 
-            if (m == 0)
+            if (m == 0 && l!=0)
             {
                 dr = BLL.veiculos.queryMenor_quiilometros(false, false);
             }
-            else
+            else if (m == 1 && l!=0)
             {
                 dr = BLL.veiculos.queryMenor_quiilometros(false, true);
             }
@@ -1779,13 +1779,13 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryCor_veiculo(Cor,false, false);
+            DataTable dr = BLL.veiculos.queryCor_veiculo_tudo(Cor,false);
 
-            if (m == 0)
+            if (m == 0 && l!=0)
             {
                 dr = BLL.veiculos.queryCor_veiculo(Cor, false, false);
             }
-            else
+            else if(m == 1 && l != 0)
             {
                 dr = BLL.veiculos.queryCor_veiculo(Cor, false, true);
             }

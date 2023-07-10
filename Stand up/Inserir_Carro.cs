@@ -1378,11 +1378,15 @@ namespace Stand_up
                 desativar_caixas();
                 guna2Button32.Text = "Guardar";
                 guna2Button33.Visible = true;
+                guna2CheckBox1 .Visible = false;
+                guna2CheckBox2.Visible = false;
             }
             else
             {
                 guna2Button33.Visible = false;
                 guna2Button32.Text = "Adicionar";
+                guna2CheckBox1.Visible = true;
+                guna2CheckBox2.Visible = true;
             }
             guna2CheckBox2.Checked = true;
 
