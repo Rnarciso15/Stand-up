@@ -23,6 +23,7 @@ namespace Stand_up
         static public string admin;
         private void guna2Button1_Click(object sender, EventArgs e)
         {
+            try { 
             if (u == 0)
             {
                 guna2TextBox1.UseSystemPasswordChar = false;
@@ -34,6 +35,11 @@ namespace Stand_up
                 guna2TextBox1.UseSystemPasswordChar = true;
                 guna2Button1.Image = Properties.Resources.invisible1;
                 u = 0;
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
         static string Hash(string input)
@@ -74,12 +80,18 @@ namespace Stand_up
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
+            try { 
             this.Close();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            
+            try { 
                 for (int j = 0; j < guna2TextBox3.Text.Length; j++)
                 {
                     if (guna2TextBox3.Text[j] == '0' || guna2TextBox3.Text[j] == '1' || guna2TextBox3.Text[j] == '2' || guna2TextBox3.Text[j] == '3' || guna2TextBox3.Text[j] == '4' || guna2TextBox3.Text[j] == '5' || guna2TextBox3.Text[j] == '6' || guna2TextBox3.Text[j] == '7' || guna2TextBox3.Text[j] == '8' || guna2TextBox3.Text[j] == '9')
@@ -111,12 +123,23 @@ namespace Stand_up
                     MessageBox.Show("Dados incorretos");
                 }
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void Form5_Load(object sender, EventArgs e)
         {
+            try { 
             guna2TextBox1.UseSystemPasswordChar = true;
             DoubleBuffered = true;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
     }
 }

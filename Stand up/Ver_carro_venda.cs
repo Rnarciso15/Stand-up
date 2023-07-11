@@ -62,13 +62,20 @@ namespace Stand_up
 
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
+            try { 
             carros_para_venda.flagPanel = true;
             this.Close();
-        
-    }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+
+        }
 
         private void Ver_carro_venda_Load(object sender, EventArgs e)
         {
+            try { 
             DoubleBuffered = true;
             DataTable info = BLL.veiculos.Load_dados(carros_para_venda.Matricula);
 
@@ -95,16 +102,27 @@ namespace Stand_up
                 label5.Text = (string)row["Traccao"];
 
             }
-            
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void Ver_carro_venda_FormClosed(object sender, FormClosedEventArgs e)
         {
+            try { 
             carros_para_venda.flagPanel = true;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2ImageButton1_Click(object sender, EventArgs e)
         {
+            try { 
             DataTable informacao = BLL.veiculos.Load_dados_imagem(carros_para_venda.Matricula);
             string data ="";
             string Marca = "";
@@ -238,13 +256,22 @@ namespace Stand_up
                 document.Save(caminhoArquivo);
                 document.Close();
             }
-           
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            try { 
             Form1.flagTransacao = true;
-           
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
 
         }
 
@@ -257,6 +284,7 @@ namespace Stand_up
         ArrayList imagem_carro = new ArrayList();
         private void guna2Button4_Click(object sender, EventArgs e)
         {
+            try { 
             if (IMG_Idx >= imagem_carro.Count - 1)
             {
                 IMG_Idx = 0;
@@ -271,10 +299,16 @@ namespace Stand_up
 
                 guna2PictureBox1.Image = imagem;
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
+            try { 
             if (IMG_Idx < 1)
             {
                 IMG_Idx = imagem_carro.Count - 1;
@@ -288,6 +322,11 @@ namespace Stand_up
                 Image imagem = (Image)imagem_carro[IMG_Idx];
 
                 guna2PictureBox1.Image = imagem;
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
     }

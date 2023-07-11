@@ -140,6 +140,7 @@ namespace Stand_up
 
         private void Form4_Load(object sender, EventArgs e)
         {
+            try { 
             DoubleBuffered = true;
             guna2HtmlLabel1.Location = new Point(308, 311);
             guna2TextBox1.UseSystemPasswordChar = true;
@@ -199,7 +200,7 @@ namespace Stand_up
             }
             if (Form1.flagInsertCliente == true)
             {
-                guna2GroupBox3.Visible = true;
+                guna2GroupBox3.Visible = false;
                 guna2GroupBox2.Text = "Inserir Cliente";
                 guna2GroupBox3.Text = "Mudar Senha de Clientes";
                 guna2GroupBox4.Visible = false;
@@ -224,13 +225,17 @@ namespace Stand_up
                 guna2PictureBox1.Image = byteArrayToImage((Byte[])row["Imagem"]);              
 
             }
-          
 
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-
+            try { 
             if (u == 0)
             {
                 guna2TextBox1.UseSystemPasswordChar = false;
@@ -243,7 +248,11 @@ namespace Stand_up
                 guna2Button1.Image = Properties.Resources.invisible1;
                 u = 0;
             }
-
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
@@ -263,6 +272,7 @@ namespace Stand_up
         string nib_edit;
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            try { 
             if(Form1.flagInsertCliente != true && Form1.flagInsertFunc != true)
             {
 
@@ -321,12 +331,12 @@ namespace Stand_up
                             }
                             else
                             {
-                                guna2PictureBox2.Image = Properties.Resources.logo;
+                                guna2PictureBox2.Image = Properties.Resources.user;
                             }
                         }
                         else
                         {
-                            guna2PictureBox2.Image = Properties.Resources.logo;
+                            guna2PictureBox2.Image = Properties.Resources.user;
                         }
 
                        
@@ -360,6 +370,11 @@ namespace Stand_up
              
             }
                }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2TextBox12_TextChanged(object sender, EventArgs e)
@@ -369,6 +384,7 @@ namespace Stand_up
 
         private void guna2TextBox8_TextChanged(object sender, EventArgs e)
         {
+            try { 
             if (guna2TextBox8.Text != "")
             {
 
@@ -392,6 +408,11 @@ namespace Stand_up
 
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2TextBox7_TextChanged(object sender, EventArgs e)
@@ -401,6 +422,7 @@ namespace Stand_up
 
         private void guna2TextBox6_TextChanged(object sender, EventArgs e)
         {
+            try { 
             if (guna2TextBox6.Text != "")
             {
 
@@ -424,10 +446,16 @@ namespace Stand_up
 
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2TextBox5_TextChanged(object sender, EventArgs e)
         {
+            try { 
             if (guna2TextBox5.Text != "")
             {
 
@@ -451,7 +479,11 @@ namespace Stand_up
 
 
             }
-
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
         public static bool IsValidEmail(string email)
         {
@@ -471,6 +503,7 @@ namespace Stand_up
 
         private void guna2TextBox4_TextChanged(object sender, EventArgs e)
         {
+            try { 
             if (guna2TextBox4.Text.Length == 6)
             {
 
@@ -586,6 +619,11 @@ namespace Stand_up
                     guna2TextBox4.Select(guna2TextBox4.Text.Length, 0);
                 }
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2ComboBox8_SelectedIndexChanged(object sender, EventArgs e)
@@ -595,6 +633,7 @@ namespace Stand_up
 
         private void guna2PictureBox2_Click(object sender, EventArgs e)
         {
+            try { 
             if (Form1.flagEditCliente == true || Form1.flagEditFunc == true || Form1.flagInsertCliente == true || Form1.flagInsertFunc == true)
             {
                 openFileDialog1.Filter = "PNG files (*.png)|*.png";
@@ -604,7 +643,11 @@ namespace Stand_up
                     guna2PictureBox2.ImageLocation = openFileDialog1.FileName;
                 }
             }
-            
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
         static string Hash(string input)
 
@@ -683,6 +726,7 @@ namespace Stand_up
         bool Ativo;
         private void guna2Button3_Click(object sender, EventArgs e)
         {
+            try { 
             if(Form1.flagFunc == true)
             {         
             if(Form1.flagInsertFunc == true)
@@ -1031,12 +1075,12 @@ namespace Stand_up
                                     else
                                     {
 
-                                        MessageBox.Show("Insira um email válido");
+                                        MessageBox.Show("Insira um telefone válido");
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Insira um nº de telefone válido");
+                                    MessageBox.Show("Insira um nº de email válido");
 
                                 }
                             }
@@ -1196,105 +1240,197 @@ namespace Stand_up
                 }
                 else
                 {
-                    string email = guna2TextBox2.Text;
-
-                    if (IsValidEmail(email))
+                    if (guna2PictureBox2.Image == null)
                     {
-                        if (guna2TextBox2.Text != email_edit)
-                        {
-                            email_eeditado = true;
-                            DataTable emailverification = BLL.Clientes.queryFunc_emailIgual(guna2TextBox2.Text,n_cliente);
-                            if (emailverification.Rows.Count < 1)
-                            {
-                            }
-                            else
-                            {
-                                MessageBox.Show("Email inserido já existe");
-                            }
-                        }
-                        else
-                        {
-                            email_eeditado = false;
-                        }
-
-                        if (guna2TextBox5.Text != telefone_edit)
-                        {
-                            telefone_eeditado = true;
-                            DataTable telefoneverification = BLL.Clientes.queryFunc_telefoneIgual(guna2TextBox5.Text, n_cliente);
-                            if (telefoneverification.Rows.Count < 1)
-                            {
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("Telefone inserido já existe");
-                            }
-                        }
-                        else
-                        {
-                            telefone_eeditado = false;
-                        }
-
-                        if (guna2TextBox6.Text != nib_edit)
-                        {
-                            nib_eeditado = true;
-                            DataTable Nibverification = BLL.Clientes.queryFunc_NibIgual(guna2TextBox6.Text, n_cliente);
-                            if (Nibverification.Rows.Count < 1)
-                            {
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("Nib inserido já existe");
-                            }
-                        }
-                        else
-                        {
-                            nib_eeditado = false;
-                        }
-
-                        if (guna2TextBox8.Text != nif_edit)
-                        {
-                            nif_eeditado = true;
-                            DataTable nifverification = BLL.Clientes.queryFunc_NifIgual(guna2TextBox8.Text, n_cliente);
-                            if (nifverification.Rows.Count < 1)
-                            {
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("Nib inserido já existe");
-                            }
-                        }
-                        else
-                        {
-                            nib_eeditado = false;
-                        }
-
-
-                        if (email_eeditado == false && telefone_eeditado == false && nib_eeditado == false && nif_eeditado == false)
-                        {
-
-                            DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informações do Cliente " + Nome + "?", "", MessageBoxButtons.YesNo);
-                                        if (dr == DialogResult.Yes)
-                                        {
-                                            int x = BLL.Clientes.updateCliente(n_cliente, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
-                                            guna2DataGridView1.DataSource = BLL.Clientes.Load();
-                                        }
-                        }
-
-
+                        MessageBox.Show("Insira uma foto");
                     }
                     else
+                    {
+
+                        if (guna2TextBox9.Text != "")
                         {
-                            MessageBox.Show("Email é inválido.");
+                            if (guna2TextBox4.Text.Length == 10)
+                            {
+
+                                if (guna2TextBox2.Text != "")
+                                {
+
+                                    if (guna2TextBox5.Text.Length == 9)
+                                    {
+
+                                        if (guna2TextBox6.Text.Length == 21)
+                                        {
+
+                                            if (guna2TextBox7.Text != "")
+                                            {
+
+                                                if (guna2TextBox8.Text.Length == 9)
+                                                {
+
+                                                    if (guna2ComboBox8.SelectedIndex != -1)
+                                                    {
+
+                                                        string email = guna2TextBox2.Text;
+
+                                                        if (IsValidEmail(email))
+                                                        {
+                                                            if (guna2TextBox2.Text != email_edit)
+                                                            {
+                                                                email_eeditado = true;
+                                                                DataTable emailverification = BLL.Clientes.queryFunc_emailIgual(guna2TextBox2.Text, n_cliente);
+                                                                if (emailverification.Rows.Count < 1)
+                                                                {
+
+                                                                    email_eeditado = false;
+                                                                }
+                                                                else
+                                                                {
+                                                                    MessageBox.Show("Email inserido já existe");
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                email_eeditado = false;
+                                                            }
+
+                                                            if (guna2TextBox5.Text != telefone_edit)
+                                                            {
+                                                                telefone_eeditado = true;
+                                                                DataTable telefoneverification = BLL.Clientes.queryFunc_telefoneIgual(guna2TextBox5.Text, n_cliente);
+                                                                if (telefoneverification.Rows.Count < 1)
+                                                                {
+
+                                                                    telefone_eeditado = false;
+                                                                }
+                                                                else
+                                                                {
+                                                                    MessageBox.Show("Telefone inserido já existe");
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                telefone_eeditado = false;
+                                                            }
+
+                                                            if (guna2TextBox6.Text != nib_edit)
+                                                            {
+                                                                nib_eeditado = true;
+                                                                DataTable Nibverification = BLL.Clientes.queryFunc_NibIgual(guna2TextBox6.Text, n_cliente);
+                                                                if (Nibverification.Rows.Count < 1)
+                                                                {
+
+                                                                    nib_eeditado = false;
+                                                                }
+                                                                else
+                                                                {
+                                                                    MessageBox.Show("Nib inserido já existe");
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                nib_eeditado = false;
+                                                            }
+
+                                                            if (guna2TextBox8.Text != nif_edit)
+                                                            {
+                                                                nif_eeditado = true;
+                                                                DataTable nifverification = BLL.Clientes.queryFunc_NifIgual(guna2TextBox8.Text, n_cliente);
+                                                                if (nifverification.Rows.Count < 1)
+                                                                {
+                                                                    nif_eeditado = false;
+                                                                }
+                                                                else
+                                                                {
+                                                                    MessageBox.Show("Nib inserido já existe");
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                nif_eeditado = false;
+                                                            }
+
+
+                                                            if (email_eeditado == false && telefone_eeditado == false && nib_eeditado == false && nif_eeditado == false)
+                                                            {
+
+                                                                DialogResult dr = MessageBox.Show("Tem a certeza que quer alterar as informações do Cliente " + Nome + "?", "", MessageBoxButtons.YesNo);
+                                                                if (dr == DialogResult.Yes)
+                                                                {
+                                                                    int x = BLL.Clientes.updateCliente(n_cliente, guna2TextBox9.Text, Ativo, guna2TextBox4.Text, guna2TextBox2.Text, guna2TextBox5.Text, guna2TextBox6.Text, imgToByteArray(guna2PictureBox2.Image), guna2TextBox8.Text, guna2TextBox7.Text, guna2ComboBox8.Text);
+                                                                    guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                                                                }
+                                                            }
+
+
+                                                        }
+                                                        else
+                                                        {
+                                                            MessageBox.Show("Email é inválido.");
+                                                        }
+
+
+                                                    }
+
+
+
+
+                                                    
+                                                    
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Insira um género válido");
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    MessageBox.Show("Insira um nif válido");
+
+                                                }
+                                            }
+                                            else
+                                            {
+                                                MessageBox.Show("Insira uma morada válida");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Insira um nib válido");
+                                        }
+                                    }
+                                    else
+                                    {
+
+                                        MessageBox.Show("Insira um telefone válido");
+                                    }
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Insira um nº de email válido");
+
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Insira uma data válida");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Insira um nome");
+
                         }
 
-                    
+                    }
+
                 }
+             
 
             }
-
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2TextBox9_TextChanged(object sender, EventArgs e)
@@ -1304,6 +1440,7 @@ namespace Stand_up
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            try { 
             if(guna2TextBox1.Text != "" && guna2TextBox12.Text != "")
             {
                 if (Hash(guna2TextBox12.Text) == BLL.Func.queryFunc_get_senha(Form5.n_func).Rows[0]["senha"].ToString())
@@ -1334,7 +1471,11 @@ namespace Stand_up
             }
 
 
-
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2PictureBox1_Click(object sender, EventArgs e)
@@ -1344,6 +1485,7 @@ namespace Stand_up
 
         private void inserirVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try { 
             if(admin_load == true)
             {       
             Form1.flag_config = true;
@@ -1362,10 +1504,16 @@ namespace Stand_up
             {
                 MessageBox.Show("Não tem acesso");
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try { 
             if (admin_load == true)
             {
 
@@ -1386,10 +1534,16 @@ namespace Stand_up
             {
                 MessageBox.Show("Não tem acesso");
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
+            try { 
             if (Form1.flagFunc == true)
             {
                 if(guna2TextBox11.Text  != "")
@@ -1427,11 +1581,16 @@ namespace Stand_up
                 }
 
             }
-           
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
+            try { 
             if (w == 0)
             {
                 guna2TextBox11.UseSystemPasswordChar = false;
@@ -1444,6 +1603,11 @@ namespace Stand_up
                 guna2Button5.Image = Properties.Resources.invisible1;
                 w = 0;
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2TextBox10_TextChanged(object sender, EventArgs e)
@@ -1453,6 +1617,7 @@ namespace Stand_up
         int t = 0;
         private void guna2ImageButton1_Click(object sender, EventArgs e)
         {
+            try { 
             if (t == 0)
             {               
                 guna2ImageButton1.Image = Properties.Resources.flash_black;
@@ -1466,10 +1631,16 @@ namespace Stand_up
                 t = 0;
                 Ativo = true;
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void listaDeFuncionáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try { 
             if (admin_load == true)
             {
                 Form1.flagFunc = true;
@@ -1481,11 +1652,17 @@ namespace Stand_up
             {
                 MessageBox.Show("Não tem acesso");
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
 
         }
 
         private void editarEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try { 
             Form1.flag_config = true;
             Form1.flagFunc = false;
             Form1.flagCliente = true;
@@ -1496,15 +1673,26 @@ namespace Stand_up
             guna2GroupBox2.Text = "editar Cliente";
             guna2DataGridView1.DataSource = BLL.Clientes.Load();
             clear_caoxas();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
+            try { 
             DialogResult dr = MessageBox.Show("Tem a certeza que quer cancelar as alterações do funcionário "+Nome, "", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
                 clear_caoxas();
                 guna2DataGridView1.DataSource = BLL.Func.Load();
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1514,10 +1702,16 @@ namespace Stand_up
 
         private void listaDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try { 
             Form1.flagFunc = false;
             Form1.flagCliente = true;
             Form1.flag_lista_func = true;
             Form1.flag_config = false;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void especificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1527,6 +1721,7 @@ namespace Stand_up
         int uu = 0;
         private void guna2Button7_Click(object sender, EventArgs e)
         {
+            try { 
             if (uu == 0)
             {
                 guna2TextBox12.UseSystemPasswordChar = false;
@@ -1539,14 +1734,25 @@ namespace Stand_up
                 guna2Button7.Image = Properties.Resources.invisible1;
                 uu = 0;
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void enviadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try { 
             Form1.flagEmail = true;
             Form1.flag_config = false;
             Form1.flagFunc = false;
             Form1.flagCliente = false;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2GroupBox3_Click(object sender, EventArgs e)

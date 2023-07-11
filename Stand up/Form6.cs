@@ -18,11 +18,15 @@ namespace Stand_up
 
         private void Form6_Load(object sender, EventArgs e)
         {
+            try { 
             DoubleBuffered = true;
             string admin = BLL.Func.Buscar_admin(Form5.n_func);
             if (admin != "True")
             {
-            
+                if ( Form1.flagCliente == true)
+                {
+                    guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                }
             }
             if(admin == "True" && Form1.flagCliente==true)
             {
@@ -34,6 +38,11 @@ namespace Stand_up
             }
             timer1.Start();
             guna2DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
         int t = 0;
         int a = 0;
@@ -43,6 +52,7 @@ namespace Stand_up
         int j = 0;
         private void guna2Button3_Click(object sender, EventArgs e)
         {
+            try { 
             if (t == 0)
             {
                 guna2TextBox1.Clear();
@@ -65,10 +75,16 @@ namespace Stand_up
                 t = 0;
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            try { 
             if (a == 0)
             {
                 guna2TextBox1.Clear();
@@ -94,10 +110,16 @@ namespace Stand_up
                 a = 0;
                
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button32_Click(object sender, EventArgs e)
         {
+            try { 
             if (b == 0)
             {
                 guna2TextBox1.Clear();
@@ -122,10 +144,16 @@ namespace Stand_up
 
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
+            try { 
             if (c == 0)
             {
                
@@ -143,11 +171,18 @@ namespace Stand_up
                 guna2Button4.FillColor = Color.Silver;
                 c = 0;
 
+
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
+            try { 
             if (d == 0)
             {
                 guna2TextBox1.Clear();
@@ -171,10 +206,16 @@ namespace Stand_up
                 d = 0;
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
+            try { 
             if (j == 0)
             {
                 guna2TextBox1.Clear();
@@ -197,11 +238,17 @@ namespace Stand_up
                 j = 0;
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
         int ano;
         int i = 0;
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
+            try { 
             if (a == 1)
             {
 
@@ -314,11 +361,16 @@ namespace Stand_up
                 }
                 guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_idade(guna2TextBox1.Text);
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            try { 
             if (a!=0||b!=0||t!=0||d!=0||j!=0||c!=0) {
 
                 guna2TextBox1.Enabled = true;
@@ -486,41 +538,88 @@ namespace Stand_up
                 }
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void listaDeFuncionáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form1.flagFunc = true;
-            Form1.flagCliente = false;
-            Form1.flag_lista_func = true;
-            Form1.flag_config = false;
+            try { 
+            string admin = BLL.Func.Buscar_admin(Form5.n_func);
+            if (admin == "True")
+            {
+                Form1.flagFunc = true;
+                Form1.flagCliente = false;
+                Form1.flag_lista_func = true;
+                Form1.flag_config = false;
+            }
+            else
+            {
+                MessageBox.Show("Não tem acesso");
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void inserirVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            Form1.flag_config = true;
-            Form1.flagFunc = true;
-            Form1.flagCliente = false;
-            Form1.flagInsertFunc = true;
-            Form1.flagEditFunc = false;
-            Form1.flagInsertCliente = false;
-            Form1.flagEditCliente = false;
+            try { 
+            string admin = BLL.Func.Buscar_admin(Form5.n_func);
+            if (admin == "True")
+            {
+                Form1.flag_config = true;
+                Form1.flagFunc = true;
+                Form1.flagCliente = false;
+                Form1.flagInsertFunc = true;
+                Form1.flagEditFunc = false;
+                Form1.flagInsertCliente = false;
+                Form1.flagEditCliente = false;
+            }
+            else
+            {
+                MessageBox.Show("Não tem acesso");
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form1.flag_config = true;
-            Form1.flagFunc = true;
-            Form1.flagCliente = false;
-            Form1.flagInsertFunc = false;
-            Form1.flagEditFunc = true;
-            Form1.flagInsertCliente = false;
-            Form1.flagEditCliente = false;
+            try { 
+            string admin = BLL.Func.Buscar_admin(Form5.n_func);
+            if (admin == "True")
+            {
+                Form1.flag_config = true;
+                Form1.flagFunc = true;
+                Form1.flagCliente = false;
+                Form1.flagInsertFunc = false;
+                Form1.flagEditFunc = true;
+                Form1.flagInsertCliente = false;
+                Form1.flagEditCliente = false;
+            }
+            else
+            {
+                MessageBox.Show("Não tem acesso");
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void inserirEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try { 
             Form1.flag_config = true;
             Form1.flagFunc = false;
             Form1.flagCliente = true;
@@ -528,10 +627,16 @@ namespace Stand_up
             Form1.flagEditCliente = false;
             Form1.flagInsertFunc = false;
             Form1.flagEditFunc = false;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void editarEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try { 
             Form1.flag_config = true;
             Form1.flagFunc = false;
             Form1.flagCliente = true;
@@ -539,14 +644,25 @@ namespace Stand_up
             Form1.flagEditCliente = true;
             Form1.flagInsertFunc = false;
             Form1.flagEditFunc = false;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void listaDeClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try { 
             Form1.flagFunc = false;
             Form1.flagCliente = true;
             Form1.flag_lista_func = true;
             Form1.flag_config = false;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void especificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -556,10 +672,16 @@ namespace Stand_up
 
         private void enviarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try { 
             Form1.flagEmail = true;
             Form1.flag_config = false;
             Form1.flagFunc = false;
             Form1.flagCliente = false;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -574,7 +696,13 @@ namespace Stand_up
 
         private void guna2Button7_Click(object sender, EventArgs e)
         {
+            try { 
             guna2TextBox1.Clear();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
     }
 

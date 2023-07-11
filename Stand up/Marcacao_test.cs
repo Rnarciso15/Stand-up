@@ -1664,6 +1664,7 @@ namespace Stand_up
 
         private void Marcacao_test_Load(object sender, EventArgs e)
         {
+            try { 
             DoubleBuffered = true;
             mes = DateTime.Now.Month;
             ano = DateTime.Now.Year;
@@ -1673,6 +1674,11 @@ namespace Stand_up
             verificar_mes();
             carregar_car_PARA_LISTVIEW();
             Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         void Ativar_marcacao()
@@ -2075,6 +2081,7 @@ namespace Stand_up
 
         private void guna2CircleButton2_Click(object sender, EventArgs e)
         {
+            try { 
             mes += 1;
             if (mes == 13)
             {
@@ -2083,10 +2090,16 @@ namespace Stand_up
                 mes = 1;
             }
             verificar_mes();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2CircleButton1_Click(object sender, EventArgs e)
         {
+            try { 
             mes -= 1;
             if (mes == 0)
             {
@@ -2095,202 +2108,423 @@ namespace Stand_up
                 mes = 12;
             }
             verificar_mes();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 1;
 verificar_dia();
             Ativar_marcacao();            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
 
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 2;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 3;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 4;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 5;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button23_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 6;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 7;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button7_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 8;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button8_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 9;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button9_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 10;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button10_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 11;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button24_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 12;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button11_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 13;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button12_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 14;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button13_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 15;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button14_Click(object sender, EventArgs e)
         {
+            try {
             dia = 16;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button15_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 17;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button25_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 18;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button16_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 19;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button17_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 20;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button18_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 21;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button19_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 22;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button20_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 23;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button26_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 24;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button21_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 25;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button22_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 26;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button27_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 27;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button28_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 28;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button29_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 29;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button30_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 30;
 verificar_dia();
             Ativar_marcacao();
-            
-        
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+
+
         }
 
         private void guna2Button31_Click(object sender, EventArgs e)
         {
+            try { 
             dia = 31;
 verificar_dia();
-            Ativar_marcacao();        }
+            Ativar_marcacao();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void listView3_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            try { 
             Ativar_marcacao();
 
             if (listView3.SelectedItems.Count > 0 && flag_dataValida==true)
@@ -2302,12 +2536,17 @@ verificar_dia();
 
                 carregar_func_PARA_LISTVIEW();
             }
-        
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            try { 
             Ativar_marcacao();
 
             if (listView1.SelectedItems.Count > 0 && flag_dataValida == true)
@@ -2321,11 +2560,17 @@ verificar_dia();
 
                 carregar_cliente_PARA_LISTVIEW();
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void listView2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Ativar_marcacao();
+            try{
+                Ativar_marcacao();
             if (listView2.SelectedItems.Count > 0 && flag_dataValida == true)
             {
                 string phrase = listView2.SelectedItems[0].Text; ;
@@ -2334,6 +2579,11 @@ verificar_dia();
                 id_cliente = words[1];
                 nomeCliente = words[2];
                 guna2Button32.Enabled = true;
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
         public Image byteArrayToImage(byte[] byteArrayIn)
@@ -2368,6 +2618,7 @@ verificar_dia();
         }
         private void guna2Button32_Click(object sender, EventArgs e)
         {
+            try { 
           if( listView3.SelectedItems.Count < 1)
             {
                 MessageBox.Show("Selecione um veiculo");
@@ -2440,11 +2691,16 @@ verificar_dia();
                 }
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
         string hora231 = "";
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            try { 
          
                 
 
@@ -2527,6 +2783,11 @@ verificar_dia();
            
             }
             data123 = dataString + " " + hora;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -2536,29 +2797,47 @@ verificar_dia();
 
         private void listView3_MouseClick(object sender, MouseEventArgs e)
         {
+            try { 
             if (listView3.SelectedItems.Count > 0 && flag_dataValida == false)
             {
                 MessageBox.Show("Para fazer uma marcação necessita de selecionar a data de hoje ou uma posterior");
                 listView3.SelectedItems.Clear();
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button33_Click(object sender, EventArgs e)
         {
+            try { 
             DialogResult dr = MessageBox.Show("Pertende remover a marcação"+ data123+"", "", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
                 BLL.testDrive.EleminarTest(id_test);
                 Ativar_marcacao();
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
         int id_test = 0;
         private void guna2DataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
+            try { 
             if (e.RowIndex > -1)
             {
                 guna2Button33.Enabled = true;
                 id_test = (int)guna2DataGridView1.Rows[e.RowIndex].Cells["id"].Value;
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -2573,6 +2852,7 @@ verificar_dia();
         int jj = 0;
         private void guna2TextBox3_TextChanged(object sender, EventArgs e)
         {
+            try { 
             if (guna2TextBox3.Text.Length < 2 || guna2TextBox3.Text.Length > 3 && guna2TextBox3.Text.Length < 5 || guna2TextBox3.Text.Length > 6 && guna2TextBox3.Text.Length < 8)
             {
                 jj = 0;
@@ -2590,24 +2870,42 @@ verificar_dia();
             {
                 jj = 0;
             }
+
             carregar_car_PARA_LISTVIEW123();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2TextBox4_TextChanged(object sender, EventArgs e)
         {
+            try { 
             if (listView3.SelectedItems.Count > 0)
             {
                 carregar_func_PARA_LISTVIEW1234();
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
         private void guna2TextBox5_TextChanged(object sender, EventArgs e)
         {
+            try { 
             if (listView1.SelectedItems.Count > 0)
             {
                 carregar_cliente_PARA_LISTVIEW1234();
             }
             }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+        }
 
         private void guna2Button36_Click_1(object sender, EventArgs e)
         {

@@ -20,14 +20,26 @@ namespace Stand_up
         
 private void watch_Load(object sender, EventArgs e)
         {
+            try { 
             timer1.Start();
             DoubleBuffered = true;
-         
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            try { 
             label1.Text = DateTime.Now.ToString("T");
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -37,10 +49,16 @@ private void watch_Load(object sender, EventArgs e)
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
+            try { 
             if (WindowState == FormWindowState.Normal) {
 
                 WindowState = FormWindowState.Maximized;          
             
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
     }

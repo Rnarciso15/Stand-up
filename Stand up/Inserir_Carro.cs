@@ -74,6 +74,7 @@ namespace Stand_up
         ImageList images3 = new ImageList();
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try { 
             if (Form2.flagEditCAR == true && Form2.flagInsertCAR == false)
             {
                 guna2Button3.Visible = true;
@@ -196,6 +197,11 @@ namespace Stand_up
                     }
 
                 }
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -336,7 +342,7 @@ namespace Stand_up
         private void guna2Button32_Click(object sender, EventArgs e)
         {
 
-          
+            try { 
             if (guna2CheckBox2.Checked == true)
             {
                 mota = false;
@@ -876,11 +882,17 @@ namespace Stand_up
 
 
                 }
-          
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+
         }
 
         private void guna2TextBox3_TextChanged(object sender, EventArgs e)
         {
+            try { 
             if (guna2TextBox3.Text.Length == 6)
             {
 
@@ -1006,11 +1018,16 @@ namespace Stand_up
                 guna2TextBox6.Enabled = true;
             }
 
-
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2TextBox6_TextChanged(object sender, EventArgs e)
         {
+            try { 
 
             if (matricula_clear == false)
             {
@@ -1306,7 +1323,11 @@ namespace Stand_up
                     guna2TextBox5.Enabled = false;
                 }
             }
-
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
 
         }
 
@@ -1323,16 +1344,28 @@ namespace Stand_up
 
         private void guna2Button1_Click_1(object sender, EventArgs e)
         {
+            try { 
             matricula_clear = true;
             j = 0;
             guna2TextBox6.Text = "";
             matricula_clear = false;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            try { 
             guna2TextBox3.Clear();
             i = 0;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
@@ -1372,6 +1405,7 @@ namespace Stand_up
         }
         private void Inserir_Carro_Load(object sender, EventArgs e)
         {
+            try { 
             DoubleBuffered = true;
             if (Form1.flagEditCAR == true)
             {
@@ -1395,7 +1429,11 @@ namespace Stand_up
 
 
 
-
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2ComboBox2_Load(object sender, EventArgs e)
@@ -1419,6 +1457,7 @@ namespace Stand_up
         int iiii = 0;
         private void guna2PictureBox2_Click(object sender, EventArgs e)
         {
+            try { 
             if(Form1.flagInsertCAR == true || Form2.flagInsertCAR == true || listView1.SelectedItems.Count > 0)
             {
 
@@ -1508,11 +1547,16 @@ namespace Stand_up
             }
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2ComboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-
+            try { 
             if (guna2TextBox3.Text.Length == 10)
             {
                 if(guna2CheckBox2.Checked == true)
@@ -1520,7 +1564,7 @@ namespace Stand_up
 
              
                 guna2ComboBox2.Items.Clear();
-                int id_marca = (int)BLL.veiculos.queryBuscar_id_marca(guna2ComboBox1.Text);
+                int id_marca = (int)BLL.veiculos.queryBuscar_id_marca(guna2ComboBox1.SelectedItem.ToString());
 
                     DataTable table = BLL.veiculos.queryModelos_veiculo(id_marca);
 
@@ -1547,7 +1591,7 @@ namespace Stand_up
                 {
 
                     guna2ComboBox2.Items.Clear();
-                    int id_marca = (int)BLL.veiculos.queryBuscar_id_marcaModelosMotas(guna2ComboBox1.Text);
+                    int id_marca = (int)BLL.veiculos.queryBuscar_id_marcaModelosMotas(guna2ComboBox1.SelectedItem.ToString());
 
 
                     DataTable table = BLL.veiculos.queryModelos_veiculoMotas(id_marca);
@@ -1590,6 +1634,11 @@ namespace Stand_up
                 }
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -1608,6 +1657,7 @@ namespace Stand_up
 
         private void guna2TextBox5_TextChanged(object sender, EventArgs e)
         {
+            try { 
             if (guna2TextBox5.Text != "")
             {
 
@@ -1633,11 +1683,16 @@ namespace Stand_up
 
 
             }
-
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2TextBox1_TextChanged_1(object sender, EventArgs e)
         {
+            try { 
             if (guna2TextBox1.Text != "")
             {
 
@@ -1664,6 +1719,11 @@ namespace Stand_up
             else
             {
 
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1710,24 +1770,35 @@ namespace Stand_up
 
         private void inserirVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            try { 
             Form1.flagEditCAR = false;
             Form1.flagInsertCAR = true;
             Form2.flagEditCAR = false;
             Form2.flagInsertCAR = true;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            try { 
             Form1.flagEditCAR = true;
             Form1.flagInsertCAR = false;
             Form2.flagEditCAR = true;
             Form2.flagInsertCAR = false;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button33_Click(object sender, EventArgs e)
         {
+            try { 
             if (listView1.SelectedItems.Count > 0)
             {
 
@@ -1745,10 +1816,16 @@ namespace Stand_up
 
                 }
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2CheckBox2_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if (guna2CheckBox2.Checked == true)
             {
                 guna2CheckBox1.Checked = false;
@@ -1765,10 +1842,16 @@ namespace Stand_up
                 guna2PictureBox2.Image = Properties.Resources.motorcycle;
             }
             carregar_marca();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
+            try { 
             if(guna2CheckBox1.Checked == true)
             {
                 guna2CheckBox2.Checked = false;
@@ -1786,10 +1869,16 @@ namespace Stand_up
             }
 
             carregar_marca();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
+            try { 
             if (IMG_Idx >= addCl.Count-1)
             {
                 IMG_Idx = 0;
@@ -1804,10 +1893,16 @@ namespace Stand_up
 
                 guna2PictureBox2.Image = imagem;
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
+            try { 
             if(IMG_Idx < 1)
             {
                 IMG_Idx = addCl.Count - 1;
@@ -1822,12 +1917,22 @@ namespace Stand_up
 
                 guna2PictureBox2.Image = imagem;
             }
-            
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
+            try { 
             guna2GroupBox4.Visible = true;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button6_Click(object sender, EventArgs e)
@@ -1839,8 +1944,8 @@ namespace Stand_up
        
         private void guna2Button10_Click(object sender, EventArgs e)
         {
-
-            if (addCl.Count <= 11)
+            try { 
+            if (addCl.Count < 8)
             {
 
                 openFileDialog1.Filter = "PNG files (*.png)|*.png";
@@ -1925,25 +2030,42 @@ namespace Stand_up
             {
                 MessageBox.Show("Só pode inserir no máximo 12 imagens");
             }
-
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button11_Click(object sender, EventArgs e)
         {
+            try { 
             guna2GroupBox4.Visible = false;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
         string id = "";
         private void listView3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try { 
             if (listView3.SelectedItems.Count > 0)
             {
                  id = listView3.SelectedItems[0].Text;
                 guna2PictureBox1.Image = (Image)addCl[Convert.ToInt32(listView3.SelectedItems[0].Text)];
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
         int iii = 0;
         private void guna2Button9_Click(object sender, EventArgs e)
         {
+            try { 
             if (listView3.SelectedItems.Count > 0)
             {
                 addCl.RemoveAt(Convert.ToInt32(id));
@@ -2017,11 +2139,16 @@ namespace Stand_up
 
                 }
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2CheckBox3_CheckedChanged(object sender, EventArgs e)
         {
-
+            try { 
             if (guna2TextBox3.Text.Length == 10 && guna2ComboBox1.Text != "")
             {
                 if (guna2CheckBox2.Checked == true )
@@ -2100,7 +2227,11 @@ namespace Stand_up
 
             }
 
-
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void label14_Click(object sender, EventArgs e)

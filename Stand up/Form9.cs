@@ -25,9 +25,15 @@ namespace Stand_up
 
         private void Form9_Load(object sender, EventArgs e)
         {
+            try { 
             guna2DataGridView1.DataSource = BLL.transacoes.loadTrans();
             guna2DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             timer1.Start();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         int ano;
@@ -41,11 +47,18 @@ namespace Stand_up
 
         private void guna2Button33_Click(object sender, EventArgs e)
         {
+            try { 
             Form1.flagCancTransacao = true;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button32_Click(object sender, EventArgs e)
         {
+            try { 
             if (d == 0)
             {
                 guna2TextBox1.Clear();
@@ -67,12 +80,17 @@ namespace Stand_up
                 d = 0;
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
 
         {
-
+            try { 
             if (d != 0 || t != 0 || a != 0 || b !=0) {
 
                 guna2TextBox1.Enabled = true;
@@ -102,10 +120,16 @@ namespace Stand_up
                 guna2TextBox1.Enabled = false;
                 guna2DataGridView1.DataSource = BLL.transacoes.loadTrans();
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
+            try { 
             if (t == 0)
             {
                 guna2TextBox1.Clear();
@@ -132,10 +156,16 @@ namespace Stand_up
                 t = 0;
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            try { 
             if (a == 0)
             {
                 guna2TextBox1.Clear();
@@ -159,10 +189,16 @@ namespace Stand_up
                 guna2Button5.Visible = false;
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
+            try { 
             if (b == 0)
             {
                 guna2TextBox1.Clear();
@@ -184,6 +220,11 @@ namespace Stand_up
                 b = 0;
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
         int yy = 0;
         int jj = 0;
@@ -194,6 +235,7 @@ namespace Stand_up
         string numeros = "";
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
+            try { 
             if (a == 1)
             {
 
@@ -324,7 +366,12 @@ namespace Stand_up
                 {
                     jj = 0;
                 }
-            }    
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
 
         }
   
@@ -336,7 +383,13 @@ namespace Stand_up
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
+            try { 
             guna2TextBox1.Clear();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -113,27 +113,43 @@ namespace Stand_up
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            try { 
             carregar_car_PARA_LISTVIEW();
             DoubleBuffered = true;
-
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
 
         }
 
         private void inserirVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try { 
             Form1.flagInsertCAR = true;
             Form1.flagEditCAR = false;
             flagInsertCAR = true ;
             flagEditCAR = false;
-
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            try { 
             Form1.flagEditCAR = true;
             Form1.flagInsertCAR = false;
             flagEditCAR = true;
             flagInsertCAR = false;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)

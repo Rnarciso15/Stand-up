@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Threading;
 using Guna.UI2.WinForms;
+using System.Linq.Expressions;
 
 namespace Stand_up
 {
@@ -83,6 +84,10 @@ namespace Stand_up
         public static int ll = 0;
         private void Form1_Load(object sender, EventArgs e)
         {
+            try
+            {
+
+         
             DoubleBuffered = true;
             timer1.Start();
             watch f2 = new watch();
@@ -118,6 +123,11 @@ namespace Stand_up
                 guna2PictureBox4.Image = byteArrayToImage((Byte[])row["Imagem"]);
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Panel3_Paint(object sender, PaintEventArgs e)
@@ -127,11 +137,17 @@ namespace Stand_up
 
         private void guna2Button6_Click(object sender, EventArgs e)
         {
+            try { 
             Form2 f2 = new Form2();
             guna2Panel3.Controls.Clear();
             f2.TopLevel = false;
             f2.Parent = guna2Panel3;
             f2.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
 
         }
 
@@ -142,6 +158,7 @@ namespace Stand_up
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            try { 
             if (flag_lista_func == true)
             {
                 Form6 f2 = new Form6();
@@ -262,37 +279,58 @@ namespace Stand_up
                 flagHistTransacao = false;
                 www = 0;
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            
+            try { 
                 carros_para_venda f2 = new carros_para_venda();
                 guna2Panel3.Controls.Clear();
                 f2.TopLevel = false;
                 f2.Parent = guna2Panel3;
                 f2.Show();
-             
 
-          
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
+
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
+            try { 
             Marcacao_test f2 = new Marcacao_test();
             guna2Panel3.Controls.Clear();
             f2.TopLevel = false;
             f2.Parent = guna2Panel3;
             f2.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
+            try { 
             Form4 f2 = new Form4();
             guna2Panel3.Controls.Clear();
             f2.TopLevel = false;
             f2.Parent = guna2Panel3;
             f2.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2CirclePictureBox2_Click(object sender, EventArgs e)
@@ -303,6 +341,7 @@ namespace Stand_up
 
         private void label1_Click(object sender, EventArgs e)
         {
+            try { 
             if (K == 0)
             {
                 guna2Panel4.Visible = true;
@@ -313,7 +352,11 @@ namespace Stand_up
                 guna2Panel4.Visible = false;
                 K = 0;
             }
-
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2ContextMenuStrip1_Opening(object sender, CancelEventArgs e)
@@ -323,11 +366,16 @@ namespace Stand_up
 
         private void guna2Button5_Click(object sender, EventArgs e)
         {
+            try { 
             Form5 f2 = new Form5();
             this.Hide();
             f2.Show();
 
-           
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2Panel2_Paint(object sender, PaintEventArgs e)
@@ -337,28 +385,45 @@ namespace Stand_up
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
+            try { 
             Form4 f2 = new Form4();
             guna2Panel3.Controls.Clear();
             f2.TopLevel = false;
             f2.Parent = guna2Panel3;
             f2.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2PictureBox1_Click(object sender, EventArgs e)
         {
+            try { 
             Form5 f2 = new Form5();
             this.Hide();
             f2.Show();
-            
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2PictureBox2_Click(object sender, EventArgs e)
         {
+            try { 
             Form4 f2 = new Form4();
             guna2Panel3.Controls.Clear();
             f2.TopLevel = false;
             f2.Parent = guna2Panel3;
             f2.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -368,6 +433,7 @@ namespace Stand_up
 
         private void guna2PictureBox4_Click(object sender, EventArgs e)
         {
+            try { 
             if (K == 0)
             {
                 guna2Panel4.Visible = true;
@@ -378,15 +444,26 @@ namespace Stand_up
                 guna2Panel4.Visible = false;
                 K = 0;
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void guna2PictureBox3_Click(object sender, EventArgs e)
         {
+            try { 
             watch f2 = new watch();
             guna2Panel3.Controls.Clear();
             f2.TopLevel = false;
             f2.Parent = guna2Panel3;
             f2.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
     
                                                                

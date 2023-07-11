@@ -38,6 +38,7 @@ namespace Stand_up
 
         private void guna2TextBox1_TextChanged(object sender, EventArgs e)
         {
+            try { 
             if(guna2TextBox1.Text !="")
             {
                 carregar_cliente_PARA_LISTVIEW1();
@@ -45,6 +46,11 @@ namespace Stand_up
             else
             {
                 carregar_cliente_PARA_LISTVIEW();
+            }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
         void carregar_cliente_PARA_LISTVIEW()
@@ -212,6 +218,7 @@ namespace Stand_up
         int valor=0;
         private void Form8_Load(object sender, EventArgs e)
         {
+            try { 
             DoubleBuffered = true;
             DataTable info = BLL.veiculos.Load_dados(carros_para_venda.Matricula);
 
@@ -228,12 +235,17 @@ namespace Stand_up
 
             }
             carregar_cliente_PARA_LISTVIEW();
-
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
         string id_cliente = "";
         string nomeCliente = "";
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try { 
             if (listView1.SelectedItems.Count > 0)
             {
                 string phrase = listView1.SelectedItems[0].Text; ;
@@ -255,10 +267,16 @@ namespace Stand_up
                 }
 
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
     
         private void guna2Button32_Click(object sender, EventArgs e)
         {
+            try { 
             if(listView1.SelectedItems.Count > 0)
             {
                 int nif_cliente = 0;
@@ -451,6 +469,11 @@ namespace Stand_up
             {
                 MessageBox.Show("Selecione o cliente que irá efetuar a compra do veiculo");
             }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
 
         private void label24_Click(object sender, EventArgs e)
@@ -460,7 +483,13 @@ namespace Stand_up
 
         private void guna2Button33_Click(object sender, EventArgs e)
         {
-          Form1.flagCancTransacao = true;
+            try { 
+                      Form1.flagCancTransacao = true;
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
+            }
         }
     }
 }
