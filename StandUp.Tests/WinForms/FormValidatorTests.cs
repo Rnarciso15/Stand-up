@@ -28,7 +28,9 @@ public class FormValidatorTests
     [InlineData("missing-at-sign")]
     public void Email_InvalidFormat_ReturnsError(string value)
     {
-        Assert.NotNull(FormValidator.Email(value));
+        var error = FormValidator.Email(value);
+        Assert.NotNull(error);
+        Assert.Contains("Email", error);
     }
 
     [Theory]
@@ -65,12 +67,15 @@ public class FormValidatorTests
     [InlineData("1234")]
     public void Phone_Invalid_ReturnsError(string value)
     {
-        Assert.NotNull(FormValidator.Phone(value));
+        var error = FormValidator.Phone(value);
+        Assert.NotNull(error);
+        Assert.Contains("Telefone", error);
     }
 
     [Theory]
     [InlineData("912345678")]
     [InlineData("+351912345678")]
+    [InlineData("+351 912 345 678")]
     [InlineData("")]
     [InlineData(null)]
     public void Phone_ValidOrEmpty_ReturnsNull(string? value)
