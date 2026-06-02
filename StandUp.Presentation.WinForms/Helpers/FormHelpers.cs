@@ -27,6 +27,7 @@ public static class FormHelpers
         }
         catch (Exception ex)
         {
+            System.Diagnostics.Debug.WriteLine(ex);
             MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         finally
