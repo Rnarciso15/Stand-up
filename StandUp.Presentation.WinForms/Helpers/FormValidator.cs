@@ -8,7 +8,7 @@ public static class FormValidator
 
     /// <summary>Valida formato básico de email (contém @). Aceita vazio (campo opcional).</summary>
     public static string? Email(string? value) =>
-        !string.IsNullOrWhiteSpace(value) && !value.Contains('@')
+        !string.IsNullOrWhiteSpace(value) && !value.Trim().Contains('@')
             ? "Email inválido." : null;
 
     /// <summary>
