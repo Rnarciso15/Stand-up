@@ -18,7 +18,7 @@ public sealed class RequireRoleAttribute : Attribute, IAsyncActionFilter
         var role = context.HttpContext.Request.Headers["X-User-Role"].FirstOrDefault();
         if (string.IsNullOrWhiteSpace(role) || !_roles.Any(x => string.Equals(x, role, StringComparison.OrdinalIgnoreCase)))
         {
-            context.Result = new ForbidResult();
+            context.Result = new StatusCodeResult(403);
             return Task.CompletedTask;
         }
 

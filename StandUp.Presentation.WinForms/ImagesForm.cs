@@ -8,6 +8,10 @@ public partial class ImagesForm : Form
     {
         _api = api;
         InitializeComponent();
+        ThemeManager.ApplyToForm(this);
+        var header = ThemeManager.CreateHeader("Gestão de Imagens", ClientSize.Width);
+        Controls.Add(header);
+        header.BringToFront();
     }
 
     private async void btnLoadClient_Click(object sender, EventArgs e)

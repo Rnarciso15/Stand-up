@@ -10,11 +10,29 @@ public partial class VehiclesForm : Form
     {
         _vehicleApiClient = vehicleApiClient;
         InitializeComponent();
+        ThemeManager.ApplyToForm(this);
+        var header = ThemeManager.CreateHeader("Gestão de Veículos", ClientSize.Width);
+        Controls.Add(header);
+        header.BringToFront();
     }
 
     private async void VehiclesForm_Load(object sender, EventArgs e)
     {
+        await LoadBrandsAsync();
         await LoadGridAsync();
+    }
+
+    private async Task LoadBrandsAsync()
+    {
+        try
+        {
+            var brands = await _vehicleApiClient.GetBrandsAsync(CancellationToken.None);
+            cbBrand.DataSource = brands.ToList();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Erro ao carregar marcas: {ex.Message}");
+        }
     }
 
     private async Task LoadGridAsync(string? plate = null)
@@ -39,7 +57,18 @@ public partial class VehiclesForm : Form
     private async void btnSearch_Click(object sender, EventArgs e)
     {
         var sold = chkSoldFilter.Checked;
-        var items = await _vehicleApiClient.SearchAdvancedAsync(txtSearchPlate.Text, sold, CancellationToken.None);
+        var plate = txtSearchPlate.Text;
+        var model = txtSearchModel.Text;
+
+        IReadOnlyList<VehicleDto> items;
+
+        if (!string.IsNullOrWhiteSpace(plate))
+            items = await _vehicleApiClient.SearchAsync(plate, sold, CancellationToken.None);
+        else if (!string.IsNullOrWhiteSpace(model))
+            items = await _vehicleApiClient.SearchByBrandAndModelAsync(null, model, sold, CancellationToken.None);
+        else
+            items = await _vehicleApiClient.GetAllAsync(sold, CancellationToken.None);
+
         gridVehicles.DataSource = items.Select(x => new
         {
             x.LicensePlate,
@@ -59,11 +88,18 @@ public partial class VehiclesForm : Form
             return;
         }
 
+        var selectedBrand = cbBrand.SelectedItem?.ToString() ?? string.Empty;
+        if (string.IsNullOrWhiteSpace(selectedBrand))
+        {
+            MessageBox.Show("Selecione uma marca.");
+            return;
+        }
+
         var req = new CreateVehicleRequest(
             txtPlate.Text,
             kms,
             null,
-            txtBrand.Text,
+            selectedBrand,
             txtModel.Text,
             txtFuel.Text,
             price,

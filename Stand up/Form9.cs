@@ -1,4 +1,4 @@
-ï»¿using BusinessLogicLayer;
+using Stand_up;
 using Guna.UI2.WinForms;
 using Guna.UI2.WinForms.Suite;
 using iTextSharp.text;
@@ -26,13 +26,13 @@ namespace Stand_up
         private void Form9_Load(object sender, EventArgs e)
         {
             try { 
-            guna2DataGridView1.DataSource = BLL.transacoes.loadTrans();
+            guna2DataGridView1.DataSource = ApiService.transacoes.loadTrans();
             guna2DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             timer1.Start();
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -52,7 +52,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -83,7 +83,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -97,19 +97,19 @@ namespace Stand_up
 
                 if (d == 1)
             {
-                guna2DataGridView1.DataSource = BLL.transacoes.queryFunc_Like_NIF(guna2TextBox1.Text);
+                guna2DataGridView1.DataSource = ApiService.transacoes.queryFunc_Like_NIF(guna2TextBox1.Text);
             }
             if (t == 1)
             {
-                guna2DataGridView1.DataSource = BLL.transacoes.queryFunc_Like_N_Matricula(guna2TextBox1.Text);
+                guna2DataGridView1.DataSource = ApiService.transacoes.queryFunc_Like_N_Matricula(guna2TextBox1.Text);
             }
             if (a == 1)
             {
-                guna2DataGridView1.DataSource = BLL.transacoes.queryFunc_Like_N_data(guna2TextBox1.Text);
+                guna2DataGridView1.DataSource = ApiService.transacoes.queryFunc_Like_N_data(guna2TextBox1.Text);
             }
             if (b == 1)
             {
-                guna2DataGridView1.DataSource = BLL.transacoes.queryFunc_Like_N_valor(guna2TextBox1.Text);
+                guna2DataGridView1.DataSource = ApiService.transacoes.queryFunc_Like_N_valor(guna2TextBox1.Text);
             }
 
             }
@@ -118,12 +118,12 @@ namespace Stand_up
                 guna2TextBox1.Clear();
                 guna2Button5.Visible=false;
                 guna2TextBox1.Enabled = false;
-                guna2DataGridView1.DataSource = BLL.transacoes.loadTrans();
+                guna2DataGridView1.DataSource = ApiService.transacoes.loadTrans();
             }
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -159,7 +159,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -192,7 +192,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -223,7 +223,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
         int yy = 0;
@@ -255,7 +255,7 @@ namespace Stand_up
                             }
                             else
                             {
-                                MessageBox.Show("insira um dia vÃ¡lido");
+                                MessageBox.Show("insira um dia válido");
                                 guna2TextBox1.Clear();
                                 i = 0;
                             }
@@ -269,7 +269,7 @@ namespace Stand_up
                             }
                             else
                             {
-                                MessageBox.Show("insira um dia vÃ¡lido");
+                                MessageBox.Show("insira um dia válido");
                                 guna2TextBox1.Clear();
                                 i = 0;
                             }
@@ -283,7 +283,7 @@ namespace Stand_up
                             }
                             else
                             {
-                                MessageBox.Show("insira um dia vÃ¡lido");
+                                MessageBox.Show("insira um dia válido");
                                 guna2TextBox1.Clear();
                                 i = 0;
                             }
@@ -292,7 +292,7 @@ namespace Stand_up
                     }
                     else
                     {
-                        MessageBox.Show("insira um mÃªs vÃ¡lido");
+                        MessageBox.Show("insira um mês válido");
                         guna2TextBox1.Clear();
                         i = 0;
                     }
@@ -309,7 +309,7 @@ namespace Stand_up
                     }
                     else
                     {
-                        MessageBox.Show("insira um dia vÃ¡lido");
+                        MessageBox.Show("insira um dia válido");
                         guna2TextBox1.Clear();
                         i = 0;
                     }
@@ -324,7 +324,7 @@ namespace Stand_up
                     ano = data.Year;
                     if (data.Year >= DateTime.Now.Year || data.Year <= 1931)
                     {
-                        MessageBox.Show("insira um ano vÃ¡lido");
+                        MessageBox.Show("insira um ano válido");
                         guna2TextBox1.Clear();
                         i = 0;
                     }
@@ -370,7 +370,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
 
         }
@@ -388,7 +388,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -400,4 +400,5 @@ namespace Stand_up
 }
         
     
+
 

@@ -1,0 +1,21 @@
+@inherits LayoutComponentBase
+
+<nav class="su-nav">
+    <a href="/" class="su-nav-logo">STAND <span>UP</span></a>
+    <div class="su-nav-links">
+        <a href="/" Match="NavLinkMatch.All">Início</a>
+        <a href="/veiculos">Catálogo</a>
+        <a href="/veiculos" class="su-nav-cta">Ver Viaturas</a>
+    </div>
+</nav>
+
+<main>@Body</main>
+
+<footer class="su-footer">
+    <div class="su-footer-brand">STAND <span>UP</span></div>
+    <div class="su-footer-copy">&copy; @DateTime.Now.Year Stand Up — Gestão de Stand Automóvel · Lisboa, Portugal</div>
+</footer>
+
+<div id="blazor-error-ui" data-nosnippet style="display:none;position:fixed;bottom:1rem;right:1rem;background:#E8001D;color:#fff;padding:.75rem 1.25rem;font-size:.8rem;z-index:9999">
+    Ocorreu um erro. <a href="." style="color:#fff;text-decoration:underline">Recarregar</a>
+</div>

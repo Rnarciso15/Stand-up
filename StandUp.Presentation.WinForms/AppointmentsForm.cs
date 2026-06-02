@@ -10,6 +10,10 @@ public partial class AppointmentsForm : Form
     {
         _api = api;
         InitializeComponent();
+        ThemeManager.ApplyToForm(this);
+        var header = ThemeManager.CreateHeader("Gestão de Marcações", ClientSize.Width);
+        Controls.Add(header);
+        header.BringToFront();
     }
 
     private async void AppointmentsForm_Load(object sender, EventArgs e) => await LoadGridAsync();

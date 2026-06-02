@@ -10,6 +10,10 @@ public partial class ClientsForm : Form
     {
         _clientApiClient = clientApiClient;
         InitializeComponent();
+        ThemeManager.ApplyToForm(this);
+        var header = ThemeManager.CreateHeader("Gestão de Clientes", ClientSize.Width);
+        Controls.Add(header);
+        header.BringToFront();
     }
 
     private async void ClientsForm_Load(object sender, EventArgs e)

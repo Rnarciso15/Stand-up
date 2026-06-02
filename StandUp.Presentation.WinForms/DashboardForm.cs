@@ -8,6 +8,13 @@ public partial class DashboardForm : Form
     {
         _api = api;
         InitializeComponent();
+        ThemeManager.ApplyToForm(this);
+        var header = ThemeManager.CreateHeader("Dashboard — KPIs", ClientSize.Width);
+        Controls.Add(header);
+        header.BringToFront();
+        // KPI label com fonte maior
+        lblKpis.Font = new Font("Segoe UI", 11f, FontStyle.Bold);
+        lblKpis.ForeColor = ThemeManager.AccentAlt;
     }
 
     private async void btnLoadKpis_Click(object sender, EventArgs e)

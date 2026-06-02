@@ -16,18 +16,34 @@ public sealed class AppointmentReminderBackgroundService : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+        // Delay inicial — se a app parar antes de arrancar, sai silenciosamente
+        try { await Task.Delay(TimeSpan.FromSeconds(10), stoppingToken).ConfigureAwait(false); }
+        catch (OperationCanceledException) { return; }
+
         while (!stoppingToken.IsCancellationRequested)
         {
             try
             {
                 await ProcessRemindersAsync(stoppingToken);
             }
+            catch (OperationCanceledException)
+            {
+                break;
+            }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Reminder background service failed.");
             }
 
-            await Task.Delay(TimeSpan.FromMinutes(5), stoppingToken);
+            try
+            {
+                await Task.Delay(TimeSpan.FromMinutes(5), stoppingToken);
+            }
+            catch (OperationCanceledException)
+            {
+                // Aplicação a parar durante o delay — sair do ciclo
+                break;
+            }
         }
     }
 

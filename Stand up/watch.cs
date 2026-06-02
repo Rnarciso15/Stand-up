@@ -1,4 +1,4 @@
-ï»¿using BusinessLogicLayer;
+using Stand_up;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,7 @@ private void watch_Load(object sender, EventArgs e)
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
 
         }
@@ -38,7 +38,7 @@ private void watch_Load(object sender, EventArgs e)
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -58,8 +58,9 @@ private void watch_Load(object sender, EventArgs e)
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
     }
 }
+

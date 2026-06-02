@@ -1,4 +1,4 @@
-ï»¿using BusinessLogicLayer;
+using Stand_up;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -50,7 +50,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
         void carregar_cliente_PARA_LISTVIEW()
@@ -60,7 +60,7 @@ namespace Stand_up
 
 
 
-            DataTable dt = BLL.Clientes.queryLoad_cliente();
+            DataTable dt = ApiService.Clientes.queryLoad_cliente();
 
             listView1.Clear();
             images2.Images.Clear();
@@ -127,7 +127,7 @@ namespace Stand_up
 
 
 
-            DataTable dt = BLL.Clientes.queryCliente_Like_nome_ativo(guna2TextBox1.Text,true);
+            DataTable dt = ApiService.Clientes.queryCliente_Like_nome_ativo(guna2TextBox1.Text,true);
 
             listView1.Clear();
             images1.Images.Clear();
@@ -220,7 +220,7 @@ namespace Stand_up
         {
             try { 
             DoubleBuffered = true;
-            DataTable info = BLL.veiculos.Load_dados(carros_para_venda.Matricula);
+            DataTable info = ApiService.veiculos.Load_dados(carros_para_venda.Matricula);
 
             foreach (DataRow row in info.Rows)
             {
@@ -229,7 +229,7 @@ namespace Stand_up
                 label3.Text = (string)row["Modelo"];
                 label1.Text = (string)row["Matricula"];
                 valor = (int)row["Valor"];
-                label24.Text = Convert.ToString((int)row["Valor"]) + " â‚¬";
+                label24.Text = Convert.ToString((int)row["Valor"]) + " €";
                 guna2PictureBox1.Image = byteArrayToImage((Byte[])row["Imagem"]);
                 
 
@@ -238,7 +238,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
         string id_cliente = "";
@@ -253,7 +253,7 @@ namespace Stand_up
 
                 id_cliente = words[1];
                 nomeCliente = words[2];
-                DataTable info = BLL.Clientes.LoadCliente_proc(Convert.ToInt32(id_cliente));
+                DataTable info = ApiService.Clientes.LoadCliente_proc(Convert.ToInt32(id_cliente));
 
                 foreach (DataRow row in info.Rows)
                 {
@@ -270,7 +270,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
     
@@ -280,7 +280,7 @@ namespace Stand_up
             if(listView1.SelectedItems.Count > 0)
             {
                 int nif_cliente = 0;
-                DataTable nif = BLL.transacoes.loadnif_Cliente (Convert.ToInt32(id_cliente));
+                DataTable nif = ApiService.transacoes.loadnif_Cliente (Convert.ToInt32(id_cliente));
                 foreach (DataRow row in nif.Rows)
                 {
                     nif_cliente = Convert.ToInt32( (string)row["nif"]);
@@ -288,8 +288,8 @@ namespace Stand_up
                     DialogResult dr = MessageBox.Show("Pertende efetuar a compra ?", "", MessageBoxButtons.YesNo);
             if (dr == DialogResult.Yes)
             {
-                BLL.transacoes.insertTrans(nif_cliente, carros_para_venda.Matricula,DateTime.Now.ToString(),valor,nomeCliente);
-                int x = BLL.veiculos.updateVendido(carros_para_venda.Matricula, true);
+                ApiService.transacoes.insertTrans(nif_cliente, carros_para_venda.Matricula,DateTime.Now.ToString(),valor,nomeCliente);
+                int x = ApiService.veiculos.updateVendido(carros_para_venda.Matricula, true);
                 carros_para_venda.flagVendido = true;
                 Form1.flagCancTransacao = true;
             }
@@ -297,7 +297,7 @@ namespace Stand_up
                 {
                     try
                     {
-                        DataTable informacao = BLL.veiculos.Load_dados_imagem(carros_para_venda.Matricula);
+                        DataTable informacao = ApiService.veiculos.Load_dados_imagem(carros_para_venda.Matricula);
                         string data = "";
                         string Marca = "";
                         string Modelo = "";
@@ -320,7 +320,7 @@ namespace Stand_up
                             Quilometros = Convert.ToString((int)row["Quilometros"]);
                             Combustivel = (string)row["Combustivel"];
                             Descricao = (string)row["Descricao"];
-                            Valor = Convert.ToString((int)row["Valor"]) + " â‚¬";
+                            Valor = Convert.ToString((int)row["Valor"]) + " €";
                             imageBytes = (Byte[])row["Imagem"];
                             Cor = (string)row["Cor"];
                             Tipo_de_Caixa = (string)row["Tipo_de_Caixa"];
@@ -331,12 +331,12 @@ namespace Stand_up
                         // Cria um novo documento PDF
                         PdfDocument document = new PdfDocument();
 
-                        // Cria uma nova pÃ¡gina
+                        // Cria uma nova página
                         PdfPage page = document.AddPage();
 
-                        // ObtÃ©m um objeto XGraphics para desenhar na pÃ¡gina
+                        // Obtém um objeto XGraphics para desenhar na página
                         XGraphics gfx = XGraphics.FromPdfPage(page);
-                        DataTable logo = BLL.Imagem.loadlogo();
+                        DataTable logo = ApiService.Imagem.loadlogo();
                         XImage image9 = null;
                         foreach (DataRow row in logo.Rows)
                         {
@@ -347,7 +347,7 @@ namespace Stand_up
                             {
                                 image9 = XImage.FromStream(stream);
 
-                                // Usar o objeto XImage como necessÃ¡rio (por exemplo, desenhar ou adicionar ao PDF)
+                                // Usar o objeto XImage como necessário (por exemplo, desenhar ou adicionar ao PDF)
                             }
 
                         }
@@ -367,14 +367,14 @@ namespace Stand_up
                         double logoWidth = 75;  // Largura desejada para o logo
                         double logoHeight = logoWidth * image9.PixelHeight / image9.PixelWidth;
 
-                        // ObtÃ©m as coordenadas para posicionar o logo no canto superior direito
+                        // Obtém as coordenadas para posicionar o logo no canto superior direito
                         double logoX = page.Width - logoWidth - 15;
                         double logoY = 2;
 
                         // Adiciona o logo no canto superior direito com ajuste de tamanho
                         gfx.DrawImage(image9, logoX, logoY, logoWidth, logoHeight);
 
-                        // Adiciona o tÃ­tulo
+                        // Adiciona o título
 
                         XFont titleFont = new XFont("Arial", 28, XFontStyle.Bold);
                         XSize titleSize = gfx.MeasureString(Marca + " " + Modelo, titleFont);
@@ -388,36 +388,36 @@ namespace Stand_up
                         double carImageX = (page.Width - carImageWidth) / 2;
                         double carImageY = y + 100;
                         gfx.DrawImage(image, carImageX, carImageY, carImageWidth, carImageHeight);
-                        // Adiciona as especificaÃ§Ãµes
+                        // Adiciona as especificações
                         XFont contentFont = new XFont("Arial", 12);
-                        gfx.DrawString("EspecificaÃ§Ãµes:", contentFont, XBrushes.Black, x, y + 500);
+                        gfx.DrawString("Especificações:", contentFont, XBrushes.Black, x, y + 500);
                         y += 20;
-                        // Restante das especificaÃ§Ãµes
+                        // Restante das especificações
                         gfx.DrawString("Data: " + data, contentFont, XBrushes.Black, x, y + 520);
                         gfx.DrawString("Cor: " + Cor, contentFont, XBrushes.Black, x + 200, y + 520);
                         y += 20;
-                        // Restante das especificaÃ§Ãµes
+                        // Restante das especificações
                         gfx.DrawString("Marca: " + Marca, contentFont, XBrushes.Black, x, y + 520);
                         gfx.DrawString("Tipo de Caixa: " + Tipo_de_Caixa, contentFont, XBrushes.Black, x + 200, y + 520);
                         y += 20;
-                        // Restante das especificaÃ§Ãµes
+                        // Restante das especificações
                         gfx.DrawString("Modelo: " + Modelo, contentFont, XBrushes.Black, x, y + 520);
-                        gfx.DrawString("NÂº de Portas: " + N_Portas, contentFont, XBrushes.Black, x + 200, y + 520);
+                        gfx.DrawString("Nº de Portas: " + N_Portas, contentFont, XBrushes.Black, x + 200, y + 520);
                         y += 20;
-                        // Restante das especificaÃ§Ãµes
+                        // Restante das especificações
                         gfx.DrawString("Matricula: " + Matricula, contentFont, XBrushes.Black, x, y + 520);
-                        gfx.DrawString("TraccÃ§Ã£o: " + Traccao, contentFont, XBrushes.Black, x + 200, y + 520);
+                        gfx.DrawString("Traccção: " + Traccao, contentFont, XBrushes.Black, x + 200, y + 520);
                         y += 20;
-                        // Restante das especificaÃ§Ãµes
-                        gfx.DrawString("QuilÃ³metros: " + Quilometros, contentFont, XBrushes.Black, x, y + 520);
+                        // Restante das especificações
+                        gfx.DrawString("Quilómetros: " + Quilometros, contentFont, XBrushes.Black, x, y + 520);
                         gfx.DrawString("Combustivel: " + Combustivel, contentFont, XBrushes.Black, x + 200, y + 520);
 
                         y += 40;
-                        // Restante das especificaÃ§Ãµes
+                        // Restante das especificações
                         gfx.DrawString("Valor: " + Valor, contentFont, XBrushes.Black, x + 200, y + 520);
-                        // Restante das especificaÃ§Ãµes...
+                        // Restante das especificações...
 
-                        DataTable addcl = BLL.Clientes.LoadCliente_proc(Convert.ToInt32(id_cliente));
+                        DataTable addcl = ApiService.Clientes.LoadCliente_proc(Convert.ToInt32(id_cliente));
                         foreach (DataRow row in addcl.Rows)
                         {
                             string fromemail = "standuprla@gmail.com";
@@ -439,10 +439,10 @@ namespace Stand_up
                                 EnableSsl = true
                             };
 
-                            // Criar o arquivo PDF em um fluxo de memÃ³ria
+                            // Criar o arquivo PDF em um fluxo de memória
                             using (MemoryStream memoryStream = new MemoryStream())
                             {
-                                // Salvar o documento PDF no fluxo de memÃ³ria
+                                // Salvar o documento PDF no fluxo de memória
                                 document.Save(memoryStream);
                                 memoryStream.Position = 0;
 
@@ -467,12 +467,12 @@ namespace Stand_up
             }
             else
             {
-                MessageBox.Show("Selecione o cliente que irÃ¡ efetuar a compra do veiculo");
+                MessageBox.Show("Selecione o cliente que irá efetuar a compra do veiculo");
             }
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -488,8 +488,9 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
     }
 }
+

@@ -31,8 +31,8 @@ public static class DependencyInjection
         services.AddScoped<ISaleTransactionRepository, SaleTransactionRepository>();
         services.AddScoped<IVehicleRepository, VehicleRepository>();
         services.AddSingleton<IPdfProposalRenderer, SimplePdfProposalRenderer>();
-        services.AddHttpClient<ISmsSender, TwilioSmsSender>(client => { })
-            .AddTypedClient((httpClient, sp) => new TwilioSmsSender(
+        services.AddHttpClient("TwilioClient")
+            .AddTypedClient<ISmsSender>((httpClient, sp) => new TwilioSmsSender(
                 httpClient,
                 Environment.GetEnvironmentVariable("TWILIO_ACCOUNT_SID") ?? configuration["Twilio:AccountSid"] ?? string.Empty,
                 Environment.GetEnvironmentVariable("TWILIO_AUTH_TOKEN") ?? configuration["Twilio:AuthToken"] ?? string.Empty,

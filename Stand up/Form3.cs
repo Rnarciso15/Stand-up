@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using BusinessLogicLayer;
+using Stand_up;
 namespace Stand_up
 {
     public partial class Form3 : Form
@@ -30,7 +30,7 @@ namespace Stand_up
                 string desiredParagraph = fullText.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None)[i];
 
                 modelo = desiredParagraph;
-                int x = BLL.veiculos.insert_modelo(textBox2.Text, modelo, Convert.ToInt32(textBox4.Text), Convert.ToInt32(textBox5.Text));
+                int x = ApiService.veiculos.insert_modelo(textBox2.Text, modelo, Convert.ToInt32(textBox4.Text), Convert.ToInt32(textBox5.Text));
 
 
             }
@@ -47,7 +47,7 @@ namespace Stand_up
         private void guna2Button1_Click(object sender, EventArgs e)
         {
 
-            int x = BusinessLogicLayer.BLL.Imagem.insertlogo(1, imgToByteArray(pictureBox1.Image));
+            int x = ApiService.Imagem.insertlogo(1, imgToByteArray(pictureBox1.Image));
         }
         public Image byteArrayToImage(byte[] byteArrayIn)
 
@@ -127,3 +127,4 @@ namespace Stand_up
         }
     }
 }
+

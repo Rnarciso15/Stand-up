@@ -10,6 +10,8 @@ public interface IVehicleApiClient
     Task<VehicleDto> CreateAsync(CreateVehicleRequest request, CancellationToken cancellationToken);
     Task SetSoldAsync(string licensePlate, bool isSold, CancellationToken cancellationToken);
     Task<IReadOnlyList<VehicleDto>> SearchAdvancedAsync(string query, bool isSold, CancellationToken cancellationToken);
+    Task<IReadOnlyList<string>> GetBrandsAsync(CancellationToken cancellationToken);
+    Task<IReadOnlyList<VehicleDto>> SearchByBrandAndModelAsync(string? brand, string? model, bool isSold, CancellationToken cancellationToken);
 }
 
 public sealed class VehicleApiClient : IVehicleApiClient
@@ -55,6 +57,26 @@ public sealed class VehicleApiClient : IVehicleApiClient
     {
         UserSession.ApplyRoleHeader(_httpClient);
         var result = await _httpClient.GetFromJsonAsync<List<VehicleDto>>($"api/vehicles/advanced?brand={Uri.EscapeDataString(query)}&isSold={isSold}", cancellationToken);
+        return result ?? [];
+    }
+
+    public async Task<IReadOnlyList<string>> GetBrandsAsync(CancellationToken cancellationToken)
+    {
+        UserSession.ApplyRoleHeader(_httpClient);
+        var result = await _httpClient.GetFromJsonAsync<List<string>>("api/vehicles/brands", cancellationToken);
+        return result ?? [];
+    }
+
+    public async Task<IReadOnlyList<VehicleDto>> SearchByBrandAndModelAsync(string? brand, string? model, bool isSold, CancellationToken cancellationToken)
+    {
+        UserSession.ApplyRoleHeader(_httpClient);
+        var query = $"api/vehicles/advanced?isSold={isSold}";
+        if (!string.IsNullOrWhiteSpace(brand))
+            query += $"&brand={Uri.EscapeDataString(brand)}";
+        if (!string.IsNullOrWhiteSpace(model))
+            query += $"&model={Uri.EscapeDataString(model)}";
+
+        var result = await _httpClient.GetFromJsonAsync<List<VehicleDto>>(query, cancellationToken);
         return result ?? [];
     }
 }

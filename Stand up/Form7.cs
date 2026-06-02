@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Mail;
-using BusinessLogicLayer;
+using Stand_up;
 using System.IO;
 using System.Collections;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
@@ -29,7 +29,7 @@ namespace Stand_up
 
 
 
-            DataTable dt = BLL.Clientes.queryLoad_cliente();
+            DataTable dt = ApiService.Clientes.queryLoad_cliente();
 
             listView1.Clear();
             images2.Images.Clear();
@@ -100,7 +100,7 @@ namespace Stand_up
 
 
 
-            DataTable dt = BLL.Clientes.queryLoad_cliente();
+            DataTable dt = ApiService.Clientes.queryLoad_cliente();
 
             listView2.Clear();
             images2.Images.Clear();
@@ -191,7 +191,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -244,7 +244,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -266,7 +266,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -282,7 +282,7 @@ namespace Stand_up
                 id_cliente = words[1];
                 nomeCliente = words[2];
                 guna2Button32.Enabled = true;
-                dt = BLL.Clientes.queryCliente_mostrar_dados(Convert.ToInt32(id_cliente));
+                dt = ApiService.Clientes.queryCliente_mostrar_dados(Convert.ToInt32(id_cliente));
                 foreach (DataRow row in dt.Rows)
                 {
                     guna2TextBox5.Text = (string)row["email"];   
@@ -293,7 +293,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -319,14 +319,14 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
         private void inserirVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try { 
-            string admin = BLL.Func.Buscar_admin(Form5.n_func);
+            string admin = ApiService.Func.Buscar_admin(Form5.n_func);
             if (admin == "True")
             {
                 Form1.flag_config = true;
@@ -339,19 +339,19 @@ namespace Stand_up
             }
             else
             {
-                MessageBox.Show("NÃ£o tem acesso");
+                MessageBox.Show("Não tem acesso");
             }
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
         private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try { 
-            string admin = BLL.Func.Buscar_admin(Form5.n_func);
+            string admin = ApiService.Func.Buscar_admin(Form5.n_func);
             if (admin == "True")
             {
                 Form1.flag_config = true;
@@ -364,19 +364,19 @@ namespace Stand_up
             }
             else
             {
-                MessageBox.Show("NÃ£o tem acesso");
+                MessageBox.Show("Não tem acesso");
             }
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
-        private void listaDeFuncionÃ¡riosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void listaDeFuncionáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try { 
-            string admin = BLL.Func.Buscar_admin(Form5.n_func);
+            string admin = ApiService.Func.Buscar_admin(Form5.n_func);
             if (admin == "True")
             {
                 Form1.flagFunc = true;
@@ -386,16 +386,16 @@ namespace Stand_up
             }
             else
             {
-                MessageBox.Show("NÃ£o tem acesso");
+                MessageBox.Show("Não tem acesso");
             }
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
-        private void inserirEspecificaÃ§ÃµesDoVeÃ­culoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void inserirEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try { 
             Form1.flag_config = true;
@@ -408,11 +408,11 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
-        private void editarEspecificaÃ§ÃµesDoVeÃ­culoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void editarEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try { 
             Form1.flag_config = true;
@@ -425,7 +425,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -439,7 +439,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -453,7 +453,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -476,7 +476,7 @@ namespace Stand_up
                 {
 
              
-                DataTable dt1 = BLL.Clientes.queryLoad_cliente();
+                DataTable dt1 = ApiService.Clientes.queryLoad_cliente();
             foreach (DataRow row in dt1.Rows)
             {   
             
@@ -526,7 +526,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -587,7 +587,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -634,7 +634,7 @@ namespace Stand_up
                 id_cliente = words[1];
                 nomeCliente = words[2];
                 guna2Button32.Enabled = true;
-                dt = BLL.Clientes.queryCliente_mostrar_dados(Convert.ToInt32(id_cliente));
+                dt = ApiService.Clientes.queryCliente_mostrar_dados(Convert.ToInt32(id_cliente));
                 foreach (DataRow row in dt.Rows)
                 {
                     email = (string)row["email"];
@@ -659,7 +659,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -677,7 +677,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
 
         }
@@ -694,7 +694,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
         int q = 0;
@@ -708,7 +708,7 @@ namespace Stand_up
                 guna2Button8.Text = "x";
                 guna2Button8.Image = null;
                 guna2Button8.FillColor =Color.FromArgb(234, 45, 63);
-                DialogResult dr = MessageBox.Show("\"TÃªm a certeza que quer enviar a email aos clientes selecionados ?\"", "", MessageBoxButtons.YesNo);
+                DialogResult dr = MessageBox.Show("\"Têm a certeza que quer enviar a email aos clientes selecionados ?\"", "", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.Yes)
                 {
                     q = 1;
@@ -732,7 +732,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
 
         }
@@ -742,7 +742,7 @@ namespace Stand_up
             try { 
             if (listView2.SelectedItems.Count > 0)
             {
-                dt = BLL.Clientes.queryCliente_mostrar_dados(Convert.ToInt32(id_cliente));
+                dt = ApiService.Clientes.queryCliente_mostrar_dados(Convert.ToInt32(id_cliente));
                 foreach (DataRow row in dt.Rows)
                 {
                     email = (string)row["email"];
@@ -814,7 +814,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -829,7 +829,7 @@ namespace Stand_up
             for (int i = addCl.Count - 1; i >= 0; i--)
             {
                 DataRow row = (DataRow)addCl[i];
-                // CondiÃ§Ã£o para remover a linha
+                // Condição para remover a linha
                 if (row["n_cliente"].ToString() == id_cliente)
 
                 {
@@ -901,7 +901,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -919,7 +919,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -933,7 +933,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
         void carregar_cliente_PARA_LISTVIEW1234()
@@ -943,7 +943,7 @@ namespace Stand_up
 
 
 
-            DataTable dt = BLL.Clientes.queryLoad_cliente1234(guna2TextBox3.Text,true);
+            DataTable dt = ApiService.Clientes.queryLoad_cliente1234(guna2TextBox3.Text,true);
 
             listView2.Clear();
             images1.Images.Clear();
@@ -1014,7 +1014,7 @@ namespace Stand_up
 
 
 
-            DataTable dt = BLL.Clientes.queryLoad_cliente1234(guna2TextBox2.Text, true);
+            DataTable dt = ApiService.Clientes.queryLoad_cliente1234(guna2TextBox2.Text, true);
 
             listView1.Clear();
             images2.Images.Clear();
@@ -1086,7 +1086,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1097,7 +1097,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
 
         }
@@ -1108,3 +1108,4 @@ namespace Stand_up
         }
     }
 }
+

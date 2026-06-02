@@ -10,6 +10,10 @@ public partial class SalesForm : Form
     {
         _api = api;
         InitializeComponent();
+        ThemeManager.ApplyToForm(this);
+        var header = ThemeManager.CreateHeader("Gestão de Vendas", ClientSize.Width);
+        Controls.Add(header);
+        header.BringToFront();
     }
 
     private async void SalesForm_Load(object sender, EventArgs e) => await LoadGridAsync();

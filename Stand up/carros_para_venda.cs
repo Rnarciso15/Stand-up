@@ -1,4 +1,4 @@
-ï»¿using BusinessLogicLayer;
+using Stand_up;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,16 +43,16 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryCarro4(Combustivel, Cor,false, false);
+            DataTable dr = ApiService.veiculos.queryCarro4(Combustivel, Cor,false, false);
 
 
             if (m == 0)
             {
-                dr = BLL.veiculos.queryCarro4(Combustivel, Cor, false, false);
+                dr = ApiService.veiculos.queryCarro4(Combustivel, Cor, false, false);
             }
             else
             {
-                dr = BLL.veiculos.queryCarro4(Combustivel, Cor, false, true);
+                dr = ApiService.veiculos.queryCarro4(Combustivel, Cor, false, true);
             }
 
 
@@ -121,17 +121,17 @@ namespace Stand_up
         }
         void carregar_car_PARA_LISTVIEW6()
         {
-            DataTable dr = BLL.veiculos.queryCarro(Cor, Marca, false,false);
+            DataTable dr = ApiService.veiculos.queryCarro(Cor, Marca, false,false);
 
 
             if (m == 0)
             {
-                 dr = BLL.veiculos.queryCarro(Cor, Marca, false,false);
+                 dr = ApiService.veiculos.queryCarro(Cor, Marca, false,false);
 
             }
             else
             {
-                dr = BLL.veiculos.queryCarro(Cor, Marca, false,true);
+                dr = ApiService.veiculos.queryCarro(Cor, Marca, false,true);
 
             }
 
@@ -207,15 +207,15 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryCarro3(Combustivel,Marca ,Cor,false,false);
+            DataTable dr = ApiService.veiculos.queryCarro3(Combustivel,Marca ,Cor,false,false);
 
             if (m == 0)
             {
-                dr = BLL.veiculos.queryCarro3(Combustivel, Marca, Cor, false,false);
+                dr = ApiService.veiculos.queryCarro3(Combustivel, Marca, Cor, false,false);
             }
             else
             {
-                dr = BLL.veiculos.queryCarro3(Combustivel, Marca, Cor, false,true);
+                dr = ApiService.veiculos.queryCarro3(Combustivel, Marca, Cor, false,true);
             }
 
             listView1.Clear();
@@ -285,15 +285,15 @@ namespace Stand_up
         {
 
 
-            DataTable dr = BLL.veiculos.queryCarro2(Combustivel, Marca, false,false);
+            DataTable dr = ApiService.veiculos.queryCarro2(Combustivel, Marca, false,false);
 
             if (m == 0)
             {
-                 dr = BLL.veiculos.queryCarro2(Combustivel, Marca, false,false);
+                 dr = ApiService.veiculos.queryCarro2(Combustivel, Marca, false,false);
             }
             else
             {
-                dr = BLL.veiculos.queryCarro2(Combustivel, Marca, false,true);
+                dr = ApiService.veiculos.queryCarro2(Combustivel, Marca, false,true);
             }
 
 
@@ -369,7 +369,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryLoad_veiculo(false);
+            DataTable dr = ApiService.veiculos.queryLoad_veiculo(false);
 
 
 
@@ -444,15 +444,15 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryLoad_veiculo(false);
+            DataTable dr = ApiService.veiculos.queryLoad_veiculo(false);
 
             if (m == 0 && l!=0)
             {
-                dr = BLL.veiculos.queryLoad_veiculo_mota(false, false);
+                dr = ApiService.veiculos.queryLoad_veiculo_mota(false, false);
             }
             else if(m == 1 && l!=0)
             {
-                dr = BLL.veiculos.queryLoad_veiculo_mota(false, true);
+                dr = ApiService.veiculos.queryLoad_veiculo_mota(false, true);
             }
 
 
@@ -529,15 +529,15 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryGasolina_veiculo_tudo(Combustivel,false);
+            DataTable dr = ApiService.veiculos.queryGasolina_veiculo_tudo(Combustivel,false);
 
             if (m == 0 && l!= 0)
             {
-                dr = BLL.veiculos.queryGasolina_veiculo(Combustivel, false, false);
+                dr = ApiService.veiculos.queryGasolina_veiculo(Combustivel, false, false);
             }
             else if(m == 1 && l!= 0)
             {
-                dr = BLL.veiculos.queryGasolina_veiculo(Combustivel, false, true);
+                dr = ApiService.veiculos.queryGasolina_veiculo(Combustivel, false, true);
             }
 
             listView1.Clear();
@@ -610,16 +610,16 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca(Marca, false,false);
+            DataTable dr = ApiService.veiculos.querymaior_quiilometros_Marca(Marca, false,false);
 
 
             if (m == 0)
             {
-                dr = BLL.veiculos.querymaior_quiilometros_Marca(Marca, false, false);
+                dr = ApiService.veiculos.querymaior_quiilometros_Marca(Marca, false, false);
             }
             else
             {
-                dr = BLL.veiculos.querymaior_quiilometros_Marca(Marca, false, true);
+                dr = ApiService.veiculos.querymaior_quiilometros_Marca(Marca, false, true);
             }
 
             listView1.Clear();
@@ -692,7 +692,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_Cor(Cor,false);
+            DataTable dr = ApiService.veiculos.querymaior_quiilometros_Cor(Cor,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -764,7 +764,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_Combustivel(Combustivel,false);
+            DataTable dr = ApiService.veiculos.querymaior_quiilometros_Combustivel(Combustivel,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -836,15 +836,15 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca_cor(Marca,Cor,false,false);
+            DataTable dr = ApiService.veiculos.querymaior_quiilometros_Marca_cor(Marca,Cor,false,false);
 
             if (m == 0)
             {
-                dr = BLL.veiculos.querymaior_quiilometros_Marca_cor(Marca, Cor, false,true);
+                dr = ApiService.veiculos.querymaior_quiilometros_Marca_cor(Marca, Cor, false,true);
             }
             else
             {
-                dr = BLL.veiculos.querymaior_quiilometros_Marca_cor(Marca, Cor, false,true);
+                dr = ApiService.veiculos.querymaior_quiilometros_Marca_cor(Marca, Cor, false,true);
             }
 
             listView1.Clear();
@@ -917,15 +917,15 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_Marca_combustivel(Marca, Combustivel,false, false);
+            DataTable dr = ApiService.veiculos.querymaior_quiilometros_Marca_combustivel(Marca, Combustivel,false, false);
 
             if (m == 0)
             {
-                dr = BLL.veiculos.querymaior_quiilometros_Marca_combustivel(Marca, Combustivel, false, false);
+                dr = ApiService.veiculos.querymaior_quiilometros_Marca_combustivel(Marca, Combustivel, false, false);
             }
             else
             {
-                dr = BLL.veiculos.querymaior_quiilometros_Marca_combustivel(Marca, Combustivel, false, true); ;
+                dr = ApiService.veiculos.querymaior_quiilometros_Marca_combustivel(Marca, Combustivel, false, true); ;
             }
 
             listView1.Clear();
@@ -998,7 +998,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_Combustivel_cor(Combustivel, Cor,false);
+            DataTable dr = ApiService.veiculos.querymaior_quiilometros_Combustivel_cor(Combustivel, Cor,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -1071,15 +1071,15 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymenor_quiilometros_Marca(Marca, false, false);
+            DataTable dr = ApiService.veiculos.querymenor_quiilometros_Marca(Marca, false, false);
 
             if (m == 0)
             {
-                dr = BLL.veiculos.querymenor_quiilometros_Marca(Marca, false, false);
+                dr = ApiService.veiculos.querymenor_quiilometros_Marca(Marca, false, false);
             }
             else
             {
-                dr = BLL.veiculos.querymenor_quiilometros_Marca(Marca, false, true);
+                dr = ApiService.veiculos.querymenor_quiilometros_Marca(Marca, false, true);
             }
 
             listView1.Clear();
@@ -1152,7 +1152,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymenor_quiilometros_Cor(Cor,false);
+            DataTable dr = ApiService.veiculos.querymenor_quiilometros_Cor(Cor,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -1225,7 +1225,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymenor_quiilometros_Combustivel(Combustivel,false);
+            DataTable dr = ApiService.veiculos.querymenor_quiilometros_Combustivel(Combustivel,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -1297,15 +1297,15 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymenor_quiilometros_Marca_cor(Marca, Cor,false, false);
+            DataTable dr = ApiService.veiculos.querymenor_quiilometros_Marca_cor(Marca, Cor,false, false);
 
             if (m == 0)
             {
-                dr = BLL.veiculos.querymenor_quiilometros_Marca_cor(Marca, Cor, false, false);
+                dr = ApiService.veiculos.querymenor_quiilometros_Marca_cor(Marca, Cor, false, false);
             }
             else
             {
-                dr = BLL.veiculos.querymenor_quiilometros_Marca_cor(Marca, Cor, false, true);
+                dr = ApiService.veiculos.querymenor_quiilometros_Marca_cor(Marca, Cor, false, true);
             }
 
             listView1.Clear();
@@ -1379,16 +1379,16 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymenor_quiilometros_Marca_combustivel(Marca, Combustivel,false, false);
+            DataTable dr = ApiService.veiculos.querymenor_quiilometros_Marca_combustivel(Marca, Combustivel,false, false);
 
 
             if (m == 0)
             {
-                dr = BLL.veiculos.querymenor_quiilometros_Marca_combustivel(Marca, Combustivel, false, false);
+                dr = ApiService.veiculos.querymenor_quiilometros_Marca_combustivel(Marca, Combustivel, false, false);
             }
             else
             {
-                dr = BLL.veiculos.querymenor_quiilometros_Marca_combustivel(Marca, Combustivel, false, true);
+                dr = ApiService.veiculos.querymenor_quiilometros_Marca_combustivel(Marca, Combustivel, false, true);
             }
 
             listView1.Clear();
@@ -1461,7 +1461,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymenor_quiilometros_Combustivel_cor(Combustivel, Cor,false);
+            DataTable dr = ApiService.veiculos.querymenor_quiilometros_Combustivel_cor(Combustivel, Cor,false);
 
             listView1.Clear();
             images.Images.Clear();
@@ -1533,15 +1533,15 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.querymaior_quiilometros_tudo(false);
+            DataTable dr = ApiService.veiculos.querymaior_quiilometros_tudo(false);
 
             if (m == 0 && l!=0)
             {
-                dr = BLL.veiculos.querymaior_quiilometros(false, false);
+                dr = ApiService.veiculos.querymaior_quiilometros(false, false);
             }
             else if (m == 1 && l!=0)
             {
-                dr = BLL.veiculos.querymaior_quiilometros(false, true);
+                dr = ApiService.veiculos.querymaior_quiilometros(false, true);
             }
 
             listView1.Clear();
@@ -1614,15 +1614,15 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryMenor_quiilometros_tudo(false);
+            DataTable dr = ApiService.veiculos.queryMenor_quiilometros_tudo(false);
 
             if (m == 0 && l!=0)
             {
-                dr = BLL.veiculos.queryMenor_quiilometros(false, false);
+                dr = ApiService.veiculos.queryMenor_quiilometros(false, false);
             }
             else if (m == 1 && l!=0)
             {
-                dr = BLL.veiculos.queryMenor_quiilometros(false, true);
+                dr = ApiService.veiculos.queryMenor_quiilometros(false, true);
             }
 
             listView1.Clear();
@@ -1694,15 +1694,15 @@ namespace Stand_up
         {
 
 
-            DataTable dr = BLL.veiculos.queryMarca_veiculo(Marca, false, false);
+            DataTable dr = ApiService.veiculos.queryMarca_veiculo(Marca, false, false);
 
             if (m == 0)
             {
-                 dr = BLL.veiculos.queryMarca_veiculo(Marca, false,false);
+                 dr = ApiService.veiculos.queryMarca_veiculo(Marca, false,false);
             }
             else
             {
-                dr = BLL.veiculos.queryMarca_veiculo(Marca, false, true);
+                dr = ApiService.veiculos.queryMarca_veiculo(Marca, false, true);
             }
         
 
@@ -1779,15 +1779,15 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryCor_veiculo_tudo(Cor,false);
+            DataTable dr = ApiService.veiculos.queryCor_veiculo_tudo(Cor,false);
 
             if (m == 0 && l!=0)
             {
-                dr = BLL.veiculos.queryCor_veiculo(Cor, false, false);
+                dr = ApiService.veiculos.queryCor_veiculo(Cor, false, false);
             }
             else if(m == 1 && l != 0)
             {
-                dr = BLL.veiculos.queryCor_veiculo(Cor, false, true);
+                dr = ApiService.veiculos.queryCor_veiculo(Cor, false, true);
             }
 
             listView1.Clear();
@@ -1915,14 +1915,14 @@ namespace Stand_up
         private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
-            Combustivel = "GasÃ³leo";
+            Combustivel = "Gasóleo";
             k = 1;
         }
 
-        private void elÃ©tricoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void elétricoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
-            Combustivel = "ElÃ©trico";
+            Combustivel = "Elétrico";
             k = 1;
         }
 
@@ -1933,12 +1933,12 @@ namespace Stand_up
             k = 1;
         }
 
-        private void inserirEspecificaÃ§ÃµesDoVeÃ­culoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void inserirEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             flagMaior = false;
         }
 
-        private void ediitarEspecificaÃ§ÃµesDoVeÃ­culoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ediitarEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             flagMenor = false;
 
@@ -1979,10 +1979,10 @@ namespace Stand_up
 
         }
 
-        private void citroÃ«nToolStripMenuItem_Click(object sender, EventArgs e)
+        private void citroënToolStripMenuItem_Click(object sender, EventArgs e)
         {
             funcoesCarregadas = false;
-            Marca = "CitroÃ«n";
+            Marca = "Citroën";
             l = 1;
             m = 0;
 
@@ -2534,7 +2534,7 @@ namespace Stand_up
             carregar_car_PARA_LISTVIEW();
         }
 
-        private void histÃ³ricoDeTransaÃ§ÃµesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void históricoDeTransaçõesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form1.flagHistTransacao = true;
         }
@@ -2696,9 +2696,9 @@ namespace Stand_up
             funcoesCarregadas = false;
         }
 
-        private void zÃ¼ndappToolStripMenuItem_Click(object sender, EventArgs e)
+        private void zündappToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Marca = "ZÃ¼ndapp";
+            Marca = "Zündapp";
             m = 1;
             l = 1;
             funcoesCarregadas = false;
@@ -2712,3 +2712,4 @@ namespace Stand_up
         }
     }
 }
+

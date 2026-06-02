@@ -47,6 +47,18 @@ public sealed class VehiclesController : ControllerBase
         return updated ? NoContent() : NotFound();
     }
 
+    [HttpGet("brands")]
+    public async Task<ActionResult<IReadOnlyList<string>>> GetBrands(CancellationToken cancellationToken = default)
+    {
+        var vehicles = await _vehicleService.GetAllAsync(false, cancellationToken);
+        var brands = vehicles
+            .Select(v => v.Brand)
+            .Distinct()
+            .OrderBy(b => b)
+            .ToList();
+        return Ok(brands);
+    }
+
     [HttpGet("advanced")]
     [HttpGet("search-advanced")]
     public async Task<ActionResult<IReadOnlyList<VehicleDto>>> AdvancedSearch(
