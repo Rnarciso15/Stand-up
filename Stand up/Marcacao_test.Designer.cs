@@ -818,6 +818,7 @@ namespace Stand_up
             this.guna2Button32.Name = "guna2Button32";
             this.guna2Button32.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
             this.guna2Button32.Size = new System.Drawing.Size(116, 89);
+            this.guna2Button32.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Button32.TabIndex = 39;
             this.guna2Button32.Text = "Adicionar";
             this.guna2Button32.Click += new System.EventHandler(this.guna2Button32_Click);
@@ -838,6 +839,7 @@ namespace Stand_up
             this.guna2Button33.Name = "guna2Button33";
             this.guna2Button33.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
             this.guna2Button33.Size = new System.Drawing.Size(116, 89);
+            this.guna2Button33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Button33.TabIndex = 40;
             this.guna2Button33.Text = "Remover";
             this.guna2Button33.Click += new System.EventHandler(this.guna2Button33_Click);
