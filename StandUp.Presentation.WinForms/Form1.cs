@@ -12,6 +12,10 @@ public partial class Form1 : Form
         _authApiClient = authApiClient;
         _serviceProvider = serviceProvider;
         InitializeComponent();
+        ThemeManager.ApplyToForm(this);
+        // O painel de login precisa de fundo Surface explícito após tema
+        foreach (Control c in Controls)
+            if (c is TextBox tb) ThemeManager.StyleTextBox(tb);
     }
 
     private async void btnLogin_Click(object sender, EventArgs e)

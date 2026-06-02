@@ -44,4 +44,14 @@ public sealed class ImageRepository : IImageRepository
         var plate = licensePlate.Trim().ToUpperInvariant();
         return await _dbContext.VehicleImages.Where(x => x.VehicleLicensePlate == plate).OrderByDescending(x => x.CreatedAt).ToListAsync(cancellationToken);
     }
+
+    public async Task<byte[]?> GetFirstVehicleImageDataAsync(string licensePlate, CancellationToken cancellationToken)
+    {
+        var plate = licensePlate.Trim().ToUpperInvariant();
+        var img = await _dbContext.VehicleImages
+            .Where(x => x.VehicleLicensePlate == plate)
+            .OrderByDescending(x => x.CreatedAt)
+            .FirstOrDefaultAsync(cancellationToken);
+        return img?.Data;
+    }
 }

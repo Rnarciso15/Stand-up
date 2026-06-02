@@ -1,10 +1,10 @@
-ï»¿
-using BusinessLogicLayer;
+
+using Stand_up;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
 using System.Data;
-using BusinessLogicLayer;
+using Stand_up;
 using System.IO;
 using System.Drawing;
 using System.Collections;
@@ -90,7 +90,7 @@ namespace Stand_up
 
                     ativar_caixas();
 
-                    DataTable info = BLL.veiculos.Load_dados(Matricula);
+                    DataTable info = ApiService.veiculos.Load_dados(Matricula);
 
                     foreach (DataRow row in info.Rows)
                     {
@@ -122,7 +122,7 @@ namespace Stand_up
                        
                         guna2ComboBox8.SelectedItem = (string)row["Traccao"];
                     }
-                    DataTable infoimagem = BLL.Imagem.LoadImagensCarro(Matricula);
+                    DataTable infoimagem = ApiService.Imagem.LoadImagensCarro(Matricula);
 
                     addCl.Clear();
                     foreach (DataRow row1 in infoimagem.Rows)
@@ -201,7 +201,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -215,7 +215,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryLoad_veiculo(false);
+            DataTable dr = ApiService.veiculos.queryLoad_veiculo(false);
             images.Images.Clear();
             listView1.Clear();
             int k = 0;
@@ -360,7 +360,7 @@ namespace Stand_up
 
 
                     string Matricula = listView1.SelectedItems[0].Text;
-                    DataTable info = BLL.veiculos.Load_dados(Matricula);
+                    DataTable info = ApiService.veiculos.Load_dados(Matricula);
                     for (int l = 0; l < info.Columns.Count - 1; l++)
                     {
                         switch (l)
@@ -609,7 +609,7 @@ namespace Stand_up
 
                     if (guna2TextBox3.Text.Length != 10)
                     {
-                        MessageBox.Show("Insira uma data vÃ¡lida !");
+                        MessageBox.Show("Insira uma data válida !");
                         guna2TextBox3.Clear();
                     }
                     else
@@ -628,15 +628,15 @@ namespace Stand_up
                             {
                                 if (guna2TextBox6.Text.Length != 8)
                                 {
-                                    MessageBox.Show("Insira uma matricula vÃ¡lida !");
+                                    MessageBox.Show("Insira uma matricula válida !");
                                     guna2TextBox6.Clear();
                                 }
                                 else
                                 {
-                                    DataTable verificar_matricula = BLL.veiculos.Load_dados1(guna2TextBox6.Text);
+                                    DataTable verificar_matricula = ApiService.veiculos.Load_dados1(guna2TextBox6.Text);
                                     if (verificar_matricula.Rows.Count > 1 && matricula_editada != true || verificar_matricula.Rows.Count > 0 && matricula_editada == true)
                                     {
-                                        MessageBox.Show("Esta matricula jÃ¡ existe");
+                                        MessageBox.Show("Esta matricula já existe");
                                         guna2TextBox6.Clear();
                                     }
                                     else
@@ -645,7 +645,7 @@ namespace Stand_up
 
                                         if (guna2TextBox5.Text == "")
                                         {
-                                            MessageBox.Show("Insira uma kilometragem vÃ¡lida !");
+                                            MessageBox.Show("Insira uma kilometragem válida !");
                                         }
                                         else
                                         {
@@ -669,13 +669,13 @@ namespace Stand_up
                                                     {
                                                         if (guna2ComboBox6.SelectedIndex == -1 && mota ==false)
                                                         {
-                                                            MessageBox.Show("Selecione o nÂº de Portas !");
+                                                            MessageBox.Show("Selecione o nº de Portas !");
                                                         }
                                                         else
                                                         {
                                                             if (guna2ComboBox8.SelectedIndex == -1)
                                                             {
-                                                                MessageBox.Show("Selecione o tipo de tracÃ§Ã£o !");
+                                                                MessageBox.Show("Selecione o tipo de tracção !");
                                                             }
                                                             else
                                                             {
@@ -699,23 +699,23 @@ namespace Stand_up
                                                                         }
                                                                         DateTime data = DateTime.ParseExact(guna2TextBox3.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
                                                                         string data2 = data.ToString("dd/MM/yyyy");
-                                                                        DialogResult dr = MessageBox.Show("Pertende guardar as alteraÃ§Ãµes do veiculo?", "", MessageBoxButtons.YesNo);
+                                                                        DialogResult dr = MessageBox.Show("Pertende guardar as alterações do veiculo?", "", MessageBoxButtons.YesNo);
                                                                         if (dr == DialogResult.Yes)
                                                                         {
                                                                             if(mota == false)
                                                                             {
-                                                                                int x = BLL.veiculos.updateVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2PictureBox2.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, listView1.SelectedItems[0].Text);
+                                                                                int x = ApiService.veiculos.updateVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2PictureBox2.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, listView1.SelectedItems[0].Text);
 
                                                                             }
                                                                             else
                                                                             {
-                                                                                int x = BLL.veiculos.updateVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2PictureBox2.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text,0, guna2ComboBox8.Text, listView1.SelectedItems[0].Text);
+                                                                                int x = ApiService.veiculos.updateVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2PictureBox2.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text,0, guna2ComboBox8.Text, listView1.SelectedItems[0].Text);
 
                                                                             }
                                                                             foreach (Image row1 in addCl)
                                                                             {
                                                                                 guna2PictureBox2.Image = Properties.Resources.car;
-                                                                                BLL.Imagem.insertImagemCarro(imgToByteArray(row1), guna2TextBox6.Text);
+                                                                                ApiService.Imagem.insertImagemCarro(imgToByteArray(row1), guna2TextBox6.Text);
                                                                             }
                                                                             carregar_car_PARA_LISTVIEW();
                                                                             limpar_caixas();
@@ -749,7 +749,7 @@ namespace Stand_up
 
                     if (guna2TextBox3.Text.Length != 10)
                     {
-                        MessageBox.Show("Insira uma data vÃ¡lida !");
+                        MessageBox.Show("Insira uma data válida !");
                         guna2TextBox3.Clear();
                     }
                     else
@@ -768,14 +768,14 @@ namespace Stand_up
                             {
                                 if (guna2TextBox6.Text.Length != 8)
                                 {
-                                    MessageBox.Show("Insira uma matricula vÃ¡lida !");
+                                    MessageBox.Show("Insira uma matricula válida !");
                                 }
                                 else
                                 {
-                                    DataTable verificar_matricula = BLL.veiculos.Load_dados1(guna2TextBox6.Text);
+                                    DataTable verificar_matricula = ApiService.veiculos.Load_dados1(guna2TextBox6.Text);
                                     if (verificar_matricula.Rows.Count > 0)
                                     {
-                                        MessageBox.Show("Esta matricula jÃ¡ existe");
+                                        MessageBox.Show("Esta matricula já existe");
                                     }
                                     else
                                     {
@@ -783,7 +783,7 @@ namespace Stand_up
 
                                         if (guna2TextBox5.Text == "")
                                         {
-                                            MessageBox.Show("Insira uma kilometragem vÃ¡lida !");
+                                            MessageBox.Show("Insira uma kilometragem válida !");
                                         }
                                         else
                                         {
@@ -807,13 +807,13 @@ namespace Stand_up
                                                     {
                                                         if (guna2ComboBox6.SelectedIndex == -1 && mota != true)
                                                         {
-                                                            MessageBox.Show("Selecione o nÂº de Portas !");
+                                                            MessageBox.Show("Selecione o nº de Portas !");
                                                         }
                                                         else
                                                         {
                                                             if (guna2ComboBox8.SelectedIndex == -1)
                                                             {
-                                                                MessageBox.Show("Selecione o tipo de tracÃ§Ã£o !");
+                                                                MessageBox.Show("Selecione o tipo de tracção !");
                                                             }
                                                             else
                                                             {
@@ -841,13 +841,13 @@ namespace Stand_up
                                                                         if (guna2CheckBox2.Checked == true)
                                                                         {
                                                                             mota = false;
-                                                                           BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2PictureBox2.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, false, mota);
+                                                                           ApiService.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2PictureBox2.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, Convert.ToInt32(guna2ComboBox6.Text), guna2ComboBox8.Text, false, mota);
 
                                                                         }
                                                                         else
                                                                         {
                                                                             mota = true;
-                                                                            BLL.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2PictureBox2.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, 0, guna2ComboBox8.Text, false, mota);
+                                                                            ApiService.veiculos.insertVeiculo(guna2TextBox6.Text, Convert.ToInt32(guna2TextBox5.Text), data2, guna2ComboBox1.Text, guna2ComboBox2.Text, guna2TextBox7.Text, guna2ComboBox3.Text, imgToByteArray(guna2PictureBox2.Image), Convert.ToInt32(guna2TextBox1.Text), guna2ComboBox4.Text, guna2ComboBox5.Text, 0, guna2ComboBox8.Text, false, mota);
 
                                                                         }
 
@@ -856,7 +856,7 @@ namespace Stand_up
                                                                                  foreach (Image row1 in addCl)
                                                                                     {
                                                                                      guna2PictureBox2.Image = Properties.Resources.car;
-                                                                                       BLL.Imagem.insertImagemCarro(imgToByteArray(row1), guna2TextBox6.Text);                                                                                
+                                                                                       ApiService.Imagem.insertImagemCarro(imgToByteArray(row1), guna2TextBox6.Text);                                                                                
                                                                                     }
                                                                             imagem_carro.Clear();
                                                                                 limpar_caixas();
@@ -885,7 +885,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
 
         }
@@ -908,7 +908,7 @@ namespace Stand_up
                         }
                         else
                         {
-                            MessageBox.Show("insira um dia vÃ¡lido");
+                            MessageBox.Show("insira um dia válido");
                             guna2TextBox3.Clear();
                             i = 0;
                         }
@@ -922,7 +922,7 @@ namespace Stand_up
                         }
                         else
                         {
-                            MessageBox.Show("insira um dia vÃ¡lido");
+                            MessageBox.Show("insira um dia válido");
                             guna2TextBox3.Clear();
                             i = 0;
                         }
@@ -936,7 +936,7 @@ namespace Stand_up
                         }
                         else
                         {
-                            MessageBox.Show("insira um dia vÃ¡lido");
+                            MessageBox.Show("insira um dia válido");
                             guna2TextBox3.Clear();
                             i = 0;
                         }
@@ -945,7 +945,7 @@ namespace Stand_up
                 }
                 else
                 {
-                    MessageBox.Show("insira um mÃªs vÃ¡lido");
+                    MessageBox.Show("insira um mês válido");
                     guna2TextBox3.Clear();
                     i = 0;
                 }
@@ -962,7 +962,7 @@ namespace Stand_up
                 }
                 else
                 {
-                    MessageBox.Show("insira um dia vÃ¡lido");
+                    MessageBox.Show("insira um dia válido");
                     guna2TextBox3.Clear();
                     i = 0;
                 }
@@ -978,14 +978,14 @@ namespace Stand_up
                     ano = data.Year;
                     if (data.Year > DateTime.Now.Year || data.Year <= 1931)
                     {
-                        MessageBox.Show("insira um ano vÃ¡lido");
+                        MessageBox.Show("insira um ano válido");
                         guna2TextBox3.Clear();
                         i = 0;
                     }
                 }
                 catch(Exception) {
 
-                    MessageBox.Show("insira uma data vÃ¡lida");
+                    MessageBox.Show("insira uma data válida");
                     guna2TextBox3.Clear();
                     i = 0;
                 }
@@ -1021,7 +1021,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1048,7 +1048,7 @@ namespace Stand_up
                                 {
                                     if (guna2TextBox6.Text[l] == '0' || guna2TextBox6.Text[l] == '1' || guna2TextBox6.Text[l] == '2' || guna2TextBox6.Text[l] == '3' || guna2TextBox6.Text[l] == '4' || guna2TextBox6.Text[l] == '5' || guna2TextBox6.Text[l] == '6' || guna2TextBox6.Text[l] == '7' || guna2TextBox6.Text[l] == '8' || guna2TextBox6.Text[l] == '9')
                                     {
-                                        MessageBox.Show("Tem de usar o formato AA-00-00, devido Ã  idade do seu carro ");
+                                        MessageBox.Show("Tem de usar o formato AA-00-00, devido à idade do seu carro ");
                                         guna2TextBox6.Clear();
                                         break;
 
@@ -1072,7 +1072,7 @@ namespace Stand_up
                                     else
                                     {
 
-                                        MessageBox.Show("Tem de usar o formato AA-00-00, devido Ã¡ idade do seu carro ");
+                                        MessageBox.Show("Tem de usar o formato AA-00-00, devido á idade do seu carro ");
                                         guna2TextBox6.Clear();
                                         break;
                                     }
@@ -1090,7 +1090,7 @@ namespace Stand_up
                                     else
                                     {
 
-                                        MessageBox.Show("Tem de usar o formato AA-00-00, devido Ã¡ idade do seu carro ");
+                                        MessageBox.Show("Tem de usar o formato AA-00-00, devido á idade do seu carro ");
                                         guna2TextBox6.Clear();
                                         break;
                                     }
@@ -1111,7 +1111,7 @@ namespace Stand_up
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Tem de usar o formato 00-00-AA, devido Ã¡ idade do seu carro ");
+                                        MessageBox.Show("Tem de usar o formato 00-00-AA, devido á idade do seu carro ");
                                         guna2TextBox6.Clear();
                                         break;
                                     }
@@ -1130,7 +1130,7 @@ namespace Stand_up
                                     else
                                     {
 
-                                        MessageBox.Show("Tem de usar o formato 00-00-AA, devido Ã¡ idade do seu carro ");
+                                        MessageBox.Show("Tem de usar o formato 00-00-AA, devido á idade do seu carro ");
                                         guna2TextBox6.Clear();
                                         break;
                                     }
@@ -1143,7 +1143,7 @@ namespace Stand_up
                                 {
                                     if (guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
                                     {
-                                        MessageBox.Show("Tem de usar o formato 00-00-AA, devido Ã¡ idade do seu carro ");
+                                        MessageBox.Show("Tem de usar o formato 00-00-AA, devido á idade do seu carro ");
                                         guna2TextBox6.Clear();
                                         break;
                                     }
@@ -1171,7 +1171,7 @@ namespace Stand_up
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Tem de usar o formato 00-AA-00, devido Ã¡ idade do seu carro ");
+                                        MessageBox.Show("Tem de usar o formato 00-AA-00, devido á idade do seu carro ");
                                         guna2TextBox6.Clear();
                                         break;
                                     }
@@ -1186,7 +1186,7 @@ namespace Stand_up
                                     if (guna2TextBox6.Text[
                                         o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
                                     {
-                                        MessageBox.Show("Tem de usar o formato 00-AA-00, devido Ã¡ idade do seu carro ");
+                                        MessageBox.Show("Tem de usar o formato 00-AA-00, devido á idade do seu carro ");
                                         guna2TextBox6.Clear();
                                         break;
                                     }
@@ -1208,7 +1208,7 @@ namespace Stand_up
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Tem de usar o formato 00-AA-00, devido Ã¡ idade do seu carro ");
+                                        MessageBox.Show("Tem de usar o formato 00-AA-00, devido á idade do seu carro ");
                                         guna2TextBox6.Clear();
                                         break;
 
@@ -1226,7 +1226,7 @@ namespace Stand_up
                                 {
                                     if (guna2TextBox6.Text[l] == '0' || guna2TextBox6.Text[l] == '1' || guna2TextBox6.Text[l] == '2' || guna2TextBox6.Text[l] == '3' || guna2TextBox6.Text[l] == '4' || guna2TextBox6.Text[l] == '5' || guna2TextBox6.Text[l] == '6' || guna2TextBox6.Text[l] == '7' || guna2TextBox6.Text[l] == '8' || guna2TextBox6.Text[l] == '9')
                                     {
-                                        MessageBox.Show("Tem de usar o formato AA-00-AA, devido Ã¡ idade do seu carro ");
+                                        MessageBox.Show("Tem de usar o formato AA-00-AA, devido á idade do seu carro ");
                                         guna2TextBox6.Clear();
                                         break;
 
@@ -1250,7 +1250,7 @@ namespace Stand_up
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Tem de usar o formato AA-00-AA, devido Ã¡ idade do seu carro ");
+                                        MessageBox.Show("Tem de usar o formato AA-00-AA, devido á idade do seu carro ");
                                         guna2TextBox6.Clear();
                                         break;
 
@@ -1264,7 +1264,7 @@ namespace Stand_up
                                 {
                                     if (guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '0' || guna2TextBox6.Text[o] == '1' || guna2TextBox6.Text[o] == '2' || guna2TextBox6.Text[o] == '3' || guna2TextBox6.Text[o] == '4' || guna2TextBox6.Text[o] == '5' || guna2TextBox6.Text[o] == '6' || guna2TextBox6.Text[o] == '7' || guna2TextBox6.Text[o] == '8' || guna2TextBox6.Text[o] == '9')
                                     {
-                                        MessageBox.Show("Tem de usar o formato AA-00-AA, devido Ã¡ idade do seu carro ");
+                                        MessageBox.Show("Tem de usar o formato AA-00-AA, devido á idade do seu carro ");
                                         guna2TextBox6.Clear();
                                         break;
                                     }
@@ -1326,7 +1326,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
 
         }
@@ -1352,7 +1352,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1364,7 +1364,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1382,7 +1382,7 @@ namespace Stand_up
             {
 
           
-            DataTable dt = BLL.veiculos.queryMarca_veiculo();
+            DataTable dt = ApiService.veiculos.queryMarca_veiculo();
             int j = 0;
 
             foreach (DataRow row in dt.Rows)
@@ -1393,7 +1393,7 @@ namespace Stand_up
             }
             else
             {
-                DataTable dt = BLL.veiculos.queryMarca_veiculoMotas();
+                DataTable dt = ApiService.veiculos.queryMarca_veiculoMotas();
                 int j = 0;
                 
                 foreach (DataRow row in dt.Rows)
@@ -1432,7 +1432,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1550,7 +1550,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1564,17 +1564,17 @@ namespace Stand_up
 
              
                 guna2ComboBox2.Items.Clear();
-                int id_marca = (int)BLL.veiculos.queryBuscar_id_marca(guna2ComboBox1.SelectedItem.ToString());
+                int id_marca = (int)ApiService.veiculos.queryBuscar_id_marca(guna2ComboBox1.SelectedItem.ToString());
 
-                    DataTable table = BLL.veiculos.queryModelos_veiculo(id_marca);
+                    DataTable table = ApiService.veiculos.queryModelos_veiculo(id_marca);
 
                     if (guna2CheckBox3.Checked==true)
                     {
-                         table = BLL.veiculos.queryModelos_veiculo(id_marca);
+                         table = ApiService.veiculos.queryModelos_veiculo(id_marca);
                     }
                     else
                     {
-                         table = BLL.veiculos.queryModelos_veiculo1234(id_marca, ano);
+                         table = ApiService.veiculos.queryModelos_veiculo1234(id_marca, ano);
                     }
                 
                 
@@ -1591,19 +1591,19 @@ namespace Stand_up
                 {
 
                     guna2ComboBox2.Items.Clear();
-                    int id_marca = (int)BLL.veiculos.queryBuscar_id_marcaModelosMotas(guna2ComboBox1.SelectedItem.ToString());
+                    int id_marca = (int)ApiService.veiculos.queryBuscar_id_marcaModelosMotas(guna2ComboBox1.SelectedItem.ToString());
 
 
-                    DataTable table = BLL.veiculos.queryModelos_veiculoMotas(id_marca);
+                    DataTable table = ApiService.veiculos.queryModelos_veiculoMotas(id_marca);
 
 
                     if (guna2CheckBox3.Checked == true)
                     {
-                         table = BLL.veiculos.queryModelos_veiculoMotas(id_marca);
+                         table = ApiService.veiculos.queryModelos_veiculoMotas(id_marca);
                     }
                     else
                     {
-                         table = BLL.veiculos.queryModelos_veiculo1234Motas(id_marca, ano);
+                         table = ApiService.veiculos.queryModelos_veiculo1234Motas(id_marca, ano);
                     }
                    
                  
@@ -1637,7 +1637,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1674,7 +1674,7 @@ namespace Stand_up
                     {
 
                         guna2TextBox5.Clear();
-                        MessageBox.Show("Insira uma kilometragem vÃ¡lida");
+                        MessageBox.Show("Insira uma kilometragem válida");
                     }
 
                 }
@@ -1686,7 +1686,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1709,7 +1709,7 @@ namespace Stand_up
                     {
 
                         guna2TextBox1.Clear();
-                        MessageBox.Show("Insira um valor vÃ¡lido ");
+                        MessageBox.Show("Insira um valor válido ");
                     }
 
                 }
@@ -1723,7 +1723,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1778,7 +1778,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1792,7 +1792,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1805,11 +1805,11 @@ namespace Stand_up
                 if (Form2.flagEditCAR == true)
                 {
                     string Matricula = listView1.SelectedItems[0].Text;
-                    DataTable info = BLL.veiculos.Load_dados(Matricula);
+                    DataTable info = ApiService.veiculos.Load_dados(Matricula);
                     DialogResult dr = MessageBox.Show("Pertende remover o veiculo com a matricula ("+Matricula+")?", "", MessageBoxButtons.YesNo);
                     if (dr == DialogResult.Yes)
                     {
-                        BLL.veiculos.deleteveiculo(Matricula);
+                        ApiService.veiculos.deleteveiculo(Matricula);
                         limpar_caixas();
                         carregar_car_PARA_LISTVIEW();
                     }
@@ -1819,7 +1819,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1845,7 +1845,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1872,7 +1872,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1896,7 +1896,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1920,7 +1920,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -1931,7 +1931,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -2028,12 +2028,12 @@ namespace Stand_up
             }
             else
             {
-                MessageBox.Show("SÃ³ pode inserir no mÃ¡ximo 12 imagens");
+                MessageBox.Show("Só pode inserir no máximo 12 imagens");
             }
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -2044,7 +2044,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
         string id = "";
@@ -2059,7 +2059,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
         int iii = 0;
@@ -2142,7 +2142,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -2156,17 +2156,17 @@ namespace Stand_up
 
 
                     guna2ComboBox2.Items.Clear();
-                    int id_marca = (int)BLL.veiculos.queryBuscar_id_marca(guna2ComboBox1.Text);
+                    int id_marca = (int)ApiService.veiculos.queryBuscar_id_marca(guna2ComboBox1.Text);
 
-                    DataTable table = BLL.veiculos.queryModelos_veiculo(id_marca);
+                    DataTable table = ApiService.veiculos.queryModelos_veiculo(id_marca);
 
                     if (guna2CheckBox3.Checked == true)
                     {
-                        table = BLL.veiculos.queryModelos_veiculo(id_marca);
+                        table = ApiService.veiculos.queryModelos_veiculo(id_marca);
                     }
                     else
                     {
-                        table = BLL.veiculos.queryModelos_veiculo1234(id_marca, ano);
+                        table = ApiService.veiculos.queryModelos_veiculo1234(id_marca, ano);
                     }
 
 
@@ -2182,19 +2182,19 @@ namespace Stand_up
                 {
 
                     guna2ComboBox2.Items.Clear();
-                    int id_marca = (int)BLL.veiculos.queryBuscar_id_marcaModelosMotas(guna2ComboBox1.Text);
+                    int id_marca = (int)ApiService.veiculos.queryBuscar_id_marcaModelosMotas(guna2ComboBox1.Text);
 
 
-                    DataTable table = BLL.veiculos.queryModelos_veiculoMotas(id_marca);
+                    DataTable table = ApiService.veiculos.queryModelos_veiculoMotas(id_marca);
 
 
                     if (guna2CheckBox3.Checked == true)
                     {
-                        table = BLL.veiculos.queryModelos_veiculoMotas(id_marca);
+                        table = ApiService.veiculos.queryModelos_veiculoMotas(id_marca);
                     }
                     else
                     {
-                        table = BLL.veiculos.queryModelos_veiculo1234Motas(id_marca, ano);
+                        table = ApiService.veiculos.queryModelos_veiculo1234Motas(id_marca, ano);
                     }
 
 
@@ -2230,7 +2230,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -2240,4 +2240,5 @@ namespace Stand_up
         }
     }
 }
+
 

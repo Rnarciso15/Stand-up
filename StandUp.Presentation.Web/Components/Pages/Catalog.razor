@@ -1,0 +1,264 @@
+@page "/veiculos"
+@rendermode InteractiveServer
+@inject VehicleApiClient Api
+
+<PageTitle>Catálogo de Viaturas — Stand Up</PageTitle>
+
+<div style="padding-top:68px">
+  <div class="su-section" style="padding-bottom:0">
+    <div class="su-section-header">
+      <div>
+        <div class="su-section-eyebrow">Disponível em Stock</div>
+        <h1 class="su-section-title">Catálogo</h1>
+      </div>
+    </div>
+
+    @if (!_loading)
+    {
+      <!-- ── FILTROS ──────────────────────────────────────────── -->
+      <div class="su-filter-bar">
+        <div class="su-filter-group">
+          <label class="su-filter-label">Marca</label>
+          <BrandCombobox @bind-SelectedBrand="_filterBrand" Brands="_brands" />
+        </div>
+
+        <div class="su-filter-group su-search-input-group">
+          <label class="su-filter-label">Pesquisar modelo</label>
+          <div class="su-search-input-wrap">
+            <svg class="su-search-icon" viewBox="0 0 20 20" fill="none">
+              <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M13 13l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <input class="su-filter-input"
+                   @bind="_filterModel"
+                   @bind:event="oninput"
+                   placeholder="Ex: M3 Competition, GR Supra..." />
+          </div>
+        </div>
+
+        <div class="su-filter-group">
+          <label class="su-filter-label">Combustível</label>
+          <select class="su-filter-select" @bind="_filterFuel">
+            <option value="">Todos</option>
+            @foreach (var f in _fuels)
+            {
+              <option value="@f">@f</option>
+            }
+          </select>
+        </div>
+
+        <div class="su-filter-group">
+          <label class="su-filter-label">Preço máx. (€)</label>
+          <input class="su-filter-input su-filter-input-price" type="number" @bind="_filterMaxPrice"
+                 placeholder="Ex: 50 000" min="0" />
+        </div>
+
+        <div class="su-filter-group">
+          <label class="su-filter-label">Tipo</label>
+          <select class="su-filter-select su-filter-select-type" @bind="_filterType">
+            <option value="">Todos</option>
+            <option value="car">Automóvel</option>
+            <option value="moto">Mota</option>
+          </select>
+        </div>
+
+        @if (HasActiveFilters)
+        {
+          <button class="su-filter-btn reset" @onclick="ClearFilters">✕ Limpar</button>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- ── RESULTADOS ───────────────────────────────────────────── -->
+  <div class="su-section" style="padding-top:1.5rem">
+    @if (_loading)
+    {
+      <div class="su-loading">
+        <div class="su-spinner"></div>
+        <div class="su-loading-text">A carregar catálogo</div>
+      </div>
+    }
+    else if (_apiOffline)
+    {
+      <div class="su-offline">⚠ Servidor indisponível. Verifique que a API está a correr e recarregue a página.</div>
+    }
+    else
+    {
+      var list = Filtered.ToList();
+      <p class="su-results-count">
+        <strong>@list.Count</strong> viatura(s) encontrada(s)
+        @if (!string.IsNullOrWhiteSpace(_filterBrand))
+        {
+          <span class="su-active-filter-chip" @onclick='() => _filterBrand = ""'>
+            @_filterBrand ✕
+          </span>
+        }
+        @if (!string.IsNullOrWhiteSpace(_filterModel))
+        {
+          <span class="su-active-filter-chip" @onclick='() => _filterModel = ""'>
+            "@_filterModel" ✕
+          </span>
+        }
+      </p>
+
+      @if (list.Count == 0)
+      {
+        <div class="su-empty">
+          <div class="su-empty-icon">🔍</div>
+          <div class="su-empty-text">Nenhuma viatura corresponde aos filtros.</div>
+        </div>
+      }
+      else
+      {
+        <div class="su-grid">
+          @foreach (var v in list)
+          {
+            <a href="/veiculos/@Uri.EscapeDataString(v.LicensePlate)" class="su-card">
+              <div class="su-card-img">
+                @if (_images.TryGetValue(v.LicensePlate, out var img) && img is not null)
+                {
+                  <img src="data:image/jpeg;base64,@img" alt="@v.Brand @v.Model" loading="lazy" />
+                }
+                else
+                {
+                  <div class="su-card-placeholder">
+                    <span class="su-card-placeholder-icon">@(v.IsMotorcycle ? "🏍" : "🚗")</span>
+                  </div>
+                }
+              </div>
+              <div class="su-card-body">
+                <div class="su-card-brand">@v.Brand</div>
+                <div class="su-card-name">@v.Model</div>
+                <div class="su-card-plate">@v.LicensePlate</div>
+                <div class="su-card-meta">
+                  @if (!string.IsNullOrWhiteSpace(v.Fuel))
+                  {
+                    <span class="su-tag fuel-@v.Fuel.ToLowerInvariant()">@v.Fuel</span>
+                  }
+                  @if (v.IsMotorcycle) { <span class="su-tag mota">Mota</span> }
+                </div>
+                <div class="su-card-footer">
+                  <div class="su-card-price">@v.Price.ToString("C0", new System.Globalization.CultureInfo("pt-PT"))</div>
+                  <div class="su-card-km"><strong>@v.Kilometers.ToString("N0") km</strong></div>
+                  <div class="su-card-arrow">→</div>
+                </div>
+              </div>
+            </a>
+          }
+        </div>
+      }
+    }
+  </div>
+</div>
+
+@code {
+    private List<VehicleDto> _all    = [];
+    private Dictionary<string, string?> _images = [];
+    private bool _loading    = true;
+    private bool _apiOffline;
+    private List<string> _brands = [];
+    private List<string> _fuels  = [];
+
+    private string _filterBrand    = "";
+    private string _filterModel    = "";
+    private string _filterFuel     = "";
+    private int?   _filterMaxPrice;
+    private string _filterType     = "";
+
+    private bool HasActiveFilters =>
+        !string.IsNullOrWhiteSpace(_filterBrand) ||
+        !string.IsNullOrWhiteSpace(_filterModel) ||
+        !string.IsNullOrWhiteSpace(_filterFuel)  ||
+        _filterMaxPrice.HasValue ||
+        !string.IsNullOrWhiteSpace(_filterType);
+
+    private IEnumerable<VehicleDto> Filtered => _all.Where(v =>
+        (string.IsNullOrWhiteSpace(_filterBrand) ||
+            v.Brand.Equals(_filterBrand, StringComparison.OrdinalIgnoreCase)) &&
+        (string.IsNullOrWhiteSpace(_filterModel) ||
+            v.Model.Contains(_filterModel, StringComparison.OrdinalIgnoreCase) ||
+            v.Brand.Contains(_filterModel, StringComparison.OrdinalIgnoreCase)) &&
+        (string.IsNullOrWhiteSpace(_filterFuel)  || v.Fuel == _filterFuel) &&
+        (_filterMaxPrice is null || v.Price <= _filterMaxPrice) &&
+        (_filterType == "" ||
+            (_filterType == "moto" && v.IsMotorcycle) ||
+            (_filterType == "car"  && !v.IsMotorcycle)));
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            _all = await Api.GetAvailableAsync();
+            _apiOffline = false;
+            _brands = _all.Select(v => v.Brand).Distinct().OrderBy(b => b).ToList();
+            _fuels  = _all.Where(v => !string.IsNullOrWhiteSpace(v.Fuel))
+                          .Select(v => v.Fuel!).Distinct().OrderBy(f => f).ToList();
+            foreach (var v in _all)
+                _images[v.LicensePlate] = await Api.GetVehicleImageBase64Async(v.LicensePlate);
+        }
+        catch { _apiOffline = true; }
+        finally { _loading = false; }
+    }
+
+    private void ClearFilters()
+    {
+        _filterBrand    = "";
+        _filterModel    = "";
+        _filterFuel     = "";
+        _filterMaxPrice = null;
+        _filterType     = "";
+    }
+
+    private static readonly Dictionary<string, string> BrandDomains = new()
+    {
+        ["BMW"]             = "bmw.com",
+        ["Mercedes"]        = "mercedes-benz.com",
+        ["Audi"]            = "audi.com",
+        ["Porsche"]         = "porsche.com",
+        ["Volkswagen"]      = "vw.com",
+        ["Toyota"]          = "toyota.com",
+        ["Ford"]            = "ford.com",
+        ["Renault"]         = "renault.com",
+        ["Tesla"]           = "tesla.com",
+        ["Honda"]           = "honda.com",
+        ["SEAT"]            = "seat.com",
+        ["Cupra"]           = "cupraofficial.com",
+        ["Peugeot"]         = "peugeot.com",
+        ["Volvo"]           = "volvocars.com",
+        ["Alfa Romeo"]      = "alfaromeo.com",
+        ["Lamborghini"]     = "lamborghini.com",
+        ["Ferrari"]         = "ferrari.com",
+        ["Maserati"]        = "maserati.com",
+        ["Land Rover"]      = "landrover.com",
+        ["Range Rover"]     = "landrover.com",
+        ["Ducati"]          = "ducati.com",
+        ["Yamaha"]          = "yamaha-motor.com",
+        ["KTM"]             = "ktm.com",
+        ["Kawasaki"]        = "kawasaki.com",
+        ["Aprilia"]         = "aprilia.com",
+        ["Triumph"]         = "triumphmotorcycles.com",
+        ["Harley-Davidson"] = "harley-davidson.com",
+        ["Mazda"]           = "mazda.com",
+        ["Nissan"]          = "nissan.com",
+        ["Kia"]             = "kia.com",
+        ["Hyundai"]         = "hyundai.com",
+        ["Opel"]            = "opel.com",
+        ["Skoda"]           = "skoda-auto.com",
+    };
+
+    private static string GetBrandLogoUrl(string brand)
+    {
+        if (BrandDomains.TryGetValue(brand, out var domain))
+            return $"https://logo.clearbit.com/{domain}?size=64";
+        return "";
+    }
+
+    private static string GetBrandInitials(string brand)
+    {
+        var words = brand.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        return words.Length >= 2
+            ? $"{words[0][0]}{words[1][0]}"
+            : brand.Length >= 3 ? brand[..3].ToUpper() : brand.ToUpper();
+    }
+}

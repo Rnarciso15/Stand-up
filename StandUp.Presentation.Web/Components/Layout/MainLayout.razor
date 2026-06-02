@@ -1,0 +1,99 @@
+@inherits LayoutComponentBase
+@inject CompareService Compare
+@inject FavoritesService Favorites
+@inject IJSRuntime JS
+@implements IDisposable
+
+<nav class="su-nav">
+    <a href="/" class="su-nav-logo">STAND <span>UP</span></a>
+
+    <div class="su-nav-search-wrap">
+        <form class="su-nav-search">
+            <input class="su-nav-search-input"
+                   id="su-global-search"
+                   placeholder="Pesquisar..."
+                   autocomplete="off" />
+            <button type="submit" class="su-nav-search-btn" aria-label="Pesquisar">
+                <svg width="14" height="14" viewBox="0 0 20 20" fill="none">
+                    <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.8"/>
+                    <path d="M13 13l3.5 3.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </form>
+        <div id="su-search-dropdown-container"></div>
+    </div>
+
+    <div class="su-nav-links">
+        <a href="/" Match="NavLinkMatch.All">Início</a>
+        <a href="/veiculos">Catálogo</a>
+
+        <a href="/favoritos" class="su-nav-icon-btn" title="Favoritos">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+            @if (_favCount > 0) { <span class="su-nav-badge">@_favCount</span> }
+        </a>
+
+        @if (Compare.Count > 0)
+        {
+            <a href="/comparar" class="su-nav-icon-btn" title="Comparar @Compare.Count viatura(s)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/>
+                </svg>
+                <span class="su-nav-badge">@Compare.Count</span>
+            </a>
+        }
+
+        <button class="su-nav-icon-btn su-theme-toggle"
+                onclick="su.theme.toggle()"
+                title="Alternar tema">
+            <svg class="su-theme-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <circle cx="12" cy="12" r="5"/>
+                <line x1="12" y1="1" x2="12" y2="3"/>
+                <line x1="12" y1="21" x2="12" y2="23"/>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                <line x1="1" y1="12" x2="3" y2="12"/>
+                <line x1="21" y1="12" x2="23" y2="12"/>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="su-theme-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+        </button>
+
+        <a href="/veiculos" class="su-nav-cta">Ver Viaturas</a>
+    </div>
+</nav>
+
+<main>@Body</main>
+
+<footer class="su-footer">
+    <div class="su-footer-brand">STAND <span>UP</span></div>
+    <div class="su-footer-copy">&copy; @DateTime.Now.Year Stand Up — Gestão de Stand Automóvel · Lisboa, Portugal</div>
+</footer>
+
+<div id="blazor-error-ui" data-nosnippet style="display:none;position:fixed;bottom:1rem;right:1rem;background:#E8001D;color:#fff;padding:.75rem 1.25rem;font-size:.8rem;z-index:9999">
+    Ocorreu um erro. <a href="." style="color:#fff;text-decoration:underline">Recarregar</a>
+</div>
+
+@code {
+    private int _favCount;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+        _favCount = await Favorites.CountAsync();
+        Compare.Changed += OnCompareChanged;
+        StateHasChanged();
+    }
+
+    private async void OnCompareChanged()
+    {
+        _favCount = await Favorites.CountAsync();
+        await InvokeAsync(StateHasChanged);
+    }
+
+    public void Dispose() => Compare.Changed -= OnCompareChanged;
+}

@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using BusinessLogicLayer;
+using Stand_up;
 namespace Stand_up
 {
     public partial class Form6 : Form
@@ -20,28 +20,28 @@ namespace Stand_up
         {
             try { 
             DoubleBuffered = true;
-            string admin = BLL.Func.Buscar_admin(Form5.n_func);
+            string admin = ApiService.Func.Buscar_admin(Form5.n_func);
             if (admin != "True")
             {
                 if ( Form1.flagCliente == true)
                 {
-                    guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                    guna2DataGridView1.DataSource = ApiService.Clientes.Load();
                 }
             }
             if(admin == "True" && Form1.flagCliente==true)
             {
-                guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                guna2DataGridView1.DataSource = ApiService.Clientes.Load();
             }
             if (admin == "True" && Form1.flagFunc == true)
             {
-                guna2DataGridView1.DataSource = BLL.Func.Load();
+                guna2DataGridView1.DataSource = ApiService.Func.Load();
             }
             timer1.Start();
             guna2DataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
         int t = 0;
@@ -78,7 +78,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -113,7 +113,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -147,7 +147,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -176,7 +176,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -209,7 +209,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -241,7 +241,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
         int ano;
@@ -268,7 +268,7 @@ namespace Stand_up
                             }
                             else
                             {
-                                MessageBox.Show("insira um dia vÃ¡lido");
+                                MessageBox.Show("insira um dia válido");
                                 guna2TextBox1.Clear();
                                 i = 0;
                             }
@@ -282,7 +282,7 @@ namespace Stand_up
                             }
                             else
                             {
-                                MessageBox.Show("insira um dia vÃ¡lido");
+                                MessageBox.Show("insira um dia válido");
                                 guna2TextBox1.Clear();
                                 i = 0;
                             }
@@ -297,7 +297,7 @@ namespace Stand_up
                             }
                             else
                             {
-                                MessageBox.Show("insira um dia vÃ¡lido");
+                                MessageBox.Show("insira um dia válido");
                                 guna2TextBox1.Clear();
                                 i = 0;
                             }
@@ -306,7 +306,7 @@ namespace Stand_up
                     }
                     else
                     {
-                        MessageBox.Show("insira um mÃªs vÃ¡lido");
+                        MessageBox.Show("insira um mês válido");
                         guna2TextBox1.Clear();
                         i = 0;
                     }
@@ -323,7 +323,7 @@ namespace Stand_up
                     }
                     else
                     {
-                        MessageBox.Show("insira um dia vÃ¡lido");
+                        MessageBox.Show("insira um dia válido");
                         guna2TextBox1.Clear();
                         i = 0;
                     }
@@ -338,7 +338,7 @@ namespace Stand_up
                     ano = data.Year;
                     if (data.Year >= DateTime.Now.Year || data.Year <= 1931)
                     {
-                        MessageBox.Show("insira um ano vÃ¡lido");
+                        MessageBox.Show("insira um ano válido");
                         guna2TextBox1.Clear();
                         i = 0;
                     }
@@ -359,12 +359,12 @@ namespace Stand_up
                         guna2TextBox1.Select(guna2TextBox1.Text.Length, 0);
                     }
                 }
-                guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_idade(guna2TextBox1.Text);
+                guna2DataGridView1.DataSource = ApiService.Func.queryFunc_Like_idade(guna2TextBox1.Text);
             }
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -383,67 +383,67 @@ namespace Stand_up
                     if (b == 1)
                     {
 
-                        guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_nome(guna2TextBox1.Text);
+                        guna2DataGridView1.DataSource = ApiService.Func.queryFunc_Like_nome(guna2TextBox1.Text);
                     }
                     if (t == 1)
                     {
-                        guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_id(guna2TextBox1.Text);
+                        guna2DataGridView1.DataSource = ApiService.Func.queryFunc_Like_id(guna2TextBox1.Text);
                     }
 
                     if (d == 1)
                     {
 
-                        guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_nif(guna2TextBox1.Text);
+                        guna2DataGridView1.DataSource = ApiService.Func.queryFunc_Like_nif(guna2TextBox1.Text);
                     }
                     if (j == 1)
                     {
 
-                        guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_genero(guna2TextBox1.Text);
+                        guna2DataGridView1.DataSource = ApiService.Func.queryFunc_Like_genero(guna2TextBox1.Text);
                     }
                     if (c == 1)
                     {
                         if (b == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_nome_ativo(guna2TextBox1.Text, true);
+                            guna2DataGridView1.DataSource = ApiService.Func.queryFunc_Like_nome_ativo(guna2TextBox1.Text, true);
                         }
                         if (t == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_id_ativo(guna2TextBox1.Text, true);
+                            guna2DataGridView1.DataSource = ApiService.Func.queryFunc_Like_id_ativo(guna2TextBox1.Text, true);
                         }
                         if (a == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_idade_ativo(guna2TextBox1.Text, true);
+                            guna2DataGridView1.DataSource = ApiService.Func.queryFunc_Like_idade_ativo(guna2TextBox1.Text, true);
                         }
                         if (d == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_nif_ativo(guna2TextBox1.Text, true);
+                            guna2DataGridView1.DataSource = ApiService.Func.queryFunc_Like_nif_ativo(guna2TextBox1.Text, true);
                         }
                         if (j == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_genero_ativo(guna2TextBox1.Text, true);
+                            guna2DataGridView1.DataSource = ApiService.Func.queryFunc_Like_genero_ativo(guna2TextBox1.Text, true);
                         }
                     }
                     if (c == 2)
                     {
                         if (b == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_nome_ativo(guna2TextBox1.Text, false);
+                            guna2DataGridView1.DataSource = ApiService.Func.queryFunc_Like_nome_ativo(guna2TextBox1.Text, false);
                         }
                         if (t == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_id_ativo(guna2TextBox1.Text, false);
+                            guna2DataGridView1.DataSource = ApiService.Func.queryFunc_Like_id_ativo(guna2TextBox1.Text, false);
                         }
                         if (a == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_idade_ativo(guna2TextBox1.Text, false);
+                            guna2DataGridView1.DataSource = ApiService.Func.queryFunc_Like_idade_ativo(guna2TextBox1.Text, false);
                         }
                         if (d == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_nif_ativo(guna2TextBox1.Text, false);
+                            guna2DataGridView1.DataSource = ApiService.Func.queryFunc_Like_nif_ativo(guna2TextBox1.Text, false);
                         }
                         if (j == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Func.queryFunc_Like_genero_ativo(guna2TextBox1.Text, false);
+                            guna2DataGridView1.DataSource = ApiService.Func.queryFunc_Like_genero_ativo(guna2TextBox1.Text, false);
                         }
                     }
                 }
@@ -457,67 +457,67 @@ namespace Stand_up
                     if (b == 1)
                     {
 
-                        guna2DataGridView1.DataSource = BLL.Clientes.queryCliente_Like_nome(guna2TextBox1.Text);
+                        guna2DataGridView1.DataSource = ApiService.Clientes.queryCliente_Like_nome(guna2TextBox1.Text);
                     }
                     if (t == 1)
                     {
-                        guna2DataGridView1.DataSource = BLL.Clientes.queryCliente_Like_id(guna2TextBox1.Text);
+                        guna2DataGridView1.DataSource = ApiService.Clientes.queryCliente_Like_id(guna2TextBox1.Text);
                     }
                     
                     if (d == 1)
                     {
 
-                        guna2DataGridView1.DataSource = BLL.Clientes.queryCliente_Like_nif(guna2TextBox1.Text);
+                        guna2DataGridView1.DataSource = ApiService.Clientes.queryCliente_Like_nif(guna2TextBox1.Text);
                     }
                     if (j == 1)
                     {
 
-                        guna2DataGridView1.DataSource = BLL.Clientes.queryCliente_Like_genero(guna2TextBox1.Text);
+                        guna2DataGridView1.DataSource = ApiService.Clientes.queryCliente_Like_genero(guna2TextBox1.Text);
                     }
                     if (c == 1)
                     {
                         if (b == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Clientes.queryCliente_Like_nome_ativo(guna2TextBox1.Text, true);
+                            guna2DataGridView1.DataSource = ApiService.Clientes.queryCliente_Like_nome_ativo(guna2TextBox1.Text, true);
                         }
                         if (t == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Clientes.queryCliente_Like_id_ativo(guna2TextBox1.Text, true);
+                            guna2DataGridView1.DataSource = ApiService.Clientes.queryCliente_Like_id_ativo(guna2TextBox1.Text, true);
                         }
                         if (a == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Clientes.queryCliente_Like_idade_ativo(guna2TextBox1.Text, true);
+                            guna2DataGridView1.DataSource = ApiService.Clientes.queryCliente_Like_idade_ativo(guna2TextBox1.Text, true);
                         }
                         if (d == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Clientes.queryCliente_Like_nif_ativo(guna2TextBox1.Text, true);
+                            guna2DataGridView1.DataSource = ApiService.Clientes.queryCliente_Like_nif_ativo(guna2TextBox1.Text, true);
                         }
                         if (j == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Clientes.queryCliente_Like_genero_ativo(guna2TextBox1.Text, true);
+                            guna2DataGridView1.DataSource = ApiService.Clientes.queryCliente_Like_genero_ativo(guna2TextBox1.Text, true);
                         }
                     }
                     if (c == 2)
                     {
                         if (b == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Clientes.queryCliente_Like_nome_ativo(guna2TextBox1.Text, false);
+                            guna2DataGridView1.DataSource = ApiService.Clientes.queryCliente_Like_nome_ativo(guna2TextBox1.Text, false);
                         }
                         if (t == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Clientes.queryCliente_Like_id_ativo(guna2TextBox1.Text, false);
+                            guna2DataGridView1.DataSource = ApiService.Clientes.queryCliente_Like_id_ativo(guna2TextBox1.Text, false);
                         }
                         if (a == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Clientes.queryCliente_Like_idade_ativo(guna2TextBox1.Text, false);
+                            guna2DataGridView1.DataSource = ApiService.Clientes.queryCliente_Like_idade_ativo(guna2TextBox1.Text, false);
                         }
                         if (d == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Clientes.queryCliente_Like_nif_ativo(guna2TextBox1.Text, false);
+                            guna2DataGridView1.DataSource = ApiService.Clientes.queryCliente_Like_nif_ativo(guna2TextBox1.Text, false);
                         }
                         if (j == 1)
                         {
-                            guna2DataGridView1.DataSource = BLL.Clientes.queryCliente_Like_genero_ativo(guna2TextBox1.Text, false);
+                            guna2DataGridView1.DataSource = ApiService.Clientes.queryCliente_Like_genero_ativo(guna2TextBox1.Text, false);
                         }
                     }
 
@@ -527,28 +527,28 @@ namespace Stand_up
             {
                 guna2TextBox1.Clear();
                 guna2TextBox1.Enabled= false;
-                string admin = BLL.Func.Buscar_admin(Form5.n_func);
+                string admin = ApiService.Func.Buscar_admin(Form5.n_func);
                 if (admin == "True" && Form1.flagCliente == true)
                 {
-                    guna2DataGridView1.DataSource = BLL.Clientes.Load();
+                    guna2DataGridView1.DataSource = ApiService.Clientes.Load();
                 }
                 else if (admin == "True" && Form1.flagFunc == true)
                 {
-                    guna2DataGridView1.DataSource = BLL.Func.Load();
+                    guna2DataGridView1.DataSource = ApiService.Func.Load();
                 }
 
             }
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
-        private void listaDeFuncionÃ¡riosToolStripMenuItem_Click(object sender, EventArgs e)
+        private void listaDeFuncionáriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try { 
-            string admin = BLL.Func.Buscar_admin(Form5.n_func);
+            string admin = ApiService.Func.Buscar_admin(Form5.n_func);
             if (admin == "True")
             {
                 Form1.flagFunc = true;
@@ -558,19 +558,19 @@ namespace Stand_up
             }
             else
             {
-                MessageBox.Show("NÃ£o tem acesso");
+                MessageBox.Show("Não tem acesso");
             }
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
         private void inserirVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try { 
-            string admin = BLL.Func.Buscar_admin(Form5.n_func);
+            string admin = ApiService.Func.Buscar_admin(Form5.n_func);
             if (admin == "True")
             {
                 Form1.flag_config = true;
@@ -583,19 +583,19 @@ namespace Stand_up
             }
             else
             {
-                MessageBox.Show("NÃ£o tem acesso");
+                MessageBox.Show("Não tem acesso");
             }
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
         private void editarVeiculoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try { 
-            string admin = BLL.Func.Buscar_admin(Form5.n_func);
+            string admin = ApiService.Func.Buscar_admin(Form5.n_func);
             if (admin == "True")
             {
                 Form1.flag_config = true;
@@ -608,16 +608,16 @@ namespace Stand_up
             }
             else
             {
-                MessageBox.Show("NÃ£o tem acesso");
+                MessageBox.Show("Não tem acesso");
             }
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
-        private void inserirEspecificaÃ§ÃµesDoVeÃ­culoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void inserirEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try { 
             Form1.flag_config = true;
@@ -630,11 +630,11 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
-        private void editarEspecificaÃ§ÃµesDoVeÃ­culoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void editarEspecificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try { 
             Form1.flag_config = true;
@@ -647,7 +647,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -661,11 +661,11 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
-        private void especificaÃ§ÃµesDoVeÃ­culoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void especificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
@@ -680,7 +680,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -701,9 +701,10 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
     }
 
 }
+

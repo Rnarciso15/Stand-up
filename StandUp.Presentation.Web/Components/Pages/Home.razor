@@ -1,0 +1,161 @@
+@page "/"
+@rendermode InteractiveServer
+@inject VehicleApiClient Api
+
+<PageTitle>Stand Up — Catálogo de Viaturas de Luxo</PageTitle>
+
+<!-- HERO -->
+<section class="su-hero">
+    <div class="su-hero-bg"></div>
+    <div class="su-hero-grid"></div>
+
+    <div class="su-hero-content">
+        <div class="su-hero-label">Stand Automóvel · Lisboa</div>
+        <h1 class="su-hero-title">
+            A VIATURA<br/>
+            <em>CERTA</em><br/>
+            PARA SI.
+        </h1>
+        <p class="su-hero-sub">
+            Seleção rigorosa de viaturas premium — de berlinas de topo a motos de alta performance.
+            Qualidade que se vê, experiência que se sente.
+        </p>
+        <div class="su-hero-actions">
+            <a href="/veiculos" class="su-btn-primary">
+                Ver Catálogo
+                <span>→</span>
+            </a>
+            <a href="/veiculos?tipo=mota" class="su-btn-ghost">
+                Explorar Motas
+            </a>
+        </div>
+
+        @if (_total > 0)
+        {
+            <div class="su-hero-stats">
+                <div>
+                    <div class="su-stat-num">@_total<span>+</span></div>
+                    <div class="su-stat-label">Viaturas</div>
+                </div>
+                <div>
+                    <div class="su-stat-num">@_brands<span>+</span></div>
+                    <div class="su-stat-label">Marcas</div>
+                </div>
+                <div>
+                    <div class="su-stat-num">10<span>+</span></div>
+                    <div class="su-stat-label">Anos</div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="su-hero-scroll">
+        <div class="su-scroll-line"></div>
+        <span>Scroll</span>
+    </div>
+</section>
+
+<!-- DESTAQUES -->
+<div class="su-section">
+    <div class="su-section-header">
+        <div>
+            <div class="su-section-eyebrow">Em Stock</div>
+            <h2 class="su-section-title">Destaques</h2>
+        </div>
+        <a href="/veiculos" class="su-section-link">Ver Todos →</a>
+    </div>
+
+    @if (_loading)
+    {
+        <div class="su-loading">
+            <div class="su-spinner"></div>
+            <div class="su-loading-text">A carregar viaturas</div>
+        </div>
+    }
+    else if (_apiOffline)
+    {
+        <div class="su-offline">
+            ⚠ Servidor indisponível. Verifique que a API está a correr e recarregue a página.
+        </div>
+    }
+    else if (_featured.Count == 0)
+    {
+        <div class="su-empty">
+            <div class="su-empty-icon">🚗</div>
+            <div class="su-empty-text">Sem viaturas disponíveis de momento.</div>
+        </div>
+    }
+    else
+    {
+        <div class="su-grid">
+            @foreach (var v in _featured)
+            {
+                <a href="/veiculos/@Uri.EscapeDataString(v.LicensePlate)" class="su-card">
+                    <div class="su-card-img">
+                        @if (_images.TryGetValue(v.LicensePlate, out var img) && img is not null)
+                        {
+                            <img src="data:image/jpeg;base64,@img" alt="@v.Brand @v.Model" loading="lazy" />
+                        }
+                        else
+                        {
+                            <div class="su-card-placeholder">
+                                <span class="su-card-placeholder-icon">@(v.IsMotorcycle ? "🏍" : "🚗")</span>
+                            </div>
+                        }
+                        @if (DateTime.UtcNow - (v.RegistrationDate ?? DateTime.UtcNow.AddYears(-2)) < TimeSpan.FromDays(365))
+                        {
+                            <div class="su-card-badge new">Recente</div>
+                        }
+                    </div>
+                    <div class="su-card-body">
+                        <div class="su-card-brand">@v.Brand</div>
+                        <div class="su-card-name">@v.Model</div>
+                        <div class="su-card-plate">@v.LicensePlate</div>
+                        <div class="su-card-meta">
+                            @if (!string.IsNullOrWhiteSpace(v.Fuel))
+                            {
+                                <span class="su-tag fuel-@v.Fuel.ToLowerInvariant()">@v.Fuel</span>
+                            }
+                            @if (v.IsMotorcycle)
+                            {
+                                <span class="su-tag mota">Mota</span>
+                            }
+                        </div>
+                        <div class="su-card-footer">
+                            <div class="su-card-price">@v.Price.ToString("C0", new System.Globalization.CultureInfo("pt-PT"))</div>
+                            <div class="su-card-km">
+                                <strong>@v.Kilometers.ToString("N0") km</strong>
+                            </div>
+                            <div class="su-card-arrow">→</div>
+                        </div>
+                    </div>
+                </a>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    private List<VehicleDto> _featured = [];
+    private Dictionary<string, string?> _images = [];
+    private bool _loading = true;
+    private bool _apiOffline;
+    private int _total;
+    private int _brands;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            var all = await Api.GetAvailableAsync();
+            _apiOffline = false;
+            _total = all.Count;
+            _brands = all.Select(v => v.Brand).Distinct().Count();
+            _featured = all.Take(9).ToList();
+            foreach (var v in _featured)
+                _images[v.LicensePlate] = await Api.GetVehicleImageBase64Async(v.LicensePlate);
+        }
+        catch { _apiOffline = true; }
+        finally { _loading = false; }
+    }
+}

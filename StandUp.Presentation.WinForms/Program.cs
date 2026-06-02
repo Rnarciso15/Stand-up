@@ -19,35 +19,15 @@ internal static class Program
             })
             .ConfigureServices((context, services) =>
             {
-                var apiBaseUrl = context.Configuration["ApiBaseUrl"] ?? "https://localhost:7262/";
-                services.AddHttpClient<IAuthApiClient, AuthApiClient>(client =>
-                {
-                    client.BaseAddress = new Uri(apiBaseUrl);
-                });
-                services.AddHttpClient<IClientApiClient, ClientApiClient>(client =>
-                {
-                    client.BaseAddress = new Uri(apiBaseUrl);
-                });
-                services.AddHttpClient<IVehicleApiClient, VehicleApiClient>(client =>
-                {
-                    client.BaseAddress = new Uri(apiBaseUrl);
-                });
-                services.AddHttpClient<IAppointmentApiClient, AppointmentApiClient>(client =>
-                {
-                    client.BaseAddress = new Uri(apiBaseUrl);
-                });
-                services.AddHttpClient<ISalesApiClient, SalesApiClient>(client =>
-                {
-                    client.BaseAddress = new Uri(apiBaseUrl);
-                });
-                services.AddHttpClient<IImagesApiClient, ImagesApiClient>(client =>
-                {
-                    client.BaseAddress = new Uri(apiBaseUrl);
-                });
-                services.AddHttpClient<IDashboardApiClient, DashboardApiClient>(client =>
-                {
-                    client.BaseAddress = new Uri(apiBaseUrl);
-                });
+                var apiBaseUrl = context.Configuration["ApiBaseUrl"] ?? "http://localhost:5196/";
+                void Configure(HttpClient c) { c.BaseAddress = new Uri(apiBaseUrl); c.Timeout = TimeSpan.FromSeconds(10); }
+                services.AddHttpClient<IAuthApiClient, AuthApiClient>(Configure);
+                services.AddHttpClient<IClientApiClient, ClientApiClient>(Configure);
+                services.AddHttpClient<IVehicleApiClient, VehicleApiClient>(Configure);
+                services.AddHttpClient<IAppointmentApiClient, AppointmentApiClient>(Configure);
+                services.AddHttpClient<ISalesApiClient, SalesApiClient>(Configure);
+                services.AddHttpClient<IImagesApiClient, ImagesApiClient>(Configure);
+                services.AddHttpClient<IDashboardApiClient, DashboardApiClient>(Configure);
                 services.AddTransient<Form1>();
                 services.AddTransient<ClientsForm>();
                 services.AddTransient<VehiclesForm>();

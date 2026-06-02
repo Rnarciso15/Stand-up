@@ -1,4 +1,4 @@
-ï»¿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using BusinessLogicLayer;
+using Stand_up;
 
 namespace Stand_up
 {
@@ -31,7 +31,7 @@ namespace Stand_up
 
         }
 
-        private void especificaÃ§ÃµesDoVeÃ­culoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void especificaçõesDoVeículoToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
@@ -47,7 +47,7 @@ namespace Stand_up
 
 
 
-            DataTable dr = BLL.veiculos.queryLoad_veiculo(false);
+            DataTable dr = ApiService.veiculos.queryLoad_veiculo(false);
 
             listView1.Clear();
             int i = 0;
@@ -119,7 +119,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
 
         }
@@ -134,7 +134,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -148,7 +148,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -158,4 +158,5 @@ namespace Stand_up
         }
     }
     }
+
 

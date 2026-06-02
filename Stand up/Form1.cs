@@ -1,4 +1,4 @@
-ï»¿using BusinessLogicLayer;
+using Stand_up;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -95,7 +95,7 @@ namespace Stand_up
             f2.TopLevel = false;
             f2.Parent = guna2Panel3;
             f2.Show();
-            string admin = BLL.Func.Buscar_admin(Form5.n_func);
+            string admin = ApiService.Func.Buscar_admin(Form5.n_func);
 
             if (admin != "True")
             {
@@ -115,7 +115,7 @@ namespace Stand_up
 
 
             }
-            DataTable dt = BLL.Func.LoadPerfil(Form5.n_func);
+            DataTable dt = ApiService.Func.LoadPerfil(Form5.n_func);
 
             foreach (DataRow row in dt.Rows)
             {
@@ -126,7 +126,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -146,7 +146,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
 
         }
@@ -282,7 +282,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -298,7 +298,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
 
         }
@@ -314,7 +314,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -329,7 +329,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -355,7 +355,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -374,7 +374,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -394,7 +394,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -407,7 +407,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -422,7 +422,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -447,7 +447,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
 
@@ -462,7 +462,7 @@ namespace Stand_up
             }
             catch
             {
-                MessageBox.Show("Erro ao processar as informaÃ§Ãµes, Por favor reinicie a aplicaÃ§Ã£o");
+                MessageBox.Show("Erro ao processar as informações, Por favor reinicie a aplicação");
             }
         }
     
@@ -473,4 +473,5 @@ namespace Stand_up
 
 }
     }
+
 

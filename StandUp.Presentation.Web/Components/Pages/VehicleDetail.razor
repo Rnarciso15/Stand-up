@@ -1,0 +1,200 @@
+@page "/veiculos/{Plate}"
+@rendermode InteractiveServer
+@inject VehicleApiClient Api
+
+<PageTitle>@(_vehicle is null ? "Viatura" : $"{_vehicle.Brand} {_vehicle.Model}") — Stand Up</PageTitle>
+
+<div class="su-detail">
+    @if (_loading)
+    {
+        <div class="su-loading" style="min-height:80dvh">
+            <div class="su-spinner"></div>
+            <div class="su-loading-text">A carregar</div>
+        </div>
+    }
+    else if (_vehicle is null)
+    {
+        <div class="su-empty" style="padding-top:6rem">
+            <div class="su-empty-icon">🔍</div>
+            <div class="su-empty-text">Viatura não encontrada.</div>
+        </div>
+    }
+    else
+    {
+        <!-- IMAGE GALLERY CAROUSEL -->
+        @if (_images.Count > 0)
+        {
+            <div id="vehicleCarousel" class="carousel slide su-detail-carousel" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @foreach (var (image, idx) in _images.Select((x, i) => (x, i)))
+                    {
+                        <div class="carousel-item @(idx == 0 ? "active" : "")">
+                            <img src="data:image/jpeg;base64,@image" alt="@_vehicle.Brand @_vehicle.Model - Imagem @(idx + 1)" class="d-block w-100" />
+                        </div>
+                    }
+                </div>
+                @if (_images.Count > 1)
+                {
+                    <button class="carousel-control-prev" type="button" data-bs-target="#vehicleCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#vehicleCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                }
+            </div>
+        }
+        else
+        {
+            <!-- FALLBACK: Single hero image -->
+            <div class="su-detail-hero">
+                @if (_imageBase64 is not null)
+                {
+                    <img src="data:image/jpeg;base64,@_imageBase64" alt="@_vehicle.Brand @_vehicle.Model" />
+                }
+                else
+                {
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#0F0F13 0%,#16161F 100%);display:flex;align-items:center;justify-content:center;font-size:6rem;opacity:.1">
+                        @(_vehicle.IsMotorcycle ? "🏍" : "🚗")
+                    </div>
+                }
+                <div class="su-detail-hero-overlay"></div>
+                <div class="su-detail-hero-content">
+                    <div class="su-detail-brand">@_vehicle.Brand</div>
+                    <div class="su-detail-name">@_vehicle.Model</div>
+                    <div class="su-detail-plate-badge">@_vehicle.LicensePlate</div>
+                </div>
+            </div>
+        }
+
+        <a href="/veiculos" class="su-back">
+            <span class="su-back-arrow"></span>
+            Voltar ao catálogo
+        </a>
+
+        <div class="su-detail-body">
+            <!-- Left: specs -->
+            <div>
+                <div class="su-price-banner">
+                    <div>
+                        <div class="su-price-label">Preço</div>
+                        <div class="su-price-value">
+                            <span>€</span>@(_vehicle.Price.ToString("N0", new System.Globalization.CultureInfo("pt-PT")))
+                        </div>
+                    </div>
+                </div>
+
+                <div class="su-specs-title">Especificações</div>
+                <table class="su-specs-table">
+                    <tr><td>Marca</td><td>@_vehicle.Brand</td></tr>
+                    <tr><td>Modelo</td><td>@_vehicle.Model</td></tr>
+                    <tr><td>Matrícula</td><td>@_vehicle.LicensePlate</td></tr>
+                    <tr><td>Quilómetros</td><td>@_vehicle.Kilometers.ToString("N0") km</td></tr>
+                    @if (!string.IsNullOrWhiteSpace(_vehicle.Fuel))
+                    {
+                        <tr><td>Combustível</td><td>@_vehicle.Fuel</td></tr>
+                    }
+                    @if (_vehicle.RegistrationDate.HasValue)
+                    {
+                        <tr><td>Ano</td><td>@_vehicle.RegistrationDate.Value.Year</td></tr>
+                    }
+                    <tr><td>Tipo</td><td>@(_vehicle.IsMotorcycle ? "Motociclo" : "Automóvel")</td></tr>
+                </table>
+            </div>
+
+            <!-- Right: contact -->
+            <div class="su-contact-card">
+                @if (_submitted)
+                {
+                    <div class="su-success-banner">
+                        ✓ Pedido enviado com sucesso. Entraremos em contacto brevemente.
+                    </div>
+                }
+                else
+                {
+                    <div class="su-contact-title">Marcar Visita</div>
+                    <div class="su-contact-sub">Interessado nesta viatura? Deixe os seus dados.</div>
+
+                    <EditForm Model="_contact" OnValidSubmit="SubmitContact">
+                        <div class="su-form-field">
+                            <label class="su-form-label">Nome Completo</label>
+                            <InputText class="su-form-input" @bind-Value="_contact.Name" placeholder="O seu nome" />
+                        </div>
+                        <div class="su-form-field">
+                            <label class="su-form-label">Telefone</label>
+                            <InputText class="su-form-input" @bind-Value="_contact.Phone" placeholder="+351 9XX XXX XXX" />
+                        </div>
+                        <div class="su-form-field">
+                            <label class="su-form-label">Mensagem (opcional)</label>
+                            <InputTextArea class="su-form-textarea" @bind-Value="_contact.Message" placeholder="Disponibilidade, questões sobre a viatura..." />
+                        </div>
+                        <button type="submit" class="su-submit">Enviar Pedido</button>
+                    </EditForm>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter] public string Plate { get; set; } = "";
+
+    private VehicleDto? _vehicle;
+    private string? _imageBase64;
+    private List<string> _images = [];
+    private List<VehicleDto> _similarVehicles = [];
+    private Dictionary<string, string?> _vehicleImages = [];
+    private bool _loading = true;
+    private bool _submitted;
+    private ContactModel _contact = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _vehicle = await Api.GetByPlateAsync(Plate);
+
+        if (_vehicle is not null)
+        {
+            // Carregar múltiplas imagens
+            _images = await Api.GetVehicleImagesBase64Async(Plate);
+
+            // Fallback: se não houver múltiplas imagens, usar a primeira
+            if (_images.Count == 0)
+            {
+                _imageBase64 = await Api.GetVehicleImageBase64Async(Plate);
+            }
+
+            // Carregar veículos similares (mesma marca, preço ±20%, mesmo tipo)
+            var priceMin = (int)(_vehicle.Price * 0.8);
+            var priceMax = (int)(_vehicle.Price * 1.2);
+
+            _similarVehicles = await Api.GetSimilarVehiclesAsync(
+                _vehicle.Brand,
+                priceMin,
+                priceMax,
+                _vehicle.IsMotorcycle);
+
+            // Remover o veículo atual e limitar a 4
+            _similarVehicles = _similarVehicles
+                .Where(v => v.LicensePlate != Plate)
+                .Take(4)
+                .ToList();
+
+            // Carregar imagens dos veículos similares
+            foreach (var v in _similarVehicles)
+            {
+                _vehicleImages[v.LicensePlate] = await Api.GetVehicleImageBase64Async(v.LicensePlate);
+            }
+        }
+
+        _loading = false;
+    }
+
+    private void SubmitContact() => _submitted = true;
+
+    private sealed class ContactModel
+    {
+        public string Name    { get; set; } = "";
+        public string Phone   { get; set; } = "";
+        public string Message { get; set; } = "";
+    }
+}

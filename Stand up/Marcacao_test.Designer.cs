@@ -818,6 +818,7 @@ namespace Stand_up
             this.guna2Button32.Name = "guna2Button32";
             this.guna2Button32.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
             this.guna2Button32.Size = new System.Drawing.Size(116, 89);
+            this.guna2Button32.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Button32.TabIndex = 39;
             this.guna2Button32.Text = "Adicionar";
             this.guna2Button32.Click += new System.EventHandler(this.guna2Button32_Click);
@@ -838,6 +839,7 @@ namespace Stand_up
             this.guna2Button33.Name = "guna2Button33";
             this.guna2Button33.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(145)))), ((int)(((byte)(144)))));
             this.guna2Button33.Size = new System.Drawing.Size(116, 89);
+            this.guna2Button33.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2Button33.TabIndex = 40;
             this.guna2Button33.Text = "Remover";
             this.guna2Button33.Click += new System.EventHandler(this.guna2Button33_Click);
@@ -896,6 +898,7 @@ namespace Stand_up
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.guna2DataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left)));
             this.guna2DataGridView1.Location = new System.Drawing.Point(12, 433);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.ReadOnly = true;
@@ -938,6 +941,7 @@ namespace Stand_up
             this.guna2GroupBox5.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox5.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GroupBox5.ForeColor = System.Drawing.Color.White;
+            this.guna2GroupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2GroupBox5.Location = new System.Drawing.Point(426, 12);
             this.guna2GroupBox5.Name = "guna2GroupBox5";
             this.guna2GroupBox5.Size = new System.Drawing.Size(664, 415);
@@ -1013,6 +1017,7 @@ namespace Stand_up
             this.guna2GroupBox1.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
+            this.guna2GroupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2GroupBox1.Location = new System.Drawing.Point(426, 433);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(664, 428);
@@ -1076,6 +1081,7 @@ namespace Stand_up
             this.guna2GroupBox2.FillColor = System.Drawing.SystemColors.Control;
             this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.White;
+            this.guna2GroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2GroupBox2.Location = new System.Drawing.Point(1105, 12);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
             this.guna2GroupBox2.Size = new System.Drawing.Size(566, 739);

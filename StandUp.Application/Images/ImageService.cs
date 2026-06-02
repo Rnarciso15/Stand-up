@@ -34,4 +34,7 @@ public sealed class ImageService : IImageService
         var items = await _repository.GetVehicleImagesAsync(licensePlate, cancellationToken);
         return items.Select(x => new ImageDto(x.Id, x.CreatedAt, x.Data.Length)).ToList();
     }
+
+    public Task<byte[]?> GetFirstVehicleImageDataAsync(string licensePlate, CancellationToken cancellationToken)
+        => _repository.GetFirstVehicleImageDataAsync(licensePlate, cancellationToken);
 }

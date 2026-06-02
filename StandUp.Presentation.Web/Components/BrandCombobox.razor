@@ -1,0 +1,158 @@
+@namespace StandUp.Presentation.Web.Components
+
+<div class="su-brand-combobox" @onclick:stopPropagation="true">
+  @if (IsOpen)
+  {
+    <input
+      type="text"
+      class="su-brand-combobox-input"
+      @bind="SearchText"
+      @bind:event="oninput"
+      placeholder="Pesquisar marca..."
+      @onkeydown="HandleKeyDown"
+      @onblur="CloseDropdown"
+      autofocus />
+
+    @if (FilteredBrands.Any())
+    {
+      <div class="su-brand-combobox-dropdown">
+        @foreach (var brand in FilteredBrands)
+        {
+          <div class="su-brand-combobox-option" @onclick="() => SelectBrand(brand)">
+            <img src="@GetBrandLogoUrl(brand)"
+                 alt="@brand"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <span class="su-brand-fallback-inline" style="display:none">@GetBrandInitials(brand)</span>
+            <span class="su-brand-name-inline">@brand</span>
+          </div>
+        }
+      </div>
+    }
+    else
+    {
+      <div class="su-brand-combobox-empty">
+        Nenhuma marca encontrada
+      </div>
+    }
+  }
+  else
+  {
+    <button class="su-brand-combobox-button" @onclick="OpenDropdown" type="button">
+      @if (!string.IsNullOrEmpty(SelectedBrand))
+      {
+        <img src="@GetBrandLogoUrl(SelectedBrand)"
+             alt="@SelectedBrand"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <span class="su-brand-fallback-inline" style="display:none">@GetBrandInitials(SelectedBrand)</span>
+        <span class="su-brand-name-inline">@SelectedBrand</span>
+      }
+      else
+      {
+        <span class="su-brand-placeholder">Selecione marca...</span>
+      }
+      <svg class="su-brand-chevron" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  }
+</div>
+
+@code {
+  [Parameter]
+  public string SelectedBrand { get; set; } = string.Empty;
+
+  [Parameter]
+  public EventCallback<string> SelectedBrandChanged { get; set; }
+
+  [Parameter]
+  public List<string> Brands { get; set; } = [];
+
+  private bool IsOpen { get; set; } = false;
+  private string SearchText { get; set; } = string.Empty;
+
+  private IEnumerable<string> FilteredBrands =>
+    Brands.Where(b => b.Contains(SearchText, StringComparison.OrdinalIgnoreCase))
+          .OrderBy(b => b);
+
+  private async Task OpenDropdown()
+  {
+    SearchText = string.Empty;
+    IsOpen = true;
+    await Task.Delay(10); // Ensure render before focus
+  }
+
+  private async Task CloseDropdown()
+  {
+    await Task.Delay(100); // Allow click to register first
+    IsOpen = false;
+    SearchText = string.Empty;
+  }
+
+  private async Task SelectBrand(string brand)
+  {
+    SelectedBrand = brand;
+    await SelectedBrandChanged.InvokeAsync(brand);
+    IsOpen = false;
+    SearchText = string.Empty;
+  }
+
+  private async Task HandleKeyDown(KeyboardEventArgs e)
+  {
+    if (e.Key == "Escape")
+    {
+      await CloseDropdown();
+    }
+  }
+
+  private static readonly Dictionary<string, string> BrandDomains = new()
+  {
+    ["BMW"]             = "bmw.com",
+    ["Mercedes"]        = "mercedes-benz.com",
+    ["Audi"]            = "audi.com",
+    ["Porsche"]         = "porsche.com",
+    ["Volkswagen"]      = "vw.com",
+    ["Toyota"]          = "toyota.com",
+    ["Ford"]            = "ford.com",
+    ["Renault"]         = "renault.com",
+    ["Tesla"]           = "tesla.com",
+    ["Honda"]           = "honda.com",
+    ["SEAT"]            = "seat.com",
+    ["Cupra"]           = "cupraofficial.com",
+    ["Peugeot"]         = "peugeot.com",
+    ["Volvo"]           = "volvocars.com",
+    ["Alfa Romeo"]      = "alfaromeo.com",
+    ["Lamborghini"]     = "lamborghini.com",
+    ["Ferrari"]         = "ferrari.com",
+    ["Maserati"]        = "maserati.com",
+    ["Land Rover"]      = "landrover.com",
+    ["Range Rover"]     = "landrover.com",
+    ["Ducati"]          = "ducati.com",
+    ["Yamaha"]          = "yamaha-motor.com",
+    ["KTM"]             = "ktm.com",
+    ["Kawasaki"]        = "kawasaki.com",
+    ["Aprilia"]         = "aprilia.com",
+    ["Triumph"]         = "triumphmotorcycles.com",
+    ["Harley-Davidson"] = "harley-davidson.com",
+    ["Mazda"]           = "mazda.com",
+    ["Nissan"]          = "nissan.com",
+    ["Kia"]             = "kia.com",
+    ["Hyundai"]         = "hyundai.com",
+    ["Opel"]            = "opel.com",
+    ["Skoda"]           = "skoda-auto.com",
+  };
+
+  private static string GetBrandLogoUrl(string brand)
+  {
+    if (BrandDomains.TryGetValue(brand, out var domain))
+      return $"https://logo.clearbit.com/{domain}?size=64";
+    return "";
+  }
+
+  private static string GetBrandInitials(string brand)
+  {
+    var words = brand.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+    return words.Length >= 2
+      ? $"{words[0][0]}{words[1][0]}"
+      : brand.Length >= 3 ? brand[..3].ToUpper() : brand.ToUpper();
+  }
+}

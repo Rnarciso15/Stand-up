@@ -39,6 +39,16 @@ public sealed class ImagesController : ControllerBase
         return Ok(await _service.GetVehicleImagesAsync(licensePlate, cancellationToken));
     }
 
+    /// <summary>Devolve a primeira imagem do veículo como JPEG. Usado pelo catálogo público.</summary>
+    [HttpGet("vehicles/{licensePlate}/first")]
+    public async Task<IActionResult> GetFirstVehicleImage(string licensePlate, CancellationToken cancellationToken)
+    {
+        var data = await _service.GetFirstVehicleImageDataAsync(licensePlate, cancellationToken);
+        if (data is null || data.Length == 0)
+            return NotFound();
+        return File(data, "image/jpeg");
+    }
+
     [HttpPost("vehicles/{licensePlate}")]
     public async Task<ActionResult<ImageDto>> AddVehicleImage(string licensePlate, [FromBody] byte[] data, CancellationToken cancellationToken)
     {

@@ -17,4 +17,16 @@ public sealed class UserRepository : IUserRepository
     {
         return _dbContext.Users.FirstOrDefaultAsync(x => x.EmployeeNumber == employeeNumber, cancellationToken);
     }
+
+    public Task<bool> ExistsByEmployeeNumberAsync(int employeeNumber, CancellationToken cancellationToken)
+    {
+        return _dbContext.Users.AnyAsync(x => x.EmployeeNumber == employeeNumber, cancellationToken);
+    }
+
+    public async Task<User> AddAsync(User user, CancellationToken cancellationToken)
+    {
+        _dbContext.Users.Add(user);
+        await _dbContext.SaveChangesAsync(cancellationToken);
+        return user;
+    }
 }

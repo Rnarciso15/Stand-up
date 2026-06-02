@@ -60,6 +60,7 @@ namespace Stand_up
             this.guna2PictureBox3.BorderRadius = 10;
             this.guna2PictureBox3.Image = global::Stand_up.Properties.Resources.logo1;
             this.guna2PictureBox3.ImageRotate = 0F;
+            this.guna2PictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2PictureBox3.Location = new System.Drawing.Point(793, 226);
             this.guna2PictureBox3.Name = "guna2PictureBox3";
             this.guna2PictureBox3.Size = new System.Drawing.Size(212, 204);
