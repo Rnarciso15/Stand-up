@@ -17,6 +17,7 @@ public static class FormValidator
     public static string? Nif(string? value)
     {
         if (string.IsNullOrWhiteSpace(value)) return null; // opcional
+        value = value.Trim();
         return value.Length != 9 || !value.All(char.IsDigit) ? "NIF inválido (9 dígitos)." : null;
     }
 

@@ -32,7 +32,8 @@ public static class FormHelpers
         }
         finally
         {
-            button.Enabled = true;
+            if (!button.IsDisposed)
+                button.Enabled = true;
             Cursor.Current = prevCursor;
         }
     }

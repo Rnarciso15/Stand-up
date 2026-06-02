@@ -21,7 +21,8 @@ public partial class VehiclesForm : Form
     {
         await FormHelpers.RunAsync(btnRefresh, async () =>
         {
-            await LoadBrandsAsync();
+            try { await LoadBrandsAsync(); }
+            catch { /* brands load is non-critical — grid still loads */ }
             await LoadGridAsync();
         });
     }
@@ -52,7 +53,7 @@ public partial class VehiclesForm : Form
 
     private async void btnRefresh_Click(object sender, EventArgs e)
     {
-        await FormHelpers.RunAsync(btnRefresh, async () => await LoadGridAsync());
+        await FormHelpers.RunAsync(btnRefresh, () => LoadGridAsync());
     }
 
     private async void btnSearch_Click(object sender, EventArgs e)
