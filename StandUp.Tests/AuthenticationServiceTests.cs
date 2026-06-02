@@ -32,6 +32,10 @@ public sealed class AuthenticationServiceTests
         public FakeRepository(User? user) => _user = user;
         public Task<User?> GetByEmployeeNumberAsync(int employeeNumber, CancellationToken cancellationToken)
             => Task.FromResult(_user);
+        public Task<bool> ExistsByEmployeeNumberAsync(int employeeNumber, CancellationToken cancellationToken)
+            => Task.FromResult(false);
+        public Task<User> AddAsync(User user, CancellationToken cancellationToken)
+            => Task.FromResult(user);
     }
 
     private sealed class FakeHasher : IPasswordHasher

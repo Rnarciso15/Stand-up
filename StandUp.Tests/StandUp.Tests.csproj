@@ -1,7 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <IsPackable>false</IsPackable>
@@ -24,6 +25,7 @@
     <ProjectReference Include="..\StandUp.Domain\StandUp.Domain.csproj" />
     <ProjectReference Include="..\StandUp.Infrastructure\StandUp.Infrastructure.csproj" />
     <ProjectReference Include="..\StandUp.Presentation.Api\StandUp.Presentation.Api.csproj" />
+    <ProjectReference Include="..\StandUp.Presentation.WinForms\StandUp.Presentation.WinForms.csproj" />
   </ItemGroup>
 
 </Project>
