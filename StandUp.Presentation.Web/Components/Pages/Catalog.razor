@@ -16,30 +16,14 @@
     @if (!_loading)
     {
       <!-- ── BRAND SELECTOR ──────────────────────────────────── -->
-      <div class="su-brand-scroll-wrap">
-        <div class="su-brand-grid">
-          @foreach (var brand in _brands)
-          {
-            var active = _filterBrand == brand;
-            <button class="su-brand-btn @(active ? "active" : "")"
-                    @onclick="() => ToggleBrand(brand)"
-                    title="@brand">
-              <div class="su-brand-logo-wrap">
-                <img src="@GetBrandLogoUrl(brand)"
-                     alt="@brand"
-                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
-                     loading="lazy" />
-                <span class="su-brand-fallback" style="display:none">@GetBrandInitials(brand)</span>
-              </div>
-              <span class="su-brand-name">@brand</span>
-            </button>
-          }
-        </div>
+      <div style="margin-bottom: 2rem;">
+        <label style="display: block; font-size: 0.65rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 0.6rem;">Marca</label>
+        <BrandCombobox @bind-SelectedBrand="_filterBrand" Brands="_brands" />
       </div>
 
       <!-- ── FILTROS ──────────────────────────────────────────── -->
       <div class="su-filter-bar">
-        <div class="su-filter-group" style="flex:1;min-width:200px">
+        <div class="su-filter-group su-search-input-group">
           <label class="su-filter-label">Pesquisar modelo</label>
           <div class="su-search-input-wrap">
             <svg class="su-search-icon" viewBox="0 0 20 20" fill="none">
@@ -47,7 +31,6 @@
               <path d="M13 13l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
             </svg>
             <input class="su-filter-input"
-                   style="padding-left:2.2rem"
                    @bind="_filterModel"
                    @bind:event="oninput"
                    placeholder="Ex: M3 Competition, GR Supra..." />
@@ -67,13 +50,13 @@
 
         <div class="su-filter-group">
           <label class="su-filter-label">Preço máx. (€)</label>
-          <input class="su-filter-input" type="number" @bind="_filterMaxPrice"
-                 placeholder="Ex: 50 000" min="0" style="max-width:140px" />
+          <input class="su-filter-input su-filter-input-price" type="number" @bind="_filterMaxPrice"
+                 placeholder="Ex: 50 000" min="0" />
         </div>
 
         <div class="su-filter-group">
           <label class="su-filter-label">Tipo</label>
-          <select class="su-filter-select" @bind="_filterType" style="min-width:130px">
+          <select class="su-filter-select su-filter-select-type" @bind="_filterType">
             <option value="">Todos</option>
             <option value="car">Automóvel</option>
             <option value="moto">Mota</option>
@@ -219,9 +202,6 @@
         finally { _loading = false; }
     }
 
-    private void ToggleBrand(string brand)
-        => _filterBrand = _filterBrand == brand ? "" : brand;
-
     private void ClearFilters()
     {
         _filterBrand    = "";
@@ -231,7 +211,6 @@
         _filterType     = "";
     }
 
-    // ── Brand logos via Clearbit (gratuito, sem key) ──────────
     private static readonly Dictionary<string, string> BrandDomains = new()
     {
         ["BMW"]             = "bmw.com",
