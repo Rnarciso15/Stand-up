@@ -79,4 +79,70 @@ public sealed class VehicleApiClient
             return null;
         }
     }
+
+    /// <summary>
+    /// Devolve todas as imagens do veículo em Base64.
+    /// Retorna lista vazia se não houver imagens ou em caso de erro.
+    /// </summary>
+    public async Task<List<string>> GetVehicleImagesBase64Async(string plate, CancellationToken ct = default)
+    {
+        try
+        {
+            // Para cada veículo, temos múltiplas imagens armazenadas
+            // Tentamos buscar até 10 imagens (limite prático)
+            var images = new List<string>();
+
+            for (int i = 1; i <= 10; i++)
+            {
+                try
+                {
+                    var response = await _http.GetAsync(
+                        $"api/images/vehicles/{Uri.EscapeDataString(plate)}/{i}", ct);
+
+                    if (!response.IsSuccessStatusCode) break; // Se falhar, paramos
+
+                    var bytes = await response.Content.ReadAsByteArrayAsync(ct);
+                    if (bytes is { Length: > 0 })
+                    {
+                        images.Add(Convert.ToBase64String(bytes));
+                    }
+                }
+                catch
+                {
+                    break; // Se houver erro, paramos
+                }
+            }
+
+            return images;
+        }
+        catch
+        {
+            return [];
+        }
+    }
+
+    /// <summary>
+    /// Devolve veículos similares baseado em marca, preço e tipo.
+    /// </summary>
+    public async Task<List<VehicleDto>> GetSimilarVehiclesAsync(
+        string brand,
+        int priceMin,
+        int priceMax,
+        bool isMotorcycle,
+        CancellationToken ct = default)
+    {
+        try
+        {
+            var result = await _http.GetFromJsonAsync<List<VehicleDto>>(
+                $"api/vehicles/advanced?brand={Uri.EscapeDataString(brand)}" +
+                $"&priceMin={priceMin}&priceMax={priceMax}" +
+                $"&isMotorcycle={isMotorcycle}&isSold=false", ct);
+
+            return result ?? [];
+        }
+        catch
+        {
+            return [];
+        }
+    }
 }

@@ -21,25 +21,51 @@
     }
     else
     {
-        <!-- HERO image -->
-        <div class="su-detail-hero">
-            @if (_imageBase64 is not null)
-            {
-                <img src="data:image/jpeg;base64,@_imageBase64" alt="@_vehicle.Brand @_vehicle.Model" />
-            }
-            else
-            {
-                <div style="width:100%;height:100%;background:linear-gradient(135deg,#0F0F13 0%,#16161F 100%);display:flex;align-items:center;justify-content:center;font-size:6rem;opacity:.1">
-                    @(_vehicle.IsMotorcycle ? "🏍" : "🚗")
+        <!-- IMAGE GALLERY CAROUSEL -->
+        @if (_images.Count > 0)
+        {
+            <div id="vehicleCarousel" class="carousel slide su-detail-carousel" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    @foreach (var (image, idx) in _images.Select((x, i) => (x, i)))
+                    {
+                        <div class="carousel-item @(idx == 0 ? "active" : "")">
+                            <img src="data:image/jpeg;base64,@image" alt="@_vehicle.Brand @_vehicle.Model - Imagem @(idx + 1)" class="d-block w-100" />
+                        </div>
+                    }
                 </div>
-            }
-            <div class="su-detail-hero-overlay"></div>
-            <div class="su-detail-hero-content">
-                <div class="su-detail-brand">@_vehicle.Brand</div>
-                <div class="su-detail-name">@_vehicle.Model</div>
-                <div class="su-detail-plate-badge">@_vehicle.LicensePlate</div>
+                @if (_images.Count > 1)
+                {
+                    <button class="carousel-control-prev" type="button" data-bs-target="#vehicleCarousel" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#vehicleCarousel" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                }
             </div>
-        </div>
+        }
+        else
+        {
+            <!-- FALLBACK: Single hero image -->
+            <div class="su-detail-hero">
+                @if (_imageBase64 is not null)
+                {
+                    <img src="data:image/jpeg;base64,@_imageBase64" alt="@_vehicle.Brand @_vehicle.Model" />
+                }
+                else
+                {
+                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#0F0F13 0%,#16161F 100%);display:flex;align-items:center;justify-content:center;font-size:6rem;opacity:.1">
+                        @(_vehicle.IsMotorcycle ? "🏍" : "🚗")
+                    </div>
+                }
+                <div class="su-detail-hero-overlay"></div>
+                <div class="su-detail-hero-content">
+                    <div class="su-detail-brand">@_vehicle.Brand</div>
+                    <div class="su-detail-name">@_vehicle.Model</div>
+                    <div class="su-detail-plate-badge">@_vehicle.LicensePlate</div>
+                </div>
+            </div>
+        }
 
         <a href="/veiculos" class="su-back">
             <span class="su-back-arrow"></span>
@@ -115,15 +141,52 @@
 
     private VehicleDto? _vehicle;
     private string? _imageBase64;
+    private List<string> _images = [];
+    private List<VehicleDto> _similarVehicles = [];
+    private Dictionary<string, string?> _vehicleImages = [];
     private bool _loading = true;
     private bool _submitted;
     private ContactModel _contact = new();
 
     protected override async Task OnInitializedAsync()
     {
-        _vehicle     = await Api.GetByPlateAsync(Plate);
-        _imageBase64 = await Api.GetVehicleImageBase64Async(Plate);
-        _loading     = false;
+        _vehicle = await Api.GetByPlateAsync(Plate);
+
+        if (_vehicle is not null)
+        {
+            // Carregar múltiplas imagens
+            _images = await Api.GetVehicleImagesBase64Async(Plate);
+
+            // Fallback: se não houver múltiplas imagens, usar a primeira
+            if (_images.Count == 0)
+            {
+                _imageBase64 = await Api.GetVehicleImageBase64Async(Plate);
+            }
+
+            // Carregar veículos similares (mesma marca, preço ±20%, mesmo tipo)
+            var priceMin = (int)(_vehicle.Price * 0.8);
+            var priceMax = (int)(_vehicle.Price * 1.2);
+
+            _similarVehicles = await Api.GetSimilarVehiclesAsync(
+                _vehicle.Brand,
+                priceMin,
+                priceMax,
+                _vehicle.IsMotorcycle);
+
+            // Remover o veículo atual e limitar a 4
+            _similarVehicles = _similarVehicles
+                .Where(v => v.LicensePlate != Plate)
+                .Take(4)
+                .ToList();
+
+            // Carregar imagens dos veículos similares
+            foreach (var v in _similarVehicles)
+            {
+                _vehicleImages[v.LicensePlate] = await Api.GetVehicleImageBase64Async(v.LicensePlate);
+            }
+        }
+
+        _loading = false;
     }
 
     private void SubmitContact() => _submitted = true;
