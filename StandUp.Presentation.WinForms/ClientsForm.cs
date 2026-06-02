@@ -1,4 +1,5 @@
 using StandUp.Application.Clients;
+using StandUp.Presentation.WinForms.Helpers;
 
 namespace StandUp.Presentation.WinForms;
 
@@ -18,7 +19,7 @@ public partial class ClientsForm : Form
 
     private async void ClientsForm_Load(object sender, EventArgs e)
     {
-        await LoadGridAsync();
+        await FormHelpers.RunAsync(btnRefresh, () => LoadGridAsync());
     }
 
     private async Task LoadGridAsync(string? name = null)
@@ -34,17 +35,24 @@ public partial class ClientsForm : Form
 
     private async void btnRefresh_Click(object sender, EventArgs e)
     {
-        await LoadGridAsync();
+        await FormHelpers.RunAsync(btnRefresh, () => LoadGridAsync());
     }
 
     private async void btnSearch_Click(object sender, EventArgs e)
     {
-        await LoadGridAsync(txtSearch.Text);
+        await FormHelpers.RunAsync(btnSearch, () => LoadGridAsync(txtSearch.Text));
     }
 
     private async void btnCreate_Click(object sender, EventArgs e)
     {
-        try
+        if (!FormValidator.ShowErrors(
+                FormValidator.Required(txtName.Text, "Nome"),
+                FormValidator.Email(txtEmail.Text),
+                FormValidator.Phone(txtPhone.Text),
+                FormValidator.Nif(txtNif.Text)))
+            return;
+
+        await FormHelpers.RunAsync(btnCreate, async () =>
         {
             var request = new CreateClientRequest(
                 txtName.Text,
@@ -57,28 +65,22 @@ public partial class ClientsForm : Form
                 txtAddress.Text);
 
             await _clientApiClient.CreateAsync(request, CancellationToken.None);
-            txtName.Clear();
-            txtEmail.Clear();
-            txtPhone.Clear();
-            txtNif.Clear();
-            txtAddress.Clear();
+            txtName.Clear(); txtEmail.Clear(); txtPhone.Clear();
+            txtNif.Clear(); txtAddress.Clear();
             await LoadGridAsync();
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+        });
     }
 
     private async void btnToggleActive_Click(object sender, EventArgs e)
     {
-        if (!int.TryParse(txtClientId.Text, out var id))
-        {
-            MessageBox.Show("ID inválido.");
+        if (!FormValidator.ShowErrors(
+                FormValidator.PositiveInt(txtClientId.Text, "ID", out var id)))
             return;
-        }
 
-        await _clientApiClient.SetActiveAsync(id, chkIsActive.Checked, CancellationToken.None);
-        await LoadGridAsync();
+        await FormHelpers.RunAsync(btnToggleActive, async () =>
+        {
+            await _clientApiClient.SetActiveAsync(id, chkIsActive.Checked, CancellationToken.None);
+            await LoadGridAsync();
+        });
     }
 }
