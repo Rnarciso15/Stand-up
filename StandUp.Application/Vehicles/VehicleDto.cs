@@ -9,4 +9,5 @@ public sealed record VehicleDto(
     string? Fuel,
     int Price,
     bool IsSold,
-    bool IsMotorcycle);
+    bool IsMotorcycle,
+    DateTime? AddedAt = null);

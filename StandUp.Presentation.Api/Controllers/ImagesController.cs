@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using Microsoft.AspNetCore.Mvc;
 using StandUp.Application.Auditing;
 using StandUp.Application.Images;
@@ -44,8 +45,36 @@ public sealed class ImagesController : ControllerBase
     public async Task<IActionResult> GetFirstVehicleImage(string licensePlate, CancellationToken cancellationToken)
     {
         var data = await _service.GetFirstVehicleImageDataAsync(licensePlate, cancellationToken);
-        if (data is null || data.Length == 0)
-            return NotFound();
+        if (data is null || data.Length == 0) return NotFound();
+        return ImageResponse(data);
+    }
+
+    /// <summary>Devolve a imagem do veículo pelo índice (0-based) como JPEG. Usado pela galeria.</summary>
+    [HttpGet("vehicles/{licensePlate}/{index:int}")]
+    public async Task<IActionResult> GetVehicleImageByIndex(string licensePlate, int index, CancellationToken cancellationToken)
+    {
+        if (index < 0) return BadRequest();
+        var data = await _service.GetVehicleImageByIndexAsync(licensePlate, index, cancellationToken);
+        if (data is null || data.Length == 0) return NotFound();
+        return ImageResponse(data);
+    }
+
+    /// <summary>Devolve a imagem do cliente pelo índice (0-based) como JPEG.</summary>
+    [HttpGet("clients/{clientId:int}/{index:int}")]
+    public async Task<IActionResult> GetClientImageByIndex(int clientId, int index, CancellationToken cancellationToken)
+    {
+        if (index < 0) return BadRequest();
+        var data = await _service.GetClientImageByIndexAsync(clientId, index, cancellationToken);
+        if (data is null || data.Length == 0) return NotFound();
+        return ImageResponse(data);
+    }
+
+    private IActionResult ImageResponse(byte[] data)
+    {
+        var etag = $"\"{Convert.ToBase64String(MD5.HashData(data))[..16]}\"";
+        if (Request.Headers.IfNoneMatch == etag) return StatusCode(304);
+        Response.Headers.CacheControl = "public, max-age=86400, immutable";
+        Response.Headers.ETag = etag;
         return File(data, "image/jpeg");
     }
 

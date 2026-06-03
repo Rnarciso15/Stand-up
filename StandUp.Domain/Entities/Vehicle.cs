@@ -17,4 +17,5 @@ public sealed class Vehicle
     public string? Traction { get; set; }
     public bool IsSold { get; set; }
     public bool IsMotorcycle { get; set; }
+    public DateTime? AddedAt { get; set; }
 }

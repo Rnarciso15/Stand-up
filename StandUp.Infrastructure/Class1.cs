@@ -38,6 +38,7 @@ public static class DependencyInjection
                 Environment.GetEnvironmentVariable("TWILIO_AUTH_TOKEN") ?? configuration["Twilio:AuthToken"] ?? string.Empty,
                 Environment.GetEnvironmentVariable("TWILIO_FROM_NUMBER") ?? configuration["Twilio:FromNumber"] ?? string.Empty));
         services.AddSingleton<IPasswordHasher, Sha1PasswordHasher>();
+        services.AddSingleton<IEmailSender, SmtpEmailSender>();
 
         return services;
     }

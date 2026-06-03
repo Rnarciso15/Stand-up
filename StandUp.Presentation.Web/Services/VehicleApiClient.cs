@@ -121,9 +121,49 @@ public sealed class VehicleApiClient
         }
     }
 
-    /// <summary>
-    /// Devolve veículos similares baseado em marca, preço e tipo.
-    /// </summary>
+    /// <summary>Pesquisa avançada server-side com todos os filtros disponíveis.</summary>
+    public async Task<List<VehicleDto>> GetAdvancedAsync(
+        string? brand = null,
+        string? model = null,
+        string? fuel = null,
+        int? kmMin = null,
+        int? kmMax = null,
+        int? priceMin = null,
+        int? priceMax = null,
+        bool? isMotorcycle = null,
+        CancellationToken ct = default)
+    {
+        try
+        {
+            var q = "api/vehicles/advanced?isSold=false";
+            if (!string.IsNullOrWhiteSpace(brand))     q += $"&brand={Uri.EscapeDataString(brand)}";
+            if (!string.IsNullOrWhiteSpace(model))     q += $"&model={Uri.EscapeDataString(model)}";
+            if (!string.IsNullOrWhiteSpace(fuel))      q += $"&fuel={Uri.EscapeDataString(fuel)}";
+            if (kmMin.HasValue)                        q += $"&kmMin={kmMin}";
+            if (kmMax.HasValue)                        q += $"&kmMax={kmMax}";
+            if (priceMin.HasValue)                     q += $"&priceMin={priceMin}";
+            if (priceMax.HasValue)                     q += $"&priceMax={priceMax}";
+            if (isMotorcycle.HasValue)                 q += $"&isMotorcycle={isMotorcycle}";
+            q += "&pageSize=100";
+
+            return await _http.GetFromJsonAsync<List<VehicleDto>>(q, ct) ?? [];
+        }
+        catch { return []; }
+    }
+
+    /// <summary>Envia pedido de contacto/visita para um veículo.</summary>
+    public async Task<bool> SendContactAsync(string plate, string name, string phone, string message, CancellationToken ct = default)
+    {
+        try
+        {
+            var payload = new { plate, name, phone, message };
+            var resp = await _http.PostAsJsonAsync("api/contact", payload, ct);
+            return resp.IsSuccessStatusCode;
+        }
+        catch { return false; }
+    }
+
+    /// <summary>Devolve veículos similares baseado em marca, preço e tipo.</summary>
     public async Task<List<VehicleDto>> GetSimilarVehiclesAsync(
         string brand,
         int priceMin,

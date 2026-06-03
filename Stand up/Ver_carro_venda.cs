@@ -30,13 +30,17 @@ namespace Stand_up
 
         {
 
-            using (MemoryStream mStream = new MemoryStream(byteArrayIn))
-
+            if (byteArrayIn == null || byteArrayIn.Length == 0)
             {
-
-                return Image.FromStream(mStream);
-
+                var ph = new Bitmap(1, 1); return ph;
             }
+            try
+            {
+                using (var ms = new MemoryStream(byteArrayIn))
+                using (var src = Image.FromStream(ms))
+                    return new Bitmap(src);
+            }
+            catch { return new Bitmap(1, 1); }
 
         }
         public byte[] imgToByteArray(Image img)
@@ -95,7 +99,7 @@ namespace Stand_up
                 label22.Text = (string)row["Combustivel"];
                 label21.Text = (string)row["Descricao"];
                 label24.Text = Convert.ToString((int)row["Valor"]) + " €";
-                guna2PictureBox1.Image = byteArrayToImage((Byte[])row["Imagem"]);
+                guna2PictureBox1.Image = byteArrayToImage(row["Imagem"] as byte[] ?? Array.Empty<byte>());
                 label20.Text = (string)row["Cor"];
                 label7.Text = (string)row["Tipo_de_Caixa"];
                 label6.Text = Convert.ToString((int)row["N_Portas"]);

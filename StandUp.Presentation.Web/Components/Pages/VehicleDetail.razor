@@ -1,8 +1,22 @@
 @page "/veiculos/{Plate}"
 @rendermode InteractiveServer
 @inject VehicleApiClient Api
+@inject RecentViewsService RecentViews
+@inject IJSRuntime JS
+@inject NavigationManager Nav
 
 <PageTitle>@(_vehicle is null ? "Viatura" : $"{_vehicle.Brand} {_vehicle.Model}") — Stand Up</PageTitle>
+@if (_vehicle is not null)
+{
+    <HeadContent>
+        <meta name="description" content="@($"{_vehicle.Brand} {_vehicle.Model}, {_vehicle.RegistrationDate?.Year}, {_vehicle.Kilometers:N0} km — €{_vehicle.Price:N0}. Stand Up, Lisboa.")" />
+        <meta property="og:title"       content="@($"{_vehicle.Brand} {_vehicle.Model} — Stand Up")" />
+        <meta property="og:description" content="@($"{_vehicle.Fuel}, {_vehicle.Kilometers:N0} km, €{_vehicle.Price:N0}")" />
+        <meta property="og:type"        content="product" />
+        <meta property="og:url"         content="@Nav.Uri" />
+        <meta property="og:image"       content="@($"{Nav.BaseUri}api/images/vehicles/{Uri.EscapeDataString(_vehicle.LicensePlate)}/first")" />
+    </HeadContent>
+}
 
 <div class="su-detail">
     @if (_loading)
@@ -21,57 +35,148 @@
     }
     else
     {
-        <!-- IMAGE GALLERY CAROUSEL -->
-        @if (_images.Count > 0)
+        <!-- ═══ GALLERY ═══════════════════════════════════════════════ -->
+        @if (GalleryImages.Count > 0)
         {
-            <div id="vehicleCarousel" class="carousel slide su-detail-carousel" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    @foreach (var (image, idx) in _images.Select((x, i) => (x, i)))
+            <div class="su-gallery">
+                <!-- Main image -->
+                <div class="su-gallery-main" @onclick="OpenLightbox">
+                    <img src="data:image/jpeg;base64,@GalleryImages[_activeIndex]"
+                         alt="@_vehicle.Brand @_vehicle.Model — foto @(_activeIndex + 1)" />
+                    <div class="su-gallery-overlay"></div>
+
+                    <!-- Counter -->
+                    <div class="su-gallery-counter">
+                        <strong>@((_activeIndex + 1).ToString("00"))</strong>
+                        <span>/ @GalleryImages.Count.ToString("00")</span>
+                    </div>
+
+                    <!-- Expand icon -->
+                    <div class="su-gallery-expand" aria-hidden="true">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                        </svg>
+                    </div>
+
+                    <!-- Navigation -->
+                    @if (GalleryImages.Count > 1)
                     {
-                        <div class="carousel-item @(idx == 0 ? "active" : "")">
-                            <img src="data:image/jpeg;base64,@image" alt="@_vehicle.Brand @_vehicle.Model - Imagem @(idx + 1)" class="d-block w-100" />
-                        </div>
+                        <button class="su-gallery-nav prev" type="button"
+                                @onclick:stopPropagation="true" @onclick="PrevImage"
+                                aria-label="Foto anterior">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"/>
+                            </svg>
+                        </button>
+                        <button class="su-gallery-nav next" type="button"
+                                @onclick:stopPropagation="true" @onclick="NextImage"
+                                aria-label="Próxima foto">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </button>
                     }
                 </div>
-                @if (_images.Count > 1)
+
+                <!-- Filmstrip thumbnails -->
+                @if (GalleryImages.Count > 1)
                 {
-                    <button class="carousel-control-prev" type="button" data-bs-target="#vehicleCarousel" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#vehicleCarousel" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </button>
+                    <div class="su-gallery-strip">
+                        @foreach (var (img, idx) in GalleryImages.Select((x, i) => (x, i)))
+                        {
+                            <div class="su-gallery-thumb @(idx == _activeIndex ? "active" : "")"
+                                 @onclick="() => SetImage(idx)"
+                                 role="button" tabindex="0"
+                                 aria-label="Ver foto @(idx + 1)">
+                                <img src="data:image/jpeg;base64,@img" alt="Miniatura @(idx + 1)" loading="lazy" />
+                                <div class="su-gallery-thumb-num">@((idx + 1).ToString("00"))</div>
+                            </div>
+                        }
+                    </div>
                 }
             </div>
         }
         else
         {
-            <!-- FALLBACK: Single hero image -->
-            <div class="su-detail-hero">
-                @if (_imageBase64 is not null)
-                {
-                    <img src="data:image/jpeg;base64,@_imageBase64" alt="@_vehicle.Brand @_vehicle.Model" />
-                }
-                else
-                {
-                    <div style="width:100%;height:100%;background:linear-gradient(135deg,#0F0F13 0%,#16161F 100%);display:flex;align-items:center;justify-content:center;font-size:6rem;opacity:.1">
-                        @(_vehicle.IsMotorcycle ? "🏍" : "🚗")
+            <div class="su-gallery-empty">
+                <div class="su-gallery-empty-icon">@(_vehicle.IsMotorcycle ? "🏍" : "🚗")</div>
+            </div>
+        }
+
+        <!-- ═══ LIGHTBOX ═══════════════════════════════════════════ -->
+        @if (_lightboxOpen && GalleryImages.Count > 0)
+        {
+            <div class="su-lightbox" @onclick="CloseLightbox">
+                <!-- Close -->
+                <button class="su-lightbox-close" type="button"
+                        @onclick="CloseLightbox" @onclick:stopPropagation="true"
+                        aria-label="Fechar lightbox">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                </button>
+
+                <!-- Image + side nav -->
+                <div class="su-lightbox-wrap" @onclick:stopPropagation="true">
+                    @if (GalleryImages.Count > 1)
+                    {
+                        <button class="su-lightbox-nav prev" type="button" @onclick="PrevImage">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"/>
+                            </svg>
+                        </button>
+                    }
+                    <div class="su-lightbox-inner">
+                        <img src="data:image/jpeg;base64,@GalleryImages[_activeIndex]"
+                             alt="@_vehicle.Brand @_vehicle.Model — foto @(_activeIndex + 1)" />
                     </div>
-                }
-                <div class="su-detail-hero-overlay"></div>
-                <div class="su-detail-hero-content">
-                    <div class="su-detail-brand">@_vehicle.Brand</div>
-                    <div class="su-detail-name">@_vehicle.Model</div>
-                    <div class="su-detail-plate-badge">@_vehicle.LicensePlate</div>
+                    @if (GalleryImages.Count > 1)
+                    {
+                        <button class="su-lightbox-nav next" type="button" @onclick="NextImage">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </button>
+                    }
+                </div>
+
+                <!-- Footer: counter + dots -->
+                <div class="su-lightbox-footer" @onclick:stopPropagation="true">
+                    <div class="su-lightbox-counter">
+                        @((_activeIndex + 1).ToString("00")) / @GalleryImages.Count.ToString("00")
+                    </div>
+                    @if (GalleryImages.Count > 1)
+                    {
+                        <div class="su-lightbox-dots">
+                            @foreach (var (_, idx) in GalleryImages.Select((x, i) => (x, i)))
+                            {
+                                <div class="su-lightbox-dot @(idx == _activeIndex ? "active" : "")"
+                                     @onclick="() => SetImage(idx)"
+                                     role="button" aria-label="Foto @(idx + 1)">
+                                </div>
+                            }
+                        </div>
+                    }
                 </div>
             </div>
         }
 
-        <a href="/veiculos" class="su-back">
-            <span class="su-back-arrow"></span>
-            Voltar ao catálogo
-        </a>
+        <!-- ═══ BACK + SHARE ══════════════════════════════════════ -->
+        <div class="su-detail-topbar">
+            <a href="/veiculos" class="su-back">
+                <span class="su-back-arrow"></span>
+                Voltar ao catálogo
+            </a>
+            <button class="su-share-btn" @onclick="ShareVehicle" title="Partilhar esta viatura">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+                @_shareMsg
+            </button>
+        </div>
 
+        <!-- ═══ DETAIL BODY ════════════════════════════════════════ -->
         <div class="su-detail-body">
             <!-- Left: specs -->
             <div>
@@ -102,37 +207,120 @@
                 </table>
             </div>
 
-            <!-- Right: contact -->
+            <!-- Right: tabs contacto / financiamento -->
             <div class="su-contact-card">
-                @if (_submitted)
+                <div class="su-detail-tabs">
+                    <button class="su-detail-tab @(_activeTab == 0 ? "active" : "")" @onclick='() => _activeTab = 0'>Marcar Visita</button>
+                    <button class="su-detail-tab @(_activeTab == 1 ? "active" : "")" @onclick='() => _activeTab = 1'>Financiamento</button>
+                </div>
+
+                @if (_activeTab == 0)
                 {
-                    <div class="su-success-banner">
-                        ✓ Pedido enviado com sucesso. Entraremos em contacto brevemente.
-                    </div>
+                    @if (_submitted)
+                    {
+                        <div class="su-success-banner">
+                            ✓ Pedido enviado com sucesso. Entraremos em contacto brevemente.
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="su-contact-sub" style="margin-top:.75rem">Interessado nesta viatura? Deixe os seus dados.</div>
+                        <EditForm Model="_contact" OnValidSubmit="SubmitContact">
+                            <div class="su-form-field">
+                                <label class="su-form-label">Nome Completo</label>
+                                <InputText class="su-form-input" @bind-Value="_contact.Name" placeholder="O seu nome" />
+                            </div>
+                            <div class="su-form-field">
+                                <label class="su-form-label">Telefone</label>
+                                <InputText class="su-form-input" @bind-Value="_contact.Phone" placeholder="+351 9XX XXX XXX" />
+                            </div>
+                            <div class="su-form-field">
+                                <label class="su-form-label">Mensagem (opcional)</label>
+                                <InputTextArea class="su-form-textarea" @bind-Value="_contact.Message" placeholder="Disponibilidade, questões sobre a viatura..." />
+                            </div>
+                            @if (_contactError is not null)
+                            {
+                                <div class="su-form-error">@_contactError</div>
+                            }
+                            <button type="submit" class="su-submit" disabled="@_submitting">
+                                @(_submitting ? "A enviar..." : "Enviar Pedido")
+                            </button>
+                        </EditForm>
+                    }
                 }
                 else
                 {
-                    <div class="su-contact-title">Marcar Visita</div>
-                    <div class="su-contact-sub">Interessado nesta viatura? Deixe os seus dados.</div>
-
-                    <EditForm Model="_contact" OnValidSubmit="SubmitContact">
-                        <div class="su-form-field">
-                            <label class="su-form-label">Nome Completo</label>
-                            <InputText class="su-form-input" @bind-Value="_contact.Name" placeholder="O seu nome" />
-                        </div>
-                        <div class="su-form-field">
-                            <label class="su-form-label">Telefone</label>
-                            <InputText class="su-form-input" @bind-Value="_contact.Phone" placeholder="+351 9XX XXX XXX" />
-                        </div>
-                        <div class="su-form-field">
-                            <label class="su-form-label">Mensagem (opcional)</label>
-                            <InputTextArea class="su-form-textarea" @bind-Value="_contact.Message" placeholder="Disponibilidade, questões sobre a viatura..." />
-                        </div>
-                        <button type="submit" class="su-submit">Enviar Pedido</button>
-                    </EditForm>
+                    <FinancingCalculator Price="_vehicle.Price" />
                 }
             </div>
         </div>
+
+        <!-- ═══ SIMILAR VEHICLES ═══════════════════════════════════ -->
+        @if (_similarVehicles.Count > 0)
+        {
+            <section class="su-similar-section">
+                <div class="su-similar-header">
+                    <div class="su-section-eyebrow">Também pode gostar</div>
+                    <div class="su-similar-title">Viaturas Similares</div>
+                </div>
+
+                <div class="su-similar-grid">
+                    @foreach (var v in _similarVehicles)
+                    {
+                        <a href="/veiculos/@Uri.EscapeDataString(v.LicensePlate)" class="su-card">
+                            <div class="su-card-img">
+                                @if (_vehicleImages.TryGetValue(v.LicensePlate, out var vImg) && vImg is not null)
+                                {
+                                    <img src="data:image/jpeg;base64,@vImg" alt="@v.Brand @v.Model" />
+                                }
+                                else
+                                {
+                                    <div class="su-card-placeholder">
+                                        <span class="su-card-placeholder-icon">@(v.IsMotorcycle ? "🏍" : "🚗")</span>
+                                    </div>
+                                }
+                                @if (v.IsSold)
+                                {
+                                    <div class="su-card-badge sold">Vendido</div>
+                                }
+                            </div>
+                            <div class="su-card-body">
+                                <div class="su-card-brand">@v.Brand</div>
+                                <div class="su-card-name">@v.Model</div>
+                                <div class="su-card-plate">@v.LicensePlate</div>
+                                <div class="su-card-meta">
+                                    @if (!string.IsNullOrWhiteSpace(v.Fuel))
+                                    {
+                                        <span class="su-tag fuel-@v.Fuel!.ToLowerInvariant()">@v.Fuel</span>
+                                    }
+                                    @if (v.IsMotorcycle)
+                                    {
+                                        <span class="su-tag mota">Moto</span>
+                                    }
+                                </div>
+                                <div class="su-card-footer">
+                                    <div>
+                                        <div class="su-card-price">€@v.Price.ToString("N0", new System.Globalization.CultureInfo("pt-PT"))</div>
+                                        <div class="su-card-km">@v.Kilometers.ToString("N0") km</div>
+                                    </div>
+                                    <div class="su-card-arrow">→</div>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+
+                <div class="su-similar-cta">
+                    <a href="/veiculos" class="su-btn-ghost">
+                        Ver todo o catálogo
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </a>
+                </div>
+            </section>
+        }
     }
 </div>
 
@@ -144,9 +332,21 @@
     private List<string> _images = [];
     private List<VehicleDto> _similarVehicles = [];
     private Dictionary<string, string?> _vehicleImages = [];
-    private bool _loading = true;
+    private bool _loading    = true;
     private bool _submitted;
+    private bool _submitting;
+    private string? _contactError;
+    private int  _activeTab;
+    private string _shareMsg = "Partilhar";
     private ContactModel _contact = new();
+
+    // Gallery state
+    private int  _activeIndex;
+    private bool _lightboxOpen;
+
+    private List<string> GalleryImages => _images.Count > 0 ? _images
+        : _imageBase64 is not null ? [_imageBase64]
+        : [];
 
     protected override async Task OnInitializedAsync()
     {
@@ -154,42 +354,58 @@
 
         if (_vehicle is not null)
         {
-            // Carregar múltiplas imagens
             _images = await Api.GetVehicleImagesBase64Async(Plate);
-
-            // Fallback: se não houver múltiplas imagens, usar a primeira
             if (_images.Count == 0)
-            {
                 _imageBase64 = await Api.GetVehicleImageBase64Async(Plate);
-            }
 
-            // Carregar veículos similares (mesma marca, preço ±20%, mesmo tipo)
             var priceMin = (int)(_vehicle.Price * 0.8);
             var priceMax = (int)(_vehicle.Price * 1.2);
 
             _similarVehicles = await Api.GetSimilarVehiclesAsync(
-                _vehicle.Brand,
-                priceMin,
-                priceMax,
-                _vehicle.IsMotorcycle);
-
-            // Remover o veículo atual e limitar a 4
+                _vehicle.Brand, priceMin, priceMax, _vehicle.IsMotorcycle);
             _similarVehicles = _similarVehicles
                 .Where(v => v.LicensePlate != Plate)
-                .Take(4)
+                .Take(6)
                 .ToList();
 
-            // Carregar imagens dos veículos similares
             foreach (var v in _similarVehicles)
-            {
                 _vehicleImages[v.LicensePlate] = await Api.GetVehicleImageBase64Async(v.LicensePlate);
-            }
         }
 
         _loading = false;
     }
 
-    private void SubmitContact() => _submitted = true;
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender || _vehicle is null) return;
+        await RecentViews.AddAsync(_vehicle.LicensePlate);
+    }
+
+    private void SetImage(int idx) { var c = GalleryImages.Count; if (c > 0) _activeIndex = Math.Clamp(idx, 0, c - 1); }
+    private void PrevImage()       { var c = GalleryImages.Count; if (c > 0) _activeIndex = (_activeIndex - 1 + c) % c; }
+    private void NextImage()       { var c = GalleryImages.Count; if (c > 0) _activeIndex = (_activeIndex + 1) % c; }
+    private void OpenLightbox()    => _lightboxOpen = true;
+    private void CloseLightbox()   => _lightboxOpen = false;
+
+    private async Task SubmitContact()
+    {
+        if (_vehicle is null) return;
+        _submitting = true; _contactError = null;
+        var ok = await Api.SendContactAsync(_vehicle.LicensePlate, _contact.Name, _contact.Phone, _contact.Message);
+        _submitting = false;
+        if (ok) _submitted = true;
+        else _contactError = "Erro ao enviar. Por favor tente novamente ou ligue-nos directamente.";
+    }
+
+    private async Task ShareVehicle()
+    {
+        var result = await JS.InvokeAsync<string>("su.share",
+            $"{_vehicle?.Brand} {_vehicle?.Model} — Stand Up", Nav.Uri);
+        _shareMsg = result switch { "native" => "Partilhado!", "clipboard" => "Link copiado!", _ => "Partilhar" };
+        StateHasChanged();
+        await Task.Delay(2000);
+        _shareMsg = "Partilhar";
+    }
 
     private sealed class ContactModel
     {

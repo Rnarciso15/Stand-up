@@ -432,7 +432,7 @@ namespace Stand_up
             dt.Columns.Add("Modelo",       typeof(string));
             dt.Columns.Add("Descricao",    typeof(string));
             dt.Columns.Add("Combustivel",  typeof(string));
-            dt.Columns.Add("Imagem",       typeof(byte[]));
+            dt.Columns.Add("Imagem",       typeof(object));
             dt.Columns.Add("Valor",        typeof(int));
             dt.Columns.Add("Cor",          typeof(string));
             dt.Columns.Add("tipo_de_caixa",typeof(string));
@@ -455,7 +455,7 @@ namespace Stand_up
             dt.Columns.Add("nib",             typeof(string));
             dt.Columns.Add("morada",          typeof(string));
             dt.Columns.Add("nif",             typeof(string));
-            dt.Columns.Add("imagem",          typeof(byte[]));
+            dt.Columns.Add("imagem",          typeof(object));
             dt.Columns.Add("ativo",           typeof(bool));
             return dt;
         }

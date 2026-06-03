@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using Microsoft.EntityFrameworkCore;
 using StandUp.Domain.Entities;
 
@@ -46,6 +47,154 @@ public static class DbInitializer
         }
 
         await dbContext.SaveChangesAsync(cancellationToken);
+
+        // ── IMAGENS DE VEÍCULOS (120 × até 6 via Wikimedia Commons) ────────
+        if (!await dbContext.VehicleImages.AnyAsync(cancellationToken))
+        {
+            Console.WriteLine("[Seed] A iniciar download de imagens via Wikimedia Commons...");
+            try
+            {
+                var vehicles = await dbContext.Vehicles
+                    .Select(v => new { v.LicensePlate, v.Brand, v.Model, v.IsMotorcycle })
+                    .ToListAsync(cancellationToken);
+
+                using var http = new System.Net.Http.HttpClient { Timeout = TimeSpan.FromSeconds(25) };
+                http.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "StandUpDealerApp/1.0");
+
+                var toSave = new List<VehicleImage>();
+                int done   = 0;
+
+                // Processamento sequencial + delay para respeitar rate limits da Wikipedia
+                foreach (var v in vehicles)
+                {
+                    var urls = await FindWikipediaImageUrlsAsync(http, v.Brand, v.Model, v.IsMotorcycle, cancellationToken);
+                    int saved = 0;
+                    foreach (var url in urls)
+                    {
+                        try
+                        {
+                            var data = await http.GetByteArrayAsync(url, cancellationToken);
+                            if (data.Length < 8_000) continue;
+                            toSave.Add(new VehicleImage
+                            {
+                                VehicleLicensePlate = v.LicensePlate,
+                                Data                = data,
+                                CreatedAt           = DateTime.UtcNow
+                            });
+                            saved++;
+                        }
+                        catch { }
+                    }
+                    done++;
+                    Console.WriteLine($"[Seed] {done}/{vehicles.Count} - {v.Brand} {v.Model}: {saved} imagem(ns)");
+                    await Task.Delay(350, cancellationToken);
+                }
+
+                if (toSave.Count > 0)
+                {
+                    Console.WriteLine($"[Seed] A guardar {toSave.Count} imagens na BD...");
+                    dbContext.VehicleImages.AddRange(toSave);
+                    await dbContext.SaveChangesAsync(cancellationToken);
+                    Console.WriteLine("[Seed] Imagens guardadas com sucesso.");
+                }
+                else
+                {
+                    Console.WriteLine("[Seed] AVISO: Nenhuma imagem descarregada (sem rede?).");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[Seed] ERRO no seed de imagens: {ex.Message}");
+            }
+        }
+    }
+
+    private static async Task<List<string>> FindWikipediaImageUrlsAsync(
+        System.Net.Http.HttpClient http, string brand, string model, bool isMoto, CancellationToken ct)
+    {
+        var urls = new List<string>();
+
+        // Algumas marcas têm nomes diferentes na Wikipedia
+        var wBrand = brand switch
+        {
+            "Mercedes"        => "Mercedes-Benz",
+            "Land Rover"      => "Land Rover",
+            "Range Rover"     => "Range Rover",
+            "Alfa Romeo"      => "Alfa Romeo",
+            "Harley-Davidson" => "Harley-Davidson",
+            _                 => brand
+        };
+
+        // Variantes de título, da mais específica para a mais geral
+        // ex: "BMW M3 Competition" → "BMW M3" → "BMW" (último recurso)
+        var words  = model.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        var titles = new List<string>();
+        titles.Add($"{wBrand} {model}");                                    // completo
+        if (words.Length > 2) titles.Add($"{wBrand} {words[0]} {words[1]}"); // 2 palavras
+        if (words.Length > 1) titles.Add($"{wBrand} {words[0]}");            // 1 palavra
+        titles.Add(wBrand);                                                 // só a marca
+
+        foreach (var rawTitle in titles)
+        {
+            if (urls.Count >= 4) break;
+            var enc = Uri.EscapeDataString(rawTitle.Replace(' ', '_'));
+
+            // Tentar media-list: devolve várias imagens do artigo (pode dar 404 → exception)
+            try
+            {
+                var json = await http.GetStringAsync(
+                    $"https://en.wikipedia.org/api/rest_v1/page/media-list/{enc}", ct);
+                using var doc = System.Text.Json.JsonDocument.Parse(json);
+
+                if (doc.RootElement.TryGetProperty("items", out var items))
+                {
+                    foreach (var item in items.EnumerateArray())
+                    {
+                        if (urls.Count >= 4) break;
+                        if (!item.TryGetProperty("type",   out var tEl) || tEl.GetString() != "image") continue;
+                        if (!item.TryGetProperty("srcset", out var ss)) continue;
+
+                        string? best = null;
+                        foreach (var s in ss.EnumerateArray())
+                        {
+                            if (!s.TryGetProperty("src", out var srcEl)) continue;
+                            var raw = srcEl.GetString() ?? "";
+                            if (!raw.EndsWith(".jpg",  StringComparison.OrdinalIgnoreCase) &&
+                                !raw.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase)) continue;
+                            best = raw.StartsWith("//") ? "https:" + raw : raw;
+                        }
+                        if (best is not null) urls.Add(best);
+                    }
+                }
+            }
+            catch { }
+
+            // Tentar summary: segue redirects automaticamente (BMW_M3_Competition → BMW_M3)
+            // Garante pelo menos 1 imagem mesmo para variantes sem artigo próprio
+            if (urls.Count == 0)
+            {
+                try
+                {
+                    var json = await http.GetStringAsync(
+                        $"https://en.wikipedia.org/api/rest_v1/page/summary/{enc}", ct);
+                    using var doc = System.Text.Json.JsonDocument.Parse(json);
+
+                    var imgUrl =
+                        (doc.RootElement.TryGetProperty("originalimage", out var orig) &&
+                         orig.TryGetProperty("source", out var s1) ? s1.GetString() : null) ??
+                        (doc.RootElement.TryGetProperty("thumbnail",     out var tn)   &&
+                         tn.TryGetProperty("source",   out var s2) ? s2.GetString() : null);
+
+                    if (!string.IsNullOrEmpty(imgUrl)) urls.Add(imgUrl!);
+                }
+                catch { }
+            }
+
+            // Se já temos imagens desta variante, não precisamos da próxima
+            if (urls.Count > 0) break;
+        }
+
+        return urls;
     }
 
     // ════════════════════════════════════════════════════════════════════════

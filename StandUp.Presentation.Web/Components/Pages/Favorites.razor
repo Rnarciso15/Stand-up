@@ -1,0 +1,94 @@
+@page "/favoritos"
+@rendermode InteractiveServer
+@inject FavoritesService FavSvc
+@inject VehicleApiClient Api
+
+<PageTitle>Favoritos — Stand Up</PageTitle>
+
+<div style="padding-top:68px">
+    <div class="su-section">
+        <div class="su-section-header">
+            <div>
+                <div class="su-section-eyebrow">Os meus</div>
+                <h1 class="su-section-title">Favoritos</h1>
+            </div>
+            <a href="/veiculos" class="su-section-link">Ver Catálogo →</a>
+        </div>
+
+        @if (_loading)
+        {
+            <div class="su-loading"><div class="su-spinner"></div><div class="su-loading-text">A carregar</div></div>
+        }
+        else if (_vehicles.Count == 0)
+        {
+            <div class="su-empty">
+                <div class="su-empty-icon">♡</div>
+                <div class="su-empty-text">Ainda não guardaste nenhuma viatura.<br /><a href="/veiculos" style="color:var(--accent)">Explorar catálogo →</a></div>
+            </div>
+        }
+        else
+        {
+            <div class="su-grid">
+                @foreach (var v in _vehicles)
+                {
+                    <a href="/veiculos/@Uri.EscapeDataString(v.LicensePlate)" class="su-card">
+                        <div class="su-card-img">
+                            @if (_images.TryGetValue(v.LicensePlate, out var img) && img is not null)
+                            {
+                                <img src="data:image/jpeg;base64,@img" alt="@v.Brand @v.Model" loading="lazy" />
+                            }
+                            else
+                            {
+                                <div class="su-card-placeholder">
+                                    <span class="su-card-placeholder-icon">@(v.IsMotorcycle ? "🏍" : "🚗")</span>
+                                </div>
+                            }
+                        </div>
+                        <div class="su-card-body">
+                            <div class="su-card-brand">@v.Brand</div>
+                            <div class="su-card-name">@v.Model</div>
+                            <div class="su-card-plate">@v.LicensePlate</div>
+                            <div class="su-card-meta">
+                                @if (!string.IsNullOrWhiteSpace(v.Fuel))
+                                {
+                                    <span class="su-tag fuel-@v.Fuel!.ToLowerInvariant()">@v.Fuel</span>
+                                }
+                                @if (v.IsMotorcycle) { <span class="su-tag mota">Moto</span> }
+                            </div>
+                            <div class="su-card-footer">
+                                <div>
+                                    <div class="su-card-price">€@v.Price.ToString("N0", new System.Globalization.CultureInfo("pt-PT"))</div>
+                                    <div class="su-card-km">@v.Kilometers.ToString("N0") km</div>
+                                </div>
+                                <div class="su-card-arrow">→</div>
+                            </div>
+                        </div>
+                    </a>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private List<VehicleDto> _vehicles = [];
+    private Dictionary<string, string?> _images = [];
+    private bool _loading = true;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+        var plates = await FavSvc.GetPlatesAsync();
+        foreach (var plate in plates)
+        {
+            var v = await Api.GetByPlateAsync(plate);
+            if (v is not null)
+            {
+                _vehicles.Add(v);
+                _images[plate] = await Api.GetVehicleImageBase64Async(plate);
+            }
+        }
+        _loading = false;
+        StateHasChanged();
+    }
+}
