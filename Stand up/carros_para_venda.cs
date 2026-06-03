@@ -21,6 +21,23 @@ namespace Stand_up
         string Marca;
         string Cor;
         ImageList images = new ImageList();
+        private static System.Drawing.Bitmap CreateThumbnail(byte[] bytes)
+        {
+            if (bytes != null && bytes.Length > 0)
+            {
+                try
+                {
+                    using (var ms = new System.IO.MemoryStream(bytes))
+                    using (var src = System.Drawing.Image.FromStream(ms))
+                        return new System.Drawing.Bitmap(src);
+                }
+                catch { }
+            }
+            var bmp = new System.Drawing.Bitmap(255, 255);
+            using (var g = System.Drawing.Graphics.FromImage(bmp))
+                g.Clear(System.Drawing.Color.FromArgb(45, 45, 50));
+            return bmp;
+        }
         public static bool flagPanel = true ;
         public static bool flagMaior = true;
         public static bool flagMenor = true;
@@ -78,17 +95,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -159,17 +166,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -240,17 +237,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -321,17 +308,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -395,17 +372,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -479,17 +446,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -562,17 +519,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row["Imagem"]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row["Imagem"].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -644,17 +591,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -716,17 +653,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -788,17 +715,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -869,17 +786,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -950,17 +857,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -1022,17 +919,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -1104,17 +991,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -1176,17 +1053,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -1249,17 +1116,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -1330,17 +1187,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -1413,17 +1260,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -1485,17 +1322,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -1566,17 +1393,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -1647,17 +1464,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -1728,17 +1535,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 
@@ -1812,17 +1609,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row["Imagem"]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row["Imagem"].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), CreateThumbnail(row["Imagem"] as byte[]));
 
 
 

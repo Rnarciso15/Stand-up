@@ -27,6 +27,8 @@ namespace Stand_up
 
             {
 
+                if (byteArrayIn == null || byteArrayIn.Length == 0) return new Bitmap(1, 1);
+                mStream.Position = 0;
                 return Image.FromStream(mStream);
 
             }
@@ -115,8 +117,8 @@ namespace Stand_up
                         guna2ComboBox3.SelectedItem = (string)row["Combustivel"];
                         guna2TextBox7.Text = (string)row["Descricao"];
                         guna2TextBox1.Text = Convert.ToString((int)row["Valor"]);
-                        guna2PictureBox2.Image = byteArrayToImage((Byte[])row["Imagem"]);
-                        addCl.Add(byteArrayToImage((Byte[])row["Imagem"]));
+                        guna2PictureBox2.Image = byteArrayToImage(row["Imagem"] as byte[] ?? Array.Empty<byte>());
+                        addCl.Add(byteArrayToImage(row["Imagem"] as byte[] ?? Array.Empty<byte>()));
                         guna2ComboBox4.SelectedItem = (string)row["Cor"];
                         guna2ComboBox5.SelectedItem = (string)row["Tipo_de_Caixa"];
                        
@@ -159,17 +161,8 @@ namespace Stand_up
 
 
 
-                        byte[] imagebyte = (byte[])(imgToByteArray(row1));
-
-                        MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                        image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                        images3.Images.Add((imgToByteArray(row1)).ToString(), new Bitmap(image_stream));
-
-
-
-                        image_stream.Close();
+                        var _imgBytes = imgToByteArray(row1);
+                        if (_imgBytes != null && _imgBytes.Length > 0) { try { using (var _ms = new MemoryStream(_imgBytes)) using (var _s = Image.FromStream(_ms)) images3.Images.Add("img_" + ii.ToString(), new Bitmap(_s)); } catch {} }
 
 
 
@@ -238,17 +231,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row[9]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images.Images.Add(row[9].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images.Images.Add(row["Matricula"].ToString(), new Bitmap(1,1));
 
 
 
@@ -503,7 +486,7 @@ namespace Stand_up
                             case 8:
                                 foreach (DataRow row in info.Rows)
                                 {
-                                    if (guna2PictureBox2.Image != byteArrayToImage((Byte[])row["Imagem"]))
+                                    if (guna2PictureBox2.Image != byteArrayToImage(row["Imagem"] as byte[] ?? Array.Empty<byte>()))
                                     {
                                         editar = true;
                                     }

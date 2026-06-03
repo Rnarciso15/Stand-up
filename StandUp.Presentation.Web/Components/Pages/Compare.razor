@@ -1,0 +1,128 @@
+@page "/comparar"
+@rendermode InteractiveServer
+@inject CompareService CompareSvc
+@inject VehicleApiClient Api
+@implements IDisposable
+
+<PageTitle>Comparar Viaturas — Stand Up</PageTitle>
+
+<div style="padding-top:68px">
+    <div class="su-section">
+        <div class="su-section-header">
+            <div>
+                <div class="su-section-eyebrow">Análise lado a lado</div>
+                <h1 class="su-section-title">Comparar</h1>
+            </div>
+            <a href="/veiculos" class="su-section-link">← Catálogo</a>
+        </div>
+
+        @if (CompareSvc.Count == 0)
+        {
+            <div class="su-empty">
+                <div class="su-empty-icon">⚖</div>
+                <div class="su-empty-text">Adiciona viaturas ao comparador no <a href="/veiculos" style="color:var(--accent)">catálogo</a> (máx. 3).</div>
+            </div>
+        }
+        else if (_loading)
+        {
+            <div class="su-loading"><div class="su-spinner"></div></div>
+        }
+        else
+        {
+            <div class="su-compare-wrap">
+                <table class="su-compare-table">
+                    <thead>
+                        <tr>
+                            <th class="su-compare-spec-col"></th>
+                            @foreach (var v in _vehicles)
+                            {
+                                <th class="su-compare-vehicle-col">
+                                    <div class="su-compare-header">
+                                        @if (_images.TryGetValue(v.LicensePlate, out var img) && img is not null)
+                                        {
+                                            <img src="data:image/jpeg;base64,@img" class="su-compare-thumb" alt="@v.Brand @v.Model" />
+                                        }
+                                        <div class="su-compare-header-name">@v.Brand @v.Model</div>
+                                        <button class="su-compare-remove" @onclick="() => CompareSvc.Remove(v.LicensePlate)" title="Remover">✕</button>
+                                    </div>
+                                </th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @Row("Preço",       v => $"€{v.Price.ToString("N0", new System.Globalization.CultureInfo("pt-PT"))}", highlight: true)
+                        @Row("Quilómetros", v => $"{v.Kilometers.ToString("N0")} km")
+                        @Row("Combustível", v => v.Fuel ?? "—")
+                        @Row("Ano",         v => v.RegistrationDate?.Year.ToString() ?? "—")
+                        @Row("Tipo",        v => v.IsMotorcycle ? "Motociclo" : "Automóvel")
+                        <tr>
+                            <td></td>
+                            @foreach (var v in _vehicles)
+                            {
+                                <td style="padding:1rem .5rem">
+                                    <a href="/veiculos/@Uri.EscapeDataString(v.LicensePlate)" class="su-btn-primary" style="font-size:.78rem;padding:.45rem 1rem;display:inline-block">
+                                        Ver Detalhes
+                                    </a>
+                                </td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+    private List<VehicleDto> _vehicles = [];
+    private Dictionary<string, string?> _images = [];
+    private bool _loading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        CompareSvc.Changed += OnCompareChanged;
+        await LoadAsync();
+    }
+
+    private async Task LoadAsync()
+    {
+        _loading = true;
+        _vehicles.Clear();
+        _images.Clear();
+        foreach (var plate in CompareSvc.Plates)
+        {
+            var v = await Api.GetByPlateAsync(plate);
+            if (v is not null)
+            {
+                _vehicles.Add(v);
+                _images[plate] = await Api.GetVehicleImageBase64Async(plate);
+            }
+        }
+        _loading = false;
+    }
+
+    private async void OnCompareChanged()
+    {
+        await LoadAsync();
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private RenderFragment Row(string label, Func<VehicleDto, string> getValue, bool highlight = false) => __builder =>
+    {
+        __builder.OpenElement(0, "tr");
+        if (highlight) __builder.AddAttribute(1, "class", "su-compare-highlight");
+        __builder.OpenElement(2, "td");
+        __builder.AddAttribute(3, "class", "su-compare-spec");
+        __builder.AddContent(4, label);
+        __builder.CloseElement();
+        foreach (var v in _vehicles)
+        {
+            __builder.OpenElement(5, "td");
+            __builder.AddContent(6, getValue(v));
+            __builder.CloseElement();
+        }
+        __builder.CloseElement();
+    };
+
+    public void Dispose() => CompareSvc.Changed -= OnCompareChanged;
+}

@@ -418,6 +418,9 @@ namespace StandUp.Infrastructure.Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<DateTime?>("AddedAt")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Brand")
                         .IsRequired()
                         .HasMaxLength(100)

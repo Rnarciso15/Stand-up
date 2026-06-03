@@ -37,4 +37,10 @@ public sealed class ImageService : IImageService
 
     public Task<byte[]?> GetFirstVehicleImageDataAsync(string licensePlate, CancellationToken cancellationToken)
         => _repository.GetFirstVehicleImageDataAsync(licensePlate, cancellationToken);
+
+    public Task<byte[]?> GetVehicleImageByIndexAsync(string licensePlate, int index, CancellationToken cancellationToken)
+        => _repository.GetVehicleImageByIndexAsync(licensePlate, index, cancellationToken);
+
+    public Task<byte[]?> GetClientImageByIndexAsync(int clientId, int index, CancellationToken cancellationToken)
+        => _repository.GetClientImageByIndexAsync(clientId, index, cancellationToken);
 }

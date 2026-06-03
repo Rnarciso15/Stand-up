@@ -41,7 +41,8 @@ public sealed class VehicleService : IVehicleService
             Fuel = request.Fuel,
             Price = request.Price,
             IsMotorcycle = request.IsMotorcycle,
-            IsSold = false
+            IsSold = false,
+            AddedAt = DateTime.UtcNow
         };
 
         var created = await _vehicleRepository.AddAsync(vehicle, cancellationToken);
@@ -60,5 +61,5 @@ public sealed class VehicleService : IVehicleService
     }
 
     private static VehicleDto Map(Vehicle x) =>
-        new(x.LicensePlate, x.Kilometers, x.RegistrationDate, x.Brand, x.Model, x.Fuel, x.Price, x.IsSold, x.IsMotorcycle);
+        new(x.LicensePlate, x.Kilometers, x.RegistrationDate, x.Brand, x.Model, x.Fuel, x.Price, x.IsSold, x.IsMotorcycle, x.AddedAt);
 }

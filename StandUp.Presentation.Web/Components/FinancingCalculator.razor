@@ -1,0 +1,70 @@
+@using System.Globalization
+
+<div class="su-calc">
+    <div class="su-calc-title">Simulador de Financiamento</div>
+
+    <div class="su-calc-field">
+        <label class="su-calc-label">Entrada — @_entradaPct% &nbsp;<span class="su-calc-sub">(€@((Price * _entradaPct / 100).ToString("N0", Pt)))</span></label>
+        <input type="range" class="su-calc-range" min="0" max="50" step="5"
+               @bind="_entradaPct" @bind:event="oninput" />
+    </div>
+
+    <div class="su-calc-row">
+        <div class="su-calc-field">
+            <label class="su-calc-label">Prazo</label>
+            <select class="su-calc-select" @bind="_meses">
+                <option value="12">12 meses</option>
+                <option value="24">24 meses</option>
+                <option value="36">36 meses</option>
+                <option value="48">48 meses</option>
+                <option value="60">60 meses</option>
+                <option value="72">72 meses</option>
+            </select>
+        </div>
+        <div class="su-calc-field">
+            <label class="su-calc-label">Taxa APR (%)</label>
+            <input type="number" class="su-calc-input" min="0.1" max="30" step="0.1"
+                   @bind="_apr" @bind:event="oninput" />
+        </div>
+    </div>
+
+    <div class="su-calc-result">
+        <div class="su-calc-monthly">
+            <span class="su-calc-monthly-label">Prestação Mensal</span>
+            <span class="su-calc-monthly-value">€@Pmt.ToString("N2", Pt)</span>
+        </div>
+        <div class="su-calc-breakdown">
+            <div><span>Capital financiado</span><strong>€@Capital.ToString("N0", Pt)</strong></div>
+            <div><span>Total pago</span><strong>€@TotalPago.ToString("N0", Pt)</strong></div>
+            <div><span>Custo do crédito</span><strong>€@CustoCredito.ToString("N0", Pt)</strong></div>
+        </div>
+        <p class="su-calc-note">* Simulação indicativa, sujeita a aprovação de crédito.</p>
+    </div>
+</div>
+
+@code {
+    [Parameter] public int Price { get; set; }
+
+    private static readonly CultureInfo Pt = new("pt-PT");
+
+    private int    _entradaPct = 20;
+    private int    _meses      = 48;
+    private double _apr        = 8.9;
+
+    private double Capital => Price - Price * _entradaPct / 100.0;
+
+    private double Pmt
+    {
+        get
+        {
+            if (Capital <= 0 || _meses <= 0) return 0;
+            var r = _apr / 100.0 / 12.0;
+            return r == 0
+                ? Capital / _meses
+                : Capital * r * Math.Pow(1 + r, _meses) / (Math.Pow(1 + r, _meses) - 1);
+        }
+    }
+
+    private double TotalPago    => Pmt * _meses + Price * _entradaPct / 100.0;
+    private double CustoCredito => TotalPago - Price;
+}

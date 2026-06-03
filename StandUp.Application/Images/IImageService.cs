@@ -7,4 +7,6 @@ public interface IImageService
     Task<ImageDto> AddVehicleImageAsync(string licensePlate, byte[] data, CancellationToken cancellationToken);
     Task<IReadOnlyList<ImageDto>> GetVehicleImagesAsync(string licensePlate, CancellationToken cancellationToken);
     Task<byte[]?> GetFirstVehicleImageDataAsync(string licensePlate, CancellationToken cancellationToken);
+    Task<byte[]?> GetVehicleImageByIndexAsync(string licensePlate, int index, CancellationToken cancellationToken);
+    Task<byte[]?> GetClientImageByIndexAsync(int clientId, int index, CancellationToken cancellationToken);
 }

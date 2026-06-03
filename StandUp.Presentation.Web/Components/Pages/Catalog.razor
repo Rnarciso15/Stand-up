@@ -1,8 +1,14 @@
 @page "/veiculos"
 @rendermode InteractiveServer
 @inject VehicleApiClient Api
+@inject FavoritesService Favorites
+@inject CompareService Compare
+@inject IJSRuntime JS
 
 <PageTitle>Catálogo de Viaturas — Stand Up</PageTitle>
+<HeadContent>
+    <meta name="description" content="Catálogo de viaturas premium — automóveis e motociclos de alta qualidade. Stand Up, Lisboa." />
+</HeadContent>
 
 <div style="padding-top:68px">
   <div class="su-section" style="padding-bottom:0">
@@ -15,51 +21,48 @@
 
     @if (!_loading)
     {
-      <!-- ── FILTROS ──────────────────────────────────────────── -->
       <div class="su-filter-bar">
         <div class="su-filter-group">
           <label class="su-filter-label">Marca</label>
           <BrandCombobox @bind-SelectedBrand="_filterBrand" Brands="_brands" />
         </div>
 
-        <div class="su-filter-group su-search-input-group">
-          <label class="su-filter-label">Pesquisar modelo</label>
-          <div class="su-search-input-wrap">
-            <svg class="su-search-icon" viewBox="0 0 20 20" fill="none">
-              <circle cx="8.5" cy="8.5" r="5.5" stroke="currentColor" stroke-width="1.5"/>
-              <path d="M13 13l3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-            </svg>
-            <input class="su-filter-input"
-                   @bind="_filterModel"
-                   @bind:event="oninput"
-                   placeholder="Ex: M3 Competition, GR Supra..." />
-          </div>
+        <div class="su-filter-group">
+          <label class="su-filter-label">Modelo / texto livre</label>
+          <input class="su-filter-input" @bind="_filterModel" @bind:event="oninput" placeholder="Ex: M3, GR Supra..." />
         </div>
 
         <div class="su-filter-group">
           <label class="su-filter-label">Combustível</label>
           <select class="su-filter-select" @bind="_filterFuel">
             <option value="">Todos</option>
-            @foreach (var f in _fuels)
-            {
-              <option value="@f">@f</option>
-            }
+            @foreach (var f in _fuels) { <option value="@f">@f</option> }
           </select>
-        </div>
-
-        <div class="su-filter-group">
-          <label class="su-filter-label">Preço máx. (€)</label>
-          <input class="su-filter-input su-filter-input-price" type="number" @bind="_filterMaxPrice"
-                 placeholder="Ex: 50 000" min="0" />
         </div>
 
         <div class="su-filter-group">
           <label class="su-filter-label">Tipo</label>
-          <select class="su-filter-select su-filter-select-type" @bind="_filterType">
+          <select class="su-filter-select" @bind="_filterType">
             <option value="">Todos</option>
             <option value="car">Automóvel</option>
-            <option value="moto">Mota</option>
+            <option value="moto">Moto</option>
           </select>
+        </div>
+
+        <div class="su-filter-group su-filter-range-group">
+          <label class="su-filter-label">Preço &nbsp;<span class="su-filter-range-val">€@_priceMin.ToString("N0") – €@_priceMax.ToString("N0")</span></label>
+          <div class="su-filter-range-row">
+            <input type="range" class="su-calc-range" min="0" max="@_maxPriceData" step="1000" @bind="_priceMin" @bind:event="oninput" />
+            <input type="range" class="su-calc-range" min="0" max="@_maxPriceData" step="1000" @bind="_priceMax" @bind:event="oninput" />
+          </div>
+        </div>
+
+        <div class="su-filter-group su-filter-range-group">
+          <label class="su-filter-label">Quilómetros &nbsp;<span class="su-filter-range-val">@_kmMin.ToString("N0") – @_kmMax.ToString("N0") km</span></label>
+          <div class="su-filter-range-row">
+            <input type="range" class="su-calc-range" min="0" max="@_maxKmData" step="5000" @bind="_kmMin" @bind:event="oninput" />
+            <input type="range" class="su-calc-range" min="0" max="@_maxKmData" step="5000" @bind="_kmMax" @bind:event="oninput" />
+          </div>
         </div>
 
         @if (HasActiveFilters)
@@ -70,14 +73,10 @@
     }
   </div>
 
-  <!-- ── RESULTADOS ───────────────────────────────────────────── -->
   <div class="su-section" style="padding-top:1.5rem">
     @if (_loading)
     {
-      <div class="su-loading">
-        <div class="su-spinner"></div>
-        <div class="su-loading-text">A carregar catálogo</div>
-      </div>
+      <div class="su-loading"><div class="su-spinner"></div><div class="su-loading-text">A carregar catálogo</div></div>
     }
     else if (_apiOffline)
     {
@@ -86,21 +85,7 @@
     else
     {
       var list = Filtered.ToList();
-      <p class="su-results-count">
-        <strong>@list.Count</strong> viatura(s) encontrada(s)
-        @if (!string.IsNullOrWhiteSpace(_filterBrand))
-        {
-          <span class="su-active-filter-chip" @onclick='() => _filterBrand = ""'>
-            @_filterBrand ✕
-          </span>
-        }
-        @if (!string.IsNullOrWhiteSpace(_filterModel))
-        {
-          <span class="su-active-filter-chip" @onclick='() => _filterModel = ""'>
-            "@_filterModel" ✕
-          </span>
-        }
-      </p>
+      <p class="su-results-count"><strong>@list.Count</strong> viatura(s) encontrada(s)</p>
 
       @if (list.Count == 0)
       {
@@ -114,86 +99,128 @@
         <div class="su-grid">
           @foreach (var v in list)
           {
-            <a href="/veiculos/@Uri.EscapeDataString(v.LicensePlate)" class="su-card">
-              <div class="su-card-img">
-                @if (_images.TryGetValue(v.LicensePlate, out var img) && img is not null)
-                {
-                  <img src="data:image/jpeg;base64,@img" alt="@v.Brand @v.Model" loading="lazy" />
-                }
-                else
-                {
-                  <div class="su-card-placeholder">
-                    <span class="su-card-placeholder-icon">@(v.IsMotorcycle ? "🏍" : "🚗")</span>
-                  </div>
-                }
-              </div>
-              <div class="su-card-body">
-                <div class="su-card-brand">@v.Brand</div>
-                <div class="su-card-name">@v.Model</div>
-                <div class="su-card-plate">@v.LicensePlate</div>
-                <div class="su-card-meta">
-                  @if (!string.IsNullOrWhiteSpace(v.Fuel))
+            var isFav     = _favorites.Contains(v.LicensePlate);
+            var inCompare = Compare.Has(v.LicensePlate);
+            var isNew     = v.AddedAt.HasValue && (DateTime.UtcNow - v.AddedAt.Value).TotalDays < 30;
+
+            <div class="su-card-wrap">
+              <a href="/veiculos/@Uri.EscapeDataString(v.LicensePlate)" class="su-card">
+                <div class="su-card-img">
+                  @if (_images.TryGetValue(v.LicensePlate, out var img) && img is not null)
                   {
-                    <span class="su-tag fuel-@v.Fuel.ToLowerInvariant()">@v.Fuel</span>
+                    <img src="data:image/jpeg;base64,@img" alt="@v.Brand @v.Model" loading="lazy" />
                   }
-                  @if (v.IsMotorcycle) { <span class="su-tag mota">Mota</span> }
+                  else
+                  {
+                    <div class="su-card-placeholder">
+                      <span class="su-card-placeholder-icon">@(v.IsMotorcycle ? "🏍" : "🚗")</span>
+                    </div>
+                  }
+                  @if (isNew) { <div class="su-card-badge new">Novo</div> }
                 </div>
-                <div class="su-card-footer">
-                  <div class="su-card-price">@v.Price.ToString("C0", new System.Globalization.CultureInfo("pt-PT"))</div>
-                  <div class="su-card-km"><strong>@v.Kilometers.ToString("N0") km</strong></div>
-                  <div class="su-card-arrow">→</div>
+                <div class="su-card-body">
+                  <div class="su-card-brand">@v.Brand</div>
+                  <div class="su-card-name">@v.Model</div>
+                  <div class="su-card-plate">@v.LicensePlate</div>
+                  <div class="su-card-meta">
+                    @if (!string.IsNullOrWhiteSpace(v.Fuel))
+                    {
+                      <span class="su-tag fuel-@v.Fuel!.ToLowerInvariant()">@v.Fuel</span>
+                    }
+                    @if (v.IsMotorcycle) { <span class="su-tag mota">Moto</span> }
+                  </div>
+                  <div class="su-card-footer">
+                    <div>
+                      <div class="su-card-price">€@v.Price.ToString("N0", new System.Globalization.CultureInfo("pt-PT"))</div>
+                      <div class="su-card-km">@v.Kilometers.ToString("N0") km</div>
+                    </div>
+                    <div class="su-card-arrow">→</div>
+                  </div>
                 </div>
+              </a>
+
+              <div class="su-card-actions">
+                <button class="su-card-action-btn @(isFav ? "active" : "")" @onclick="() => ToggleFavorite(v.LicensePlate)" title="@(isFav ? "Remover favorito" : "Adicionar favorito")">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="@(isFav ? "currentColor" : "none")" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                  </svg>
+                </button>
+                <button class="su-card-action-btn @(inCompare ? "active" : "") @(Compare.Count >= 3 && !inCompare ? "disabled" : "")"
+                        @onclick="() => Compare.Toggle(v.LicensePlate)"
+                        title="@(inCompare ? "Remover do comparador" : "Adicionar ao comparador")"
+                        disabled="@(Compare.Count >= 3 && !inCompare)">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="18" rx="1"/><rect x="14" y="3" width="7" height="18" rx="1"/>
+                  </svg>
+                </button>
               </div>
-            </a>
+            </div>
           }
         </div>
       }
     }
   </div>
+
+  @if (Compare.Count > 0)
+  {
+    <div class="su-compare-bar">
+      <span>@Compare.Count viatura(s) selecionada(s)</span>
+      <a href="/comparar" class="su-btn-primary" style="padding:.4rem 1.2rem;font-size:.85rem">Comparar</a>
+      <button class="su-compare-bar-clear" @onclick="Compare.Clear">Limpar</button>
+    </div>
+  }
 </div>
 
 @code {
+    [SupplyParameterFromQuery(Name = "q")]    private string? Q    { get; set; }
+    [SupplyParameterFromQuery(Name = "tipo")] private string? Tipo { get; set; }
+
     private List<VehicleDto> _all    = [];
-    private Dictionary<string, string?> _images = [];
+    private Dictionary<string, string?> _images   = [];
+    private HashSet<string> _favorites = [];
     private bool _loading    = true;
     private bool _apiOffline;
     private List<string> _brands = [];
     private List<string> _fuels  = [];
 
-    private string _filterBrand    = "";
-    private string _filterModel    = "";
-    private string _filterFuel     = "";
-    private int?   _filterMaxPrice;
-    private string _filterType     = "";
+    private string _filterBrand = "";
+    private string _filterModel = "";
+    private string _filterFuel  = "";
+    private string _filterType  = "";
+    private int    _priceMin;
+    private int    _priceMax    = int.MaxValue;
+    private int    _kmMin;
+    private int    _kmMax       = int.MaxValue;
+    private int    _maxPriceData;
+    private int    _maxKmData;
 
     private bool HasActiveFilters =>
-        !string.IsNullOrWhiteSpace(_filterBrand) ||
-        !string.IsNullOrWhiteSpace(_filterModel) ||
-        !string.IsNullOrWhiteSpace(_filterFuel)  ||
-        _filterMaxPrice.HasValue ||
-        !string.IsNullOrWhiteSpace(_filterType);
+        !string.IsNullOrWhiteSpace(_filterBrand) || !string.IsNullOrWhiteSpace(_filterModel) ||
+        !string.IsNullOrWhiteSpace(_filterFuel)  || !string.IsNullOrWhiteSpace(_filterType)  ||
+        _priceMin > 0 || _priceMax < _maxPriceData || _kmMin > 0 || _kmMax < _maxKmData;
 
     private IEnumerable<VehicleDto> Filtered => _all.Where(v =>
-        (string.IsNullOrWhiteSpace(_filterBrand) ||
-            v.Brand.Equals(_filterBrand, StringComparison.OrdinalIgnoreCase)) &&
-        (string.IsNullOrWhiteSpace(_filterModel) ||
-            v.Model.Contains(_filterModel, StringComparison.OrdinalIgnoreCase) ||
-            v.Brand.Contains(_filterModel, StringComparison.OrdinalIgnoreCase)) &&
+        (string.IsNullOrWhiteSpace(_filterBrand) || v.Brand.Equals(_filterBrand, StringComparison.OrdinalIgnoreCase)) &&
+        (string.IsNullOrWhiteSpace(_filterModel) || v.Model.Contains(_filterModel, StringComparison.OrdinalIgnoreCase) || v.Brand.Contains(_filterModel, StringComparison.OrdinalIgnoreCase) || v.LicensePlate.Contains(_filterModel, StringComparison.OrdinalIgnoreCase)) &&
         (string.IsNullOrWhiteSpace(_filterFuel)  || v.Fuel == _filterFuel) &&
-        (_filterMaxPrice is null || v.Price <= _filterMaxPrice) &&
-        (_filterType == "" ||
-            (_filterType == "moto" && v.IsMotorcycle) ||
-            (_filterType == "car"  && !v.IsMotorcycle)));
+        (_filterType == "" || (_filterType == "moto" && v.IsMotorcycle) || (_filterType == "car" && !v.IsMotorcycle)) &&
+        v.Price >= _priceMin && v.Price <= _priceMax &&
+        v.Kilometers >= _kmMin && v.Kilometers <= _kmMax);
 
     protected override async Task OnInitializedAsync()
     {
+        if (!string.IsNullOrWhiteSpace(Q))    _filterModel = Q;
+        if (!string.IsNullOrWhiteSpace(Tipo)) _filterType  = Tipo == "mota" ? "moto" : Tipo;
         try
         {
             _all = await Api.GetAvailableAsync();
             _apiOffline = false;
             _brands = _all.Select(v => v.Brand).Distinct().OrderBy(b => b).ToList();
-            _fuels  = _all.Where(v => !string.IsNullOrWhiteSpace(v.Fuel))
-                          .Select(v => v.Fuel!).Distinct().OrderBy(f => f).ToList();
+            _fuels  = _all.Where(v => !string.IsNullOrWhiteSpace(v.Fuel)).Select(v => v.Fuel!).Distinct().OrderBy(f => f).ToList();
+            _maxPriceData = _all.Count > 0 ? _all.Max(v => v.Price)      : 500_000;
+            _maxKmData    = _all.Count > 0 ? _all.Max(v => v.Kilometers) : 300_000;
+            _priceMax = _maxPriceData;
+            _kmMax    = _maxKmData;
             foreach (var v in _all)
                 _images[v.LicensePlate] = await Api.GetVehicleImageBase64Async(v.LicensePlate);
         }
@@ -201,64 +228,24 @@
         finally { _loading = false; }
     }
 
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+        var plates = await Favorites.GetPlatesAsync();
+        _favorites = [..plates];
+        StateHasChanged();
+    }
+
+    private async Task ToggleFavorite(string plate)
+    {
+        await Favorites.ToggleAsync(plate);
+        if (_favorites.Contains(plate)) _favorites.Remove(plate);
+        else _favorites.Add(plate);
+    }
+
     private void ClearFilters()
     {
-        _filterBrand    = "";
-        _filterModel    = "";
-        _filterFuel     = "";
-        _filterMaxPrice = null;
-        _filterType     = "";
-    }
-
-    private static readonly Dictionary<string, string> BrandDomains = new()
-    {
-        ["BMW"]             = "bmw.com",
-        ["Mercedes"]        = "mercedes-benz.com",
-        ["Audi"]            = "audi.com",
-        ["Porsche"]         = "porsche.com",
-        ["Volkswagen"]      = "vw.com",
-        ["Toyota"]          = "toyota.com",
-        ["Ford"]            = "ford.com",
-        ["Renault"]         = "renault.com",
-        ["Tesla"]           = "tesla.com",
-        ["Honda"]           = "honda.com",
-        ["SEAT"]            = "seat.com",
-        ["Cupra"]           = "cupraofficial.com",
-        ["Peugeot"]         = "peugeot.com",
-        ["Volvo"]           = "volvocars.com",
-        ["Alfa Romeo"]      = "alfaromeo.com",
-        ["Lamborghini"]     = "lamborghini.com",
-        ["Ferrari"]         = "ferrari.com",
-        ["Maserati"]        = "maserati.com",
-        ["Land Rover"]      = "landrover.com",
-        ["Range Rover"]     = "landrover.com",
-        ["Ducati"]          = "ducati.com",
-        ["Yamaha"]          = "yamaha-motor.com",
-        ["KTM"]             = "ktm.com",
-        ["Kawasaki"]        = "kawasaki.com",
-        ["Aprilia"]         = "aprilia.com",
-        ["Triumph"]         = "triumphmotorcycles.com",
-        ["Harley-Davidson"] = "harley-davidson.com",
-        ["Mazda"]           = "mazda.com",
-        ["Nissan"]          = "nissan.com",
-        ["Kia"]             = "kia.com",
-        ["Hyundai"]         = "hyundai.com",
-        ["Opel"]            = "opel.com",
-        ["Skoda"]           = "skoda-auto.com",
-    };
-
-    private static string GetBrandLogoUrl(string brand)
-    {
-        if (BrandDomains.TryGetValue(brand, out var domain))
-            return $"https://logo.clearbit.com/{domain}?size=64";
-        return "";
-    }
-
-    private static string GetBrandInitials(string brand)
-    {
-        var words = brand.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-        return words.Length >= 2
-            ? $"{words[0][0]}{words[1][0]}"
-            : brand.Length >= 3 ? brand[..3].ToUpper() : brand.ToUpper();
+        _filterBrand = ""; _filterModel = ""; _filterFuel = ""; _filterType = "";
+        _priceMin = 0; _priceMax = _maxPriceData; _kmMin = 0; _kmMax = _maxKmData;
     }
 }

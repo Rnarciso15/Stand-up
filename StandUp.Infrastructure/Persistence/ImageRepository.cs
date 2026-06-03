@@ -54,4 +54,25 @@ public sealed class ImageRepository : IImageRepository
             .FirstOrDefaultAsync(cancellationToken);
         return img?.Data;
     }
+
+    public async Task<byte[]?> GetVehicleImageByIndexAsync(string licensePlate, int index, CancellationToken cancellationToken)
+    {
+        var plate = licensePlate.Trim().ToUpperInvariant();
+        return await _dbContext.VehicleImages
+            .Where(x => x.VehicleLicensePlate == plate)
+            .OrderByDescending(x => x.CreatedAt)
+            .Skip(index)
+            .Select(x => x.Data)
+            .FirstOrDefaultAsync(cancellationToken);
+    }
+
+    public async Task<byte[]?> GetClientImageByIndexAsync(int clientId, int index, CancellationToken cancellationToken)
+    {
+        return await _dbContext.ClientImages
+            .Where(x => x.ClientId == clientId)
+            .OrderByDescending(x => x.CreatedAt)
+            .Skip(index)
+            .Select(x => x.Data)
+            .FirstOrDefaultAsync(cancellationToken);
+    }
 }

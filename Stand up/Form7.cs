@@ -54,17 +54,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row["imagem"]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images2.Images.Add(row["imagem"].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images2.Images.Add("img_" + i.ToString(), CreateThumbnail(row["imagem"] as byte[]));
 
 
 
@@ -125,17 +115,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row["imagem"]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images2.Images.Add(row["imagem"].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images2.Images.Add("img_" + i.ToString(), CreateThumbnail(row["imagem"] as byte[]));
 
 
 
@@ -168,6 +148,23 @@ namespace Stand_up
         int i = 0;
         int ww = 0;
         ImageList images2 = new ImageList();
+        private static System.Drawing.Bitmap CreateThumbnail(byte[] bytes)
+        {
+            if (bytes != null && bytes.Length > 0)
+            {
+                try
+                {
+                    using (var ms = new System.IO.MemoryStream(bytes))
+                    using (var src = System.Drawing.Image.FromStream(ms))
+                        return new System.Drawing.Bitmap(src);
+                }
+                catch { }
+            }
+            var bmp = new System.Drawing.Bitmap(100, 100);
+            using (var g = System.Drawing.Graphics.FromImage(bmp))
+                g.Clear(System.Drawing.Color.FromArgb(45, 45, 50));
+            return bmp;
+        }
 
         ImageList images1 = new ImageList();
         ImageList images3 = new ImageList();
@@ -968,17 +965,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row["imagem"]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images1.Images.Add(row["imagem"].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images1.Images.Add("img_" + i.ToString(), CreateThumbnail(row["imagem"] as byte[]));
 
 
 
@@ -1039,17 +1026,7 @@ namespace Stand_up
 
 
 
-                byte[] imagebyte = (byte[])(row["imagem"]);
-
-                MemoryStream image_stream = new MemoryStream(imagebyte);
-
-                image_stream.Write(imagebyte, 0, imagebyte.Length);
-
-                images2.Images.Add(row["imagem"].ToString(), new Bitmap(image_stream));
-
-
-
-                image_stream.Close();
+                images2.Images.Add("img_" + i.ToString(), CreateThumbnail(row["imagem"] as byte[]));
 
 
 

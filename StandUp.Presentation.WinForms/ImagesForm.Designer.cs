@@ -3,14 +3,15 @@ namespace StandUp.Presentation.WinForms;
 partial class ImagesForm
 {
     private System.ComponentModel.IContainer components = null;
-    private TextBox txtClientId;
-    private TextBox txtVehiclePlate;
-    private TextBox txtFilePath;
-    private Button btnLoadClient;
-    private Button btnUploadClient;
-    private Button btnLoadVehicle;
-    private Button btnUploadVehicle;
-    private DataGridView gridImages;
+
+    private TextBox        txtClientId;
+    private TextBox        txtVehiclePlate;
+    private Button         btnLoadClient;
+    private Button         btnUploadClient;
+    private Button         btnLoadVehicle;
+    private Button         btnUploadVehicle;
+    private FlowLayoutPanel flpImages;
+    private Label          lblStatus;
 
     protected override void Dispose(bool disposing)
     {
@@ -20,28 +21,69 @@ partial class ImagesForm
 
     private void InitializeComponent()
     {
-        txtClientId = new TextBox();
-        txtVehiclePlate = new TextBox();
-        txtFilePath = new TextBox();
-        btnLoadClient = new Button();
-        btnUploadClient = new Button();
-        btnLoadVehicle = new Button();
+        txtClientId      = new TextBox();
+        txtVehiclePlate  = new TextBox();
+        btnLoadClient    = new Button();
+        btnUploadClient  = new Button();
+        btnLoadVehicle   = new Button();
         btnUploadVehicle = new Button();
-        gridImages = new DataGridView();
-        ((System.ComponentModel.ISupportInitialize)gridImages).BeginInit();
+        flpImages        = new FlowLayoutPanel();
+        lblStatus        = new Label();
         SuspendLayout();
-        txtClientId.Location = new Point(12, 15); txtClientId.Size = new Size(90, 23); txtClientId.PlaceholderText = "Client ID";
-        btnLoadClient.Location = new Point(108, 15); btnLoadClient.Size = new Size(90, 23); btnLoadClient.Text = "Load Client"; btnLoadClient.Click += btnLoadClient_Click;
-        btnUploadClient.Location = new Point(204, 15); btnUploadClient.Size = new Size(100, 23); btnUploadClient.Text = "Upload Client"; btnUploadClient.Click += btnUploadClient_Click;
-        txtVehiclePlate.Location = new Point(320, 15); txtVehiclePlate.Size = new Size(100, 23); txtVehiclePlate.PlaceholderText = "Matrícula";
-        btnLoadVehicle.Location = new Point(426, 15); btnLoadVehicle.Size = new Size(95, 23); btnLoadVehicle.Text = "Load Vehicle"; btnLoadVehicle.Click += btnLoadVehicle_Click;
-        btnUploadVehicle.Location = new Point(527, 15); btnUploadVehicle.Size = new Size(110, 23); btnUploadVehicle.Text = "Upload Vehicle"; btnUploadVehicle.Click += btnUploadVehicle_Click;
-        txtFilePath.Location = new Point(12, 50); txtFilePath.Size = new Size(625, 23); txtFilePath.PlaceholderText = "Caminho imagem";
-        gridImages.Location = new Point(12, 85); gridImages.Size = new Size(625, 250);
-        AutoScaleMode = AutoScaleMode.Font; ClientSize = new Size(650, 350);
-        Controls.AddRange([txtClientId, btnLoadClient, btnUploadClient, txtVehiclePlate, btnLoadVehicle, btnUploadVehicle, txtFilePath, gridImages]);
+
+        // ── Row 1: Client controls ────────────────────────────────
+        txtClientId.Location      = new Point(12, 15);
+        txtClientId.Size          = new Size(88, 23);
+        txtClientId.PlaceholderText = "ID Cliente";
+
+        btnLoadClient.Location    = new Point(106, 15);
+        btnLoadClient.Size        = new Size(120, 23);
+        btnLoadClient.Text        = "Carregar Cliente";
+        btnLoadClient.Click      += btnLoadClient_Click;
+
+        btnUploadClient.Location  = new Point(232, 15);
+        btnUploadClient.Size      = new Size(120, 23);
+        btnUploadClient.Text      = "Upload Cliente";
+        btnUploadClient.Click    += btnUploadClient_Click;
+
+        // ── Row 2: Vehicle controls ───────────────────────────────
+        txtVehiclePlate.Location      = new Point(12, 46);
+        txtVehiclePlate.Size          = new Size(100, 23);
+        txtVehiclePlate.PlaceholderText = "Matrícula";
+
+        btnLoadVehicle.Location    = new Point(118, 46);
+        btnLoadVehicle.Size        = new Size(120, 23);
+        btnLoadVehicle.Text        = "Carregar Viatura";
+        btnLoadVehicle.Click      += btnLoadVehicle_Click;
+
+        btnUploadVehicle.Location  = new Point(244, 46);
+        btnUploadVehicle.Size      = new Size(120, 23);
+        btnUploadVehicle.Text      = "Upload Viatura";
+        btnUploadVehicle.Click    += btnUploadVehicle_Click;
+
+        // ── Image thumbnail panel ─────────────────────────────────
+        flpImages.Location    = new Point(12, 82);
+        flpImages.Size        = new Size(776, 360);
+        flpImages.AutoScroll  = true;
+        flpImages.BorderStyle = BorderStyle.None;
+        flpImages.WrapContents = true;
+
+        // ── Status label ──────────────────────────────────────────
+        lblStatus.Location  = new Point(12, 452);
+        lblStatus.Size      = new Size(776, 18);
+        lblStatus.AutoSize  = false;
+        lblStatus.Text      = "";
+
+        // ── Form ──────────────────────────────────────────────────
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize    = new Size(800, 480);
+        Controls.AddRange([
+            txtClientId, btnLoadClient, btnUploadClient,
+            txtVehiclePlate, btnLoadVehicle, btnUploadVehicle,
+            flpImages, lblStatus
+        ]);
         Text = "Gestão de Imagens";
-        ((System.ComponentModel.ISupportInitialize)gridImages).EndInit();
-        ResumeLayout(false); PerformLayout();
+        ResumeLayout(false);
+        PerformLayout();
     }
 }
